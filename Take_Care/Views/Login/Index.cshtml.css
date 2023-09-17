@@ -1,0 +1,129 @@
+﻿body {
+}
+.logintitle{
+    text-align:center;
+}
+.signupBox {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 800px;
+    background: #fff;
+    border: 1px solid #6b00d5;
+    border-radius: 20px;
+}
+
+.leftBox {
+    padding: 50px;
+    background-color: #6b00d5;
+    opacity: 0.6;
+    flex-grow: 1;
+    color: #fff;
+    border-radius: 20px 0 0 20px;
+}
+
+.rightBox {
+    padding: 50px;
+    flex-grow: 1;
+    border-radius: 0 20px 20px 0;
+}
+
+.inputBox {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #fff;
+    outline: none;
+    color: #fff;
+    font-size: 12px;
+    background: transparent;
+}
+
+::placeholder {
+    color: #fff;
+}
+
+input[type=checkbox] {
+    margin-top: 30px;
+}
+
+.leftBox label {
+    font-size: 14px;
+}
+
+.leftBox button {
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    border: 0;
+    outline: none;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .leftBox button:hover {
+        font-weight: 500;
+        background: #000;
+        color: #fff;
+    }
+
+    .leftBox button span {
+        display: inline-block;
+        width: 0px;
+        overflow: hidden;
+        transition: width 0.5s;
+    }
+
+    .leftBox button:hover span {
+        width: 30px;
+    }
+
+.rightBox a {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    min-width: 250px;
+    color: #fff;
+    font-size: 14px;
+    padding: 15px 30px;
+    text-decoration: none;
+}
+
+    .rightBox a i {
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+.fb_Link {
+    background: #1778f2;
+}
+
+.tw_Link {
+    background: #1da1f2;
+}
+
+.g_Link {
+    background: #ea4335;
+}
+
+.login_msg {
+    color: #fff;
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+    .login_msg a {
+        color: #ea4335;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+
+        .login_msg a:hover {
+            text-decoration: underline;
+        }

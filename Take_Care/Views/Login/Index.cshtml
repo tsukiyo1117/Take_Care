@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1 class="logintitle">Login</h1>
+<div class="row">
+	<div class="col-2"></div>
+	<div class="leftBox col-4">
+		<form>
+			<input type="email" id="email" placeholder="帳號 / Email" required class="inputBox">
+			<input type="password" id="password" placeholder="輸入密碼" required class="inputBox">
+			<input type="checkbox" id="terms">
+			<label for="terms">記住我的帳號</label>
+			<!-- 给登入按鈕指定ID "loginButton" -->
+			<button type="button" id="loginButton">登入<span>&#x27f6;</span></button>
+			@*<span class="login_msg">我還沒有帳號 ?<a href="./SignUp.html">SignUp Now</a></span>*@
+		</form>
+	</div>
+	<div class="rightBox col-4" style="background-color: aqua;">
+		<a href="" class="fb_Link"><i class="fa-brands fa-facebook"></i> Login with Facebook</a>
+		<a href="" class="tw_Link"><i class="fa-brands fa-twitter"></i> Login with Twitter</a>
+		<a href="" class="g_Link"><i class="fa-brands fa-google"></i> Login with Google</a>
+	</div>
+	<div class="col-2"></div>
+</div>
