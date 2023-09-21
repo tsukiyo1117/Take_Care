@@ -1,16 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.SignalR;
+using Take_Care.Hubs;
 using Take_Care.Models;
 
 namespace Take_Care.Controllers {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger) {
+        private readonly IHubContext<ChatHub> _hubContext;
+        public HomeController(ILogger<HomeController> logger, IHubContext<ChatHub> hubContext) {
             _logger = logger;
+            _hubContext = hubContext;
         }
 
-        public IActionResult Index() {
+        public IActionResult Index()
+        {
+            ViewData["id"] = ChatHub.ConnIDList;
             return View();
         }
 

@@ -17,8 +17,8 @@
 
 .leftBox {
     padding: 50px;
-    background-color: #1199b7;
-    opacity: 0.6;
+    background-color: rgba(17,153,183,0.6);
+    opacity: 1;
     flex-grow: 1;
     color: #fff;
     border-radius: 20px 0 0 20px;
@@ -42,7 +42,7 @@
     background: transparent;
 }
 
-::placeholder {
+::placeholder {        
     color: #fff;
 }
 
@@ -93,8 +93,10 @@ input[type=checkbox] {
     min-width: 250px;
     color: #fff;
     font-size: 24px;
-    padding: 15px 30px;
+    padding: 20px 30px;
     text-decoration: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
     .rightBox a i {
@@ -107,7 +109,8 @@ input[type=checkbox] {
 }
 
 .tw_Link {
-    background: #1da1f2;
+    background: black;
+    opacity: 0.9;
 }
 
 .g_Link {
@@ -130,3 +133,12 @@ input[type=checkbox] {
         .login_msg a:hover {
             text-decoration: underline;
         }
+        .rightBox a{
+            --c: goldenrod;
+        }
+
+
+.rightBox a:hover  {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}

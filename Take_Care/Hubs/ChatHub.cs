@@ -5,7 +5,8 @@ namespace Take_Care.Hubs {
 	public class ChatHub : Hub {
 		// 用戶連線 ID 列表
 		public static List<string> ConnIDList = new List<string>();
-
+		public static Dictionary<string, string> MemberId = new Dictionary<string, string>();
+		
 		/// <summary>
 		/// 連線事件
 		/// </summary>
@@ -13,6 +14,7 @@ namespace Take_Care.Hubs {
 		public override async Task OnConnectedAsync() {
 
 			if (ConnIDList.Where(p => p == Context.ConnectionId).FirstOrDefault() == null) {
+			
 				ConnIDList.Add(Context.ConnectionId);
 			}
 			// 更新連線 ID 列表
@@ -34,7 +36,7 @@ namespace Take_Care.Hubs {
 		/// <param name="ex"></param>
 		/// <returns></returns>
 		public override async Task OnDisconnectedAsync(Exception ex) {
-			string id = ConnIDList.Where(p => p == Context.ConnectionId).FirstOrDefault();
+			string? id = ConnIDList.Where(p => p == Context.ConnectionId).FirstOrDefault();
 			if (id != null) {
 				ConnIDList.Remove(id);
 			}
@@ -58,5 +60,9 @@ namespace Take_Care.Hubs {
         public async Task SendMessage(string user, string message) {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
+        // public async Task SendMessage(string targetConnectionId, string user, string message)
+        // {
+	       //  await Clients.Client(targetConnectionId).SendAsync("ReceiveMessage", user, message);
+        // }
     }
 }
