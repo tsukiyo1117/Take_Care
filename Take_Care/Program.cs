@@ -1,9 +1,13 @@
+using Microsoft.EntityFrameworkCore;
 using Take_Care.Hubs;
+using Take_Care.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var connectionString = builder.Configuration.GetConnectionString("linkToTake_Care");
+builder.Services.AddDbContext<TakeCareContext>(x => x.UseSqlServer(connectionString));
 //¥[¤J SignalR
 builder.Services.AddSignalR();
 

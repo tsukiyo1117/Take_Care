@@ -1,26 +1,27 @@
 ﻿@page
-<div class="container">
+<button id="showChat" class="button-45">
+    <i class="fa-brands fa-rocketchat"></i>
+</button>
+<div class="chatbox">
+    <button type="button" class="btn-close" aria-label="Close" id="hideChat"></button>
     <div class="row p-1">
-        <div class="col-1">User</div>
-        <div class="col-5"><input type="text" id="userInput" /></div>
+        <div class="col-6">
+            <textarea id="messagesList" style="height:40vmin;width:80vmin; font-size: 28px" disabled></textarea>
+        </div>
     </div>
-    <div class="row p-1">
-        <div class="col-1">Message</div>
-        <div class="col-5"><input type="text" class="w-100" id="messageInput" /></div>
-    </div>
-    <div class="row p-1">
-        <div class="col-6 text-end">
-            <input type="button" id="sendButton" value="Send Message" />
+    <div class="row p-1" >
+        <div class="col-2">User</div>
+        <div class="col-5">
+            <input type="text" id="userInput" />
         </div>
     </div>
     <div class="row p-1">
-        <div class="col-6">
-            <hr />
+        <div class="col-2">Message</div>
+        <div class="col-5">
+            <input type="text" class="w-100" id="messageInput" />
         </div>
-    </div>
-    <div class="row p-1">
-        <div class="col-6">
-            <ul id="messagesList"></ul>
+        <div class="col-2">
+            <input type="button" id="sendButton" value="Send Message" class="btn btn-outline-warning" />
         </div>
     </div>
 </div>
