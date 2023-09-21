@@ -1,7 +1,8 @@
 ﻿body {
 }
-.logintitle{
-    text-align:center;
+.logintitle {
+    text-align: center;
+    font-size:50px;
 }
 .signupBox {
     display: flex;
@@ -16,7 +17,7 @@
 
 .leftBox {
     padding: 50px;
-    background-color: #6b00d5;
+    background-color: #1199b7;
     opacity: 0.6;
     flex-grow: 1;
     color: #fff;
@@ -24,6 +25,7 @@
 }
 
 .rightBox {
+    background-color: #1199b7;
     padding: 50px;
     flex-grow: 1;
     border-radius: 0 20px 20px 0;
@@ -36,7 +38,7 @@
     border: 1px solid #fff;
     outline: none;
     color: #fff;
-    font-size: 12px;
+    font-size: 30px;
     background: transparent;
 }
 
@@ -49,7 +51,7 @@ input[type=checkbox] {
 }
 
 .leftBox label {
-    font-size: 14px;
+    font-size: 30px;
 }
 
 .leftBox button {
@@ -58,7 +60,7 @@ input[type=checkbox] {
     padding: 10px;
     border: 0;
     outline: none;
-    font-size: 16px;
+    font-size: 24px;
     margin-top: 20px;
     cursor: pointer;
     transition: background 0.5s;
@@ -68,7 +70,7 @@ input[type=checkbox] {
 }
 
     .leftBox button:hover {
-        font-weight: 500;
+        font-weight: 600;
         background: #000;
         color: #fff;
     }
@@ -81,7 +83,7 @@ input[type=checkbox] {
     }
 
     .leftBox button:hover span {
-        width: 30px;
+        width: 40px;
     }
 
 .rightBox a {
@@ -90,7 +92,7 @@ input[type=checkbox] {
     margin: 20px 0;
     min-width: 250px;
     color: #fff;
-    font-size: 14px;
+    font-size: 24px;
     padding: 15px 30px;
     text-decoration: none;
 }
@@ -110,6 +112,7 @@ input[type=checkbox] {
 
 .g_Link {
     background: #ea4335;
+    
 }
 
 .login_msg {

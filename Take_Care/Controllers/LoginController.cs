@@ -5,5 +5,10 @@ namespace Take_Care.Controllers {
         public IActionResult Index() {
             return View();
         }
+
+        public IActionResult sing()
+        {
+            return View();
+        }
     }
 }
