@@ -6,9 +6,9 @@ namespace Take_Care.Controllers {
             return View();
         }
 
-        public IActionResult sing()
+        /*public IActionResult sing()
         {
             return View();
-        }
+        }*/
     }
 }
