@@ -11,55 +11,55 @@ namespace Take_Care.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployersController : ControllerBase
+    public class CasesController : ControllerBase
     {
         private readonly TakeCareContext _context;
 
-        public EmployersController(TakeCareContext context)
+        public CasesController(TakeCareContext context)
         {
             _context = context;
         }
 
-        // GET: api/Employers
+        // GET: api/Cases
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employer>>> GetEmployers()
+        public async Task<ActionResult<IEnumerable<Case>>> GetCases()
         {
-          if (_context.Employers == null)
+          if (_context.Cases == null)
           {
               return NotFound();
           }
-            return await _context.Employers.ToListAsync();
+            return await _context.Cases.ToListAsync();
         }
 
-        // GET: api/Employers/5
+        // GET: api/Cases/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employer>> GetEmployer(int id)
+        public async Task<ActionResult<Case>> GetCase(int id)
         {
-          if (_context.Employers == null)
+          if (_context.Cases == null)
           {
               return NotFound();
           }
-            var employer = await _context.Employers.FindAsync(id);
+            var @case = await _context.Cases.FindAsync(id);
 
-            if (employer == null)
+            if (@case == null)
             {
                 return NotFound();
             }
 
-            return employer;
+            return @case;
         }
 
-        // PUT: api/Employers/5
+        // PUT: api/Cases/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployer(int id, Employer employer)
+        public async Task<IActionResult> PutCase(int id, Case @case)
         {
-            if (id != employer.EmployerId)
+            if (id != @case.CaseId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(employer).State = EntityState.Modified;
+            _context.Entry(@case).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace Take_Care.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployerExists(id))
+                if (!CaseExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace Take_Care.Controllers
             return NoContent();
         }
 
-        // POST: api/Employers
+        // POST: api/Cases
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Employer>> PostEmployer(Employer employer)
+        public async Task<ActionResult<Case>> PostCase(Case @case)
         {
-          if (_context.Employers == null)
+          if (_context.Cases == null)
           {
-              return Problem("Entity set 'TakeCareContext.Employers'  is null.");
+              return Problem("Entity set 'TakeCareContext.Cases'  is null.");
           }
-            _context.Employers.Add(employer);
+            _context.Cases.Add(@case);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEmployer", new { id = employer.EmployerId }, employer);
+            return CreatedAtAction("GetCase", new { id = @case.CaseId }, @case);
         }
 
-        // DELETE: api/Employers/5
+        // DELETE: api/Cases/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployer(int id)
+        public async Task<IActionResult> DeleteCase(int id)
         {
-            if (_context.Employers == null)
+            if (_context.Cases == null)
             {
                 return NotFound();
             }
-            var employer = await _context.Employers.FindAsync(id);
-            if (employer == null)
+            var @case = await _context.Cases.FindAsync(id);
+            if (@case == null)
             {
                 return NotFound();
             }
 
-            _context.Employers.Remove(employer);
+            _context.Cases.Remove(@case);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool EmployerExists(int id)
+        private bool CaseExists(int id)
         {
-            return (_context.Employers?.Any(e => e.EmployerId == id)).GetValueOrDefault();
+            return (_context.Cases?.Any(e => e.CaseId == id)).GetValueOrDefault();
         }
     }
 }

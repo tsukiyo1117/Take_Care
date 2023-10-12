@@ -15,6 +15,8 @@ public partial class TakeCareContext : DbContext
     {
     }
 
+    public virtual DbSet<Case> Cases { get; set; }
+
     public virtual DbSet<EmergencyContact> EmergencyContacts { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
@@ -31,9 +33,33 @@ public partial class TakeCareContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Case>(entity =>
+        {
+            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C167BE2D7");
+
+            entity.Property(e => e.CaseId).HasColumnName("CaseID");
+            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Commission).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
+            entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
+            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+            entity.Property(e => e.StartDateTime).HasColumnType("datetime");
+            entity.Property(e => e.TaskName).HasMaxLength(50);
+
+            entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
+                .HasForeignKey(d => d.EmployeeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Cases__EmployeeI__33D4B598");
+
+            entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
+                .HasForeignKey(d => d.EmployerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Cases__EmployerI__34C8D9D1");
+        });
+
         modelBuilder.Entity<EmergencyContact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__Emergenc__82ACC1CD7703073E");
+            entity.HasKey(e => e.ContactId).HasName("PK__Emergenc__82ACC1CD25172711");
 
             entity.ToTable("Emergency_Contacts");
 
@@ -55,11 +81,11 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04FF13E2A0418");
+            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04FF198D90916");
 
-            entity.HasIndex(e => e.Email, "UQ__Employee__A9D1053452417A21").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Employee__A9D1053460598870").IsUnique();
 
-            entity.HasIndex(e => e.Account, "UQ__Employee__B0C3AC4637B6F25B").IsUnique();
+            entity.HasIndex(e => e.Account, "UQ__Employee__B0C3AC46B318A5F8").IsUnique();
 
             entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
             entity.Property(e => e.Account)
@@ -96,13 +122,13 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<Employer>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Employer__1788CCACD1E73ED3");
+            entity.HasKey(e => e.EmployerId).HasName("PK__Employer__CA445241ADAE2387");
 
-            entity.HasIndex(e => e.Email, "UQ__Employer__A9D10534E62ADE1D").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Employer__A9D10534E5DDE964").IsUnique();
 
-            entity.HasIndex(e => e.Account, "UQ__Employer__B0C3AC46B1AEE960").IsUnique();
+            entity.HasIndex(e => e.Account, "UQ__Employer__B0C3AC46F2CC3BC4").IsUnique();
 
-            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
             entity.Property(e => e.Account)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -156,9 +182,11 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<PersonalInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC279582A48B");
+            entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC27BCA43492");
 
             entity.ToTable("Personal_Info");
+
+            entity.HasIndex(e => e.IdentityCard, "UQ__Personal__A450139AE55C0DFB").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Birthday).HasColumnType("date");

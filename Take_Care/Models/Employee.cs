@@ -30,4 +30,6 @@ public partial class Employee
     public byte[]? Photo { get; set; }
 
     public string? PhotoUrl { get; set; }
+
+    public virtual ICollection<Case> Cases { get; set; } = new List<Case>();
 }
