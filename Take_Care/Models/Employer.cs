@@ -5,7 +5,7 @@ namespace Take_Care.Models;
 
 public partial class Employer
 {
-    public int UserId { get; set; }
+    public int EmployerId { get; set; }
 
     public string Account { get; set; } = null!;
 
@@ -26,4 +26,6 @@ public partial class Employer
     public byte[]? Photo { get; set; }
 
     public string? PhotoUrl { get; set; }
+
+    public virtual ICollection<Case> Cases { get; set; } = new List<Case>();
 }

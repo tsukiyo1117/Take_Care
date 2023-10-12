@@ -7,7 +7,7 @@ public partial class PersonalInfo
 {
     public int Id { get; set; }
 
-    public string? IdentityCard { get; set; }
+    public string IdentityCard { get; set; } = null!;
 
     public string? Name { get; set; }
 
