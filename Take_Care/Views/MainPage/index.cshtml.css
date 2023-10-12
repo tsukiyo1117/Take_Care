@@ -1,0 +1,119 @@
+﻿.mynav {
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: burlywood;
+}
+
+a {
+    text-decoration: none;
+}
+
+.myright {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #b4aaa1;
+}
+
+    /* Style the buttons inside the tab */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding-right: 0;
+    min-height: 100%;
+    display: grid;
+    /*使用grid排版*/
+    grid-template-rows: 1fr auto;
+    /*將上半部設置為一個單位，剩下的部分設為自動高度*/
+}
+
+.conn {
+    font-weight: bolder;
+    color: brown;
+}
+
+.myfooter {
+    font-weight: bolder;
+}
+
+.mya {
+    color: azure;
+}
+
+.myfont {
+    color: azure;
+}
+
+.box {
+    width: 300px;
+    height: 150px;
+}
+
+.myvideo h3:after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 6em;
+    background-color: darkolivegreen;
+    margin-bottom: 40px;
+    font-weight: 700
+}
