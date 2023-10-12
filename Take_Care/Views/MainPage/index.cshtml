@@ -1,0 +1,409 @@
+﻿@page
+@model Take_Care.Views.主頁.MainPageModel
+@{
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Care</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./mainpage.css">
+    <script src="../jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+</head>
+
+<body style="background-color:bisque;">
+    <div class="container-fluid">
+        <div class="row mynav p-3">
+            <nav class="navbar navbar-expand-lg">
+                <div class="col-2">
+                    <a class="navbar-brand mymain" href="#" style="font-size: 35px; margin-left: 300px;">
+                        <img src="../照片/logo.png" class="myimg" style="height: 100px; width:200px; margin: -80px;">
+                        TakeCare
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="col-8">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"
+                                   style="margin-left: 300px;">首頁</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    關於我們
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">機構簡介</a></li>
+                                    <li><a class="dropdown-item" href="#">員工介紹</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Dropdown link
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">試算表</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="bi bi-person-heart"></i></a>
+                        </li>
+                        <div class="fontSize">
+                            <button style="font-size: 10px;border: 0px; background-color: transparent; margin-left: 30px;"
+                                    class="font jq-small">
+                                小
+                            </button>
+                            <button style="font-size: 15px;border: 0px; background-color: transparent; margin-left: 10px;"
+                                    class="font jq-medium">
+                                中
+                            </button>
+                            <button style="font-size: 20px;border: 0px; background-color: transparent; margin-left: 10px;"
+                                    class="font jq-large">
+                                大
+                            </button>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="1000">
+                            <img src="../照片/—Pngtree—caring for the elderly cute_4208791.png" class="d-block w-100"
+                                 alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="../照片/S__51659131.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../照片/—Pngtree—chongyang festival the elderly daisy_4207063.jpg"
+                                 class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../照片/apple3.jpg.png" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <div class="container-fluid pt-5" style="background-color: #fffbe9;max-height: 100%;">
+        <div class="row" style="padding-top: 20px;background-color: #fffbe9;">
+            <div class="col-2">
+                <img src="../照片/tree.png" style="height: 250px;width: 250px;margin-top: -50px;">
+            </div>
+            <div class="col-8">
+                <div class="tab">
+                    <button class="tablinks" onclick="openinfo(event, 'healty')">健康資訊</button>
+                    <button class="tablinks" onclick="openinfo(event, 'government')">政府資訊</button>
+                </div>
+                <div id="healty" class="tabcontent">
+                    <p style="color: red;">
+                        1.<a href="https://www.healthnews.com.tw/article/59243"
+                             style="color: brown;">
+                            「失智≠依賴」7旬伯失智又弱視 職能治療助生活自立
+                        </a>
+                    </p>
+                    <p style="color: red;">
+                        2.<a href="https://www.healthnews.com.tw/article/59226"
+                             style="color: brown;">
+                            年紀越大越容易心房顫動 出現7大中風警訊快求助!
+                        </a>
+                    </p>
+                    <p style="color: red;">
+                        3.<a href="https://www.healthnews.com.tw/article/51519"
+                             style="color: brown;">
+                            忽略骨折風險、難防骨質疏鬆症？
+                        </a>
+                    </p>
+                </div>
+
+                <div id="government" class="tabcontent">
+                    <p style="color:red;">
+                        1.<a href="https://1966.gov.tw/LTC/cp-6572-69919-207.html"
+                             style="color:brown;">長照十年計畫2.0</a>
+                    </p>
+                    <p style="color: red;">
+                        2.<a href="https://1966.gov.tw/LTC/cp-6572-69920-207.html"
+                             style="color:brown;">長期照顧服務法</a>
+                    </p>
+                    <p style="color: red;">
+                        3.<a href="https://1966.gov.tw/LTC/cp-6572-69818-207.html"
+                             style="color:brown;">失智症政策綱領2.0</a>
+                    </p>
+                    <p style="color: red;">
+                        4.<a href="https://1966.gov.tw/LTC/cp-6572-72198-207.html"
+                             style="color:brown;">長期照顧服務機構法人條例</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-2">
+                <img src="../照片/澆花.png " style="height: 300px; width: 300px;margin-top: 200px;">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-5 myvideo" style="background-color:#e0fbfb;max-height: 100%;">
+        <div class="row mb-5" style="background-color:#e0fbfb;">
+            <div class="col-2">
+                <img src="../照片/—Pngtree—elderly image icon element cute_7246728.png"
+                     style="height: 300px; width: 300px;margin-top: -150px;">
+            </div>
+            <div class="col-8" style="padding-left: 50px;">
+                <h3><i class="bi bi-camera-reels">影片區</i></h3>
+                <div class="row pk">
+                    <div class="col">
+                        <div class="d-flex">
+                            <div class="box">
+                                <iframe id="mainVideo" style="width: 600px;height: 450px;"
+                                        src="https://www.youtube.com/embed/AFSm1ixiFow" title="長照第1篇 政府為什麼要推動長照"
+                                        frameborder="0"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="box">
+                                <iframe style="width: 220px; height: 150px;"
+                                        src="https://www.youtube.com/embed/5V2F1qDDO90" title="長照第4篇 失智照護服務" frameborder="0"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="box">
+                                <iframe style="width: 220px; height: 150px;"
+                                        src="https://www.youtube.com/embed/n2HeLOezlMA" title="長照第6篇 家庭照顧者支持服務"
+                                        frameborder="0"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="box">
+                                <iframe style="width: 220px; height: 150px;"
+                                        src="https://www.youtube.com/embed/PNwmH4TTCns" title="長照第7篇 分享1966就是支持長照"
+                                        frameborder="0"
+                                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container-fluid" style="background-color:rgba(95,158,160,0.4);max-height: 100%;"> -->
+    <div class="container-fluid" style="background-color:#C4E1E1;max-height: 100%;">
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-2">
+                <img src="../照片/四包.png" style="height: 300px;width: 300px;margin-top: -50px;">
+            </div>
+            <div class="col-8" style="padding-top: 50px;padding-left: 50px;font-size: 20px">
+                <div class="card mb-3" style="max-width: 100%;">
+                    <div class="row g-0">
+                        <div class="col-6">
+                            <img src="../照片/四包錢.png" class="h-100 w-100">
+                        </div>
+                        <div class="col-6" style="background-color:lemonchiffon;">
+                            <div class="card-body">
+                                <h5 class="card-title ">長照四包錢</h5>
+                                <p class="card-text">
+                                    107年1月起，長照2.0提供「照顧及專業服務」、「交通接送服務」、「輔具服務及居家無障礙環境改善服務」、「喘息服務」等四項補助，簡稱「長照四包錢」。
+                                    <br>
+                                    1.
+                                    照顧及專業服務：依失能程度二至八級補助約每月1萬元至3萬6千元(自負額最高16%)，等於花1千6至6千元間，即可使用居家服務、日間照顧等「照顧服務」，或居家復健、居家營養等「專業服務」項目。
+                                    <br>
+                                    2. 交通接送服務：失能第四級以上者，依交通遠近補助每月1,680元至2,400元（自負額最高30%）。
+                                    <br>
+                                    3. 輔具及居家無障礙環境改善服務：每三年最高4萬元（自負額最高30%）。
+                                    <br>
+                                    4.
+                                    喘息服務服務：每年最高補助48,510元（自負額最高16%），可使用於居家喘息、機構喘息、日間照顧中心喘息、小規模多機能(夜間臨托)、巷弄長照站臨托等五項喘息服務。
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-body-secondary">
+                                        <a href="https://www.familycares.com.tw/intro.php?gclid=EAIaIQobChMIq_6CjJmDgQMVWRJ7Bx0LPA3WEAAYASABEgK5o_D_BwE">點擊瞭解更多</a>
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <img src="../照片/Lovepik_com-402190198-old-man-hand-painted-cartoon.png"
+                     style="height: 300px; width: 300px;margin-top: -450px">
+            </div>
+        </div>
+    </div>
+    <div class="myright">
+        <div style="width:150px;height:150px;background-color: indianred;border-radius: 50%;display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <a href="#" style="text-align: center">
+                <i class="bi bi-chat-heart" style="font-size: 30px;color:blanchedalmond;">客服</i>
+            </a>
+            <br>
+            <a href="#" style="text-align: center">
+                <i class="bi bi-envelope-exclamation" style="font-size: 30px;color:blanchedalmond;">通知</i>
+            </a>
+        </div>
+    </div>
+    <!-- <div class="container-fluid" style="background-color: rgba(105,105,105,0.9);max-height: 100%;"> -->
+    <div class="container-fluid" style="background-color: #ADADAD;max-height: 100%;">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col myfooter pt-5 p-5">
+                    <h3 class="myfont">關於我們</h3>
+                    <h6 class="myfont"><a href="" class="mya">機構簡介</a></h6>
+                    <h6 class="myfont"><a href="" class="mya">員工介紹</a></h6>
+                </div>
+                <div class="col myfooter" style="padding-top: 50px;">
+                    <h3 class="myfont">會員中心</h3>
+                    <h6><a href="" class="mya">註冊區</a></h6>
+                    <h6><a href="" class="mya">登入區</a></h6>
+                    <h6><a href="" class="mya">遺忘帳號密碼</a></h6>
+                </div>
+                <div class="col myfooter pt-5 p-5">
+                    <h3 class="myfont">客服</h3>
+                    <h6 class="myfont"><a href="" class="mya">聯繫我們</a></h6>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col myfont" style="padding-top: 50px;">
+                    <span style="padding:30px">網站使用條例</span>
+                    <span>隱私權聲明</span> <br>
+                    <h6 style="padding-top: 20px;padding-left: 30px;">
+                        Copyright © 2023 TakeCare. All rights
+                        reserved.
+                    </h6>
+                    <h5 style="padding:30px 30px 10px 30px">地址:</h5>
+                    <h6 style="padding-left: 30px;">台中市南屯區公益路二段51號18樓</h6>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openinfo(evt, information) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(information).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    <script>
+        $(function () {
+            $(".jq-large").on("click", function (e) {
+                event.preventDefault();
+                $("h3").css("font-size", "40px");
+                $("h6").css("font-size", "37px");
+                $("h5").css("font-size", "35px");
+                $("li").css("font-size", "32px");
+                $("p").css("font-size", "30px");
+                $("div").css("font-size", "30px");
+                $(".tab button").css("font-size", "30px");
+            });
+            $(".jq-medium").on("click", function (e) {
+                event.preventDefault();
+                $("h3").css("font-size", "30px");
+                $("h6").css("font-size", "27px");
+                $("h5").css("font-size", "25px");
+                $("p").css("font-size", "23px");
+                $("li").css("font-size", "23px");
+                $("div").css("font-size", "23px");
+                $(".tab button").css("font-size", "23px");
+            });
+            $(".jq-small").on("click", function (e) {
+                $("h3").css("font-size", "27px");
+                $("h6").css("font-size", "25px");
+                $("h5").css("font-size", "23px");
+                $("p").css("font-size", "20px");
+                $("li").css("font-size", "20px");
+                $("div").css("font-size", "20px");
+                $(".tab button").css("font-size", "20px");
+            });
+
+        })
+
+    </script>
+
+
+    <script>
+        $(function () {
+            $(".box").on({
+                "click": function () {
+                    console.log("click");
+                    let temp = $(this).find("iframe").attr("src");
+                    let src = $("#mainVideo").attr("src");
+                    $(this).find("iframe").attr("src", src);
+                    $("#mainVideo").attr("src", temp)
+                }
+            });
+
+            // 添加一个click事件处理程序
+            $(".box iframe").on("click", function () {
+                console.log("click");
+                let temp = $(this).find("iframe").attr("src");
+                let src = $("#mainVideo").attr("src");
+                $(this).find("iframe").attr("src", src);
+                $("#mainVideo").attr("src", temp);
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+</body>
