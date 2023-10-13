@@ -15,22 +15,21 @@ namespace Take_Care.Controllers {
             _hubContext = hubContext;
         }
         public IActionResult Index() {
-			
-			return View();
+
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Index(string account, string password) {
-            try {
-                var query = from o in _context.MemberViews
-                            where o.Account == account
-                            select o;
-                TempData["Member"] = query.ToList();
+        public IActionResult DoLogin(MemberView member) {
+            var query = from o in _context.MemberViews
+                        where o.Account == member.Account && o.Password == member.Password
+                        select o;
+            if (query.SingleOrDefault() == null) {
+                return View("Index");
             }
-            catch (Exception) {
-                throw;
+            else {
+                return View("~/Views/MainPage/index.cshtml", member);
             }
-            return View();
         }
 
         /*public IActionResult sing()
