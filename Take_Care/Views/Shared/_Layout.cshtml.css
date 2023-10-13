@@ -7,8 +7,13 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+navbar-brand {
+    text-align: center;
+}
+
 a {
-  color: #0077cc;
+    color: black;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -46,3 +51,53 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.mynav {
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: burlywood;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding-right: 0;
+    min-height: 100%;
+    display: grid;
+    /*使用grid排版*/
+    grid-template-rows: 1fr auto;
+    /*將上半部設置為一個單位，剩下的部分設為自動高度*/
+}
+h3{
+    font-size:30px;
+}
+
+h6 {
+    font-size: 27px;
+}
+
+h5 {
+    font-size: 25px;
+}
+
+p {
+    font-size: 23px;
+}
+
+li {
+    font-size: 23px;
+}
+div {
+    font-size: 23px;
+}
+
+h6 a {
+    font-size: 23px;
+}
+.tab button {
+    font-size: 23px;
+}
+
