@@ -15,8 +15,8 @@ namespace Take_Care.Controllers {
             _hubContext = hubContext;
         }
         public IActionResult Index() {
-
-            return View();
+			
+			return View();
         }
 
         [HttpPost]

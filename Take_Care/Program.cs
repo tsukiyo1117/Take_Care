@@ -2,7 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using Take_Care.Hubs;
 using Take_Care.Models;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options => {
+	options.AddPolicy(name: MyAllowSpecificOrigins,
+					  policy => {
+						  policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+					  });
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,6 +33,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllerRoute(
