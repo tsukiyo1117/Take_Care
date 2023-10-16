@@ -1,0 +1,415 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+    @await Html.PartialAsync("_HeadPartial")
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 ">
+                <div class="row bg-info " id="userPic">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                         alt="user">
+                    <span class="row">
+                        UserAccount
+                    </span>
+                </div>
+            @await Html.PartialAsync("_SideBarPartial")
+            </div>
+            <div class="col-10" id="mainPage">
+                <div class="container emp-profile" style="margin:0px">
+                    <form method="post">
+                        @await Html.PartialAsync("_TabPartial")
+
+                        <div class="row">
+
+                            <div id="myProfile" class="col-md-10">
+                                <div class="tab-content profile-tab" id="myTabContent">
+
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>使用者帳號 : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" value="SophieQQ123"
+                                                       style="font-size: 18px;" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>姓名 : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" value="Sophie"
+                                                       style="font-size: 18px;" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Email : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                                       placeholder="請輸入你的信箱" value="SophieQQ123@google.com"
+                                                       style="font-size: 18px;" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>手機號碼 : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="tel" class="form-control" id="phone"
+                                                       placeholder="請輸入你的手機號碼" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>性別 : </label>
+                                            </div>
+                                            <div class="col-md-6" style="display: flex;">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline1"
+                                                           name="customRadioInline1" class="custom-control-input">
+                                                    <label class="custom-control-label"
+                                                           for="customRadioInline1">男</label>
+                                                </div>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline2"
+                                                           name="customRadioInline1" class="custom-control-input">
+                                                    <label class="custom-control-label"
+                                                           for="customRadioInline2">女</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 1rem;">
+                                            <div class="col-md-4">
+                                                <label>地址</label>
+                                            </div>
+                                            <div class="col-md-6" style="display: block; padding: 0px;">
+                                                <div id="twzipcode" class="row">
+                                                    <div class="form-group col arrow">
+                                                        <div data-role="county" data-style="form-control"
+                                                             data-name="county" data-value=""></div>
+                                                    </div>
+                                                    <div class="form-group col arrow">
+                                                        <div data-role="district" data-style="form-control"
+                                                             data-name="district" data-value=""></div>
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <div data-role="zipcode" data-style="form-control"
+                                                             data-name="zipcode" data-value=""></div>
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-top: 0.5rem;">
+                                                        <input type="text" class="form-control" id="inputAddress2"
+                                                               placeholder="居住地址" readonly>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <button class="databtn" id="saveButton">確認</button>
+                                        <button class="databtn" id="cancelButton">取消</button>
+                                    </div>
+
+                                    <div class="tab-pane fade show" id="details" role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <div id="detailsContainer">
+                                        </div>
+                                        <a href="#details1" class="previous round" id="prevButton">&#8249;</a>
+                                        <a href="#details2" class="next round" id="nextButton">&#8250;</a>
+                                        <div id="detailsContainer">
+                                            <div id="details1">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>姓名</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="Christina"
+                                                               style="font-size: 18px;" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>性別</label>
+                                                    </div>
+                                                    <div class="col-md-6" style="display: flex;">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="customRadioInline1"
+                                                                   name="customRadioInline1" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                   for="customRadioInline1">男</label>
+                                                        </div>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="customRadioInline2"
+                                                                   name="customRadioInline1" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                   for="customRadioInline2">女</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>生日</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="datepicker" width="276" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>身分證</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="N123455678"
+                                                               style="font-size: 18px;" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>使用語言</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="form-select" disabled>
+                                                            <option lang="zh-tw">中文(繁體)</option>
+                                                            <option lang="zh">中文(簡體)</option>
+                                                            <option lang="en">English</option>
+                                                            <option lang="ja">日本語</option>
+                                                            <option lang="es">Español</option>
+                                                            <option lang="fr">Français</option>
+                                                            <option lang="pt">Português</option>
+                                                            <option disabled>─────────────────────────────</option>
+                                                            <optgroup label="More Languages">
+                                                                <option lang="cs">Čeština</option>
+                                                                <option lang="da">Dansk</option>
+                                                                <option lang="de">Deutsch</option>
+                                                                <option lang="es-ar">Español (Argentina)</option>
+                                                                <option lang="es-mx">Español (México)</option>
+                                                                <option lang="fr-ca">Français (Canada)</option>
+                                                                <option lang="it">Italiano</option>
+                                                                <option lang="hu">Magyar</option>
+                                                                <option lang="nl">Nederlands</option>
+                                                                <option lang="nl-be">Nederlands (België)</option>
+                                                                <option lang="no">Norsk</option>
+                                                                <option lang="pl">Polski</option>
+                                                                <option lang="pt-br">Português (Brasil)</option>
+                                                                <option lang="ro">Română</option>
+                                                                <option lang="sk">Slovenčina</option>
+                                                                <option lang="fi">Suomi</option>
+                                                                <option lang="sv">Svenska</option>
+                                                                <option lang="tr">Türkçe</option>
+                                                                <option lang="vi">Tiếng Việt</option>
+                                                                <option lang="th">ไทย</option>
+                                                                <option lang="ko">한국어</option>
+                                                                <option lang="el">Ελληνικά</option>
+                                                                <option lang="bg">Български</option>
+                                                                <option lang="ru">Русский</option>
+                                                                <option lang="he">עברית</option>
+                                                                <option lang="ar">العربية</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="details2" style="display: none;">
+                                                <div class="row" style="padding-bottom:0">
+                                                    <div class="col-md-4">
+                                                        <label>戶籍地址</label>
+                                                    </div>
+                                                    <div class="col-md-8" style="display: block; padding: 0px;">
+                                                        <div id="twzipcode2" class="row">
+                                                            <div class="form-group col arrow">
+                                                                <div data-role="county" data-style="form-control"
+                                                                     data-name="county" data-value=""></div>
+                                                            </div>
+                                                            <div class="form-group col arrow">
+                                                                <div data-role="district" data-style="form-control"
+                                                                     data-name="district" data-value=""></div>
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <div data-role="zipcode" data-style="form-control"
+                                                                     data-name="zipcode" data-value=""></div>
+                                                            </div>
+
+                                                            <div class="form-group col">
+                                                                <input type="text" class="form-control" id="inputAddress2"
+                                                                       placeholder="居住地址" style="width: 10rem;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style="padding-top:0">
+                                                    <div class="col-md-4">
+                                                        <label>通訊地址</label>
+                                                    </div>
+                                                    <div class="col-md-8" style="display: block; padding: 0px;">
+                                                        <div id="twzipcode3" class="row">
+                                                            <div class="form-group col arrow">
+                                                                <div data-role="county" data-style="form-control"
+                                                                     data-name="county" data-value=""></div>
+                                                            </div>
+                                                            <div class="form-group col arrow">
+                                                                <div data-role="district" data-style="form-control"
+                                                                     data-name="district" data-value=""></div>
+                                                            </div>
+                                                            <div class="form-group col">
+                                                                <div data-role="zipcode" data-style="form-control"
+                                                                     data-name="zipcode" data-value=""></div>
+                                                            </div>
+
+                                                            <div class="form-group col">
+                                                                <input type="text" class="form-control" id="inputAddress3"
+                                                                       placeholder="居住地址" style="width: 10rem;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-md-2" style="position: absolute;top:10.5rem;right:0">
+                                                        <input id="isSameAddress" type="checkbox" />
+                                                        <span>同上</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>長照失能等級</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="form-select" aria-label="長照失能等級" disabled>
+                                                            <option selected>請選擇失能等級</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>長照身分類別</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="form-select" aria-label="長照身分類別" disabled>
+                                                            <option selected>請選擇身分類別</option>
+                                                            <option value="1">低收入戶</option>
+                                                            <option value="2">中低收入戶</option>
+                                                            <option value="3">一般戶</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>緊急聯絡人</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="Paul"
+                                                               style="font-size: 18px;" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>緊急聯絡人電話</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="tel" class="form-control" id="phone" placeholder="請輸入手機號碼"
+                                                               readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label>與緊急聯絡人之關係</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" value="父子"
+                                                               style="font-size: 18px;" readonly>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <button class="databtn" id="saveButton2">確認</button>
+                                        <button class="databtn" id="cancelButton2">取消</button>
+                                    </div>
+
+                                    <div class="tab-pane fade show" id="forgotPassword" role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <div>
+
+                                            <div style="font-size: 23px;">為了保護你帳號的安全，請不要分享你的密碼給其他人</div>
+
+                                        </div>
+                                        <br><br>
+
+                                        <div>
+                                            <div>
+                                                <label style="font-size: 20px;">新的密碼 : &nbsp; </label>
+                                                <input type="password" class="form-control" placeholder="" name="psw"
+                                                       id="psw" required style="height: 35px;">
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <label style="font-size: 20px;">確認密碼 : &nbsp;</label>
+                                                <input type="password" class="form-control" placeholder=""
+                                                       name="psw-repeat" id="psw-repeat" required style="height: 35px;">
+                                            </div>
+                                            <br><br>
+                                            <div>
+                                                <button style="font-size: 20px; background-color: orange; border-color: transparent;">
+                                                    確認
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2" style="position:relative;right:4rem">
+                                <div class="profile-img" id="profileSection">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                                         alt="" />
+                                    <div class="file btn btn-lg btn-light" style="font-weight: 900;color: azure;">
+                                        Change Photo
+                                        <input type="file" name="file" style="cursor: pointer;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/CsMember/jquery.twzipcode.min.js"></script>
+    <script src="~/js/CsMember/getaddress.js"></script>
+    <script src="~/js/CsMember/profile.js"></script>
+    <script src="~/js/CsMember/Prev&Next.js"></script>
+
+    <script>
+
+        $("#twzipcode").twzipcode();
+        $("#twzipcode2").twzipcode();
+        $("#twzipcode3").twzipcode();
+
+
+        $('#datepicker').datepicker();
+
+    </script>
+
+
+</body>
