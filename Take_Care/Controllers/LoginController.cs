@@ -6,9 +6,9 @@ using Take_Care.Hubs;
 using Take_Care.Models;
 
 namespace Take_Care.Controllers {
-    public class LoginController : Controller {
-        private readonly IHubContext<ChatHub> _hubContext;
-        private readonly TakeCareContext _context;
+	public class LoginController : Controller {
+		private readonly IHubContext<ChatHub> _hubContext;
+		private readonly TakeCareContext _context;
 
         public LoginController(IHubContext<ChatHub> hubContext, TakeCareContext context) {
             _context = context;
@@ -32,9 +32,9 @@ namespace Take_Care.Controllers {
             }
         }
 
-        /*public IActionResult sing()
+		/*public IActionResult sing()
         {
             return View();
         }*/
-    }
+	}
 }
