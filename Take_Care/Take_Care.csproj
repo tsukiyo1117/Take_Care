@@ -16,4 +16,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\CsMember\getaddress.js" />
+    <None Include="wwwroot\js\CsMember\jquery.twzipcode.min.js" />
+    <None Include="wwwroot\js\CsMember\Prev&amp;Next.js" />
+    <None Include="wwwroot\js\CsMember\profile.js" />
+  </ItemGroup>
+
 </Project>
