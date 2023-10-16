@@ -1,0 +1,16 @@
+﻿body {
+}
+
+.custom-container {
+    width: 70%;
+    margin: 0 auto;
+    
+}
+
+.col {
+    margin: 10px;
+}
+
+.card-img-top {
+    width: 100%;
+}
