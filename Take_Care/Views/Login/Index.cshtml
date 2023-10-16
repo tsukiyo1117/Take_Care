@@ -61,9 +61,6 @@
 				member:{
 						Account:"employer001",
 						Password:"SecurePwd1",
-						Email:"employer1@email.com",
-						UserType:"Employer",
-						MemberName:"張三"
 				}
 			},
 			methods:{
@@ -78,9 +75,14 @@
 								console.log(response)
 							}
 						}, 
-						success: function () {
+							success: function (response) {
 								console.log("ok!");
-								window.location="~/MainPage/Index.cshtml";
+								if(response != null){
+									//alert(response);
+									//console.log(response);
+									sessionStorage.setItem("member",JSON.stringify(response));
+									window.location="MainPage/Index";
+								}
 						},
 						error:function(){
 							console.log("error!");
