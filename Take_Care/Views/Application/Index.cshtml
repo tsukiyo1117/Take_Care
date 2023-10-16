@@ -1,0 +1,988 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div>
+    <div class="Title" style="text-align:center">
+        <h1>申請服務</h1>
+    </div>
+    <div class="row">
+        <div class="Title1 col-3" style="overflow-y:scroll; height: 500px;">
+
+
+            <div class="tab row">
+                <button class="tablinks col-12" onclick="openCity(event, 'TC', 'TCDiv')">照顧及專業服務:</button>
+                <button class="tablinks col-12" onclick="openCity(event, 'TAB', 'TABDiv')">喘息服務:</button>
+            </div>
+
+            <div id="TC" class="tabcontent">
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck1" />
+                    <span>基本身體清潔(日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck2" />
+                    <span>基本日常照顧(30分鐘)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck3" />
+                    <span>測量生命徵象</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck4" />
+                    <span>協助進食或管灌餵食</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck5" />
+                    <span>餐食照顧-備餐(一餐)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck6" />
+                    <span>餐食照顧-準備管灌飲食(一日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck7" />
+                    <span>協助沐浴及洗頭</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck8" />
+                    <span>足部照護</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck9" />
+                    <span>到宅沐浴車-一般需求</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck10" />
+                    <span>到宅沐浴車-護理需求</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck11" />
+                    <span>翻身拍背</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck12" />
+                    <span>肢體關節活動</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck13" />
+                    <span>協助上(下)樓梯</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck14" />
+                    <span>陪同外出(30分鐘)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck15" />
+                    <span>陪同就醫(1.5小時以內)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck16" />
+                    <span>家務協助(獨居/非獨居;30分鐘)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck17" />
+                    <span>代購或代領或代送服務</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck18" />
+                    <span>人工氣道管內(非氣管內管)分泌物抽吸</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck19" />
+                    <span>口腔內(懸壅垂之前)分泌物抽吸</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck20" />
+                    <span>尿管及鼻胃管之清潔與固定</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck21" />
+                    <span>血糖機驗血糖</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck22" />
+                    <span>甘油球通便</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck23" />
+                    <span>依指示置入藥盒</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck24" />
+                    <span>安全看視</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck25" />
+                    <span>陪伴服務</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck26" />
+                    <span>巡視服務</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck27" />
+                    <span>協助洗頭</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck28" />
+                    <span>協助排泄</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck29" />
+                    <span>社區式日間照顧(全日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck30" />
+                    <span>社區式日間照顧(半日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck31" />
+                    <span>家庭托顧(全日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck32" />
+                    <span>家庭托顧(半日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck33" />
+                    <span>社區式協助沐浴</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck34" />
+                    <span>社區式晚餐</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck35" />
+                    <span>社區式服務交通接送</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck36" />
+                    <span>IADLs復能、ADLs復能照護</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck37" />
+                    <span>個別化服務計畫擬定與執行</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck38" />
+                    <span>營養照護</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck39" />
+                    <span>進食與吞嚥照護</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck40" />
+                    <span>困擾行為照護</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck41" />
+                    <span>臥床或長期活動受限照護</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck42" />
+                    <span>居家環境安全或無障礙空間規劃</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TCinputCheck43" />
+                    <span>居家護理指導與諮詢</span>
+                </label>
+            </div>
+
+
+
+
+            <div id="TAB" class="tabcontent" style="display:none;">
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TABinputCheck1" />
+                    <span>居家喘息(2小時，單日10小時上限)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TABinputCheck2" />
+                    <span>日照中心喘息(全日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TABinputCheck3" />
+                    <span>日照中心喘息(半日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TABinputCheck4" />
+                    <span>機構喘息(1日)</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TABinputCheck5" />
+                    <span>小規機夜間喘息</span>
+                </label>
+                <label class="check-box Block">
+                    <input class="inputCheck" type="checkbox" id="TABinputCheck6" />
+                    <span>巷弄長照站臨托(小時計算)</span>
+                </label>
+            </div>
+        </div>
+
+
+
+        <div class="col-9" style="border: dashed red;">
+
+            <div class="Title row">
+                <div class="col-1"></div>
+                <div class="cashandlevl col-4" style="text-align:center">
+                    <label for="">
+                        身分別:
+                        <select name="subject" id="">
+                            <option value="">一般戶</option>
+                            <option value="">中/低收入戶</option>
+                            <option value="">低收入戶</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-2"></div>
+                <div class="cashandlevl col-4" style="text-align:center">
+                    <label for="">
+                        CMS等級:
+                        <select name="subject" id="">
+                            <option value="">第2級</option>
+                            <option value="">第3級</option>
+                            <option value="">第4級</option>
+                            <option value="">第5級</option>
+                            <option value="">第6級</option>
+                            <option value="">第7級</option>
+                            <option value="">第8級</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+
+
+            <div id="TCDiv" class="tabcontent Title1 row">
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col">日</div>
+                    <div class="col">一</div>
+                    <div class="col">二</div>
+                    <div class="col">三</div>
+                    <div class="col">四</div>
+                    <div class="col">五</div>
+                    <div class="col">六</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TCsetDay" id="TCDAY1">日期</div>
+                    <div class="col TCsetDay" id="TCDAY2">日期</div>
+                    <div class="col TCsetDay" id="TCDAY3">日期</div>
+                    <div class="col TCsetDay" id="TCDAY4">日期</div>
+                    <div class="col TCsetDay" id="TCDAY5">日期</div>
+                    <div class="col TCsetDay" id="TCDAY6">日期</div>
+                    <div class="col TCsetDay" id="TCDAY7">日期</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TCdayOK" id="TCID1">TC</div>
+                    <div class="col TCdayOK" id="TCID2">TC</div>
+                    <div class="col TCdayOK" id="TCID3">TC</div>
+                    <div class="col TCdayOK" id="TCID4">TC</div>
+                    <div class="col TCdayOK" id="TCID5">TC</div>
+                    <div class="col TCdayOK" id="TCID6">TC</div>
+                    <div class="col TCdayOK" id="TCID7">TC</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TCsetDay" id="TCDAY8">日期</div>
+                    <div class="col TCsetDay" id="TCDAY9">日期</div>
+                    <div class="col TCsetDay" id="TCDAY10">日期</div>
+                    <div class="col TCsetDay" id="TCDAY11">日期</div>
+                    <div class="col TCsetDay" id="TCDAY12">日期</div>
+                    <div class="col TCsetDay" id="TCDAY13">日期</div>
+                    <div class="col TCsetDay" id="TCDAY14">日期</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TCdayOK" id="TCID8">TC</div>
+                    <div class="col TCdayOK" id="TCID9">TC</div>
+                    <div class="col TCdayOK" id="TCID10">TC</div>
+                    <div class="col TCdayOK" id="TCID11">TC</div>
+                    <div class="col TCdayOK" id="TCID12">TC</div>
+                    <div class="col TCdayOK" id="TCID13">TC</div>
+                    <div class="col TCdayOK" id="TCID14">TC</div>
+                </div>
+            </div>
+
+
+            <div id="TABDiv" class="tabcontentDiv Title1 row" style="display:none;">
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col">日</div>
+                    <div class="col">一</div>
+                    <div class="col">二</div>
+                    <div class="col">三</div>
+                    <div class="col">四</div>
+                    <div class="col">五</div>
+                    <div class="col">六</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TABsetDay" id="TABDAY1">日期</div>
+                    <div class="col TABsetDay" id="TABDAY2">日期</div>
+                    <div class="col TABsetDay" id="TABDAY3">日期</div>
+                    <div class="col TABsetDay" id="TABDAY4">日期</div>
+                    <div class="col TABsetDay" id="TABDAY5">日期</div>
+                    <div class="col TABsetDay" id="TABDAY6">日期</div>
+                    <div class="col TABsetDay" id="TABDAY7">日期</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TABdayOK" id="TABID1">TAB</div>
+                    <div class="col TABdayOK" id="TABID2">TAB</div>
+                    <div class="col TABdayOK" id="TABID3">TAB</div>
+                    <div class="col TABdayOK" id="TABID4">TAB</div>
+                    <div class="col TABdayOK" id="TABID5">TAB</div>
+                    <div class="col TABdayOK" id="TABID6">TAB</div>
+                    <div class="col TABdayOK" id="TABID7">TAB</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TABsetDay" id="TABDAY8">日期</div>
+                    <div class="col TABsetDay" id="TABDAY9">日期</div>
+                    <div class="col TABsetDay" id="TABDAY10">日期</div>
+                    <div class="col TABsetDay" id="TABDAY11">日期</div>
+                    <div class="col TABsetDay" id="TABDAY12">日期</div>
+                    <div class="col TABsetDay" id="TABDAY13">日期</div>
+                    <div class="col TABsetDay" id="TABDAY14">日期</div>
+                </div>
+                <div class="row" style="--bs-gutter-x: 0;">
+                    <div class="col TABdayOK" id="TABID8">TAB</div>
+                    <div class="col TABdayOK" id="TABID9">TAB</div>
+                    <div class="col TABdayOK" id="TABID10">TAB</div>
+                    <div class="col TABdayOK" id="TABID11">TAB</div>
+                    <div class="col TABdayOK" id="TABID12">TAB</div>
+                    <div class="col TABdayOK" id="TABID13">TAB</div>
+                    <div class="col TABdayOK" id="TABID14">TAB</div>
+                </div>
+            </div>
+
+
+            <div class="Title row">
+                <div>
+                    <h3>照顧及專業服務:</h3>
+                </div>
+                <div>
+                    <div>政府補助上限:${總額}元/月</div>
+                    <div>使用服務金額:${依照選的服務變動}元/月</div>
+                    <div>所需自負金額:${使用服務金額扣除比例後的金額，如果總額使用完後增加的金額則會全額加入}元/月</div>
+                </div>
+            </div>
+            <div class="Title1 row">
+                <div>
+                    <h3>喘息服務</h3>
+                </div>
+                <div>
+                    <div>政府補助上限:${總額}元/月</div>
+                    <div>使用服務金額:${依照選的服務變動}元/月</div>
+                    <div>所需自負金額:${使用服務金額扣除比例後的金額，如果總額使用完後增加的金額則會全額加入}元/月</div>
+                </div>
+            </div>
+
+
+            <div class="Title row">
+                <div class="col-3"></div>
+                <button id="allClear" class="col-2">清空</button>
+                <div class="col-2"></div>
+                <button id="allOK" class="col-2">確認</button>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 選擇TC天數dialog -->
+<div id="TCserveDay1" title="選擇服務天數">
+    <div>
+        <label for="">
+            請選擇申請服務天數():
+            <select name="subject" id="TCselect1Id">
+                <option value="1">1天</option>
+                <option value="2">2天</option>
+                <option value="3">3天</option>
+                <option value="4">4天</option>
+                <option value="5">5天</option>
+                <option value="6">6天</option>
+                <option value="7">7天</option>
+                <option value="8">8天</option>
+                <option value="9">9天</option>
+                <option value="10">10天</option>
+                <option value="11">11天</option>
+                <option value="12">12天</option>
+                <option value="13">13天</option>
+                <option value="14">14天</option>
+            </select>
+        </label>
+        <div class="row">
+            <div class="col-2"></div>
+            <button class="col-3" id="TCserveDay1OK">確認</button>
+            <div class="col-2"></div>
+            <button class="col-3" id="TCserveDay1NO">取消</button>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 選擇TAB天數dialog -->
+<div id="TABserveDay1" title="選擇服務天數">
+    <div>
+        <label for="">
+            請選擇申請服務天數():
+            <select name="subject" id="TABselect1Id">
+                <option value="1">1天</option>
+                <option value="2">2天</option>
+                <option value="3">3天</option>
+                <option value="4">4天</option>
+                <option value="5">5天</option>
+                <option value="6">6天</option>
+                <option value="7">7天</option>
+                <option value="8">8天</option>
+                <option value="9">9天</option>
+                <option value="10">10天</option>
+                <option value="11">11天</option>
+                <option value="12">12天</option>
+                <option value="13">13天</option>
+                <option value="14">14天</option>
+            </select>
+        </label>
+        <div class="row">
+            <div class="col-2"></div>
+            <button class="col-3" id="TABserveDay1OK">確認</button>
+            <div class="col-2"></div>
+            <button class="col-3" id="TABserveDay1NO">取消</button>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 確認刪除Dialog -->
+<div id="askYN" title="你確定嗎?">
+    <div>你確定要刪除嗎?</div>
+</div>
+
+<!-- 點擊日期顯示已申請TC服務 -->
+<div id="TCserveOK" title="照顧及專業服務已選擇的服務:">
+    <label for="">
+        服務項目:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        服務日期:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        服務時間:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        服務人員:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        備註:
+        <textarea style="display: block;" disabled name="備註" cols="23" rows="1"></textarea>
+    </label>
+
+    <!-- <button id="TCserveOKbtn">確認</button> -->
+
+</div>
+
+<!-- 點擊日期顯示已申請TAB服務 -->
+<div id="TABserveOK" title="喘息服務已選擇的服務:">
+    <label for="">
+        服務項目:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        服務日期:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        服務時間:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        服務人員:
+        <input style="display: block;" disabled type="text">
+    </label>
+    <label for="">
+        備註:
+        <textarea style="display: block;" disabled name="備註" cols="23" rows="1"></textarea>
+    </label>
+
+    <!-- <button id="TABserveOKbtn">確認</button> -->
+
+</div>
+
+
+
+<!-- 選好所需服務時間後申請的TC -->
+<div id="TCserveReady" title="照顧及專業服務申請選擇的服務:">
+    <label for="">
+        服務項目:
+        <input style="display: block;" type="text">
+    </label>
+    <label for="">
+        服務日期:
+        <input style="display: block;" type="text">
+    </label>
+    <label for="">
+        服務時間:
+        <select style="display: block;" name="" id="">
+            <option value="TCserveReady1">上午1點</option>
+            <option value="TCserveReady2">上午2點</option>
+            <option value="TCserveReady3">上午3點</option>
+            <option value="TCserveReady4">上午4點</option>
+            <option value="TCserveReady5">上午5點</option>
+            <option value="TCserveReady6">上午6點</option>
+            <option value="TCserveReady7">上午7點</option>
+            <option value="TCserveReady8">上午8點</option>
+            <option value="TCserveReady9">上午9點</option>
+            <option value="TCserveReady10">上午10點</option>
+            <option value="TCserveReady11">上午11點</option>
+            <option value="TCserveReady12">上午12點</option>
+            <option value="TCserveReady13">下午1點</option>
+            <option value="TCserveReady14">下午2點</option>
+            <option value="TCserveReady15">下午3點</option>
+            <option value="TCserveReady16">下午4點</option>
+            <option value="TCserveReady17">下午5點</option>
+            <option value="TCserveReady18">下午6點</option>
+            <option value="TCserveReady19">下午7點</option>
+            <option value="TCserveReady20">下午8點</option>
+            <option value="TCserveReady21">下午9點</option>
+            <option value="TCserveReady22">下午10點</option>
+            <option value="TCserveReady23">下午11點</option>
+            <option value="TCserveReady24">下午12點</option>
+        </select>
+    </label>
+    <label for="">
+        備註:
+        <textarea style="display: block;" style="display: block;" name="備註" cols="23" rows="1"></textarea>
+    </label>
+
+    <!-- <button id="TCserveReadyOKbtn">確認</button>
+    <button id="TCserveReadyNObtn">取消</button> -->
+
+</div>
+
+<!-- 選好所需服務時間後申請的TAB -->
+<div id="TABserveReady" title="喘息服務申請選擇的服務:">
+    <label for="">
+        服務項目:
+        <input style="display: block;" type="text">
+    </label>
+    <label for="">
+        服務日期:
+        <input style="display: block;" type="text">
+    </label>
+    <label for="">
+        服務時間:
+        <select style="display: block;" name="" id="">
+            <option value="TABserveReady1">上午1點</option>
+            <option value="TABserveReady2">上午2點</option>
+            <option value="TABserveReady3">上午3點</option>
+            <option value="TABserveReady4">上午4點</option>
+            <option value="TABserveReady5">上午5點</option>
+            <option value="TABserveReady6">上午6點</option>
+            <option value="TABserveReady7">上午7點</option>
+            <option value="TABserveReady8">上午8點</option>
+            <option value="TABserveReady9">上午9點</option>
+            <option value="TABserveReady10">上午10點</option>
+            <option value="TABserveReady11">上午11點</option>
+            <option value="TABserveReady12">上午12點</option>
+            <option value="TABserveReady13">下午1點</option>
+            <option value="TABserveReady14">下午2點</option>
+            <option value="TABserveReady15">下午3點</option>
+            <option value="TABserveReady16">下午4點</option>
+            <option value="TABserveReady17">下午5點</option>
+            <option value="TABserveReady18">下午6點</option>
+            <option value="TABserveReady19">下午7點</option>
+            <option value="TABserveReady20">下午8點</option>
+            <option value="TABserveReady21">下午9點</option>
+            <option value="TABserveReady22">下午10點</option>
+            <option value="TABserveReady23">下午11點</option>
+            <option value="TABserveReady24">下午12點</option>
+        </select>
+    </label>
+    <label for="">
+        備註:
+        <textarea style="display: block;" style="display: block;" name="備註" cols="23" rows="1"></textarea>
+    </label>
+
+    <!-- <button id="TABserveReadyOKbtn">確認</button>
+    <button id="TABserveReadyNObtn">取消</button> -->
+
+</div>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+
+
+
+<script>
+
+    // Dialog
+    $(function () {
+        // 給TC申請服務選項被選擇後填入的天數
+        var TCthe1 = 0;
+
+        // 給TAB申請服務選項被選擇後填入的天數
+        var TABthe1 = 0;
+
+
+        // 選取TC按鈕申請服務
+        $('[id^="TCinputCheck"]').on("change", function () {
+            if ($(this).prop("checked")) {
+                $('#TCserveDay1').dialog('open')
+
+            }
+        });
+
+        // 選取TAB按鈕申請服務
+        $('[id^="TABinputCheck"]').on("change", function () {
+            if ($(this).prop("checked")) {
+                $('#TABserveDay1').dialog('open')
+
+            }
+        });
+
+
+
+        // 打開TC後輸入需求日期
+        $('#TCserveDay1').dialog({
+            autoOpen: false,
+            modal: true,
+        })
+
+        // 打開TAB後輸入需求日期
+        $('#TABserveDay1').dialog({
+            autoOpen: false,
+            modal: true,
+        })
+
+
+        // 選好TC所需天數才開啟
+        $('#TCserveReady').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 318,
+            height: 500,
+            buttons: {
+                確認: function () {
+                    $("#TCserveReady").dialog('close');
+                    TCthe1 = TCthe1 - 1;
+                    console.log(TCthe1)
+                    if (TCthe1 == 0) {
+                        $('[id^="TCID"]').unbind("mouseenter");
+                        $('[id^="TCID"]').unbind("click");
+                        $('[id^="TCID"]').unbind("mouseleave");
+                        $('.TCdayOK').click(function () {
+                            $('#TCserveOK').dialog('open');
+
+
+                        });
+                    }
+
+                    // 把全部字都變成有服務...............................
+                    // $('[id^="TCID"]').each(function () {
+                    //     console.log(this);
+                    //     $(this).text("有服務");
+                    // });
+                    $('#TCserveOK').dialog('close')
+
+
+                },
+                取消: function () {
+                    $('#TCserveReady').dialog("close");
+                    $('#TCserveOK').dialog('close')
+                }
+            }
+        })
+
+        // 選好TAB所需天數才開啟
+        $('#TABserveReady').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 318,
+            height: 500,
+            buttons: {
+                確認: function () {
+                    console.log(this);
+                    $("#TABserveReady").dialog('close');
+                    TABthe1 = TABthe1 - 1;
+                    console.log(TABthe1)
+                    if (TABthe1 == 0) {
+                        $('[id^="TABID"]').unbind("mouseenter");
+                        $('[id^="TABID"]').unbind("click");
+                        $('[id^="TABID"]').unbind("mouseleave");
+                        $('.TABdayOK').click(function () {
+                            $('#TABserveOK').dialog('open');
+
+                        });
+                    }
+                    $('#TABserveOK').dialog('close')
+                },
+                取消: function () {
+                    $('#TABserveReady').dialog("close");
+                    $('#TABserveOK').dialog('close')
+                }
+            }
+        })
+
+        // 取消選好天數後TC
+        $("#TCserveReadyNObtn").click(function () {
+            $('#TCserveReady').dialog("close");
+            $('#TCserveOK').dialog('close')
+        })
+
+
+        // 取消選好天數後TAB
+        $("#TABserveReadyNObtn").click(function () {
+            $('#TABserveReady').dialog("close");
+            $('#TABserveOK').dialog('close')
+        })
+
+        // 申請TC確認後
+        $("#TCserveDay1OK").click(function () {
+            TCthe1 = parseInt($("#TCselect1Id option:selected").text())
+            console.log(TCthe1)
+
+            // 加入hover
+            if (TCthe1 > 0) {
+                $('[id^="TCID"]').mouseenter(function () {
+                    $(this).css('background-color', 'orange');
+                })
+
+                $('[id^="TCID"]').click(function () {
+                    $("#TCserveReady").dialog('open');
+
+                    // 能抓到 但是是進入dialog前就更改 不是經dialog確認判斷後才更改
+                    // $(this).text("有服務");
+                })
+
+                $('[id^="TCID"]').mouseleave(function () {
+                    $(this).css('background-color', 'rgb(246, 234, 224)');
+                })
+            }
+
+            $('#TCserveDay1').dialog('close')
+        })
+
+        // 申請TAB確認後
+        $("#TABserveDay1OK").click(function () {
+            TABthe1 = parseInt($("#TABselect1Id option:selected").text())
+            console.log(TABthe1)
+
+            // 加入hover
+            if (TABthe1 > 0) {
+                $('[id^="TABID"]').mouseenter(function () {
+                    $(this).css('background-color', 'orange');
+                })
+
+                $('[id^="TABID"]').click(function () {
+                    $("#TABserveReady").dialog('open');
+
+                })
+
+                $('[id^="TABID"]').mouseleave(function () {
+                    $(this).css('background-color', 'rgb(246, 234, 224)');
+                })
+            }
+
+            $('#TABserveDay1').dialog('close')
+        })
+
+
+        // // TC申請確定的一個日期後
+        // $("#TCserveReadyOKbtn").click(function () {
+        //     console.log(this);
+        //     $("#TCserveReady").dialog('close');
+        //     TCthe1 = TCthe1 - 1;
+        //     console.log(TCthe1)
+        //     if (TCthe1 == 0) {
+        //         $('[id^="TCID"]').unbind("mouseenter");
+        //         $('[id^="TCID"]').unbind("click");
+        //         $('[id^="TCID"]').unbind("mouseleave");
+        //         $('.TCdayOK').click(function () {
+        //             $('#TCserveOK').dialog('open');
+
+        //         });
+        //     }
+        //     $('#TCserveOK').dialog('close')
+        // })
+
+        // // TAB申請確定的一個日期後
+        // $("#TABserveReadyOKbtn").click(function () {
+        //     $("#TABserveReady").dialog('close');
+        //     TABthe1 = TABthe1 - 1;
+        //     console.log(TABthe1)
+        //     if (TABthe1 == 0) {
+        //         $('[id^="TABID"]').unbind("mouseenter");
+        //         $('[id^="TABID"]').unbind("click");
+        //         $('[id^="TABID"]').unbind("mouseleave");
+        //         $('.TABdayOK').click(function () {
+        //             $('#TABserveOK').dialog('open')
+
+        //         });
+        //     }
+        //     $('#TABserveOK').dialog('close')
+        // })
+
+
+
+        // TC申請取消
+        $("#TCserveDay1NO").click(function () {
+            $('#TCserveDay1').dialog('close')
+        })
+
+        // TAB申請取消
+        $("#TABserveDay1NO").click(function () {
+            $('#TABserveDay1').dialog('close')
+        })
+
+
+
+        // 清空所有服務按鈕
+        $("#allClear").click(function () {
+            $('#askYN').dialog('open');
+
+        })
+
+
+        // 確認刪除服務
+        $('#askYN').dialog({
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                確認: function () {
+                    $('#askYN').dialog('close');
+                    $('[id^="TCID"]').text("TC");
+                    $('[id^="TABID"]').text("TC");
+                    $('[id^="TCinputCheck"]').prop('checked', false);
+                },
+                取消: function () {
+                    $('#askYN').dialog('close')
+                }
+            }
+        })
+
+
+
+        // 關閉已申請TC服務
+        $("#TCserveOKbtn").click(function () {
+            $('#TCserveOK').dialog('close')
+        })
+
+        // 關閉已申請TAB服務
+        $("#TABserveOKbtn").click(function () {
+            $('#TABserveOK').dialog('close')
+        })
+
+
+        // 檢視申請好的照顧及專業服務
+        $('.TCdayOK').click(function () {
+            $('#TCserveOK').dialog('open')
+        })
+
+        $('#TCserveOK').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 318,
+            height: 500,
+            buttons: {
+                確認: function () {
+                    $('#TCserveOK').dialog('close')
+                }
+            }
+        })
+
+        // 檢視申請好的喘息服務
+        $('.TABdayOK').click(function () {
+            $('#TABserveOK').dialog('open')
+        })
+
+        $('#TABserveOK').dialog({
+            autoOpen: false,
+            modal: true,
+            width: 318,
+            height: 500,
+            buttons: {
+                確認: function () {
+                    $('#TABserveOK').dialog('close')
+                }
+            }
+        })
+
+
+    })
+
+
+
+
+    // 日期
+    // 獲取當前日期
+    var currentDate = new Date();
+    var TCsDay = $(".TCsetDay");
+    var TABsDay = $(".TABsetDay");
+
+
+    // 計算兩周後的日期
+    var twoWeeksLater = new Date(currentDate);
+    twoWeeksLater.setDate(currentDate.getDate() + 7);
+
+    // 找到兩周後的第一個星期日
+    while (twoWeeksLater.getDay() !== 0) {
+        twoWeeksLater.setDate(twoWeeksLater.getDate() + 1);
+    }
+
+
+    // 循環創建接下来的14天
+    for (var i = 0; i < 14; i++) {
+        var dayString = (twoWeeksLater.getMonth() + 1) + '月' + twoWeeksLater.getDate() + '日';
+
+        // 建立日曆並加入Div
+        TCsDay[i].innerHTML = dayString
+        TABsDay[i].innerHTML = dayString
+
+        // 增加一天
+        twoWeeksLater.setDate(twoWeeksLater.getDate() + 1);
+    }
+
+
+
+
+
+
+    // 分頁
+    function openCity(evt, cityName1, cityName2) {
+        var i, tabcontent, tablinks, tabcontentDiv;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        tabcontentDiv = document.getElementsByClassName("tabcontentDiv");
+
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        for (i = 0; i < tabcontentDiv.length; i++) {
+            tabcontentDiv[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("tablinks");
+
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className1 = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(cityName1).style.display = "block";
+        document.getElementById(cityName2).style.display = "block";
+
+        evt.currentTarget.className1 += " active";
+    }
+
+
+
+</script>

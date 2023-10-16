@@ -1,0 +1,31 @@
+﻿.Title {
+    background-color: aqua;
+}
+
+.Title1 {
+    background-color: burlywood;
+}
+
+.cashandlevl {
+    display: inline;
+}
+
+.Block {
+    display: block;
+}
+
+#TABDiv > div > div,
+#TCDiv > div > div {
+    text-align: center;
+    border-radius: 0px 0px 0px 0px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border-top: 1px gray solid;
+    border-left: 1px gray solid;
+    border-right: 1px gray solid;
+    border-bottom: 1px gray solid;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
