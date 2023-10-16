@@ -23,8 +23,8 @@ $('#editButton').on('click', function() {
 
 
 $('#saveButton').on('click', function () {
-    $('input[readonly]').prop('readonly', "readonly");
-    $('select[disabled]').prop('disabled', "readonly");
+    $('input[readonly]').prop("readonly", "true");
+    $('select[disabled]').prop("readonly", "true");
     $('#editButton').show();
     $(this).hide();
     $('#cancelButton').hide();
@@ -33,8 +33,8 @@ $('#saveButton').on('click', function () {
 });
 
 $('#cancelButton').on('click', function() {
-    $('input[readonly]').prop('readonly', "readonly");
-    $('select[disabled]').prop('disabled', "readonly");
+    $('input[readonly]').prop("readonly", true);
+    $('select[disabled]').prop("readonly", true);
     $('#editButton').show();
     $('#saveButton, #cancelButton').hide();
 
@@ -42,8 +42,8 @@ $('#cancelButton').on('click', function() {
 });
 
 $('#saveButton2').on('click', function () {
-    $('input[readonly]').prop('readonly', "readonly");
-    $('select[disabled]').prop('disabled', "readonly");
+    $('input[readonly]').prop('readonly', true);
+    $('select[disabled]').prop('disabled', true);
     
     $('#editButton').show();
     $(this).hide();
@@ -53,8 +53,8 @@ $('#saveButton2').on('click', function () {
 });
 
 $('#cancelButton2').on('click', function () {
-    $('input[readonly]').prop('readonly', "readonly");
-    $('select[disabled]').prop('disabled', "readonly");
+    $('input[readonly]').prop('readonly', true);
+    $('select[disabled]').prop('disabled', true);
 
     $('#editButton').show();
     $('#saveButton2, #cancelButton2').hide();

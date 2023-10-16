@@ -6,7 +6,9 @@ var details2 = $("#details2");
 // 隐藏上一页按钮
 // prevButton.hide();
 
-prevButton.click(function () {
+prevButton.click(function (e) { 
+
+ 
     // 切换到上一页内容
     details1.show();
     details2.hide();
@@ -14,9 +16,14 @@ prevButton.click(function () {
     // prevButton.hide();
     // 显示下一页按钮
     nextButton.show();
+    prevButton.toggleClass('button-border-highlighted');
+    nextButton.removeClass('button-border-highlighted');
 });
 
-nextButton.click(function () {
+nextButton.click(function (e) {
+
+  
+
     // 切换到下一页内容
     details1.hide();
     details2.show();
@@ -24,4 +31,7 @@ nextButton.click(function () {
     // nextButton.hide();
     // 显示上一页按钮
     prevButton.show();
+    prevButton.removeClass('button-border-highlighted');
+    nextButton.toggleClass('button-border-highlighted');
+
 });
