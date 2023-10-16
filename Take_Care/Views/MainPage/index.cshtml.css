@@ -6,8 +6,17 @@
 
 a {
     text-decoration: none;
-
 }
+
+a:visited{
+    color:black;
+}
+
+#healty {
+    display: block;
+}
+
+
 
 .myright {
     position: fixed;
