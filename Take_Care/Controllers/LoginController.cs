@@ -30,10 +30,10 @@ namespace Take_Care.Controllers {
 						select o;
 			TempData["member"] = query.FirstOrDefault();
 			if (query.SingleOrDefault() == null) {
-				return View("Index");
+				return Json("erroe!");
 			}
 			else {
-				return View("~/Views/MainPage/index.cshtml", member);
+				return Json("done!");
 			}
 		}
 

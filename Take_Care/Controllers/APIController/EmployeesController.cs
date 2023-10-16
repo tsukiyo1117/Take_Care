@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Take_Care.Models;
 
-namespace Take_Care.Controllers
+namespace Take_Care.Controllers.APIController
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,10 +24,10 @@ namespace Take_Care.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
+            if (_context.Employees == null)
+            {
+                return NotFound();
+            }
             return await _context.Employees.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace Take_Care.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
-          if (_context.Employees == null)
-          {
-              return NotFound();
-          }
+            if (_context.Employees == null)
+            {
+                return NotFound();
+            }
             var employee = await _context.Employees.FindAsync(id);
 
             if (employee == null)
@@ -85,10 +85,10 @@ namespace Take_Care.Controllers
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
-          if (_context.Employees == null)
-          {
-              return Problem("Entity set 'TakeCareContext.Employees'  is null.");
-          }
+            if (_context.Employees == null)
+            {
+                return Problem("Entity set 'TakeCareContext.Employees'  is null.");
+            }
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
 

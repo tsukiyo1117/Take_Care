@@ -59,8 +59,11 @@
 			el:"#app",
 			data:{
 				member:{
-							Account:"employer001",
-							Password:"SecurePwd1"
+						Account:"employer001",
+						Password:"SecurePwd1",
+						Email:"employer1@email.com",
+						UserType:"Employer",
+						MemberName:"張三"
 				}
 			},
 			methods:{
@@ -70,6 +73,11 @@
 							url: '@Url.Content("~/login/Dologin")',
 						contentType: "application/json",
 						data: JSON.stringify(this.member),
+						statusCode: { 
+							500: function(response) {
+								console.log(response)
+							}
+						}, 
 						success: function () {
 								console.log("ok!");
 								window.location="~/MainPage/Index.cshtml";

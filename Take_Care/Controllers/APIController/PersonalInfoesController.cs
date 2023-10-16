@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Take_Care.Models;
 
-namespace Take_Care.Controllers
+namespace Take_Care.Controllers.APIController
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,10 +24,10 @@ namespace Take_Care.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PersonalInfo>>> GetPersonalInfos()
         {
-          if (_context.PersonalInfos == null)
-          {
-              return NotFound();
-          }
+            if (_context.PersonalInfos == null)
+            {
+                return NotFound();
+            }
             return await _context.PersonalInfos.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace Take_Care.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PersonalInfo>> GetPersonalInfo(int id)
         {
-          if (_context.PersonalInfos == null)
-          {
-              return NotFound();
-          }
+            if (_context.PersonalInfos == null)
+            {
+                return NotFound();
+            }
             var personalInfo = await _context.PersonalInfos.FindAsync(id);
 
             if (personalInfo == null)
@@ -85,10 +85,10 @@ namespace Take_Care.Controllers
         [HttpPost]
         public async Task<ActionResult<PersonalInfo>> PostPersonalInfo(PersonalInfo personalInfo)
         {
-          if (_context.PersonalInfos == null)
-          {
-              return Problem("Entity set 'TakeCareContext.PersonalInfos'  is null.");
-          }
+            if (_context.PersonalInfos == null)
+            {
+                return Problem("Entity set 'TakeCareContext.PersonalInfos'  is null.");
+            }
             _context.PersonalInfos.Add(personalInfo);
             await _context.SaveChangesAsync();
 
