@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Take_Care.Models;
 
-namespace Take_Care.Controllers
+namespace Take_Care.Controllers.APIController
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,10 +24,10 @@ namespace Take_Care.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EmergencyContact>>> GetEmergencyContacts()
         {
-          if (_context.EmergencyContacts == null)
-          {
-              return NotFound();
-          }
+            if (_context.EmergencyContacts == null)
+            {
+                return NotFound();
+            }
             return await _context.EmergencyContacts.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace Take_Care.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<EmergencyContact>> GetEmergencyContact(int id)
         {
-          if (_context.EmergencyContacts == null)
-          {
-              return NotFound();
-          }
+            if (_context.EmergencyContacts == null)
+            {
+                return NotFound();
+            }
             var emergencyContact = await _context.EmergencyContacts.FindAsync(id);
 
             if (emergencyContact == null)
@@ -85,10 +85,10 @@ namespace Take_Care.Controllers
         [HttpPost]
         public async Task<ActionResult<EmergencyContact>> PostEmergencyContact(EmergencyContact emergencyContact)
         {
-          if (_context.EmergencyContacts == null)
-          {
-              return Problem("Entity set 'TakeCareContext.EmergencyContacts'  is null.");
-          }
+            if (_context.EmergencyContacts == null)
+            {
+                return Problem("Entity set 'TakeCareContext.EmergencyContacts'  is null.");
+            }
             _context.EmergencyContacts.Add(emergencyContact);
             await _context.SaveChangesAsync();
 

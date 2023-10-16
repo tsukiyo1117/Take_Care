@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Take_Care.Models;
 
-namespace Take_Care.Controllers
+namespace Take_Care.Controllers.APIController
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,10 +24,10 @@ namespace Take_Care.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Case>>> GetCases()
         {
-          if (_context.Cases == null)
-          {
-              return NotFound();
-          }
+            if (_context.Cases == null)
+            {
+                return NotFound();
+            }
             return await _context.Cases.ToListAsync();
         }
 
@@ -35,10 +35,10 @@ namespace Take_Care.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Case>> GetCase(int id)
         {
-          if (_context.Cases == null)
-          {
-              return NotFound();
-          }
+            if (_context.Cases == null)
+            {
+                return NotFound();
+            }
             var @case = await _context.Cases.FindAsync(id);
 
             if (@case == null)
@@ -85,10 +85,10 @@ namespace Take_Care.Controllers
         [HttpPost]
         public async Task<ActionResult<Case>> PostCase(Case @case)
         {
-          if (_context.Cases == null)
-          {
-              return Problem("Entity set 'TakeCareContext.Cases'  is null.");
-          }
+            if (_context.Cases == null)
+            {
+                return Problem("Entity set 'TakeCareContext.Cases'  is null.");
+            }
             _context.Cases.Add(@case);
             await _context.SaveChangesAsync();
 
