@@ -23,23 +23,21 @@ namespace Take_Care.Controllers {
 				return View(TempData["member"]);
 			}
 		}
-		//[EnableCors("MyAllowSpecificOrigins")]
+		
 		[HttpPost]
 		public IActionResult DoLogin([FromBody] MemberView member) {
 			var query = from o in _context.MemberViews
 						where o.Account == member.Account && o.Password == member.Password
 						select o;
-			//TempData["member"] = query.FirstOrDefault();
 			if (query.SingleOrDefault() == null) {
-				return Json("erroe!");
+				return Json("error!");
 			}
 			else {
 				return Json(query.SingleOrDefault());
 			}
 		}
-		/*public IActionResult sing()
-        {
-            return View();
-        }*/
+		public IActionResult SignUp() {
+			return View();
+		}
 	}
 }
