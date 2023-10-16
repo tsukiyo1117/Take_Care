@@ -1,0 +1,30 @@
+﻿.Title {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
+
+.Title1 {
+    background-color: burlywood;
+}
+
+    .Title1 h2 {
+        display: flex;
+        justify-content: center;
+    }
+
+div h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.cashandlevl {
+    display: inline;
+}
+
+.TCIMG,
+.TABIMG {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
