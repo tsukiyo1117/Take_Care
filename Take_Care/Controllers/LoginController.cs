@@ -10,27 +10,32 @@ namespace Take_Care.Controllers {
 		private readonly IHubContext<ChatHub> _hubContext;
 		private readonly TakeCareContext _context;
 
-        public LoginController(IHubContext<ChatHub> hubContext, TakeCareContext context) {
-            _context = context;
-            _hubContext = hubContext;
-        }
-        public IActionResult Index() {
+		public LoginController(IHubContext<ChatHub> hubContext, TakeCareContext context) {
+			_context = context;
+			_hubContext = hubContext;
+		}
+		public IActionResult Index() {
+			if (TempData["member"] == null) {
+				return View();
+			}
+			else {
+				return View(TempData["member"]);
+			}
+		}
 
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult DoLogin(MemberView member) {
-            var query = from o in _context.MemberViews
-                        where o.Account == member.Account && o.Password == member.Password
-                        select o;
-            if (query.SingleOrDefault() == null) {
-                return View("Index");
-            }
-            else {
-                return View("~/Views/MainPage/index.cshtml", member);
-            }
-        }
+		[HttpPost]
+		public IActionResult DoLogin([FromBody] MemberView member) {
+			var query = from o in _context.MemberViews
+						where o.Account == member.Account && o.Password == member.Password
+						select o;
+			TempData["member"] = query.FirstOrDefault();
+			if (query.SingleOrDefault() == null) {
+				return View("Index");
+			}
+			else {
+				return View("~/Views/MainPage/index.cshtml", member);
+			}
+		}
 
 		/*public IActionResult sing()
         {
