@@ -4,15 +4,20 @@
 @{
 }
 
+@model List<Employee>
+
 	<div>
 		<label>性別</label>
 	</div>
 	<div class="custom-container">
 		<div class="row">
+		@foreach (var employee in Model)
+		{		
+		
 			<div class="card col">
 				<img src="~/img/Staff/F01.png" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">霍元甲ABC</h5>
+				<h5 class="card-title">@employee.EmployeeName</h5>
 					<p class="card-text">
 						女性<br>3年照服經驗
 
@@ -20,6 +25,7 @@
 					<a href="#" class="btn btn-primary">詳細介紹</a>
 				</div>
 			</div>
+		}
 
 			<div class="card col">
 			<img src="~/img/img_Peter/F2.png" class="card-img-top" alt="..." style="width: 100%; background-color: cornflowerblue;">
