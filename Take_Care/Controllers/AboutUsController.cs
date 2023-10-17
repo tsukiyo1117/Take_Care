@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Take_Care.Models;
 
 namespace Take_Care.Controllers
 {
@@ -8,10 +9,17 @@ namespace Take_Care.Controllers
 		{
 			return View();
 		}
-
+		
+		// 員工
+		private EmployeeContext _context;
+		public AboutUsController()
+		{
+			_context = new EmployeeContext();
+		}
 		public IActionResult Staff()
 		{
-			return View();
+			List<Employee> employees = _context.Employees.ToList();
+			return View(employees);
 		}
 	}
 }
