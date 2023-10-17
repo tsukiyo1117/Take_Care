@@ -1,5 +1,4 @@
-﻿
-/*custom font*/
+﻿/*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 /*basic reset*/
@@ -20,7 +19,7 @@ body {
 }
 
     #msform fieldset {
-        background-color: rgba(17, 153, 183, 0.6);
+        background-color: rgba(146, 181, 216, 0.6);
         border: 0 none;
         border-radius: 20px;
         box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
@@ -40,13 +39,13 @@ body {
     /*inputs*/
     #msform input {
         padding: 15px;
-        border: 1px solid #ccc;
+        border: 1px solid black;
         border-radius: 3px;
         margin-bottom: 10px;
         width: 100%;
         box-sizing: border-box;
         font-family: montserrat;
-        color: #fff;
+        color: black;
         font-size: 20px;
         background-color: transparent;
     }
@@ -71,7 +70,7 @@ body {
     }
 
         #msform .action-button:hover, #msform .action-button:focus {
-            box-shadow: 0 0 0 2px rgba(17, 153, 183, 0.6), 0 0 0 3px #27AE60;
+            box-shadow: 0 0 0 2px rgba(146, 181, 216, 0.6), 0 0 0 3px #27AE60;
         }
 
 /*headings*/
@@ -131,8 +130,7 @@ body {
             position: absolute;
             left: -50%;
             top: 9px;
-            /*put it behind the numbers*/
-            z-index: -1;
+            z-index: -1; /*put it behind the numbers*/
         }
 
         #progressbar li:first-child:after {
@@ -146,4 +144,3 @@ body {
             background: #27AE60;
             color: white;
         }
-

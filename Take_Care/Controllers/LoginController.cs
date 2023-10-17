@@ -23,7 +23,7 @@ namespace Take_Care.Controllers {
 				return View(TempData["member"]);
 			}
 		}
-		
+
 		[HttpPost]
 		public IActionResult DoLogin([FromBody] MemberView member) {
 			var query = from o in _context.MemberViews
@@ -38,6 +38,34 @@ namespace Take_Care.Controllers {
 		}
 		public IActionResult SignUp() {
 			return View();
+		}
+		[HttpPost]
+		public IActionResult DoSignUp([FromBody] Employer member) {
+			var query = from o in _context.Employers
+						where o.Email == member.Email
+						select o;
+			if (query.Count() > 0) {
+				return Json("此帳號已經存在!");
+			}
+			else {
+
+				return Json("寄信成功!!");
+			}
+		}
+		public IActionResult doCheckEmail([FromBody] CheckEmail email) {
+			CheckEmail cheachEmail = email;
+			var chatcode = "";
+
+			if (email.checkcode != cheachEmail.checkcode) {
+				return Json(false);
+			}
+			else {
+				return Json(true);
+			}
+		}
+		public class CheckEmail {
+			public string email { get; set; }
+			public string checkcode { get; set; }
 		}
 	}
 }
