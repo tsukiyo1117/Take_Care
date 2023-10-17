@@ -50,7 +50,7 @@
 	</div>
 	<div class="col-2"></div>
 	</div>
-</div>
+
 <script src="~/js/login.js"></script>
 
 @section scripts{
@@ -61,9 +61,6 @@
 				member:{
 						Account:"employer001",
 						Password:"SecurePwd1",
-						Email:"employer1@email.com",
-						UserType:"Employer",
-						MemberName:"張三"
 				}
 			},
 			methods:{
@@ -78,9 +75,16 @@
 								console.log(response)
 							}
 						}, 
-						success: function () {
+							success: function (response) {
 								console.log("ok!");
-								window.location="~/MainPage/Index.cshtml";
+								if (response != "error!") {
+									//alert(response);
+									//console.log(response);
+									sessionStorage.setItem("member",JSON.stringify(response));
+									window.location="MainPage/Index";
+								}else{
+									alert("帳號或密碼錯誤!!");
+								}
 						},
 						error:function(){
 							console.log("error!");
