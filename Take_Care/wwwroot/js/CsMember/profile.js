@@ -23,8 +23,8 @@ $('#editButton').on('click', function() {
 
 
 $('#saveButton').on('click', function () {
-    $('input[readonly]').prop("readonly", "true");
-    $('select[disabled]').prop("readonly", "true");
+    $('input[readonly]').prop("readonly", true);
+    $('select[disabled]').prop("readonly", true);
     $('#editButton').show();
     $(this).hide();
     $('#cancelButton').hide();
