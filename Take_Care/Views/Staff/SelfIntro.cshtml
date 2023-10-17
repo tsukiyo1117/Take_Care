@@ -1,0 +1,211 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@await Html.PartialAsync("_HeadPartial")
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 ">
+                <div class="row bg-info " id="userPic">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                         alt="user">
+                    <span class="row">
+                        UserAccount
+                    </span>
+                </div>
+                @await Html.PartialAsync("_SideBarPartial")
+            </div>
+            <div class="col-10" id="mainPage">
+                <div class="container emp-profile" style="margin:0px">
+                    <form method="post">
+                        @await Html.PartialAsync("_TabPartial_si")
+
+                        <div class="row">
+
+                            <div id="myProfile" class="col-md-10">
+                                <div class="tab-content profile-tab" id="myTabContent">
+
+                                    <div class="tab-pane fade show " id="profile" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>使用者帳號 : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" value="SophieQQ123"
+                                                       style="font-size: 18px;" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>姓名 : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" value="Sophie"
+                                                       style="font-size: 18px;" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>Email : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                                       placeholder="請輸入你的信箱" value="SophieQQ123@google.com"
+                                                       style="font-size: 18px;" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>手機號碼 : </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="tel" class="form-control" id="phone1"
+                                                       placeholder="請輸入你的手機號碼" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>性別 : </label>
+                                            </div>
+                                            <div class="col-md-6" style="display: flex;">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline1"
+                                                           name="customRadioInline1" class="custom-control-input">
+                                                    <label class="custom-control-label"
+                                                           for="customRadioInline1">男</label>
+                                                </div>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline2"
+                                                           name="customRadioInline1" class="custom-control-input">
+                                                    <label class="custom-control-label"
+                                                           for="customRadioInline2">女</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label>生日: </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text"  value=""
+                                                       style="font-size: 18px;" id="datepicker">
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 1rem;">
+                                            <div class="col-md-4">
+                                                <label>地址</label>
+                                            </div>
+                                            <div class="col-md-6" style="display: block; padding: 0px;">
+                                                <div id="twzipcode" class="row">
+                                                    <div class="form-group col arrow">
+                                                        <div data-role="county" data-style="form-control"
+                                                             data-name="county" data-value=""></div>
+                                                    </div>
+                                                    <div class="form-group col arrow">
+                                                        <div data-role="district" data-style="form-control"
+                                                             data-name="district" data-value=""></div>
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <div data-role="zipcode" data-style="form-control"
+                                                             data-name="zipcode" data-value=""></div>
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-top: 0.5rem;">
+                                                        <input type="text" class="form-control" id="inputAddress2"
+                                                               placeholder="居住地址" readonly>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <button class="databtn" id="saveButton">確認</button>
+                                        <button class="databtn" id="cancelButton">取消</button>
+                                    </div>
+                                
+                                    <div class="tab-pane fade show active" id="SelfIntro" role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <div id="detailsContainer">
+                                            <div style="font-size: 23px;">編輯你的自我介紹</div>
+                                            <textarea style="font-size: 20px; width: 100%; height: 250px; margin-top: 10px;">自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容
+                                            </textarea>
+                                        </div>
+                                        @*看不到這兩個按鈕*@
+                                        <button class="databtn" id="saveButton2">確認</button>
+                                        <button class="databtn" id="cancelButton2">取消</button>
+                                    </div>
+
+                                    <div class="tab-pane fade show" id="ChangePassword" role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <div>
+
+                                            <div style="font-size: 23px;">為了保護你帳號的安全，請不要分享你的密碼給其他人</div>
+
+                                        </div>
+                                        <br><br>
+
+                                        <div>
+                                            <div>
+                                                <label style="font-size: 20px;">新的密碼 : &nbsp; </label>
+                                                <input type="password" class="form-control" placeholder="" name="psw"
+                                                       id="psw" required style="height: 35px;">
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <label style="font-size: 20px;">確認密碼 : &nbsp;</label>
+                                                <input type="password" class="form-control" placeholder=""
+                                                       name="psw-repeat" id="psw-repeat" required style="height: 35px;">
+                                            </div>
+                                            <br><br>
+                                            <div>
+                                                <button style="font-size: 20px; background-color: orange; border-color: transparent;">
+                                                    確認
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2" style="position:relative;right:4rem">
+                                <div class="profile-img" id="profileSection">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                                         alt="" />
+                                    <div class="file btn btn-lg btn-light" style="font-weight: 900;color: azure;">
+                                        Change Photo
+                                        <input type="file" name="file" style="cursor: pointer;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/CsMember/jquery.twzipcode.min.js"></script>
+    <script src="~/js/CsMember/getaddress.js"></script>
+    <script src="~/js/CsMember/profile.js"></script>
+    <script src="~/js/CsMember/Prev&Next.js"></script>
+    <script src="~/js/CsMember/changeTabHref.js"></script>
+
+
+    <script>
+
+        $("#twzipcode").twzipcode();
+        $("#twzipcode2").twzipcode();
+        $("#twzipcode3").twzipcode();
+
+
+        $('#datepicker').datepicker();
+
+    </script>
+
+
+</body>
