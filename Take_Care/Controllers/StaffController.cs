@@ -19,5 +19,16 @@ namespace Take_Care.Controllers
             return View();
         }
 
-    }
+		public IActionResult Record()
+		{
+			return View();
+		}
+
+		public IActionResult Schedule()
+		{
+			return View();
+		}
+
+	}
+	
 }

@@ -7,10 +7,19 @@
     
 }
 
-.col {
-    margin: 10px;
+.col-3 {
+    margin: 5px;
 }
 
 .card-img-top {
     width: 100%;
 }
+
+.selectbtn {
+    /*display: flex;*/
+    justify-content: center;
+    padding: 10px 30px;
+    cursor: pointer;
+} 
+
+   
