@@ -1,0 +1,46 @@
+﻿
+.fourpacks {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 700px;
+    top: 100px;
+    left: 250px;
+    height: 450px;
+}
+
+.accordion-body {
+    line-height: 4ch;
+    font-size: 23px;
+}
+
+.accordion-body p:hover {
+    background-color: wheat;
+}
+
+.accordion-body li:hover {
+    background-color: wheat;
+}
+
+/* .accordion-button{
+    background-color: red;
+} */
+
+#point {
+    color: red;
+}
+
+.star {
+    color: yellow;
+}
+
+.mytitle {
+    font-weight: bolder;
+    font-size: 35px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-active-color);
+    background-color: blanchedalmond;
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}

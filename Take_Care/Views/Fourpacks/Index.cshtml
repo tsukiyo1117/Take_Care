@@ -1,0 +1,141 @@
+﻿@page
+@model Take_Care.Views.Fourpacks.IndexModel
+@{
+}
+<head>
+<link rel="stylesheet" href="../bootstrap-5.3.1-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script src="../jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body style="background= ~/img/fourpacks/背景.jpg">
+    <div class="container-fluid" id="app">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="fourpacks">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <img src="~/img/fourpacks/四包錢圖片.png">
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <h2 class="mytitle">{{fourpack[0].fourpacksP1}}</h2>
+                                    <p>{{fourpack[0].fourpacksP2}}</p>
+
+                                    <p>{{fourpack[0].fourpacksP3}}</p>
+
+                                    <p>{{fourpack[0].fourpacksP4}}</p>
+
+                                    <p>{{fourpack[0].fourpacksP5}}</p>
+
+                                    <p>{{fourpack[0].fourpacksP6}}</p>
+                                    <img src="https://www.familycares.com.tw/images/introimg1.jpg" style="width: 650px;">
+                                    <h2 style="padding-top: 2ch;" class="mytitle">{{fourpack[0].fourpacksP8}}</h2>
+                                    <ol>
+                                        <li>{{fourpack[0].fourpacksP9}}</li>
+                                    </ol>
+                                    <h2 class="mytitle">{{fourpack[0].fourpacksP10}}</h2>
+                                    <ol>
+                                        <li>{{fourpack[0].fourpacksP11}}</li>
+                                        <li>{{fourpack[0].fourpacksP12}}</li>
+                                    </ol>
+                                    <h2 class="mytitle">{{fourpack[0].fourpacksP13}}</h2>
+                                    <p>{{fourpack[0].fourpacksP14}}</p>
+                                    <p>{{fourpack[0].fourpacksP15}}</p>
+                                    <p>{{fourpack[0].fourpacksP16}}</p>
+                                    <p>{{fourpack[0].fourpacksP17}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <img src="~/img/fourpacks/四包錢圖片2.png">
+                                </button>
+                            </h2>
+							<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>長照支付新制是一個「點餐式服務」設計，民眾可以自由搭配使用。</li>
+                                        <li>因為四大項服務並非完全免費，都有不同自負額規定，有些民眾不希望負擔太大，可選擇四個項目是否都要使用。</li>
+                                        <li>
+                                            也有些民眾覺得核定額度不夠用，在家庭經濟還能負擔的情況下，可以採自費方式另外購買。例如政府補助「照顧及專業服務」1萬元，但民眾選擇使用到2萬元額度，則其中1萬元自負額16%，要付1千6百元，另1萬元全額自付，共計要負擔1萬1千6百元。
+                                        </li>
+                                        <li>
+                                            「照顧及專業服務」服務設計再區分為兩類：「照顧服務」可使用於居家服務、日間照顧中心、家庭托顧等；「專業服務」可使用於居家復健、進食與吞嚥照護、營養照護等。
+                                        </li>
+                                        <img src="~/img/fourpacks/四包錢照顧.png" style="width: 650px;">
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <img src="~/img/fourpacks/四包錢圖片3.png">
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ol>
+                                        <li>
+                                            根據家總調查，一段照顧歷程平均9.9年，甚至有長達30多年的案例。從被照顧者輕、中度依賴程度，逐漸進入到重度、完全臥床階段，不斷自「混亂期」、「適應期」、「穩定期」進入「下一次病情變化期」循環。
+                                        </li>
+                                        <li>
+                                            建議被照顧者尚在輕、中度失能階段，多加利用長照2.0補助(包括：居家服務、日間照顧中心、家庭托顧)，一則節省費用，一則可以降低對他人依賴程度，延緩失能速度。
+                                        </li>
+                                    <img src="~/img/fourpacks/四包錢中長期.png" style="width: 650px;">
+                                        <li>而家庭照顧支出，每月平均三至七萬元，除了購賣長照設備、器材、耗材外，影響支出最大的因素就是照顧方式的選擇。</li>
+                                        <li>長期照顧是一段「看不到盡頭的馬拉松」，愈到後面愈花錢，建議前期善用政府補助，把錢存下來，打好長照這場硬仗。</li>
+                                    <img src="~/img/fourpacks/四包錢中長期2.png" style="width: 650px;">
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                fourpack: {
+                },
+                test: 100
+            },
+            methods: {
+                doEdit: function () {
+                }
+            }
+        })
+
+        window.onload = function () {
+            $.ajax({
+                type: "get",
+                url: "https://localhost:7061/api/fourpacks",
+                success: function (e) {
+                    app.fourpack = e;
+                    console.log(e);
+                }
+            })
+        };
+    </script>
+</body>

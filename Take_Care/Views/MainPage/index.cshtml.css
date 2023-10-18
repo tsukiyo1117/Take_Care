@@ -6,7 +6,22 @@
 
 a {
     text-decoration: none;
+}
 
+a:visited{
+    color:black;
+}
+
+#healty {
+    display: block;
+}
+
+ #healty a:hover{
+     background-color:mistyrose;
+ }
+
+#government a:hover{
+    background-color:mistyrose;
 }
 
 .myright {
@@ -94,10 +109,6 @@ body {
 
 .myfooter {
     font-weight: bolder;
-}
-
-.mya {
-    color: azure;
 }
 
 .myfont {
