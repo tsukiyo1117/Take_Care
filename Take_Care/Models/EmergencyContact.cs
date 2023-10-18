@@ -16,4 +16,6 @@ public partial class EmergencyContact
     public string? ContactMobile { get; set; }
 
     public string? ContactRelationship { get; set; }
+
+    public virtual PersonalInfo? PersonalInfo { get; set; }
 }

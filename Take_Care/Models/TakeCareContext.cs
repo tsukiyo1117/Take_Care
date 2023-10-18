@@ -25,6 +25,12 @@ public partial class TakeCareContext : DbContext
 
     public virtual DbSet<Employer> Employers { get; set; }
 
+    public virtual DbSet<Fourpack> Fourpacks { get; set; }
+
+    public virtual DbSet<FourpacksLongterm> FourpacksLongterms { get; set; }
+
+    public virtual DbSet<FourpacksOrder> FourpacksOrders { get; set; }
+
     public virtual DbSet<MemberView> MemberViews { get; set; }
 
     public virtual DbSet<PersonalInfo> PersonalInfos { get; set; }
@@ -43,7 +49,7 @@ public partial class TakeCareContext : DbContext
     {
         modelBuilder.Entity<Case>(entity =>
         {
-            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C642A2079");
+            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C48C91FEA");
 
             entity.Property(e => e.CaseId).HasColumnName("CaseID");
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
@@ -57,17 +63,17 @@ public partial class TakeCareContext : DbContext
             entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
                 .HasForeignKey(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployeeI__3E52440B");
+                .HasConstraintName("FK__Cases__EmployeeI__3C69FB99");
 
             entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
                 .HasForeignKey(d => d.EmployerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployerI__3F466844");
+                .HasConstraintName("FK__Cases__EmployerI__3D5E1FD2");
         });
 
         modelBuilder.Entity<Citizenshipstatus>(entity =>
         {
-            entity.HasKey(e => e.CitizenshipstatuId).HasName("PK__Citizens__58853619DD0D6F46");
+            entity.HasKey(e => e.CitizenshipstatuId).HasName("PK__Citizens__58853619835E9746");
 
             entity.ToTable("Citizenshipstatus");
 
@@ -81,7 +87,7 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<EmergencyContact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__Emergenc__82ACC1CD6B673C3B");
+            entity.HasKey(e => e.ContactId).HasName("PK__Emergenc__82ACC1CDC8255DB6");
 
             entity.ToTable("Emergency_Contacts");
 
@@ -99,15 +105,19 @@ public partial class TakeCareContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("Contact_Relationship");
             entity.Property(e => e.PersonalInfoId).HasColumnName("Personal_Info_ID");
+
+            entity.HasOne(d => d.PersonalInfo).WithMany(p => p.EmergencyContacts)
+                .HasForeignKey(d => d.PersonalInfoId)
+                .HasConstraintName("FK_Emergency_Contacts_Personal_Info");
         });
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04FF189A390A4");
+            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04FF12F2AFD99");
 
-            entity.HasIndex(e => e.Email, "UQ__Employee__A9D10534F96DE4A7").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Employee__A9D10534FA54D21E").IsUnique();
 
-            entity.HasIndex(e => e.Account, "UQ__Employee__B0C3AC46F93ABA72").IsUnique();
+            entity.HasIndex(e => e.Account, "UQ__Employee__B0C3AC4621675DDD").IsUnique();
 
             entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
             entity.Property(e => e.Account)
@@ -144,11 +154,11 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<Employer>(entity =>
         {
-            entity.HasKey(e => e.EmployerId).HasName("PK__Employer__CA4452417916F2D3");
+            entity.HasKey(e => e.EmployerId).HasName("PK__Employer__CA4452418DEBFC6E");
 
-            entity.HasIndex(e => e.Email, "UQ__Employer__A9D105344B0200C9").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Employer__A9D105343D5EC536").IsUnique();
 
-            entity.HasIndex(e => e.Account, "UQ__Employer__B0C3AC46FD6145BB").IsUnique();
+            entity.HasIndex(e => e.Account, "UQ__Employer__B0C3AC46C9628DFC").IsUnique();
 
             entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
             entity.Property(e => e.Account)
@@ -179,6 +189,86 @@ public partial class TakeCareContext : DbContext
                 .HasColumnName("PhotoURL");
         });
 
+        modelBuilder.Entity<Fourpack>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("fourpacks");
+
+            entity.Property(e => e.FourpacksP1).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP10).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP11).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP12).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP13).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP14).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP15).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP16).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP17).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP2).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP3).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP4).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP5).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP6).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP7).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP8).HasMaxLength(255);
+            entity.Property(e => e.FourpacksP9).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<FourpacksLongterm>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("fourpacksLongterm");
+
+            entity.Property(e => e.LongtermP1)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP1");
+            entity.Property(e => e.LongtermP2)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP2");
+            entity.Property(e => e.LongtermP3)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP3");
+            entity.Property(e => e.LongtermP4)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP4");
+            entity.Property(e => e.LongtermP5)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP5");
+            entity.Property(e => e.LongtermP6)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP6");
+            entity.Property(e => e.LongtermP7)
+                .HasMaxLength(255)
+                .HasColumnName("longtermP7");
+        });
+
+        modelBuilder.Entity<FourpacksOrder>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("fourpacksOrder");
+
+            entity.Property(e => e.FourpacksOrderP1)
+                .HasMaxLength(255)
+                .HasColumnName("fourpacksOrderP1");
+            entity.Property(e => e.FourpacksOrderP2)
+                .HasMaxLength(255)
+                .HasColumnName("fourpacksOrderP2");
+            entity.Property(e => e.FourpacksOrderP3)
+                .HasMaxLength(255)
+                .HasColumnName("fourpacksOrderP3");
+            entity.Property(e => e.FourpacksOrderP4)
+                .HasMaxLength(255)
+                .HasColumnName("fourpacksOrderP4");
+            entity.Property(e => e.FourpacksOrderP5)
+                .HasMaxLength(255)
+                .HasColumnName("fourpacksOrderP5");
+            entity.Property(e => e.FourpacksOrderP6)
+                .HasMaxLength(255)
+                .HasColumnName("fourpacksOrderP6");
+        });
+
         modelBuilder.Entity<MemberView>(entity =>
         {
             entity
@@ -204,14 +294,15 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<PersonalInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC27567A357B");
+            entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC27D31097AB");
 
             entity.ToTable("Personal_Info");
 
-            entity.HasIndex(e => e.IdentityCard, "UQ__Personal__A450139ABCD9CD52").IsUnique();
+            entity.HasIndex(e => e.IdentityCard, "UQ__Personal__A450139A16602D73").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Birthday).HasColumnType("date");
+            entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
             entity.Property(e => e.Gender).HasMaxLength(10);
             entity.Property(e => e.IdentityCard)
                 .HasMaxLength(10)
@@ -237,11 +328,15 @@ public partial class TakeCareContext : DbContext
             entity.Property(e => e.WelfareStatus)
                 .HasMaxLength(50)
                 .HasColumnName("Welfare_Status");
+
+            entity.HasOne(d => d.Employer).WithMany(p => p.PersonalInfos)
+                .HasForeignKey(d => d.EmployerId)
+                .HasConstraintName("FK_Personal_Info_Employers");
         });
 
         modelBuilder.Entity<ServiceItem>(entity =>
         {
-            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD87FDFAD2B");
+            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD899A02168");
 
             entity.Property(e => e.ServiceItemId).HasColumnName("ServiceItemID");
             entity.Property(e => e.Price)
@@ -253,7 +348,7 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<ServiceItemsDetail>(entity =>
         {
-            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD81E1D45F7");
+            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD86023A4BA");
 
             entity.ToTable("ServiceItemsDetail");
 
@@ -267,7 +362,7 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<SubsidyLevel>(entity =>
         {
-            entity.HasKey(e => e.SubsidyLevelId).HasName("PK__SubsidyL__B26BEB18D33C8472");
+            entity.HasKey(e => e.SubsidyLevelId).HasName("PK__SubsidyL__B26BEB1895CB6835");
 
             entity.ToTable("SubsidyLevel");
 

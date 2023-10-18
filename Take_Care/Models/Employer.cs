@@ -28,4 +28,6 @@ public partial class Employer
     public string? PhotoUrl { get; set; }
 
     public virtual ICollection<Case> Cases { get; set; } = new List<Case>();
+
+    public virtual ICollection<PersonalInfo> PersonalInfos { get; set; } = new List<PersonalInfo>();
 }

@@ -1,9 +1,10 @@
-﻿let app = new Vue({
+﻿let MailCode = "";
+let app = new Vue({
     el: "#app",
     data: {
         Employer: {
             // account: "",
-            // email: "",
+            "email": "94forteamwork@gmail.com",
             // fullName: "",
             // gender: "",
             // password: "",
@@ -34,28 +35,39 @@
             Donext(event.target);
             $.ajax({
                 type: "POST",
-                url: "https://localhost:7036/login/DoSignUp",
+                url: "https://localhost:7036/mail/sendTestMail",
                 contentType: "application/json",
-                data: JSON.stringify(this.Employer),
-                success: function () {
-                    
+                data: JSON.stringify(this.Employer.email),
+                success: function (response) {
+                    MailCode = response;
+                    //console.log(response);
+                    console.log("done!");
+                },
+                error: function () {
+                    console.log("error!");
                 }
             })
         },
         checkEmail: function (event) {
-            $.ajax({
-                type: "POST",
-                url: "https://localhost:7036/login/doCheckEmail",
-                contentType: "application/json",
-                data: JSON.stringify({ email: this.Employer.email, checkcode: emailcode.value }),
-                success: function (response) {
-                    if (response) {
-                        Donext(event.target);
-                    } else {
-                        resulttext2.innerText = "驗證碼錯誤!"
-                    }
-                }
-            })
+            if (MailCode == emailcode.value) {
+                resulttext2.innerText = "";
+                Donext(event.target);
+            } else {
+                resulttext2.innerText = "驗證碼錯誤!!";
+            }
+            //$.ajax({
+            //    type: "POST",
+            //    url: "https://localhost:7036/login/doCheckEmail",
+            //    contentType: "application/json",
+            //    data: JSON.stringify({ email: this.Employer.email, checkcode: emailcode.value }),
+            //    success: function (response) {
+            //        if (response) {
+            //            Donext(event.target);
+            //        } else {
+            //            resulttext2.innerText = "驗證碼錯誤!"
+            //        }
+            //    }
+            //})
             
         }
     }
@@ -68,7 +80,6 @@ var animating;
 var cd = 60;
 
 function Donext(sender) {
-    console.log("ok");
     if (animating) return false;
     animating = true;
     current_fs = $(sender).parent();

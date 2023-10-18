@@ -40,16 +40,17 @@ namespace Take_Care.Controllers {
 			return View();
 		}
 		[HttpPost]
-		public IActionResult DoSignUp([FromBody] Employer member) {
+		public IActionResult DoSignUp([FromBody] string mail) {
 			var query = from o in _context.Employers
-						where o.Email == member.Email
+						where o.Email == mail
 						select o;
 			if (query.Count() > 0) {
 				return Json("此帳號已經存在!");
 			}
 			else {
-
-				return Json("寄信成功!!");
+				MailController mailController = new MailController();
+				//var str = mailController.SendTestMail(mail);
+				return Json("");
 			}
 		}
 		public IActionResult doCheckEmail([FromBody] CheckEmail email) {

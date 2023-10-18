@@ -30,4 +30,10 @@ public partial class PersonalInfo
     public string? MedicalCondition { get; set; }
 
     public string? Remark { get; set; }
+
+    public int? EmployerId { get; set; }
+
+    public virtual ICollection<EmergencyContact> EmergencyContacts { get; set; } = new List<EmergencyContact>();
+
+    public virtual Employer? Employer { get; set; }
 }
