@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -28,18 +29,44 @@ namespace Take_Care.Controllers {
 			var query = from o in _context.MemberViews
 						where o.Account == member.Account && o.Password == member.Password
 						select o;
-			TempData["member"] = query.FirstOrDefault();
 			if (query.SingleOrDefault() == null) {
-				return Json("erroe!");
+				return Json("error!");
 			}
 			else {
-				return Json("done!");
+				return Json(query.SingleOrDefault());
 			}
 		}
+		public IActionResult SignUp() {
+			return View();
+		}
+		[HttpPost]
+		public IActionResult DoSignUp([FromBody] string mail) {
+			var query = from o in _context.Employers
+						where o.Email == mail
+						select o;
+			if (query.Count() > 0) {
+				return Json("此帳號已經存在!");
+			}
+			else {
+				MailController mailController = new MailController();
+				//var str = mailController.SendTestMail(mail);
+				return Json("");
+			}
+		}
+		public IActionResult doCheckEmail([FromBody] CheckEmail email) {
+			CheckEmail cheachEmail = email;
+			var chatcode = "";
 
-		/*public IActionResult sing()
-        {
-            return View();
-        }*/
+			if (email.checkcode != cheachEmail.checkcode) {
+				return Json(false);
+			}
+			else {
+				return Json(true);
+			}
+		}
+		public class CheckEmail {
+			public string email { get; set; }
+			public string checkcode { get; set; }
+		}
 	}
 }

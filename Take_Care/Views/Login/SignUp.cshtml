@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="app">
+
+	<div class="row">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<form id="msform">
+				<ul id="progressbar">
+					<li class="active">創建帳號</li>
+					<li>驗證信箱</li>
+					<li>基本資料</li>
+				</ul>
+				<fieldset>
+					<p style="color:red;" id="resulttext"></p>
+					<h2 class="fs-title">創建帳號</h2>
+					<h3 class="fs-subtitle">請輸入電子信箱</h3>
+					<input type="text" name="email" placeholder="Email" v-model="Employer.email"/>
+					<input type="button" name="next" class="action-button" value="發送驗證信" v-on:click="sendEmail($event)"/>
+				</fieldset>
+				<fieldset>
+					<p style="color:red;" id="resulttext2"></p>
+					<h2 class="fs-title">驗證信箱</h2>
+					<h3 class="fs-subtitle">請輸入驗證碼</h3>
+					<input type="text" id="emailcode" name="Verification" placeholder="請輸入驗證碼"/>
+					<input type="button" name="" class="resend action-button" value="重新發送" onclick="settime(this)"/>
+					<input type="button" name="previous" class="previous action-button" value="上一步"/>
+					<input type="button" name="next" class="action-button" value="確定" v-on:click="checkEmail($event)"/>
+				</fieldset>
+				<fieldset>
+					<p style="color:red;" id="resulttext3"></p>
+					<h2 class="fs-title">基本資料</h2>
+					<h3 class="fs-subtitle">請輸入基本資料</h3>
+					<input type="password" name="pass" placeholder="密碼" v-model="Employer.password"/>
+					<input type="password" name="cpass" placeholder="確認密碼"/>
+					<input type="text" name="name" placeholder="姓名" v-model="Employer.fullName"/>
+					<input type="text" name="phone" placeholder="電話" v-model="Employer.phoneNumber"/>
+					<div class="row">
+						<div class="col-4">
+							<input type="radio" name="gender" value="男" id="male" v-model="Employer.gender"><label
+								for="male">男</label>
+
+						</div>
+						<div class="col-4"></div>
+						<div class="col-4">
+
+							<input type="radio" name="gender" value="女" id="female" v-model="Employer.gender"><label
+								for="female">女</label>
+						</div>
+					</div>
+					<input type="button" name="previous" class="previous action-button" value="上一步"/>
+					<input type="button" class="submit action-button" v-on:click="createMember()" value="完成"/>
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-lg-4">
+		</div>
+	</div>
+</div>
+<link rel="stylesheet" href="~/css/SignUp.css">
+<script src="~/js/tsukiyoJS/SignUp.js"></script>
