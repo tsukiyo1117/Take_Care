@@ -32,16 +32,20 @@ let app = new Vue({
                 return
             }
             resulttext.innerText="";
-            Donext(event.target);
             $.ajax({
                 type: "POST",
                 url: "https://localhost:7036/mail/sendTestMail",
                 contentType: "application/json",
                 data: JSON.stringify(this.Employer.email),
                 success: function (response) {
-                    MailCode = response;
-                    //console.log(response);
+                    if (response.erroemsg != null) {
+                        resulttext.innerText = response.erroemsg;
+                        return;
+                    }
+                    MailCode = response.mailCode;
+                    console.log(response);
                     console.log("done!");
+                    Donext(event.target);
                 },
                 error: function () {
                     console.log("error!");

@@ -8,9 +8,14 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Services;
 using MimeKit;
 using System.Net.Mail;
+using Take_Care.Models;
 
 namespace Take_Care.Controllers {
 	public class MailController : Controller {
+		private readonly TakeCareContext _context;
+		public MailController(TakeCareContext context) {
+			_context = context;
+		}
 		/// <summary>
 		/// 取得授權的項目
 		/// </summary>
@@ -98,13 +103,21 @@ namespace Take_Care.Controllers {
 
 
 		//public async Task<string> SendTestMail([FromBody] string memberMessage) {
-		public async Task<string> SendTestMail([FromBody] string mail) {
-			string MailCode = MakeRandon();
+		public async Task<ResultMessage> SendTestMail([FromBody] string mail) {
+			ResultMessage result = new ResultMessage();
+			var query = from o in _context.MemberViews
+						where o.Email == mail
+						select o;
+			if (query.Count() > 0) {
+				result.Erroemsg = "此帳號已存在";
+				return result;
+			}
+			result.MailCode = MakeRandon();
 			var service = await GetGmailService();
 
 			GmailMessage message = new GmailMessage();
 			message.Subject = "信箱驗證碼";
-			message.Body = $"<h1>驗證碼</h1><p>{MailCode}</p>";
+			message.Body = $"<h1>驗證碼</h1><p>{result.MailCode}</p>";
 			message.FromAddress = "94forteamwork@gmail.com";
 			message.IsHtml = true;
 			//message.ToRecipients = memberMessage;
@@ -118,7 +131,7 @@ namespace Take_Care.Controllers {
 			SendEmail(message, service);
 			Console.WriteLine("OK");
 
-			return MailCode;
+			return result;
 			//return true;
 		}
 
@@ -160,8 +173,8 @@ namespace Take_Care.Controllers {
 
 			public List<System.Net.Mail.Attachment> Attachments { get; set; }
 		}
-		public class MemberMessage {
-			public string MemberMail { get; set; }
+		public class ResultMessage {
+			public string Erroemsg { get; set; }
 			public string MailCode { get; set; }
 		}
 
