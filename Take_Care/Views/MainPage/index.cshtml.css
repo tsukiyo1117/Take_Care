@@ -16,7 +16,13 @@ a:visited{
     display: block;
 }
 
+ #healty a:hover{
+     background-color:mistyrose;
+ }
 
+#government a:hover{
+    background-color:mistyrose;
+}
 
 .myright {
     position: fixed;

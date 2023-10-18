@@ -14,9 +14,13 @@
     font-size: 23px;
 }
 
-    .accordion-body:hover {
-        background-color: wheat;
-    }
+.accordion-body p:hover {
+    background-color: wheat;
+}
+
+.accordion-body li:hover {
+    background-color: wheat;
+}
 
 /* .accordion-button{
     background-color: red;
