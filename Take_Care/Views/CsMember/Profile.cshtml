@@ -161,7 +161,7 @@
                                                         <label>生日</label>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="datepicker" width="276" />
+                                                        <input class="form-control" id="datepicker" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -409,7 +409,9 @@
         $("#twzipcode3").twzipcode();
 
 
-        $('#datepicker').datepicker();
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
 
     </script>
 
