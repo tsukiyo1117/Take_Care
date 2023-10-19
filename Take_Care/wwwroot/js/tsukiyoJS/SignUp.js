@@ -1,6 +1,6 @@
 ﻿let MailCode = "";
 let app = new Vue({
-    el: "#app",
+    el: "#SignUpapp",
     data: {
         Employer: {
             // account: "",
@@ -13,8 +13,7 @@ let app = new Vue({
     },
     methods: {
         createMember: function () {
-            let str = this.Employer.email.split("@");
-            this.Employer.account = str[0];
+            this.Employer.account = this.Employer.email.split("@")[0];
             console.log(this.Employer);
             $.ajax({
                 type: "POST",
@@ -28,10 +27,10 @@ let app = new Vue({
         },
         sendEmail: function (event) {
             if (this.Employer.email == null) {
-                resulttext.innerText="請輸入信箱!";
+                resulttext.innerText = "請輸入信箱!";
                 return
             }
-            resulttext.innerText="";
+            resulttext.innerText = "";
             $.ajax({
                 type: "POST",
                 url: "https://localhost:7036/mail/sendTestMail",
@@ -59,20 +58,14 @@ let app = new Vue({
             } else {
                 resulttext2.innerText = "驗證碼錯誤!!";
             }
-            //$.ajax({
-            //    type: "POST",
-            //    url: "https://localhost:7036/login/doCheckEmail",
-            //    contentType: "application/json",
-            //    data: JSON.stringify({ email: this.Employer.email, checkcode: emailcode.value }),
-            //    success: function (response) {
-            //        if (response) {
-            //            Donext(event.target);
-            //        } else {
-            //            resulttext2.innerText = "驗證碼錯誤!"
-            //        }
-            //    }
-            //})
-            
+        },
+        inputBlur: function (event) {
+            if (event.target.checkValidity()) {
+                event.target.style.border= "1px solid green";
+                //event.target.classList.add("valid");
+            } else {
+                event.target.classList.add("invalid");
+            }
         }
     }
 })
@@ -90,7 +83,7 @@ function Donext(sender) {
     next_fs = $(sender).parent().next();
     $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
     next_fs.show();
-    current_fs.animate({ opacity: 0 }, {
+    current_fs.animate({opacity: 0}, {
         step: function (now, mx) {
             scale = 1 - (1 - now) * 0.2;
             left = (now * 50) + "%";
@@ -99,7 +92,7 @@ function Donext(sender) {
                 'transform': 'scale(' + scale + ')',
                 'position': 'absolute'
             });
-            next_fs.css({ 'left': left, 'opacity': opacity });
+            next_fs.css({'left': left, 'opacity': opacity});
         },
         duration: 800,
         complete: function () {
@@ -126,12 +119,12 @@ $(".previous").click(function () {
     $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
     previous_fs.show();
-    current_fs.animate({ opacity: 0 }, {
+    current_fs.animate({opacity: 0}, {
         step: function (now, mx) {
             scale = 0.8 + (1 - now) * 0.2;
             left = ((1 - now) * 50) + "%";
             opacity = 1 - now;
-            current_fs.css({ 'left': left });
+            current_fs.css({'left': left});
             previous_fs.css({
                 'transform': 'scale(' + scale + ')',
                 'opacity': opacity,
@@ -142,7 +135,7 @@ $(".previous").click(function () {
         complete: function () {
             current_fs.hide();
             animating = false;
-            previous_fs.css({ 'position': 'relative' })
+            previous_fs.css({'position': 'relative'})
         },
         easing: 'easeInOutBack'
     });
