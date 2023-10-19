@@ -6,14 +6,13 @@
 
 @model List<Employee>
 
-@*篩選功能*@
-<div>
-	<div >
-		<button >全部</button>
-		<button >男性</button>
-		<button >女性</button>
-	</div>
+@*篩選按鈕*@
+<div class="button-container">
+	<button id="btnselectall">全部</button>
+	<button id="btnselectman">男性</button>
+	<button id="btnselectwoman">女性</button>
 </div>
+
 
 @*卡片*@
 <div class="custom-container">
@@ -26,7 +25,7 @@
 				<div class="card-body">
 					<h3 class="card-title">@employee.EmployeeName</h3>
 					<p class="card-text">
-						<span>@employee.Gender</span>性照顧服務員
+						<span class="gender">@employee.Gender</span>性照顧服務員
 					</p>
 				</div>
 			</div>
@@ -35,4 +34,39 @@
 	</div>
 </div>
 
+
+<script>
+	//顯示全部照服員
+	btnselectall.addEventListener("click", function filterall() {
+		document.querySelectorAll(".gender").forEach(function (item){
+			item.parentNode.parentNode.parentNode.style.display = "block";
+		})
+	});
+	
+	//顯示男性照服員
+	btnselectman.addEventListener("click", function filterman() {
+
+		document.querySelectorAll(".gender").forEach(function (item) {
+			if (item.innerText == "女") {
+				item.parentNode.parentNode.parentNode.style.display = "none";
+			} else {
+				item.parentNode.parentNode.parentNode.style.display = "block";
+			}
+		})
+	});
+
+	//顯示女性照服員
+	btnselectwoman.addEventListener("click", function filterwoman() {
+
+		document.querySelectorAll(".gender").forEach(function (item) {
+			if (item.innerText == "男") {
+				item.parentNode.parentNode.parentNode.style.display = "none";
+			} else {
+				item.parentNode.parentNode.parentNode.style.display = "block";
+			}
+		})
+	});
+
+
+</script>
 

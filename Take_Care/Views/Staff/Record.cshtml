@@ -36,11 +36,11 @@
                                     <!-- 用日期查詢紀錄 -->
                                     <div>
                                         <label style="font-size: 23px"><b>開始日期:</b></label>
-                                        <input type="text" placeholder="YYYY/MM/DD" name="startdate" id="" style="width: 180px">
+                                        <input type="text" placeholder="YYYY-MM-DD" name="startdate" id="datepicker" style="width: 180px">
                                         &nbsp;&nbsp;
 
                                         <label style="font-size: 23px"><b>結束日期:</b></label>
-                                        <input type="text" placeholder="YYYY/MM/DD" name="enddate" id="" style="width: 180px">
+                                        <input type="text" placeholder="YYYY-MM-DD" name="enddate" id="datepicker" style="width: 180px">
                                         &nbsp;&nbsp;
 
                                         <button>查詢</button>
@@ -63,6 +63,7 @@
                                             <tr style="font-size: 20px;">
                                                 <td>1</td>
                                                 <td>2023.10.12</td>
+                                                <td>10~11點</td>
                                                 <td>王曉明</td>
                                                 <td>協助進食或管灌餵食</td>
                                                 <td>$500</td>
@@ -93,8 +94,11 @@
         $("#twzipcode3").twzipcode();
 
 
-        $('#datepicker').datepicker();
+        //$('#datepicker').datepicker();
 
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
     </script>
 
 
