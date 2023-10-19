@@ -35,21 +35,23 @@ public partial class TakeCareContext : DbContext
 
     public virtual DbSet<PersonalInfo> PersonalInfos { get; set; }
 
+    public virtual DbSet<PersonalInfoView> PersonalInfoViews { get; set; }
+
     public virtual DbSet<ServiceItem> ServiceItems { get; set; }
 
     public virtual DbSet<ServiceItemsDetail> ServiceItemsDetails { get; set; }
 
     public virtual DbSet<SubsidyLevel> SubsidyLevels { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=.;Database=Take_Care;Integrated Security=True;Encrypt=False;");
+//     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//         => optionsBuilder.UseSqlServer("Server=.;Database=Take_Care;Integrated Security=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Case>(entity =>
         {
-            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C48C91FEA");
+            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C5967D0BE");
 
             entity.Property(e => e.CaseId).HasColumnName("CaseID");
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
@@ -63,17 +65,17 @@ public partial class TakeCareContext : DbContext
             entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
                 .HasForeignKey(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployeeI__3C69FB99");
+                .HasConstraintName("FK__Cases__EmployeeI__37703C52");
 
             entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
                 .HasForeignKey(d => d.EmployerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployerI__3D5E1FD2");
+                .HasConstraintName("FK__Cases__EmployerI__3864608B");
         });
 
         modelBuilder.Entity<Citizenshipstatus>(entity =>
         {
-            entity.HasKey(e => e.CitizenshipstatuId).HasName("PK__Citizens__58853619835E9746");
+            entity.HasKey(e => e.CitizenshipstatuId).HasName("PK__Citizens__5885361912BEA187");
 
             entity.ToTable("Citizenshipstatus");
 
@@ -87,7 +89,7 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<EmergencyContact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__Emergenc__82ACC1CDC8255DB6");
+            entity.HasKey(e => e.ContactId).HasName("PK__Emergenc__82ACC1CD85EA98D7");
 
             entity.ToTable("Emergency_Contacts");
 
@@ -113,11 +115,11 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04FF12F2AFD99");
+            entity.HasKey(e => e.EmployeeId).HasName("PK__Employee__7AD04FF1E7D2045A");
 
-            entity.HasIndex(e => e.Email, "UQ__Employee__A9D10534FA54D21E").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Employee__A9D105344CF63248").IsUnique();
 
-            entity.HasIndex(e => e.Account, "UQ__Employee__B0C3AC4621675DDD").IsUnique();
+            entity.HasIndex(e => e.Account, "UQ__Employee__B0C3AC467976D68A").IsUnique();
 
             entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
             entity.Property(e => e.Account)
@@ -154,11 +156,11 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<Employer>(entity =>
         {
-            entity.HasKey(e => e.EmployerId).HasName("PK__Employer__CA4452418DEBFC6E");
+            entity.HasKey(e => e.EmployerId).HasName("PK__Employer__1788CCACB247CE8E");
 
-            entity.HasIndex(e => e.Email, "UQ__Employer__A9D105343D5EC536").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Employer__A9D10534A957DDB0").IsUnique();
 
-            entity.HasIndex(e => e.Account, "UQ__Employer__B0C3AC46C9628DFC").IsUnique();
+            entity.HasIndex(e => e.Account, "UQ__Employer__B0C3AC4687B45FE7").IsUnique();
 
             entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
             entity.Property(e => e.Account)
@@ -166,6 +168,9 @@ public partial class TakeCareContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.Address)
                 .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.AddressSection)
+                .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.Birthday).HasColumnType("date");
             entity.Property(e => e.Email)
@@ -294,11 +299,11 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<PersonalInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC27D31097AB");
+            entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC27EE778406");
 
             entity.ToTable("Personal_Info");
 
-            entity.HasIndex(e => e.IdentityCard, "UQ__Personal__A450139A16602D73").IsUnique();
+            entity.HasIndex(e => e.IdentityCard, "UQ__Personal__A450139A9FB8F5FE").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Birthday).HasColumnType("date");
@@ -314,6 +319,10 @@ public partial class TakeCareContext : DbContext
             entity.Property(e => e.MailingAddress)
                 .HasMaxLength(255)
                 .HasColumnName("Mailing_Address");
+            entity.Property(e => e.MailingAddressSection)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("Mailing_AddressSection");
             entity.Property(e => e.MedicalCondition)
                 .HasMaxLength(255)
                 .HasColumnName("Medical_Condition");
@@ -322,6 +331,10 @@ public partial class TakeCareContext : DbContext
             entity.Property(e => e.ResidentialAddress)
                 .HasMaxLength(255)
                 .HasColumnName("Residential_Address");
+            entity.Property(e => e.ResidentialAddressSection)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("Residential_AddressSection");
             entity.Property(e => e.ResidentialStatus)
                 .HasMaxLength(50)
                 .HasColumnName("Residential_Status");
@@ -334,9 +347,62 @@ public partial class TakeCareContext : DbContext
                 .HasConstraintName("FK_Personal_Info_Employers");
         });
 
+        modelBuilder.Entity<PersonalInfoView>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("PersonalInfoView");
+
+            entity.Property(e => e.EmployerAccount)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerAddress)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerAddressSection)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerEmail)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerFullName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerGender)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerPassword)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerPhoneNumber)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.EmployerPhotoUrl)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("EmployerPhotoURL");
+            entity.Property(e => e.PersonaWelfareStatusl).HasMaxLength(50);
+            entity.Property(e => e.PersonalBirthday).HasColumnType("date");
+            entity.Property(e => e.PersonalGender).HasMaxLength(10);
+            entity.Property(e => e.PersonalIdentityCard).HasMaxLength(10);
+            entity.Property(e => e.PersonalLanguage).HasMaxLength(50);
+            entity.Property(e => e.PersonalLongTermCareStatus).HasMaxLength(50);
+            entity.Property(e => e.PersonalMailingAddress).HasMaxLength(255);
+            entity.Property(e => e.PersonalMailingAddressSection)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.PersonalMedicalCondition).HasMaxLength(255);
+            entity.Property(e => e.PersonalName).HasMaxLength(255);
+            entity.Property(e => e.PersonalRemark).HasMaxLength(255);
+            entity.Property(e => e.PersonalResidentialAddress).HasMaxLength(255);
+            entity.Property(e => e.PersonalResidentialAddressSection)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<ServiceItem>(entity =>
         {
-            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD899A02168");
+            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD8FDC50EE4");
 
             entity.Property(e => e.ServiceItemId).HasColumnName("ServiceItemID");
             entity.Property(e => e.Price)
@@ -348,7 +414,7 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<ServiceItemsDetail>(entity =>
         {
-            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD86023A4BA");
+            entity.HasKey(e => e.ServiceItemId).HasName("PK__ServiceI__CC153FD81BBE1E8C");
 
             entity.ToTable("ServiceItemsDetail");
 
@@ -362,7 +428,7 @@ public partial class TakeCareContext : DbContext
 
         modelBuilder.Entity<SubsidyLevel>(entity =>
         {
-            entity.HasKey(e => e.SubsidyLevelId).HasName("PK__SubsidyL__B26BEB1895CB6835");
+            entity.HasKey(e => e.SubsidyLevelId).HasName("PK__SubsidyL__B26BEB18454DC22E");
 
             entity.ToTable("SubsidyLevel");
 
