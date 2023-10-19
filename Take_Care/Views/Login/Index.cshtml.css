@@ -1,6 +1,4 @@
-﻿body {
-}
-
+﻿
 .logintitle {
     text-align: center;
     font-size: 50px;
@@ -71,22 +69,22 @@ input[type=checkbox] {
     justify-content: center;
 }
 
-    .leftBox button:hover {
-        font-weight: 600;
-        background: #000;
-        color: #fff;
-    }
+.leftBox button:hover {
+    font-weight: 600;
+    background: #000;
+    color: #fff;
+}
 
-    .leftBox button span {
-        display: inline-block;
-        width: 0px;
-        overflow: hidden;
-        transition: width 0.5s;
-    }
+.leftBox button span {
+    display: inline-block;
+    width: 0px;
+    overflow: hidden;
+    transition: width 0.5s;
+}
 
-    .leftBox button:hover span {
-        width: 40px;
-    }
+.leftBox button:hover span {
+    width: 40px;
+}
 
 .rightBox a {
     display: block;
@@ -101,10 +99,10 @@ input[type=checkbox] {
     transition: 0.3s;
 }
 
-    .rightBox a i {
-        font-size: 18px;
-        margin-right: 10px;
-    }
+.rightBox a i {
+    font-size: 18px;
+    margin-right: 10px;
+}
 
 .fb_Link {
     background: #1778f2;
@@ -124,22 +122,28 @@ input[type=checkbox] {
     font-size: 15px;
 }
 
-    .login_msg a {
-        color: #ea4335;
-        text-decoration: none;
-        margin-left: 10px;
-    }
+.login_msg a {
+    color: #ea4335;
+    text-decoration: none;
+    margin-left: 10px;
+}
 
-        .login_msg a:hover {
-            text-decoration: underline;
-        }
+.login_msg a:hover {
+    text-decoration: underline;
+}
 
 .rightBox a {
     --c: goldenrod;
 }
 
 
-    .rightBox a:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
-    }
+.rightBox a:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+#GOOGLE_login {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}
