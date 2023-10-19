@@ -1,0 +1,182 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<style>
+    #sideBar {
+        width: 15rem;
+        height: 25rem;
+        position: relative;
+        border-radius: 1rem;
+        border: 2px;
+        /* border-style:double */
+    }
+
+        #sideBar:hover {
+            cursor: pointer;
+        }
+</style>
+
+<div class="row" id="sideBar">
+    <div class=" mx-auto" id="app">
+
+        <accordion :content="sideBarContent" :multiple="true"></accordion>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                sideBarContent: [
+                    {
+                        id: 1,
+                        iconClass: "fa-solid fa-user",
+                        active: false,
+                        title: "我的帳戶",
+                        contents: [
+                            { text: "個人檔案", link: "Index" },
+                            { text: "自我介紹", link: "SelfIntro"},
+                            { text: "更改密碼", link: "ChangePassword" },
+                        ],
+                        url: ""
+
+                    },
+                    {
+
+                        id: 2,
+                        iconClass: "fa-solid fa-calendar-days",
+                        active: false,
+                        title: "我的排程",
+                        // contents: "content 3"
+                        url: ""
+                    },
+                    //{
+                    //    id: 3,
+                    //    iconClass: "fa-solid fa-calculator",
+                    //    active: false,
+                    //    title: "服務費用試算",
+                    //    // contents: "content 2"
+                    //    url: ""
+
+                    //},
+                    {
+                        id: 4,
+                        iconClass: "fa-solid fa-bell",
+                        active: false,
+                        title: "我的通知",
+                        url: "./CaseMemberNotification.html"
+                    },
+                    {
+                        id: 5,
+                        iconClass: "fa-solid fa-clock-rotate-left",
+                        active: false,
+                        title: "服務歷史紀錄",
+                        // contents: "content 2"
+                        url: ""
+                    },
+                ],
+
+            }
+        }
+    });
+
+    app.component("accordion", {
+        props: {
+            content: {
+                type: Array,
+                required: true
+            },
+            multiple: {
+                type: Boolean,
+                default: false
+            },
+            expandall: {
+                type: Boolean,
+                default: false
+            }
+        },
+        data() {
+            return {
+                expand: false,
+                expandBtnText: "Expand"
+            };
+        },
+        template: `<div class="flex flex-col bg-gray-200">
+
+                                                                            <div class="m-2" v-for="(item, index) in content" :key="item.id">
+
+
+                                                                            <h3
+                                                                                                @@click="toggle(index)" class="text-gray-100 bg-gray-700 px-3 py-2 cursor-pointer myTitle" style=" font-size: 1.3rem; font-weight: 900;" >
+                                                                                <a v-on:click="item.title !== '我的帳戶' ? handleLinkClick(item.url) : null" style="font-size:20px">
+                                                                                <i :class="item.iconClass" style="font-size:20px"></i>
+                                                                                    {{ item.title }}</a>
+                                                                                     &nbsp;
+                                                                                            <i v-if="item.title === '我的帳戶'" :class="{'fa fa-chevron-down': !item.active, 'fa fa-chevron-up': item.active}"
+                                                                                            style="font-size:10px;vertical-align: middle;
+                                                                                                position: relative;
+                                                                                                margin-left: 2px;
+                                                                                                float: right;"></i></h3>
+
+                                                                            <div v-show="item.active" class="text-gray-700 bg-gray-400  px-2 ">
+                                                                                        <ul class="myContent" style="list-style-type: none;">
+                                                                                    <li v-for="(contentItem, contentIndex) in item.contents" :key="contentIndex">
+                                                                                        <a :href="contentItem.link" style="font-size:18px"
+                                                                                                style="text-decoration: none;
+                                                                                                color:black;
+                                                                                                        opacity: 0.8;" onmouseover="this.style.color='coral';" onmouseout="this.style.color='initial';">{{ contentItem.text }}</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                          </div>`,
+
+        methods: {
+            toggle(index) {
+
+                // 如果點擊的是「我的帳戶」，則切換其 active 狀態
+                if (this.content[index].title === '我的帳戶') {
+                    this.content[index].active = !this.content[index].active;
+
+                };
+
+            },
+            expandAll() {
+                if (!this.expand) {
+                    this.content.map((x) => {
+                        // 只在點擊我的帳戶時會展開
+                        if (x.title === '我的帳戶') {
+
+                            x.active = true;
+
+                        } else {
+
+                            x.active = false;
+
+                        }
+                    });
+                    this.expand = true;
+                    this.expandBtnText = "Contract";
+                } else {
+                    this.content.map((x) => {
+                        x.active = false;
+                    });
+                    this.expand = false;
+                    this.expandBtnText = "Expand";
+                }
+            },
+            handleLinkClick(url) { window.location.href = url }
+        }
+    });
+
+    const vm = app.mount("#app");
+
+
+</script>
