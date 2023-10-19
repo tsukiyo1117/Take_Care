@@ -10,7 +10,7 @@
         DoLogin: function () {
             $.ajax({
                 type: "POST",
-                url: '@Url.Content("~/login/Dologin")',
+                url: "https://localhost:7036/login/Dologin",
                 contentType: "application/json",
                 data: JSON.stringify(this.member),
                 statusCode: {
