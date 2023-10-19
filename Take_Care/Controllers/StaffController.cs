@@ -8,5 +8,27 @@ namespace Take_Care.Controllers
 		{
 			return View();
 		}
+
+        public IActionResult SelfIntro()
+        {
+            return View();
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+		public IActionResult Record()
+		{
+			return View();
+		}
+
+		public IActionResult Schedule()
+		{
+			return View();
+		}
+
 	}
+	
 }

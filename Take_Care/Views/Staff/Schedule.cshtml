@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@await Html.PartialAsync("_HeadPartial")
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 ">
+                <div class="row bg-info " id="userPic">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                         alt="user">
+                    <span class="row">
+                        UserAccount
+                    </span>
+                </div>
+                @await Html.PartialAsync("_SideBarPartial")
+            </div>
+            <div class="col-10" id="mainPage">
+                <div class="container emp-profile" style="margin:0px">
+                    <form method="post">                     
+
+                        <div class="row">
+                            <!-- 排程 -->
+                            <div class="col" id="">
+                                <div class="">
+                                    <div>
+                                        <div style="font-size: 40px; margin-top: 30px;">我的排程</div>
+                                        <div style="font-size: 30px;"></div>
+                                        <hr>
+                                    </div>
+                                    <br>
+                                    <!-- 查詢紀錄 -->
+                                    <div>
+                                        <label style="font-size: 23px"><b>開始日期:</b></label>
+                                        <input type="text" placeholder="YYYY/MM/DD" name="startdate" id="" style="width: 180px">
+                                        &nbsp;&nbsp;
+
+                                        <label style="font-size: 23px"><b>結束日期:</b></label>
+                                        <input type="text" placeholder="YYYY/MM/DD" name="enddate" id="" style="width: 180px">
+                                        &nbsp;&nbsp;
+
+                                        <button>查詢</button>                                        
+                                    </div>
+                                    <!-- 表格 -->
+                                    <div>
+                                        <table class="table table-bordered align-middle" style="margin-top: 40px;">
+                                            <tr style="font-size: 20px;">
+                                                <th style="background-color: burlywood;">服務日期</th>
+                                                <th style="background-color: burlywood;">服務時間</th>
+                                                <th style="background-color: burlywood;">服務項目</th>
+                                                <th style="background-color: burlywood;">案主名稱</th>
+                                                <th style="background-color: burlywood;">案主地址</th>
+                                                <th style="background-color: burlywood;">備註</th>
+                                                <th style="background-color: burlywood;">功能</th>
+                                            </tr>
+                                            <tr style="font-size: 20px;">
+                                                <td>2023.10.18</td>
+                                                <td>10~11點</td>
+                                                <td>協助進食或管灌餵食</td>
+                                                <td>王曉明</td>
+                                                <td>台中市南屯區公益路51號</td>
+                                                <td>需要bla lba bla</td>
+                                                <td><button>取消</button></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/CsMember/jquery.twzipcode.min.js"></script>
+    <script src="~/js/CsMember/getaddress.js"></script>
+    <script src="~/js/CsMember/profile.js"></script>
+    <script src="~/js/CsMember/Prev&Next.js"></script>
+    <script src="~/js/CsMember/changeTabHref.js"></script>
+
+
+    <script>
+
+        $("#twzipcode").twzipcode();
+        $("#twzipcode2").twzipcode();
+        $("#twzipcode3").twzipcode();
+
+
+        $('#datepicker').datepicker();
+
+    </script>
+
+
+</body>

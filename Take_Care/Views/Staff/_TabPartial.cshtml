@@ -1,0 +1,92 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<style>
+    .profile-head h3 {
+        color: #333;
+    }
+
+    .profile-edit-btn {
+        border: none;
+        border-radius: 2rem;
+        padding: 5%;
+        font-weight: 600;
+        color: #6c757d;
+        font-size:20px;
+        cursor: pointer;
+        position: relative;
+        /* left: 22rem; */
+    }
+
+    .profile-head .nav-tabs {
+        margin-bottom: 5%;
+    }
+
+        .profile-head .nav-tabs .nav-link {
+            font-weight: 600;
+            border: none;
+        }
+
+            .profile-head .nav-tabs .nav-link.active {
+                border: none;
+                border-bottom: 2px solid #0062cc;
+            }
+
+
+    .profile-tab label {
+        font-weight: 600;
+    }
+
+    #myTab {
+        position: relative; /* 将 .nav 设置为相对定位的父元素 */
+        /* padding-bottom: 1rem; */
+        width: 200%;
+    }
+
+    #myTabContent {
+        padding: 0.5rem;
+        /* display: flex; */
+    }
+
+        #myTabContent .row {
+            padding: 10px;
+        }
+</style>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="profile-head">
+            <h3>
+                Kshiti Ghelani
+            </h3>
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" onclick="toggleProfileSection()">
+                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                       href="#profile" role="tab" aria-controls="profile" aria-selected="true"
+                       id="ProfileSectionbtn">個人檔案</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#SelfIntro"
+                       role="tab" aria-controls="details" aria-selected="false">自我介紹</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="forgotPassword-tab" data-bs-toggle="tab"
+                       href="#ChangePassword" role="tab" aria-controls="forgotPassword"
+                       aria-selected="false">更改密碼</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
+        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"
+               id="editButton" />
+    </div>
+
+</div>

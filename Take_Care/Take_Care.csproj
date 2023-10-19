@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\CsMember\changeTabHref.js" />
     <None Include="wwwroot\js\CsMember\getaddress.js" />
     <None Include="wwwroot\js\CsMember\jquery.twzipcode.min.js" />
     <None Include="wwwroot\js\CsMember\Prev&amp;Next.js" />

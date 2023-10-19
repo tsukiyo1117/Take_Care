@@ -11,10 +11,10 @@ namespace Take_Care.Controllers
 		}
 		
 		// 員工
-		private EmployeeContext _context;
-		public AboutUsController()
+		private TakeCareContext _context;
+		public AboutUsController(TakeCareContext context)
 		{
-			_context = new EmployeeContext();
+			_context = context;
 		}
 		public IActionResult Staff()
 		{
