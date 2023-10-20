@@ -19,6 +19,8 @@ public partial class TakeCareContext : DbContext
 
     public virtual DbSet<Citizenshipstatus> Citizenshipstatuses { get; set; }
 
+    public virtual DbSet<EcpayOrder> EcpayOrders { get; set; }
+
     public virtual DbSet<EmergencyContact> EmergencyContacts { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
@@ -84,6 +86,22 @@ public partial class TakeCareContext : DbContext
             entity.Property(e => e.Category).HasMaxLength(50);
             entity.Property(e => e.Respite).HasColumnType("money");
             entity.Property(e => e.Transport).HasColumnType("money");
+        });
+
+        modelBuilder.Entity<EcpayOrder>(entity =>
+        {
+            entity.HasKey(e => e.MerchantTradeNo);
+
+            entity.Property(e => e.MerchantTradeNo).HasMaxLength(50);
+            entity.Property(e => e.MemberId)
+                .HasMaxLength(50)
+                .HasColumnName("MemberID");
+            entity.Property(e => e.PaymentDate).HasColumnType("datetime");
+            entity.Property(e => e.PaymentType).HasMaxLength(50);
+            entity.Property(e => e.PaymentTypeChargeFee).HasMaxLength(50);
+            entity.Property(e => e.RtnMsg).HasMaxLength(50);
+            entity.Property(e => e.TradeDate).HasMaxLength(50);
+            entity.Property(e => e.TradeNo).HasMaxLength(50);
         });
 
         modelBuilder.Entity<EmergencyContact>(entity =>
