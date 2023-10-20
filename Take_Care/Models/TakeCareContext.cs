@@ -43,34 +43,33 @@ public partial class TakeCareContext : DbContext
 
     public virtual DbSet<SubsidyLevel> SubsidyLevels { get; set; }
 
-//     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//         => optionsBuilder.UseSqlServer("Server=.;Database=Take_Care;Integrated Security=True;Encrypt=False;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=.;Database=Take_Care;Integrated Security=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Case>(entity =>
         {
-            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C5967D0BE");
+            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C0A607B6A");
 
             entity.Property(e => e.CaseId).HasColumnName("CaseID");
-            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.Commission).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Amount).HasColumnType("money");
             entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
             entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
-            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+            entity.Property(e => e.Remark).HasMaxLength(255);
+            entity.Property(e => e.ServiceName).HasMaxLength(50);
             entity.Property(e => e.StartDateTime).HasColumnType("datetime");
-            entity.Property(e => e.TaskName).HasMaxLength(50);
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
                 .HasForeignKey(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployeeI__37703C52");
+                .HasConstraintName("FK__Cases__EmployeeI__4F47C5E3");
 
             entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
                 .HasForeignKey(d => d.EmployerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployerI__3864608B");
+                .HasConstraintName("FK__Cases__EmployerI__503BEA1C");
         });
 
         modelBuilder.Entity<Citizenshipstatus>(entity =>
