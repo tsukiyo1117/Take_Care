@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Take_Care.Models.Citizenshipstatus>
+﻿@*@model IEnumerable<Take_Care.Models.Citizenshipstatus>*@
 
 
 
 <div class="container">
-	<p>@Html.DisplayNameFor(aa => aa.CitizenshipstatuId)</p>
+	@*<p>@Html.DisplayNameFor(aa => aa.CitizenshipstatuId)</p>
 	@foreach (var item in Model) {
 		<tr>
 			<td>
@@ -24,7 +24,7 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.Respite)
 			</td>
-		</tr>
+		</tr>*@
 	}
 	<div class="row">
 
