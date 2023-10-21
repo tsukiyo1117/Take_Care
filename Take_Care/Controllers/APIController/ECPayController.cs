@@ -2,29 +2,34 @@
 using System.Text;
 using System.Web;
 using Take_Care.Models;
-using XSystem.Security.Cryptography;
+using System.Security.Cryptography;
+using System.Text.Json;
+using Newtonsoft.Json;
+using ECPay.Payment.Integration;
+using HttpMethod = ECPay.Payment.Integration.HttpMethod;
 
 namespace Take_Care.Controllers.APIController {
 	public class ECPayController : Controller {
-		private readonly TakeCareContext _CareContext;
+		private readonly TakeCareContext _context;
 		public ECPayController(TakeCareContext context) {
-			_CareContext = context;
+			_context = context;
 		}
 
-		//[HttpPost]
-		public IActionResult DoTestPay(Case usercase) {
+		[HttpPost]
+		public IActionResult DoTestPay([FromBody]Case usercase) {
 			var orderId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
 			//需填入你的網址
 			var website = $"https://localhost:7036";
 			var order = new Dictionary<string, string>
 			{
 				//綠界需要的參數
-				{ "MerchantTradeNo", usercase.CaseId.ToString()},
+				{ "MerchantTradeNo", orderId},
 				{ "MerchantTradeDate",  DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")},
 				{ "TotalAmount",  usercase.Amount.ToString()},
 				{ "TradeDesc",  "無"},
 				{ "ItemName", usercase.ServiceName },
 				{ "ExpireDate",  "3"},
+				{ "CustomField1", usercase.CaseId.ToString() },
 				{ "ReturnURL",  $"{website}/api/AddPayInfo"},
 				{ "OrderResultURL", $"{website}/ECPay/PayInfo/{orderId}"},
 				{ "PaymentInfoURL",  $"{website}/api/AddAccountInfo"},
@@ -36,6 +41,11 @@ namespace Take_Care.Controllers.APIController {
 				{ "EncryptType",  "1"},
 			};
 			order["CheckMacValue"] = GetCheckMacValue(order);
+			// HttpClient Client = new HttpClient();
+			// HttpContent content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
+			// HttpResponseMessage response = Client.PostAsync("https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5", content).Result;
+			// string strResponse =  response.Content.ReadAsStringAsync().Result;
+			// var result = JsonConvert.DeserializeObject<T>(strResponse);
 			return Json(order);
 		}
 		private string GetCheckMacValue(Dictionary<string, string> order) {
@@ -53,7 +63,7 @@ namespace Take_Care.Controllers.APIController {
 		}
 		private string GetSHA256(string value) {
 			var result = new StringBuilder();
-			var sha256 = SHA256Managed.Create();
+			var sha256 = SHA256.Create();
 			var bts = Encoding.UTF8.GetBytes(value);
 			var hash = sha256.ComputeHash(bts);
 			for (int i = 0; i < hash.Length; i++) {
