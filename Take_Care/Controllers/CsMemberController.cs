@@ -28,6 +28,13 @@ namespace Take_Care.Controllers
             return View();
 
         }
-		
+
+        public IActionResult CsRecord()
+        {
+
+            return View();
+
+        }
+
     }
 }

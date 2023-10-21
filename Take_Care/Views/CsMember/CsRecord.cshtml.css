@@ -17,7 +17,8 @@
 #mainPage {
     margin-top: 2rem;
     /*    height: 40rem;*/
-/*    background-color: white*/
+    background-color: white;
+     
 }
 
 .col-2 div img {
@@ -36,7 +37,7 @@
 /*myProfile.css*/
 
 .emp-profile {
-    /*    padding: 3%;*/
+    padding: 3%;
     border-radius: 0.5rem;
     background: #fff;
 }
