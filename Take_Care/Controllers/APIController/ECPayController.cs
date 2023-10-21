@@ -38,9 +38,9 @@ namespace Take_Care.Controllers.APIController
                 { "CustomField1", "1" },
                 { "ReturnURL", $"{website}/api/AddPayInfo" },
                 //{ "OrderResultURL", $"{website}/ECPay/PayInfo/{orderId}" },
-                { "OrderResultURL", "" },
+                { "OrderResultURL", $"{website}/ECPay/SetPay/{orderId}" },
                 //{ "PaymentInfoURL", $"{website}/api/AddAccountInfo" },
-                { "PaymentInfoURL", "" },
+                { "PaymentInfoURL", $"{website}/ECPay/SetPay/{orderId}" },
                 { "ClientRedirectURL", $"{website}/ECPay/SetPay/{orderId}" },
                 { "MerchantID", "2000132" },
                 { "IgnorePayment", "GooglePay#WebATM#CVS#BARCODE" },
@@ -50,7 +50,7 @@ namespace Take_Care.Controllers.APIController
             };
             order["CheckMacValue"] = GetCheckMacValue(order);
             EcpayOrder ECorder = new EcpayOrder();
-            ECorder.MemberId = order["CustomField1"];
+            ECorder.MemberId = int.Parse(order["CustomField1"]);
             ECorder.MerchantTradeNo = order["MerchantTradeNo"];
             ECorder.RtnCode = 0;
             ECorder.RtnMsg = "訂單成功尚未付款";
@@ -63,14 +63,11 @@ namespace Take_Care.Controllers.APIController
             ECorder.SimulatePaid = 0;
             _context.EcpayOrders.Add(ECorder);
             _context.SaveChanges();
-            // HttpClient Client = new HttpClient();
-            // HttpContent content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
-            // HttpResponseMessage response = Client.PostAsync("https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5", content).Result;
-            // string strResponse =  response.Content.ReadAsStringAsync().Result;
-            // var result = JsonConvert.DeserializeObject<T>(strResponse);
             return Json(order);
         }
 
+        [HttpPost]
+        //[Route("CsMember/SetPay")]
         public IActionResult SetPay(IFormCollection id)
         {
             var data = new Dictionary<string, string>();
@@ -79,15 +76,15 @@ namespace Take_Care.Controllers.APIController
                 data.Add(key, id[key]);
             }
 
-            var order = _context.EcpayOrders.ToList().Where(x => x.MerchantTradeNo == id["MerchantTradeNo"])
-                .FirstOrDefault();
-            order.RtnCode = int.Parse(id["RtnCode"]);
-            order.RtnMsg = (id["RtnMsg"] == "Succeeded") ? "訂單成功已付款" : order.RtnMsg;
-            order.PaymentDate = Convert.ToDateTime(id["PaymentDate"]);
-            order.SimulatePaid = int.Parse(id["SimulatePaid"]);
-            _context.SaveChanges();
+            //var order = _context.Cases.ToList().Where(x => x.CaseId == id["CustomField1"]).FirstOrDefault();
+            //order.PaymentStatus = true;
+            // order.RtnCode = int.Parse(id["RtnCode"]);
+            // order.RtnMsg = (id["RtnMsg"] == "Succeeded") ? "訂單成功已付款" : order.RtnMsg;
+            // order.PaymentDate = Convert.ToDateTime(id["PaymentDate"]);
+            // order.SimulatePaid = int.Parse(id["SimulatePaid"]);
+            //_context.SaveChanges();
             
-            return View("~/Views/CsMember/Profile.cshtml");
+            return View("/Views/CsMember/Profile.cshtml");
         }
 
         private string GetCheckMacValue(Dictionary<string, string> order)
