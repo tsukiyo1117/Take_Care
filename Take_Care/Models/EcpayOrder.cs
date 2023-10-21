@@ -7,7 +7,7 @@ public partial class EcpayOrder
 {
     public string MerchantTradeNo { get; set; } = null!;
 
-    public string? MemberId { get; set; }
+    public int? MemberId { get; set; }
 
     public int? RtnCode { get; set; }
 
@@ -26,4 +26,6 @@ public partial class EcpayOrder
     public string? TradeDate { get; set; }
 
     public int? SimulatePaid { get; set; }
+
+    public virtual Case? Member { get; set; }
 }

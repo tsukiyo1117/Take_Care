@@ -93,15 +93,17 @@ public partial class TakeCareContext : DbContext
             entity.HasKey(e => e.MerchantTradeNo);
 
             entity.Property(e => e.MerchantTradeNo).HasMaxLength(50);
-            entity.Property(e => e.MemberId)
-                .HasMaxLength(50)
-                .HasColumnName("MemberID");
+            entity.Property(e => e.MemberId).HasColumnName("MemberID");
             entity.Property(e => e.PaymentDate).HasColumnType("datetime");
             entity.Property(e => e.PaymentType).HasMaxLength(50);
             entity.Property(e => e.PaymentTypeChargeFee).HasMaxLength(50);
             entity.Property(e => e.RtnMsg).HasMaxLength(50);
             entity.Property(e => e.TradeDate).HasMaxLength(50);
             entity.Property(e => e.TradeNo).HasMaxLength(50);
+
+            entity.HasOne(d => d.Member).WithMany(p => p.EcpayOrders)
+                .HasForeignKey(d => d.MemberId)
+                .HasConstraintName("FK__EcpayOrde__Membe__57DD0BE4");
         });
 
         modelBuilder.Entity<EmergencyContact>(entity =>
