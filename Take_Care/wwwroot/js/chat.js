@@ -51,3 +51,4 @@ $("#hideChat").on("click", function () {
     $(".chatbox").hide();
     $("#showChat").show();
 })
+

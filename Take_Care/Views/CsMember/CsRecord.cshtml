@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<style>
+    .profile-head h3 {
+        color: #333;
+    }
+</style>
+
+
+@await Html.PartialAsync("_HeadPartial")
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 ">
+                <div class="row bg-info " id="userPic">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                         alt="user">
+                    <span class="row">
+                        UserAccount
+                    </span>
+                </div>
+                @await Html.PartialAsync("_SideBarPartial")
+            </div>
+            <div class="col-10" id="mainPage">
+                <div class="container emp-profile" style="background-color:transparent">
+                    <form method="post">
+
+                        <div class="row">
+                            <!-- 服務歷史紀錄 -->
+                            <div class="col" id="">
+                                <div class="">
+                                    <div>
+                                        <div style="font-size: 40px; margin-top: 30px;font-weight:900">服務歷史紀錄</div>
+                                        <div style="font-size: 30px;"></div>
+                                        <hr>
+                                    </div>
+                                    <br>
+                                    <!-- 用日期查詢紀錄 -->
+                                    <div>
+                                        <label style="font-size: 23px"><b>開始日期:</b></label>
+                                        <input type="text" placeholder="YYYY-MM-DD" name="startdate" class="datepicker" style="width: 180px">
+                                        &nbsp;&nbsp;
+
+                                        <label style="font-size: 23px"><b>結束日期:</b></label>
+                                        <input type="text" placeholder="YYYY-MM-DD" name="enddate" class="datepicker" style="width: 180px">
+                                        &nbsp;&nbsp;
+
+                                        <button>查詢</button>
+
+                                        <span style="font-size: 24px; float: right; margin-right: 60px;">
+                                            <b>金額合計: $<span>1000</span></b>
+                                        </span>
+                                    </div>
+                                    <!-- 表格 -->
+                                    <div>
+                                        <table class="table align-middle" style="margin-top: 40px;">
+                                            <tr style="font-size: 20px;text-align:center; ">
+                                                <th style="background-color: burlywood;">編號</th>
+                                                <th style="background-color: burlywood;">服務日期</th>
+                                                <th style="background-color: burlywood;">服務時間</th>
+                                                <th style="background-color: burlywood;">案主名稱</th>
+                                                <th style="background-color: burlywood;">服務項目</th>
+                                                <th style="background-color: burlywood;">服務金額</th>
+                                                <th style="background-color: burlywood;"></th>
+                                            </tr>
+                                            <tr style="font-size: 20px;text-align:center">
+                                                <td>1</td>
+                                                <td>2023.10.12</td>
+                                                <td>10~11點</td>
+                                                <td>王曉明</td>
+                                                <td>協助進食或管灌餵食</td>
+                                                <td>$500</td>
+                                                <td><a href="#" class="btn btn-outline-dark dismiss-notification">結帳</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+
+</body>

@@ -3,27 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Take_Care.Models;
 
-namespace Take_Care.Controllers
+namespace Take_Care.Controllers.APIController
 {
     [Route("api/[controller]")]
     [ApiController]
-
-    public class FourpacksController : ControllerBase
+    public class FourpacksOrderController : ControllerBase
     {
         private TakeCareContext _context;
-        public FourpacksController(TakeCareContext dbContext)
+        public FourpacksOrderController(TakeCareContext dbContext)
         {
             _context = dbContext;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Fourpack>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<FourpacksOrder>>> GetTodoItems()
         {
 
             if (_context.Fourpacks == null)
             {
                 return NotFound();
             }
-            return await _context.Fourpacks.ToListAsync();
+            return await _context.FourpacksOrders.ToListAsync();
         }
     }
 }

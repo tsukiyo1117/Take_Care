@@ -33,6 +33,10 @@ public partial class PersonalInfo
 
     public int? EmployerId { get; set; }
 
+    public string? ResidentialAddressSection { get; set; }
+
+    public string? MailingAddressSection { get; set; }
+
     public virtual ICollection<EmergencyContact> EmergencyContacts { get; set; } = new List<EmergencyContact>();
 
     public virtual Employer? Employer { get; set; }
