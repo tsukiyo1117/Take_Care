@@ -36,11 +36,11 @@
                                     <!-- 用日期查詢紀錄 -->
                                     <div>
                                         <label style="font-size: 23px"><b>開始日期:</b></label>
-                                        <input type="text" placeholder="YYYY-MM-DD" name="startdate" id="datepicker" style="width: 180px">
+                                        <input type="text" placeholder="YYYY-MM-DD" name="startdate" id="datepickerStart" style="width: 180px">
                                         &nbsp;&nbsp;
 
                                         <label style="font-size: 23px"><b>結束日期:</b></label>
-                                        <input type="text" placeholder="YYYY-MM-DD" name="enddate" id="datepicker" style="width: 180px">
+                                        <input type="text" placeholder="YYYY-MM-DD" name="enddate" id="datepickerEnd" style="width: 180px">
                                         &nbsp;&nbsp;
 
                                         <button>查詢</button>
@@ -89,6 +89,12 @@
 
     <script>
 
+        $(function () {
+            $("#datepickerStart, #datepickerEnd").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+
         $("#twzipcode").twzipcode();
         $("#twzipcode2").twzipcode();
         $("#twzipcode3").twzipcode();
@@ -96,9 +102,9 @@
 
         //$('#datepicker').datepicker();
 
-        $("#datepicker").datepicker({
-            dateFormat: "yy-mm-dd"
-        });
+        //$("#datepicker").datepicker({
+        //    dateFormat: "yy-mm-dd"
+        //});
     </script>
 
 
