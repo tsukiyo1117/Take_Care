@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" v-model="employerAccount"
-                                                       style="font-size: 18px;" readonly>
+                                                       id="employerAccount" style="font-size: 18px;" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -93,11 +93,11 @@
                                                 <div id="twzipcode" class="row">
                                                     <div class="form-group col arrow">
                                                         <div data-role="county" data-style="form-control"
-                                                             data-name="county" data-value=""></div>
+                                                             data-name="county" :data-value="employerCounty"></div>
                                                     </div>
                                                     <div class="form-group col arrow">
                                                         <div data-role="district" data-style="form-control"
-                                                             data-name="district" data-value=""></div>
+                                                             data-name="district" :data-value="employerDistrict"></div>
                                                     </div>
                                                     <div class="form-group col">
                                                         <div data-role="zipcode" data-style="form-control"
@@ -112,8 +112,8 @@
 
                                             </div>
                                         </div>
-                                        <button class="databtn" id="saveButton" @@click="SaveDataToDatabase">確認</button>
-                                        <button class="databtn" id="cancelButton" @@click="cancelEditData">取消</button>
+                                        <button class="databtn" id="saveButton" @@click="SaveEmployerDataToDatabase">確認</button>
+                                        <button class="databtn" id="cancelButton" @@click="cancelEditEmployerData">取消</button>
                                     </div>
 
                                     <div class="tab-pane fade show" id="CsProfile" role="tabpanel"
@@ -221,11 +221,11 @@
                                                         <div id="twzipcode2" class="row">
                                                             <div class="form-group col arrow">
                                                                 <div data-role="county" data-style="form-control"
-                                                                     data-name="county" data-value=""></div>
+                                                                     data-name="county" :data-value="personalResidentialCounty"></div>
                                                             </div>
                                                             <div class="form-group col arrow">
                                                                 <div data-role="district" data-style="form-control"
-                                                                     data-name="district" data-value=""></div>
+                                                                     data-name="district" :data-value="personalResidentialDistrict"></div>
                                                             </div>
                                                             <div class="form-group col">
                                                                 <div data-role="zipcode" data-style="form-control"
@@ -247,11 +247,11 @@
                                                         <div id="twzipcode3" class="row">
                                                             <div class="form-group col arrow">
                                                                 <div data-role="county" data-style="form-control"
-                                                                     data-name="county" data-value=""></div>
+                                                                     data-name="county" :data-value="personalMailingAddressCounty"></div>
                                                             </div>
                                                             <div class="form-group col arrow">
                                                                 <div data-role="district" data-style="form-control"
-                                                                     data-name="district" data-value=""></div>
+                                                                     data-name="district" :data-value="personalMailingAddressDistrict"></div>
                                                             </div>
                                                             <div class="form-group col">
                                                                 <div data-role="zipcode" data-style="form-control"
@@ -334,8 +334,8 @@
                                         </div>
 
 
-                                        <button class="databtn" id="saveButton2">確認</button>
-                                        <button class="databtn" id="cancelButton2">取消</button>
+                                        <button class="databtn" id="saveButton2"   @@click="SavePersonalDataToDatabase">確認</button>
+                                        <button class="databtn" id="cancelButton2" @@click="cancelEditEmployerData">取消</button>
                                     </div>
 
                                     <div class="tab-pane fade show" id="ChangePassword" role="tabpanel"

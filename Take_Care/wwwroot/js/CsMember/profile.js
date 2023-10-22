@@ -14,17 +14,20 @@ otherLinks.on('click', function () {
 });
 
 
-$('#editButton').on('click', function() {
-        $('input[readonly]').prop('readonly', false);
-        $('select[disabled]').prop('disabled',false)
+
+
+    $('#editButton').on('click', function () {
+        $('input[readonly]').not(document.getElementById("employerAccount")).prop('readonly', false);
+        $('select[disabled]').prop('disabled', false)
         $(this).hide();
         $('#saveButton, #cancelButton,#saveButton2 ,#cancelButton2 ').show();
     });
 
 
+
 $('#saveButton').on('click', function () {
     $('input[readonly]').prop("readonly", true);
-    $('select[disabled]').prop("readonly", true);
+    $('select[disabled]').prop("disabled", true);
     $('#editButton').show();
     $(this).hide();
     $('#cancelButton').hide();
@@ -34,7 +37,7 @@ $('#saveButton').on('click', function () {
 
 $('#cancelButton').on('click', function() {
     $('input[readonly]').prop("readonly", true);
-    $('select[disabled]').prop("readonly", true);
+    $('select[disabled]').prop("disabled", true);
     $('#editButton').show();
     $('#saveButton, #cancelButton').hide();
 
