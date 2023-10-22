@@ -127,13 +127,13 @@ div > label {
     border: none;
     /* border-radius: 1.5rem; */
     width: 10%;
-    padding: 1%;
     font-weight: 600;
     color: #000000;
     cursor: pointer;
     position: relative;
     /* left: 22rem; */
     display: none;
+    margin-right: 1rem
 }
 
 /*notification.css*/

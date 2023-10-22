@@ -6,7 +6,7 @@ var details2 = $("#details2");
 // 隐藏上一页按钮
 // prevButton.hide();
 
-prevButton.click(function (e) { 
+prevButton.on('click', function (e) { 
 
  
     // 切换到上一页内容
@@ -20,9 +20,7 @@ prevButton.click(function (e) {
     nextButton.removeClass('button-border-highlighted');
 });
 
-nextButton.click(function (e) {
-
-  
+nextButton.on('click', function (e) {
 
     // 切换到下一页内容
     details1.hide();
