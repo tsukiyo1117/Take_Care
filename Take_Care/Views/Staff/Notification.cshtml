@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@await Html.PartialAsync("_HeadPartial")
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 ">
+                <div class="row" id="userPic" style="background-color: white">
+                    <img src="~/img/Staff/F01.png"
+                         alt="user">
+                    <span class="row" style="margin-top: 10px">
+                        TC0001
+                    </span>
+                </div>
+                @await Html.PartialAsync("_SideBarPartial")
+            </div>
+            <div class="col-10" id="mainPage">
+                <div class="container emp-profile" style="margin:0px">
+                    <form method="post">                     
+
+                        <div class="row">
+                            <!-- 我的通知 -->
+                            <div class="col" id="">
+                                <div class="">
+                                    <div>
+                                        <div style="font-size: 40px; margin-top: 30px;">我的通知</div>
+                                        <div style="font-size: 30px;"></div>
+                                        <hr>
+                                    </div>
+                                    <br>
+                                    <!-- 通知內容 -->
+                                    <div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/CsMember/jquery.twzipcode.min.js"></script>
+    <script src="~/js/CsMember/getaddress.js"></script>
+    <script src="~/js/CsMember/profile.js"></script>
+    <script src="~/js/CsMember/Prev&Next.js"></script>
+    <script src="~/js/CsMember/changeTabHref.js"></script>
+
+
+    <script>
+
+        $(function () {
+            $("#datepickerStart, #datepickerEnd").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+
+        $("#twzipcode").twzipcode();
+        $("#twzipcode2").twzipcode();
+        $("#twzipcode3").twzipcode();
+
+
+        //$('#datepicker').datepicker();
+
+        //$("#datepicker").datepicker({
+        //    dateFormat: "yy-mm-dd"
+        //});
+    </script>
+
+
+</body>

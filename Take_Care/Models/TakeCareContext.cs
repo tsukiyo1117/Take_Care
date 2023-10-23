@@ -63,15 +63,15 @@ public partial class TakeCareContext : DbContext
             entity.Property(e => e.ServiceName).HasMaxLength(50);
             entity.Property(e => e.StartDateTime).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
-                .HasForeignKey(d => d.EmployeeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployeeI__4F47C5E3");
+            //entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
+            //    .HasForeignKey(d => d.EmployeeId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__Cases__EmployeeI__4F47C5E3");
 
-            entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
-                .HasForeignKey(d => d.EmployerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployerI__503BEA1C");
+            //entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
+            //    .HasForeignKey(d => d.EmployerId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__Cases__EmployerI__503BEA1C");
         });
 
         modelBuilder.Entity<Citizenshipstatus>(entity =>

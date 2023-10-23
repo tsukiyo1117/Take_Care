@@ -29,6 +29,11 @@ namespace Take_Care.Controllers
 			return View();
 		}
 
-	}
+        public IActionResult Notification()
+        {
+            return View();
+        }
+
+    }
 	
 }
