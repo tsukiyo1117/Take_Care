@@ -232,19 +232,15 @@
 <div id="TCserveOK1" title="照顧及專業服務已選擇的服務:">
     <label for="">
         服務項目:
-        <input style="display: block;" disabled type="text">
-    </label>
-    <label for="">
-        服務日期:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKName1">
     </label>
     <label for="">
         服務時間:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKTime1">
     </label>
     <label for="">
         服務人員:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKWho1">
     </label>
     <label for="">
         備註:
@@ -255,19 +251,15 @@
 <div id="TCserveOK2" title="照顧及專業服務已選擇的服務:">
     <label for="">
         服務項目:
-        <input style="display: block;" disabled type="text">
-    </label>
-    <label for="">
-        服務日期:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKName2">
     </label>
     <label for="">
         服務時間:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKTime2">
     </label>
     <label for="">
         服務人員:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKWho2">
     </label>
     <label for="">
         備註:
@@ -278,19 +270,15 @@
 <div id="TCserveOK3" title="照顧及專業服務已選擇的服務:">
     <label for="">
         服務項目:
-        <input style="display: block;" disabled type="text">
-    </label>
-    <label for="">
-        服務日期:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKName3">
     </label>
     <label for="">
         服務時間:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKTime3">
     </label>
     <label for="">
         服務人員:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TCserveOKWho3">
     </label>
     <label for="">
         備註:
@@ -302,19 +290,15 @@
 <div id="TABserveOK8" title="喘息服務已選擇的服務:">
     <label for="">
         服務項目:
-        <input style="display: block;" disabled type="text">
-    </label>
-    <label for="">
-        服務日期:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKName8">
     </label>
     <label for="">
         服務時間:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKTime8">
     </label>
     <label for="">
         服務人員:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKWho8">
     </label>
     <label for="">
         備註:
@@ -325,19 +309,15 @@
 <div id="TABserveOK9" title="喘息服務已選擇的服務:">
     <label for="">
         服務項目:
-        <input style="display: block;" disabled type="text">
-    </label>
-    <label for="">
-        服務日期:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKName9">
     </label>
     <label for="">
         服務時間:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKTime9">
     </label>
     <label for="">
         服務人員:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKWho9">
     </label>
     <label for="">
         備註:
@@ -348,19 +328,16 @@
 <div id="TABserveOK10" title="喘息服務已選擇的服務:">
     <label for="">
         服務項目:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKName10">
     </label>
-    <label for="">
-        服務日期:
-        <input style="display: block;" disabled type="text">
-    </label>
+   
     <label for="">
         服務時間:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKTime10">
     </label>
     <label for="">
         服務人員:
-        <input style="display: block;" disabled type="text">
+        <input style="display: block;" disabled type="text" id="TABserveOKWho10">
     </label>
     <label for="">
         備註:
@@ -729,6 +706,8 @@
     // 身分%數比
     var percentage = 0
 
+    // 檢視的日期
+    var showDay = ""
 
     // ajax
     $(function () {
@@ -1100,6 +1079,14 @@
                     sessionItem.push(PutCaseItem)
                     console.log(sessionItem)
                     sessionStorage.setItem("Item", sessionItem)
+
+                    // 資料放在檢視Dialog
+                    $("#TCserveOKName1").text(TCinputCheckName)
+                    $("#TCserveOKTime1").text(showDay)
+                    for (let i = 0; i < EmployeesData.length; i++) {
+                        if (employeeeeeeeee == EmployeesData[i].employeeId)
+                            $("#TCserveOKWho1").text(EmployeesData[i].employeeName)
+                    }
 
                     $('#TCserveOK1').dialog('close')
                 },
@@ -1539,6 +1526,7 @@
                     // 服務日期的文字
                     TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].data
                     // TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].childNodes[0].childNodes[0].data
+                    showDay = TCChoseDay
                     month = TCChoseDay.slice(0, 2)
                     day = TCChoseDay.slice(0, -1).slice(3)
                     if (day.length == 1) {
