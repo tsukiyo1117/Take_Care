@@ -25,7 +25,7 @@ public partial class Case
 
     public virtual ICollection<EcpayOrder> EcpayOrders { get; set; } = new List<EcpayOrder>();
 
-    public virtual Employee Employee { get; set; } = null!;
+    //public virtual Employee Employee { get; set; } 
 
-    public virtual Employer Employer { get; set; } = null!;
+    //public virtual Employer Employer { get; set; } 
 }
