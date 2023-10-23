@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-2 ">
-                <div class="row bg-info " id="userPic">
+                <div class="row  " id="userPic">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
                          alt="user">
                     <span class="row">
@@ -35,8 +35,9 @@
                             <div class="col" id="">
                                 <div class="">
                                     <div>
-                                        <div style="font-size: 40px; margin-top: 30px;font-weight:900">服務歷史紀錄</div>
-                                        <div style="font-size: 30px;"></div>
+                                        <div class="divider__line"></div>
+                                        <h2 class="text-center" style="font-weight: 900;">服務歷史記錄</h2>
+                                        <div class="divider__line"></div>
                                         <hr>
                                     </div>
                                     <br>
@@ -50,7 +51,7 @@
                                         <input type="text" placeholder="YYYY-MM-DD" name="enddate" class="datepicker" style="width: 180px">
                                         &nbsp;&nbsp;
 
-                                        <button>查詢</button>
+                                        <button >查詢</button>
 
                                         <span style="font-size: 24px; float: right; margin-right: 60px;">
                                             <b>金額合計: $<span>1000</span></b>
@@ -75,7 +76,7 @@
                                                 <td>王曉明</td>
                                                 <td>協助進食或管灌餵食</td>
                                                 <td>$500</td>
-                                                <td><a href="#" class="btn btn-outline-dark dismiss-notification">結帳</a></td>
+                                                <td><a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn">結帳</a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -89,6 +90,9 @@
             </div>
         </div>
     </div>
+    <script src="~/js/CsMember/ECPay.js"></script>
+    <script src="~/js/CsMember/profile.js"></script>
+
     <script>
 
 

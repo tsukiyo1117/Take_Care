@@ -1,4 +1,6 @@
 ﻿
+
+
 /*member.css*/
 #userPic {
     width: 6rem;
@@ -37,7 +39,7 @@
 .emp-profile {
     padding: 3%;
     border-radius: 0.5rem;
-    background: #fff;
+    background-color:white;
 }
 
 .profile-img {

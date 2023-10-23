@@ -64,4 +64,8 @@ $('#cancelButton2').on('click', function () {
 
     // 在这里添加取消编辑的逻辑，将输入框恢复为原始值
 });
+window.onload=() => {
+    document.getElementById("main").style["background-color"] = "#fdf5e6";
+}
+
 

@@ -17,6 +17,7 @@ const profile = Vue.createApp({
             employerDistrict: "",
             employerid: "",
             employerPassword: "",
+            employerPhotoURL:"",
             originData: "",
 
             // 案主檔案
@@ -103,6 +104,8 @@ const profile = Vue.createApp({
                         this.employerFullName = this.profileList[0].employerFullName;
                         this.employerEmail = this.profileList[0].employerEmail;
                         this.employerPhoneNumber = this.profileList[0].employerPhoneNumber;
+                        this.employerPhotoUrl = this.profileList[0].employerPhotoUrl;
+                        console.log(this.employerPhotoUrl)
                         this.employerAddress = this.profileList[0].employerAddress;
                         this.employerAddressSection = this.profileList[0].employerAddressSection;
                         this.employerCounty = this.profileList[0].employerAddress.slice(0, 3);
