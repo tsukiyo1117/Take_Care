@@ -32,7 +32,7 @@ namespace Take_Care.Controllers.APIController
                 { "MerchantTradeDate", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") },
                 { "TotalAmount", usercase.Amount.ToString() },
                 { "TradeDesc", "無" },
-                { "ItemName", usercase.ServiceName },
+				{ "ItemName", usercase.ServiceName },
                 { "ExpireDate", "3" },
                 // { "CustomField1", usercase.CaseId.ToString() },
                 { "CustomField1", "1" },
@@ -76,7 +76,7 @@ namespace Take_Care.Controllers.APIController
                 data.Add(key, id[key]);
             }
 
-             var order = _context.Cases.ToList().Where(x => x.CaseId == id["CustomField1"]).FirstOrDefault();
+             var order = _context.Cases.ToList().Where(x => x.CaseId == int.Parse(id["CustomField1"])).FirstOrDefault();
              order.PaymentStatus = true;
             // order.RtnCode = int.Parse(id["RtnCode"]);
             // order.RtnMsg = (id["RtnMsg"] == "Succeeded") ? "訂單成功已付款" : order.RtnMsg;
