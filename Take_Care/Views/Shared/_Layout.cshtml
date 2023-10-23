@@ -124,17 +124,17 @@
                 </div>
             </div>
             <div class="row p-1">
-                <div class="col-2" style="padding-left: 20px;">User</div>
+                <div class="col-2" style="padding-left: 20px;display: none">User</div>
                 <div class="col-5">
-                    <input type="text" id="userInput" readonly v-model="member.memberName"/>
+                    <input type="hidden" id="userInput" readonly v-model="member.memberName"/>
                 </div>
             </div>
             <div class="row p-1">
-                <div class="col-2" style="padding-left: 20px; padding-bottom: 10px">Message</div>
-                <div class="col-5">
+                <div class="col-3" style="padding-left: 20px; padding-bottom: 10px">Message :</div>
+                <div class="col-6" style="padding-left: 0">
                     <input type="text" class="w-100" id="messageInput"/>
                 </div>
-                <div class="col-2">
+                <div class="col-2" style="padding-left: 0">
                     <input type="button" id="sendButton" value="Send Message" class="btn btn-outline-warning"/>
                 </div>
             </div>
