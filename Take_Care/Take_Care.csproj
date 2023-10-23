@@ -41,11 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Staff\" />
-    <Folder Include="wwwroot\img\employer\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Secrets\Credentials\ABC\" />
   </ItemGroup>
 
