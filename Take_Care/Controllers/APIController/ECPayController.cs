@@ -76,15 +76,15 @@ namespace Take_Care.Controllers.APIController
                 data.Add(key, id[key]);
             }
 
-            //var order = _context.Cases.ToList().Where(x => x.CaseId == id["CustomField1"]).FirstOrDefault();
-            //order.PaymentStatus = true;
+             var order = _context.Cases.ToList().Where(x => x.CaseId == id["CustomField1"]).FirstOrDefault();
+             order.PaymentStatus = true;
             // order.RtnCode = int.Parse(id["RtnCode"]);
             // order.RtnMsg = (id["RtnMsg"] == "Succeeded") ? "訂單成功已付款" : order.RtnMsg;
             // order.PaymentDate = Convert.ToDateTime(id["PaymentDate"]);
             // order.SimulatePaid = int.Parse(id["SimulatePaid"]);
-            //_context.SaveChanges();
+            _context.SaveChanges();
             
-            return View("/Views/CsMember/Profile.cshtml");
+            return View("/Views/CsMember/CsRecord.cshtml");
         }
 
         private string GetCheckMacValue(Dictionary<string, string> order)

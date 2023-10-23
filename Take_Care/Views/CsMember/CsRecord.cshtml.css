@@ -18,7 +18,7 @@
     margin-top: 2rem;
     /*    height: 40rem;*/
     background-color: white;
-     
+    border-radius: 0.5rem;
 }
 
 .col-2 div img {
@@ -224,8 +224,8 @@ tbody td {
         content: "";
         position: absolute;
         top: 0;
-        left: calc(50% - 60px);
-        width: 120px;
+        left: calc(50% - 90px);
+        width:180px;
         height: 5px;
         background-color: #ff854d;
         opacity: 0.5;

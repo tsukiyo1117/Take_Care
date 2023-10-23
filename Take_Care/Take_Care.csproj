@@ -42,6 +42,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Staff\" />
+    <Folder Include="wwwroot\img\employer\" />
   </ItemGroup>
 
   <ItemGroup>
