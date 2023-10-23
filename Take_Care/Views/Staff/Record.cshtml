@@ -43,7 +43,7 @@
                                         <input type="text" placeholder="YYYY-MM-DD" name="enddate" id="datepickerEnd" style="width: 180px">
                                         &nbsp;&nbsp;
 
-                                        <button>查詢</button>
+                                        <button id="queryButton">查詢</button>
 
                                         <span style="font-size: 24px; float: right; margin-right: 60px;">
                                             <b>金額合計: $<span>1000</span></b>
@@ -105,6 +105,33 @@
         //$("#datepicker").datepicker({
         //    dateFormat: "yy-mm-dd"
         //});
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "https://localhost:7036/api/Cases",
+                success: function(response){
+                    foreach 
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+            $.ajax({
+                method: "GET",
+                url: "https://localhost:7036/api/Employers",
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        })
+
+
     </script>
 
 

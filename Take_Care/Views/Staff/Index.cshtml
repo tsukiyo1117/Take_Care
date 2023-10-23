@@ -10,11 +10,11 @@
     <div class="container">
         <div class="row">
             <div class="col-2 ">
-                <div class="row bg-info " id="userPic">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                <div class="row" id="userPic" style="background-color: white">
+                    <img src="~/img/Staff/F01.png"
                          alt="user">
-                    <span class="row">
-                        UserAccount
+                    <span class="row" style="margin-top: 10px">
+                        TC0001
                     </span>
                 </div>
                 @await Html.PartialAsync("_SideBarPartial")
@@ -36,7 +36,7 @@
                                                 <label>使用者帳號 : </label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" value="SophieQQ123"
+                                                <input type="text" class="form-control" v-model="account"
                                                        style="font-size: 18px;" readonly>
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                                 <label>姓名 : </label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" value="Sophie"
+                                                <input type="text" class="form-control" v-model="employeeName"
                                                        style="font-size: 18px;" readonly>
                                             </div>
                                         </div>
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="email" class="form-control" id="exampleFormControlInput1"
-                                                       placeholder="請輸入你的信箱" value="SophieQQ123@google.com"
+                                                       placeholder="請輸入你的信箱" v-model="email"
                                                        style="font-size: 18px;" readonly>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="tel" class="form-control" id="phone1"
-                                                       placeholder="請輸入你的手機號碼" readonly>
+                                                       placeholder="請輸入你的手機號碼" v-model="cellPhone" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -73,7 +73,7 @@
                                                 <label>性別 : </label>
                                             </div>
                                             <div class="col-md-6" style="display: flex;">
-                                                <div class="custom-control custom-radio custom-control-inline">
+                                                @*<div class="custom-control custom-radio custom-control-inline">
                                                     <input type="radio" id="customRadioInline1"
                                                            name="customRadioInline1" class="custom-control-input">
                                                     <label class="custom-control-label"
@@ -85,6 +85,16 @@
                                                            name="customRadioInline1" class="custom-control-input">
                                                     <label class="custom-control-label"
                                                            for="customRadioInline2">女</label>
+                                                </div>*@
+                                                <div class="custom-control custom-radio custom-control-inline"
+                                                     v-for="genderOption in ['男 &nbsp;', '女']">
+                                                    <input type="radio" :id="'customRadioInline' + genderOption.trim()"
+                                                           name="customRadioInline1" class="custom-control-input"
+                                                           :checked="genderOption.trim() === gender">
+
+                                                    <label class="custom-control-label"
+                                                           :for="'customRadioInline1' + genderOption.trim()"
+                                                           v-html="genderOption"></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +103,7 @@
                                                 <label>生日: </label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text"  value=""
+                                                <input type="text" placeholder="YYYY-MM-DD" v-model="birthday"
                                                        style="font-size: 18px;" id="datepicker">
                                             </div>
                                         </div>
@@ -118,7 +128,7 @@
 
                                                     <div class="form-group" style="margin-top: 0.5rem;">
                                                         <input type="text" class="form-control" id="inputAddress2"
-                                                               placeholder="居住地址" readonly>
+                                                               placeholder="居住地址" v-model="address" readonly>
                                                     </div>
                                                 </div>
 
@@ -132,10 +142,10 @@
                                          aria-labelledby="profile-tab">
                                         <div id="detailsContainer">
                                             <div style="font-size: 23px;">編輯你的自我介紹</div>
-                                            <textarea style="font-size: 20px; width: 100%; height: 250px; margin-top: 10px;">自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容自我介紹內容
+                                            <textarea style="font-size: 20px; width: 100%; height: 250px; margin-top: 10px;" v-model=" selfIntroduction">
                                             </textarea>
                                         </div>
-                                        @*看不到這兩個按鈕*@
+                                        
                                         <button class="databtn" id="saveButton2">確認</button>
                                         <button class="databtn" id="cancelButton2">取消</button>
                                     </div>
@@ -163,7 +173,7 @@
                                             </div>
                                             <br><br>
                                             <div>
-                                                <button style="font-size: 20px; background-color: orange; border-color: transparent;">
+                                                <button style="font-size: 20px; background-color: burlywood; border-color: transparent;">
                                                     確認
                                                 </button>
                                             </div>
@@ -174,9 +184,9 @@
                             </div>
                             <div class="col-md-2" style="position:relative;right:4rem">
                                 <div class="profile-img" id="profileSection">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                                         alt="" />
-                                    <div class="file btn btn-lg btn-light" style="font-weight: 900;color: azure;">
+                                    <img src="~/img/Staff/F01.png"
+                                         alt="照服員" />
+                                    <div class="file btn btn-lg btn-light" style="font-weight: 900;color: azure; margin-left: 30px; margin-top: 10px">
                                         Change Photo
                                         <input type="file" name="file" style="cursor: pointer;" />
                                     </div>
@@ -194,6 +204,7 @@
     <script src="~/js/CsMember/profile.js"></script>
     <script src="~/js/CsMember/Prev&Next.js"></script>
     <script src="~/js/CsMember/changeTabHref.js"></script>
+    @*<script src="~/js/CsMember/DataWithAPI.js"></script>*@
 
 
     <script>
