@@ -4,7 +4,7 @@ let app = new Vue({
     data: {
         Employer: {
             // account: "",
-            "email": "94forteamwork@gmail.com",
+            "email": "",
             // fullName: "",
             // gender: "",
             // password: "",
