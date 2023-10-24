@@ -23,7 +23,7 @@
             const form = document.createElement('form');
             form.method = 'post';
             form.action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5';//綠界金流驗證網址(測試環境)
-            form.target = "_blank"
+            //form.target = "_blank";
             for (const key in res) {
                 if (res.hasOwnProperty(key)) {
                     const hiddenField = document.createElement('input');
