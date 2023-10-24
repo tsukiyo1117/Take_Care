@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
-<body style="background= ~/img/fourpacks/背景.jpg">
+<body>
     <div class="container-fluid" id="app">
         <div class="row">
             <div class="col-2"></div>
@@ -130,7 +130,7 @@
         window.onload = function () {
             $.ajax({
                 type: "get",
-                url: "https://localhost:7036/api/fourpacks",
+                url: "https://take-care.azurewebsites.net/api/fourpacks",
                 success: function (e) {
                     app.fourpack = e;
                     console.log(e);

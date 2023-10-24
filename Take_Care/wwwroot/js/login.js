@@ -24,7 +24,7 @@
                         //alert(response);
                         //console.log(response);
                         sessionStorage.setItem("member", JSON.stringify(response));
-                        window.location = "https://localhost:7036/MainPage/Index";
+                        window.location = "https://take-care.azurewebsites.net/MainPage/Index";
                     } else {
                         alert("帳號或密碼錯誤!!");
                     }
@@ -64,7 +64,7 @@
                     };
                     sessionStorage.setItem("member", JSON.stringify(member));
                     console.log(member);
-                    window.location = "https://localhost:7036/MainPage/Index";
+                    window.location = "https://take-care.azurewebsites.net/MainPage/Index";
                 }
             }
         }

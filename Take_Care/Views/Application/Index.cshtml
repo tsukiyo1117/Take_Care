@@ -714,49 +714,49 @@
         $.when(
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                url: "https://localhost:7036/api/Citizenshipstatus",
+                url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                url: "https://localhost:7036/api/SubsidyLevels",
+                url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                url: "https://localhost:7036/api/ServiceItems",
+                url: "https://take-care.azurewebsites.net/api/ServiceItems",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                url: "https://localhost:7036/api/ServiceItemsDetails",
+                url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/Employees",
-                url: "https://localhost:7036/api/Employees",
+                url: "https://take-care.azurewebsites.net/api/Employees",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/cases",
-                url: "https://localhost:7036/api/cases",
+                url: "https://take-care.azurewebsites.net/api/cases",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/Employers",
-                url: "https://localhost:7036/api/Employers",
+                url: "https://take-care.azurewebsites.net/api/Employers",
                 method: "GET",
                 dataType: "json"
             }),
             $.ajax({
                 //url: "https://take-care.azurewebsites.net/api/PersonalInfoes",
-                url: "https://localhost:7036/api/PersonalInfoes",
+                url: "https://take-care.azurewebsites.net/api/PersonalInfoes",
                 method: "GET",
                 dataType: "json"
             })
@@ -1960,7 +1960,7 @@
             sessionItem.forEach(element => {
                 $.ajax({
                     type: "POST",
-                    url: "https://localhost:7036/api/cases",
+                    url: "https://take-care.azurewebsites.net/api/cases",
                     data: JSON.stringify(element),
                     contentType: "application/json",
                     dataType: "json",
