@@ -17,6 +17,11 @@ let app = new Vue({
     },
     methods: {
         createMember: function () {
+            if (passresult.innerText!=""||cpassresult.innerText!=""||nameresult.innerText!=""||phoneresult.innerText!=""){
+                resulttext3.innerText = "請正確的填寫基本資料!!";
+                return;
+            }
+            resulttext3.innerText = "";
             this.Employer.account = this.Employer.email.split("@")[0];
             console.log(this.Employer);
             $.ajax({
@@ -26,8 +31,11 @@ let app = new Vue({
                 data: JSON.stringify(this.Employer),
                 success: function () {
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "alert('Alert Message');location.href='OtherPage.aspx';", true);
-                    alert("OK");
-                    window.Location.href="https://localhost:7036/CsMember/Profile";
+                    if (window.confirm("是否要回到登入?")) {
+                        window.location = "https://localhost:7036/Login";
+                    } else {
+                        window.location = "https://localhost:7036";
+                    }
                 }
             })
         },
@@ -70,41 +78,41 @@ let app = new Vue({
             switch (event.target.name) {
                 case "pass":
                     if (passregex.test(event.target.value)) {
-                        document.getElementById(event.target.name+"result").innerText =""
+                        document.getElementById(event.target.name + "result").innerText = ""
                         event.target.style.border = "1px solid green";
                     } else {
-                        document.getElementById(event.target.name+"result").innerText ="必須包含大小寫字母和數字的組合，不能使用特殊字符，長度在 8-10 之間"
+                        document.getElementById(event.target.name + "result").innerText = "必須包含大小寫字母和數字的組合，不能使用特殊字符，長度在 8-10 之間"
                         event.target.style.border = "1px solid red";
                     }
                     break;
                 case "cpass":
                     if (event.target.value == this.Employer.password) {
-                        document.getElementById(event.target.name+"result").innerText =""
+                        document.getElementById(event.target.name + "result").innerText = "";
                         event.target.style.border = "1px solid green";
                     } else {
-                        document.getElementById(event.target.name+"result").innerText ="確認密碼與密碼不相符"
+                        document.getElementById(event.target.name + "result").innerText = "確認密碼與密碼不相符";
                         event.target.style.border = "1px solid red";
                     }
                     break;
                 case "phone":
                     if (phoneregex.test(event.target.value)) {
-                        document.getElementById(event.target.name+"result").innerText =""
+                        document.getElementById(event.target.name + "result").innerText = "";
                         event.target.style.border = "1px solid green";
                     } else {
-                        document.getElementById(event.target.name+"result").innerText ="請輸入正確的手機電話格式"
+                        document.getElementById(event.target.name + "result").innerText = "請輸入正確的手機電話格式"
                         event.target.style.border = "1px solid red";
                     }
                     break;
                 case "name":
-                    event.target.style.border = "1px solid green";
+                    if(event.target.value ==""){
+                        document.getElementById(event.target.name + "result").innerText = "請輸入姓名";
+                        event.target.style.border = "1px solid red";
+                    } else {
+                        document.getElementById(event.target.name + "result").innerText = ""
+                        event.target.style.border = "1px solid green";
+                    }
                     break;
             }
-            // if (event.target.checkValidity()) {
-            //     event.target.style.border= "1px solid green";
-            //     //event.target.classList.add("valid");
-            // } else {
-            //     event.target.style.border= "1px solid red";
-            // }
         },
         mailBlur: function (event) {
             if (emailregex.test(this.Employer.email)) {

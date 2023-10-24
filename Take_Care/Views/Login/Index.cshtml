@@ -10,6 +10,7 @@
     <div class="col-2"></div>
     <div class="leftBox col-4">
         <div>
+            <p id="loginresult" style="color:red;"></p>
             <input type="text" id="email" placeholder="帳號 / Email" required class="inputBox" name="Account" v-model="member.Account">
             <input type="password" id="password" placeholder="輸入密碼" required class="inputBox" name="Password" v-model="member.Password">
             <div>
@@ -18,15 +19,15 @@
                     <label for="terms">記住我的帳號</label>
                 </div>
                 <div>
-	                <a>忘記密碼</a><span class="text-end">?</span>
+                    <a>忘記密碼</a><span class="text-end">?</span>
                 </div>
             </div>
             <!-- 给登入按鈕指定ID "loginButton" -->
             <button id="loginButton" v-on:click="DoLogin()">登入<span>&#x27f6;</span></button>
-            <span class="login_msg" style="color:black;">我還沒有帳號 ?<a href="./SignUp">SignUp Now</a></span>
+            <span class="login_msg" style="color:black;">我還沒有帳號 ?<a href="https://localhost:7036/Login/SignUp">SignUp Now</a></span>
         </div>
     </div>
-    <div class="rightBox col-4">
+    <div class="rightBox col-4" style="padding-top: 100px">
         <a class="btn btn-large fb_Link">
             <i class="bi bi-facebook"></i>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
