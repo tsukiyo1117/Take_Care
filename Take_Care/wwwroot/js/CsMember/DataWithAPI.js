@@ -115,7 +115,7 @@ const profile = Vue.createApp({
             // 在这里执行你的 AJAX 请求
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/PersonalInfoview',
+                url: 'https://take-care.azurewebsites.net/api/PersonalInfoview',
                 success: (data) => {
 
 
@@ -191,7 +191,7 @@ const profile = Vue.createApp({
             const account = profileData.account
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/employers',
+                url: 'https://take-care.azurewebsites.net/api/employers',
                 success: (data) => {
 
                     const ProfileData = data.filter(ProfileData => ProfileData.account === account);
