@@ -215,7 +215,7 @@ const profile = Vue.createApp({
             console.log(id)
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/EmergencyContacts',
+                url: 'https://take-care.azurewebsites.net/api/EmergencyContacts',
                 success: (data) => {
                     console.log(data)
                     const emergencyContactsData = data.filter(emergencyContactsData => emergencyContactsData.personalInfoId === id);
@@ -247,7 +247,7 @@ const profile = Vue.createApp({
             const account = profileData.account;
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/employees',
+                url: 'https://take-care.azurewebsites.net/api/employees',
 
                 success: (data) => {
                     const employeeData = data.filter(employeeData => employeeData.account === account);
@@ -293,7 +293,7 @@ const profile = Vue.createApp({
             const employerId = employerData[0].employerId;
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:7036/api/employers/${employerId}`,
+                url: `https://take-care.azurewebsites.net/api/employers/${employerId}`,
                 data: JSON.stringify(updatedData),
                 contentType: 'application/json',// 指定发送的数据是 JSON 格式
                 dataType: "json",
@@ -357,7 +357,7 @@ const profile = Vue.createApp({
             const employerId = employerData[0].employerId;
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:7036/api/PersonalInfoes/${employerId}`,
+                url: `https://take-care.azurewebsites.net/api/PersonalInfoes/${employerId}`,
                 data: JSON.stringify(updatedData),
                 contentType: 'application/json',// 指定发送的数据是 JSON 格式
                 dataType: "json",
@@ -374,7 +374,7 @@ const profile = Vue.createApp({
 
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:7036/api/EmergencyContacts/${employerId}`,
+                url: `https://take-care.azurewebsites.net/api/EmergencyContacts/${employerId}`,
                 data: JSON.stringify(updateEmergencyData),
                 contentType: 'application/json',// 指定发送的数据是 JSON 格式
                 dataType: "json",
@@ -509,7 +509,7 @@ const CsProfile = Vue.createApp({
             // 在这里执行你的 AJAX 请求
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/PersonalInfoview',
+                url: 'https://take-care.azurewebsites.net/api/PersonalInfoview',
                 success: (data) => {
 
 
@@ -583,7 +583,7 @@ const CsProfile = Vue.createApp({
             const account = profileData.account
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/employers',
+                url: 'https://take-care.azurewebsites.net/api/employers',
                 success: (data) => {
 
                     const ProfileData = data.filter(ProfileData => ProfileData.account === account);
@@ -607,7 +607,7 @@ const CsProfile = Vue.createApp({
             console.log(id)
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/EmergencyContacts',
+                url: 'https://take-care.azurewebsites.net/api/EmergencyContacts',
                 success: (data) => {
                     console.log(data)
                     const emergencyContactsData = data.filter(emergencyContactsData => emergencyContactsData.personalInfoId === id);
@@ -639,7 +639,7 @@ const CsProfile = Vue.createApp({
             const account = profileData.account;
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/employees',
+                url: 'https://take-care.azurewebsites.net/api/employees',
 
                 success: (data) => {
                     const employeeData = data.filter(employeeData => employeeData.account === account);
@@ -685,7 +685,7 @@ const CsProfile = Vue.createApp({
             const employerId = employerData[0].employerId;
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:7036/api/employers/${employerId}`,
+                url: `https://take-care.azurewebsites.net/api/employers/${employerId}`,
                 data: JSON.stringify(updatedData),
                 contentType: 'application/json',// 指定发送的数据是 JSON 格式
                 dataType: "json",
@@ -749,7 +749,7 @@ const CsProfile = Vue.createApp({
             const employerId = employerData[0].employerId;
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:7036/api/PersonalInfoes/${employerId}`,
+                url: `https://take-care.azurewebsites.net/api/PersonalInfoes/${employerId}`,
                 data: JSON.stringify(updatedData),
                 contentType: 'application/json',// 指定发送的数据是 JSON 格式
                 dataType: "json",
@@ -766,7 +766,7 @@ const CsProfile = Vue.createApp({
 
             $.ajax({
                 type: 'PUT',
-                url: `https://localhost:7036/api/EmergencyContacts/${employerId}`,
+                url: `https://take-care.azurewebsites.net/api/EmergencyContacts/${employerId}`,
                 data: JSON.stringify(updateEmergencyData),
                 contentType: 'application/json',// 指定发送的数据是 JSON 格式
                 dataType: "json",

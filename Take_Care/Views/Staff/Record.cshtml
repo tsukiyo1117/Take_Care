@@ -112,7 +112,7 @@
         //$(document).ready(function () {
         //    $.ajax({
         //        method: "GET",
-        //        url: "https://localhost:7036/api/Cases",
+        //        url: "https://take-care.azurewebsites.net/api/Cases",
         //        success: function(response){
         //            foreach 
         //        },
@@ -122,7 +122,7 @@
         //    });
             $.ajax({
                 method: "GET",
-                url: "https://localhost:7036/api/Employees",
+                url: "https://take-care.azurewebsites.net/api/Employees",
                 success: function (response) {
                 const account = JSON.parse(sessionStorage.getItem('member')).account;
 
@@ -146,7 +146,7 @@
 
         $.ajax({
             type: 'get',
-            url: 'https://localhost:7036/api/Cases',
+            url: 'https://take-care.azurewebsites.net/api/Cases',
             success: (data) => {
                 console.log(data);
                 var matchingCases = [];

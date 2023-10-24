@@ -162,7 +162,7 @@
                 GetCaseForEmployer() {
                     $.ajax({
                         method: "GET",
-                        url: "https://localhost:7036/api/Employers",
+                        url: "https://take-care.azurewebsites.net/api/Employers",
                         success: function (response) {
                             const account = JSON.parse(sessionStorage.getItem('member')).account;
 
@@ -184,7 +184,7 @@
 
                     $.ajax({
                         type: 'get',
-                        url: 'https://localhost:7036/api/Cases',
+                        url: 'https://take-care.azurewebsites.net/api/Cases',
                         success: (data) => {
                             // console.log(data);
                             var matchingCases = [];
@@ -227,7 +227,7 @@
 
                     $.ajax({
                         type: 'get',
-                        url: 'https://localhost:7036/api/Employees',
+                        url: 'https://take-care.azurewebsites.net/api/Employees',
                         success: (data) => {
                             // console.log(data);
 
@@ -333,7 +333,7 @@
                     // 发送 POST 请求到服务器
                     $.ajax({
                         type: 'POST',
-                        url: 'https://localhost:7036/ECPay/DoTestPay',
+                        url: 'https://take-care.azurewebsites.net/ECPay/DoTestPay',
                         contentType: 'application/json; charset=utf-8',
                         data: JSON.stringify(json),
                         success: function (res) {

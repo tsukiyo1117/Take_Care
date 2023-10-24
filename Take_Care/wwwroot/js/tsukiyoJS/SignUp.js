@@ -47,7 +47,7 @@ let app = new Vue({
             resulttext.innerText = "";
             $.ajax({
                 type: "POST",
-                url: "https://localhost:7036/mail/sendTestMail",
+                url: "https://take-care.azurewebsites.net/mail/sendTestMail",
                 contentType: "application/json",
                 data: JSON.stringify(this.Employer.email),
                 success: function (response) {
