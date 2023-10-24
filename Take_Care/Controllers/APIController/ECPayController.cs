@@ -36,7 +36,7 @@ namespace Take_Care.Controllers.APIController
 				{ "ItemName", usercase.ServiceName },
                 { "ExpireDate", "3" },
                 // { "CustomField1", usercase.CaseId.ToString() },
-                { "CustomField1", "1" },
+                { "CustomField1", usercase.CaseId.ToString()},
                 { "ReturnURL", $"{website}/api/AddPayInfo" },
                 //{ "OrderResultURL", $"{website}/ECPay/PayInfo/{orderId}" },
                 { "OrderResultURL", $"{website}/ECPay/SetPay/{orderId}" },
@@ -86,7 +86,8 @@ namespace Take_Care.Controllers.APIController
             // order.SimulatePaid = int.Parse(id["SimulatePaid"]);
             _context.SaveChanges();
             
-            return View("/Views/CsMember/CsRecord.cshtml");
+            //return View("/Views/CsMember/CsRecord.cshtml");
+            return RedirectToAction("CsRecord", "CsMember");
         }
 
         private string GetCheckMacValue(Dictionary<string, string> order)
