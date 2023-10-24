@@ -31,13 +31,14 @@ namespace Take_Care.Controllers.APIController
         /// <summary>
         /// 存放 client_secret 和 credential 的地方
         /// </summary>
-        string SecretPath = @"D:\project\GmailTest\Data\Secrets";
-        //string SecretPath = @"Secrets";
+        //string SecretPath = @"D:\project\GmailTest\Data\Secrets";
+        string SecretPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Secrets");
+		//string SecretPath = @"Secrets";
 
-        /// <summary>
-        /// 認証完成後回傳的網址, 必需和 OAuth 2.0 Client Id 中填寫的 "已授權的重新導向 URI" 相同。
-        /// </summary>
-        string RedirectUri = $"https://localhost:7036/Mail/AuthReturn";
+		/// <summary>
+		/// 認証完成後回傳的網址, 必需和 OAuth 2.0 Client Id 中填寫的 "已授權的重新導向 URI" 相同。
+		/// </summary>
+		string RedirectUri = $"https://take-care.azurewebsites.net";
 
         /// <summary>
         /// 取得認証用的網址
