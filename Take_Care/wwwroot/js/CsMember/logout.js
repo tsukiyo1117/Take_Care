@@ -20,7 +20,7 @@ const logout = Vue.createApp({
     methods: {
         logout() {
             console.log('Logout method called'); // 添加此行用于调试
-            fetch('https://localhost:7036/CsMember/Logout', {
+            fetch('https://take-care.azurewebsites.net/CsMember/Logout', {
                 method: 'GET',
                 credentials: 'same-origin'
             })
@@ -32,7 +32,7 @@ const logout = Vue.createApp({
                         this.member = {};
 
                         // 重定向到首页或登录页面
-                        window.location.href = 'https://localhost:7036/MainPage/Index';
+                        window.location.href = 'https://take-care.azurewebsites.net/MainPage/Index';
                     } else {
                         // 处理登出失败
                         console.error('登出失败');

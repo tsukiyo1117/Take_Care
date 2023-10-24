@@ -32,9 +32,9 @@ let app = new Vue({
                 success: function () {
                     //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "alert('Alert Message');location.href='OtherPage.aspx';", true);
                     if (window.confirm("是否要回到登入?")) {
-                        window.location = "https://localhost:7036/Login";
+                        window.location = "https://take-care.azurewebsites.net//Login";
                     } else {
-                        window.location = "https://localhost:7036";
+                        window.location = "https://take-care.azurewebsites.net";
                     }
                 }
             })
