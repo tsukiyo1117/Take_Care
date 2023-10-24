@@ -8,6 +8,11 @@
     },
     methods: {
         DoLogin: function () {
+            if(email.value==""||password.value==""){
+                loginresult.innerText="請輸入帳號或密碼!!";
+                return;
+            }
+            loginresult.innerText="";
             $.ajax({
                 type: "POST",
                 url: "https://localhost:7036/login/Dologin",

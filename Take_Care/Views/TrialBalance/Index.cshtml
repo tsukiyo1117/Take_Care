@@ -212,7 +212,7 @@
     window.onload = function () {
         $.ajax({
             type: "get",
-            url: "https://localhost:7036/api/Citizenshipstatus",
+            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
             success: function (e) {
                 app.CitizenshipstatusList = e;
 
@@ -222,14 +222,14 @@
         }),
             $.ajax({
                 type: "get",
-                url: "https://localhost:7036/api/SubsidyLevels",
+                url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                 success: function (e) {
                     app.SubsidyLevelsList = e;
                 }
             }),
             $.ajax({
                 type: "get",
-                url: "https://localhost:7036/api/ServiceItems",
+                url: "https://take-care.azurewebsites.net/api/ServiceItems",
                 success: function (e) {
                     app.ServiceItemsList = e;
 
@@ -246,7 +246,7 @@
             }),
             $.ajax({
                 type: "get",
-                url: "https://localhost:7036/api/ServiceItemsDetails",
+                url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                 success: function (e) {
                     app.ServiceItemsDetailsList = e;
                     var selectElement = document.getElementById('CMSlevelID');
@@ -272,29 +272,28 @@
     $(document).ready(function () {
         $(function () {
 
-
             $("#plusImg1").click(function () {
                 careNumber += 1
                 // 加入服務項目
                 $("#careServe").append(innertext1 + careNumber + innertext2 + careNumber + innertext3 + careNumber + innertext4 + optionServiceItemsTC + innertext5 + careNumber + innertext6)
                 $.when(
                     $.ajax({
-                        url: "https://localhost:7036/api/Citizenshipstatus",
+                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/SubsidyLevels",
+                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItems",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItemsDetails",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                         method: "GET",
                         dataType: "json"
                     })
@@ -375,6 +374,22 @@
                             $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
                         }
 
+                        $("#TCimgRemove2").click(function () {
+                            var price = 0
+                            var priceSelf = 0
+                            price = parseInt(TCIntTotal) - parseInt(TCInt2)
+                            priceSelf = price * (data1[0][parseInt(ChoseCIT) - 1].care) / 100
+
+                            console.log(TCIntTotal)
+                            console.log(TCInt2)
+                            $("#TCSevrvePrice").text(`使用服務金額:${price}元/月`)
+                            $("#TCServeSelf").text(`使用服務金額:${priceSelf}元/月`)
+
+
+                        })
+
+
+
                     })
 
                 // 點擊圖片後刪除整個DIV
@@ -386,22 +401,22 @@
                 $('[id^="TCServeChos"]').change(function () {
                     $.when(
                         $.ajax({
-                            url: "https://localhost:7036/api/Citizenshipstatus",
+                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/SubsidyLevels",
+                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/ServiceItems",
+                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/ServiceItemsDetails",
+                            url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                             method: "GET",
                             dataType: "json"
                         })
@@ -494,22 +509,22 @@
                 $('[id^="TCTime"]').change(function () {
                     $.when(
                         $.ajax({
-                            url: "https://localhost:7036/api/Citizenshipstatus",
+                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/SubsidyLevels",
+                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/ServiceItems",
+                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/ServiceItemsDetails",
+                            url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                             method: "GET",
                             dataType: "json"
                         })
@@ -607,17 +622,17 @@
 
                 $.when(
                     $.ajax({
-                        url: "https://localhost:7036/api/Citizenshipstatus",
+                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/SubsidyLevels",
+                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItems",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
                         method: "GET",
                         dataType: "json"
                     })
@@ -685,17 +700,17 @@
                 $('[id^="TABServeChos"]').change(function () {
                     $.when(
                         $.ajax({
-                            url: "https://localhost:7036/api/Citizenshipstatus",
+                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/SubsidyLevels",
+                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/ServiceItems",
+                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
                             method: "GET",
                             dataType: "json"
                         })
@@ -758,17 +773,17 @@
                 $('[id^="TABTime"]').change(function () {
                     $.when(
                         $.ajax({
-                            url: "https://localhost:7036/api/Citizenshipstatus",
+                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/SubsidyLevels",
+                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                             method: "GET",
                             dataType: "json"
                         }),
                         $.ajax({
-                            url: "https://localhost:7036/api/ServiceItems",
+                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
                             method: "GET",
                             dataType: "json"
                         })
@@ -834,6 +849,18 @@
                 $(".TCdivRemove").remove();
                 $(".TABdivRemove").remove();
 
+                $("#TCTotal").text("政府補助上限:10020元/月")
+                $("#TCSevrvePrice").text("使用服務金額:0元/月")
+                $("#TCServeSelf").text("所需自負金額:0元/月")
+                $("#TABTotal").text("政府補助上限:32340元/月")
+                $("#TABSevrvePrice").text("使用服務金額:0元/月")
+                $("#TABServeSelf").text("所需自負金額:0元/月")
+                $("#transportSelf").text("所需自負金額:0元/月")
+                $("#aidSelf").text("所需自負金額:0元/3年")
+
+                $("#CitizenshipstatusID").val(1)
+                $("#CMSlevelID").val(2)
+
             })
 
 
@@ -843,22 +870,22 @@
             $("#CitizenshipstatusID").change(function () {
                 $.when(
                     $.ajax({
-                        url: "https://localhost:7036/api/Citizenshipstatus",
+                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/SubsidyLevels",
+                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItems",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItemsDetails",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                         method: "GET",
                         dataType: "json"
                     })
@@ -988,22 +1015,22 @@
             $("#CMSlevelID").change(function () {
                 $.when(
                     $.ajax({
-                        url: "https://localhost:7036/api/Citizenshipstatus",
+                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/SubsidyLevels",
+                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItems",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
                         method: "GET",
                         dataType: "json"
                     }),
                     $.ajax({
-                        url: "https://localhost:7036/api/ServiceItemsDetails",
+                        url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
                         method: "GET",
                         dataType: "json"
                     })
