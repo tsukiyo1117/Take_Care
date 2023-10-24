@@ -272,7 +272,6 @@
     $(document).ready(function () {
         $(function () {
 
-
             $("#plusImg1").click(function () {
                 careNumber += 1
                 // 加入服務項目
@@ -374,6 +373,22 @@
                         else if (somethingNOSun - 1 < 0) {
                             $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
                         }
+
+                        $("#TCimgRemove2").click(function () {
+                            var price = 0
+                            var priceSelf = 0
+                            price = parseInt(TCIntTotal) - parseInt(TCInt2)
+                            priceSelf = price * (data1[0][parseInt(ChoseCIT) - 1].care) / 100
+
+                            console.log(TCIntTotal)
+                            console.log(TCInt2)
+                            $("#TCSevrvePrice").text(`使用服務金額:${price}元/月`)
+                            $("#TCServeSelf").text(`使用服務金額:${priceSelf}元/月`)
+
+
+                        })
+
+
 
                     })
 
