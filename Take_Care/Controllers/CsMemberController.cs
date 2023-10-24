@@ -44,6 +44,13 @@ namespace Take_Care.Controllers
 			// 重定向到首页
 			return RedirectToAction("Index", "MainPage");
 		}
+        public IActionResult CsTrialBalance()
+        {
 
-	}
+            return View();
+
+        }
+
+        
+    }
 }
