@@ -78,7 +78,7 @@
             // 在这里执行你的 AJAX 请求
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/PersonalInfoview',
+                url: 'https://take-care.azurewebsites.net/api/PersonalInfoview',
                 success: (data) => {
 
 

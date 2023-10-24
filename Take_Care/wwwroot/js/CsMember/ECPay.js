@@ -13,7 +13,7 @@
     //step3 : 新增訂單到資料庫
     $.ajax({
         type: 'POST',
-        url: 'https://localhost:7036/ECPay/DoTestPay',
+        url: 'https://take-care.azurewebsites.net/ECPay/DoTestPay',
         // url: 'https://localhost:5154/api/AddOrders',
         //url:"https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5",
         contentType: 'application/json; charset=utf-8',

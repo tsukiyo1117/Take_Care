@@ -24,7 +24,7 @@ namespace Take_Care.Controllers.APIController
         {
             var orderId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
             //需填入你的網址
-            var website = $"https://localhost:7036";
+            var website = $"https://take-care.azurewebsites.net";
             var order = new Dictionary<string, string>
             {
                 //綠界需要的參數

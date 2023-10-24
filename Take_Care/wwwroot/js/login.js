@@ -10,7 +10,7 @@
         DoLogin: function () {
             $.ajax({
                 type: "POST",
-                url: "https://localhost:7036/login/Dologin",
+                url: "https://take-care.azurewebsites.net/login/Dologin",
                 contentType: "application/json",
                 data: JSON.stringify(this.member),
                 statusCode: {

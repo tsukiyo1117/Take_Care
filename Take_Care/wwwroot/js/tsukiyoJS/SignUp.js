@@ -17,7 +17,7 @@ let app = new Vue({
             console.log(this.Employer);
             $.ajax({
                 type: "POST",
-                url: "https://localhost:7036/api/Employers",
+                url: "https://take-care.azurewebsites.net/api/Employers",
                 contentType: "application/json",
                 data: JSON.stringify(this.Employer),
                 success: function () {
