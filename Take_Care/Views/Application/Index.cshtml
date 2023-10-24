@@ -1,22 +1,20 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-
-
-<div>
+﻿<div>
     <div class="Title" style="text-align:center">
-        <h1 style="margin-bottom : 0;">申請服務</h1>
+        <h1 style="margin-bottom : 0;background-color: #DCD0C3;">申請服務</h1>
     </div>
     <div class="row">
-        <div class="Title1 col-3" style="overflow-y:scroll; height: 733px;">
+        <div class="Title1 col-3" style="overflow-y:scroll; height: 717px; background-color: #C0C0C0;">
 
 
             <div class="tab row">
-                <button class="tablinks col-12" onclick="openCity(event, 'TC', 'TCDiv')">照顧及專業服務:</button>
-                <button class="tablinks col-12" onclick="openCity(event, 'TAB', 'TABDiv')">喘息服務:</button>
+                <a class="tablinks col-12 click-btn btn-styleTC"
+                   onclick="openCity(event, 'TC', 'TCDiv')">
+                    <span style="z-index: 2;">照顧及專業服務:</span>
+                </a>
+                <a class="tablinks col-12 click-btn btn-styleTAB"
+                   onclick="openCity(event, 'TAB', 'TABDiv')">
+                    <span style="z-index: 2;">喘息服務:</span>
+                </a>
             </div>
 
             <div id="TC" class="tabcontent">
@@ -33,9 +31,9 @@
 
 
 
-        <div class="col-9" style="border: dashed red;">
+        <div class="col-9">
 
-            <div class="Title row">
+            <div class="Title row" style="background-color: #FFFBE9;">
                 <div class="col-1"></div>
                 <div class="cashandlevl col-4" style="text-align:center">
                     <label for="">
@@ -59,24 +57,24 @@
 
 
 
-            <div id="TCDiv" class="tabcontent Title1 row">
+            <div id="TCDiv" class="tabcontent Title1 row" style="background-color: #E0FBFB;">
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col" style="height:55px">日</div>
-                    <div class="col" style="height:55px">一</div>
-                    <div class="col" style="height:55px">二</div>
-                    <div class="col" style="height:55px">三</div>
-                    <div class="col" style="height:55px">四</div>
-                    <div class="col" style="height:55px">五</div>
-                    <div class="col" style="height:55px">六</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">日</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">一</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">二</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">三</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">四</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">五</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">六</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col TCsetDay" id="TCDAY01" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY02" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY03" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY04" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY05" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY06" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY07" style="height:55px">日期</div>
+                    <div class="col TCsetDay" id="TCDAY01" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY02" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY03" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY04" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY05" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY06" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY07" style="height:55px; background-color: #DCD0C3;">日期</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
                     <div class="col TCdayOK" id="TCID01" style="height:55px"></div>
@@ -88,13 +86,13 @@
                     <div class="col TCdayOK" id="TCID07" style="height:55px"></div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col TCsetDay" id="TCDAY08" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY09" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY10" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY11" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY12" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY13" style="height:55px">日期</div>
-                    <div class="col TCsetDay" id="TCDAY14" style="height:55px">日期</div>
+                    <div class="col TCsetDay" id="TCDAY08" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY09" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY10" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY11" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY12" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY13" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TCsetDay" id="TCDAY14" style="height:55px; background-color: #DCD0C3;">日期</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
                     <div class="col TCdayOK" id="TCID08" style="height:55px"></div>
@@ -108,24 +106,24 @@
             </div>
 
 
-            <div id="TABDiv" class="tabcontentDiv Title1 row" style="display:none;">
+            <div id="TABDiv" class="tabcontentDiv Title1 row" style="display:none; background-color: #C4E1E1;">
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col" style="height:55px">日</div>
-                    <div class="col" style="height:55px">一</div>
-                    <div class="col" style="height:55px">二</div>
-                    <div class="col" style="height:55px">三</div>
-                    <div class="col" style="height:55px">四</div>
-                    <div class="col" style="height:55px">五</div>
-                    <div class="col" style="height:55px">六</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">日</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">一</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">二</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">三</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">四</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">五</div>
+                    <div class="col" style="height:55px; background-color: #DCD0C3;">六</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col TABsetDay" id="TABDAY01" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY02" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY03" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY04" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY05" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY06" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY07" style="height:55px">日期</div>
+                    <div class="col TABsetDay" id="TABDAY01" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY02" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY03" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY04" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY05" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY06" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY07" style="height:55px; background-color: #DCD0C3;">日期</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
                     <div class="col TABdayOK" id="TABID01" style="height:55px"></div>
@@ -137,13 +135,13 @@
                     <div class="col TABdayOK" id="TABID07" style="height:55px"></div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col TABsetDay" id="TABDAY08" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY09" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY10" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY11" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY12" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY13" style="height:55px">日期</div>
-                    <div class="col TABsetDay" id="TABDAY14" style="height:55px">日期</div>
+                    <div class="col TABsetDay" id="TABDAY08" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY09" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY10" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY11" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY12" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY13" style="height:55px; background-color: #DCD0C3;">日期</div>
+                    <div class="col TABsetDay" id="TABDAY14" style="height:55px; background-color: #DCD0C3;">日期</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
                     <div class="col TABdayOK" id="TABID08" style="height:55px"></div>
@@ -157,7 +155,7 @@
             </div>
 
 
-            <div class="Title row">
+            <div class="Title row" style="background-color: #E0FBFB;">
                 <div>
                     <h3 style="height:45px">照顧及專業服務:</h3>
                 </div>
@@ -167,7 +165,7 @@
                     <div id="TCServeSelf" style="height:55px"></div>
                 </div>
             </div>
-            <div class="Title1 row">
+            <div class="Title1 row" style="background-color: #C4E1E1;">
                 <div style="height:45px">
                     <h3>喘息服務</h3>
                 </div>
@@ -179,11 +177,15 @@
             </div>
 
 
-            <div class="Title row" style="height:40px">
+            <div class="Title row" style="height:40px; background-color: #DCD0C3;">
                 <div class="col-3"></div>
-                <button id="allClear" class="col-2">清空</button>
+                <button id="allClear" class="col-2 click-btn btn-style">
+                    <span style="z-index: 2;">清空</span>
+                </button>
                 <div class="col-2"></div>
-                <button id="allOK" class="col-2">確認</button>
+                <button id="allOK" class="col-2 click-btn btn-style">
+                    <span style="z-index: 2;">確認</span>
+                </button>
                 <div class="col-3"></div>
             </div>
         </div>
@@ -198,9 +200,9 @@
         </label>
         <div class="row">
             <div class="col-2"></div>
-            <button class="col-3" id="TCserveDay1OK">確認</button>
+            <button class="col-3 click-btn" id="TCserveDay1OK">確認</button>
             <div class="col-2"></div>
-            <button class="col-3" id="TCserveDay1NO">取消</button>
+            <button class="col-3 click-btn" id="TCserveDay1NO">取消</button>
             <div class="col-2"></div>
         </div>
     </div>
@@ -1742,9 +1744,9 @@
 
                     // 能抓到 但是是進入dialog前就更改 不是經dialog確認判斷後才更改
                     console.log($("#TCserveReadyName1").val())
-                    
-                        $(this).text("有服務");
-                    
+
+                    $(this).text("有服務");
+
                 })
 
                 $("#TCID02").click(function () {
@@ -1791,8 +1793,8 @@
                     $("#TCserveReady2").dialog('open');
 
                     // 能抓到 但是是進入dialog前就更改 不是經dialog確認判斷後才更改
-                        $(this).text("有服務");
-                    
+                    $(this).text("有服務");
+
                 })
 
                 $("#TCID03").click(function () {
@@ -1839,8 +1841,8 @@
                     $("#TCserveReady3").dialog('open');
 
                     // 能抓到 但是是進入dialog前就更改 不是經dialog確認判斷後才更改
-                        $(this).text("有服務");
-                    
+                    $(this).text("有服務");
+
                 })
 
                 $('[id^="TCID"]').mouseleave(function () {
@@ -1905,8 +1907,8 @@
 
                     $("#TABserveReady8").dialog('open');
 
-                        $(this).text("有服務");
-                    
+                    $(this).text("有服務");
+
 
                 })
 
@@ -1954,8 +1956,8 @@
                     $("#TABserveReady9").dialog('open');
 
 
-                        $(this).text("有服務");
-                    
+                    $(this).text("有服務");
+
 
                 })
 
@@ -2002,8 +2004,8 @@
 
                     $("#TABserveReady10").dialog('open');
 
-                        $(this).text("有服務");
-                    
+                    $(this).text("有服務");
+
 
                 })
 
