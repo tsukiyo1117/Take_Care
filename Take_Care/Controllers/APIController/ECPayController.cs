@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using Newtonsoft.Json;
 using ECPay.Payment.Integration;
+using Microsoft.EntityFrameworkCore;
 using HttpMethod = ECPay.Payment.Integration.HttpMethod;
 
 namespace Take_Care.Controllers.APIController
@@ -78,6 +79,7 @@ namespace Take_Care.Controllers.APIController
 
              var order = _context.Cases.ToList().Where(x => x.CaseId == int.Parse(id["CustomField1"])).FirstOrDefault();
              order.PaymentStatus = true;
+             _context.Entry(order).State = EntityState.Modified;
             // order.RtnCode = int.Parse(id["RtnCode"]);
             // order.RtnMsg = (id["RtnMsg"] == "Succeeded") ? "訂單成功已付款" : order.RtnMsg;
             // order.PaymentDate = Convert.ToDateTime(id["PaymentDate"]);
