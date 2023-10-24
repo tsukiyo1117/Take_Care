@@ -12,6 +12,7 @@
     .paid-row {
         background-color: #ccc; /* 这里可以是你想要的灰色背景颜色 */
         color: #555; /* 修改文字颜色为更暗的灰色 */
+        
     }
 </style>
 
@@ -111,7 +112,7 @@
                                                 </td>
                                                 <td style="text-align: center;">
                                                     <a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn{{ Case.caseId }}"
-                                                       v-if="Case.paymentStatus === false" @@click.prevent="checkout(Case)">未結帳</a>
+                                                       v-if="Case.paymentStatus === false" @@click.prevent="checkout(Case)">去結帳</a>
                                                     <a href="#" class="btn btn-outline-dark dismiss-notification"
                                                        v-else>已繳費</a>
                                                     <a href="#" class="btn btn-outline-dark dismiss-notification"
@@ -346,6 +347,7 @@
                         Amount: Case.amount,
                         ServiceName: Case.serviceName
                     };
+                
 
                     // 发送 POST 请求到服务器
                     $.ajax({
@@ -377,9 +379,9 @@
 
                             // 修改按钮文本为 "已繳費"
                             $(`#checkoutBtn${Case.caseId}`).text('已繳費');
-
+                            console.log('繳費完成!')
                             // 将整行 `<tr>` 添加一个类来改变其样式
-                            $(`#caseRow${Case.caseId}`).addClass('paid-row');
+                            // $(`#caseRow${Case.caseId}`).addClass('paid-row');
 
                             Case.paymentStatus = true;
 
