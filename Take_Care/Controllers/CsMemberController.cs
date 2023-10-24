@@ -36,5 +36,14 @@ namespace Take_Care.Controllers
 
         }
 
-    }
+		[HttpGet]
+		public IActionResult Logout()
+		{
+			// 执行登出逻辑（清除用户会话等）
+
+			// 重定向到首页
+			return RedirectToAction("Index", "MainPage");
+		}
+
+	}
 }

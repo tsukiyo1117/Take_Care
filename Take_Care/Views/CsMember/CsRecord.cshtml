@@ -17,12 +17,21 @@
     <div class="container">
         <div class="row">
             <div class="col-2 ">
-                <div class="row  " id="userPic">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                         alt="user">
-                    <span class="row">
-                        UserAccount
-                    </span>
+                <div class="row" id="userPic" style="display:flex;width:100%">
+                    <div class="col">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="user">
+                    </div>
+                    <div class="col d-flex align-items-center" id="logout">
+                        <form asp-controller="CsMember" asp-action="Logout" method="post">
+                            <button class="btn btn-light" style="border:1px solid burlywood;font-weight:900;background-color:	#ffdab9"
+                                    @@click="logout">
+                                登出
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <span class="row" id="userAccount" style="font-size: 18px; font-weight: 900;"></span>
+                    </div>
                 </div>
                 @await Html.PartialAsync("_SideBarPartial")
             </div>
@@ -122,6 +131,7 @@
     @* <script src="~/js/CsMember/ECPay.js"></script> *@
     <script src="~/js/CsMember/profile.js"></script>
     <script src="~/js/CsMember/notification.js"></script>
+    <script src="~/js/CsMember/logout.js"></script>
     <script>
         const CaseHistoryRecord = Vue.createApp({
             data() {
@@ -363,6 +373,15 @@
 
         CaseHistoryRecord.mount("#CaseHistoryRecord");
 
+        $(function () {
+
+            // 从 sessionStorage 获取 userAccount 数据
+            var userAccount = JSON.parse(sessionStorage.getItem("id"))[0].account
+            console.log(userAccount)
+            // 更新页面上的 UserAccount 文本
+            $("#userAccount").text('Hello!' + userAccount);
+
+        });
 
 
         $(".datepicker").datepicker({

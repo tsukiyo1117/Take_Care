@@ -17,7 +17,7 @@ const profile = Vue.createApp({
             employerDistrict: "",
             employerid: "",
             employerPassword: "",
-            employerPhotoURL:"",
+            employerPhotoURL: "",
             originData: "",
 
             // 案主檔案
@@ -66,45 +66,47 @@ const profile = Vue.createApp({
     },
     mounted() {
         this.$nextTick(() => {
-            this.fetchProfileData();
-            this.fetchIDData();
-            this.fetchEmergencyContact();
-            this.fetchEmployeeData();
+             $("#twzipcode").twzipcode();
+            const userData = JSON.parse(sessionStorage.getItem('id'));
+            const county = userData[0].address.slice(0, 3);
+            const district = userData[0].address.slice(3);
+            // console.log(userData.address)
+            // console.log(userData.address.slice(0, 3))
+            // console.log(userData.address.slice(3))
+            // 使用 TWzipcode 的 .set() 方法設定地址
+            $("#twzipcode").twzipcode('set', {
+                'county': county,
+                'district': district
+            });
+
+            // $("#twzipcode2").twzipcode();
+            //const userData2 = JSON.parse(sessionStorage.getItem('personalResidentialAddress'));
+            //const county2 = userData2.slice(0, 3);
+            //const district2 = userData2.slice(3);
+            //// console.log(county2)
+            //$("#twzipcode2").twzipcode('set', {
+            //    'county': county2,
+            //    'district': district2
+            //});
+
+
+            //// $("#twzipcode3").twzipcode();
+            //const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
+            //const county3 = userData3.slice(0, 3);
+            //const district3 = userData3.slice(3)
+            //$("#twzipcode3").twzipcode('set', {
+            //    'county': county3,
+            //    'district': district3
+            //});
+
         });
-        $("#twzipcode").twzipcode();
-        const userData = JSON.parse(sessionStorage.getItem('id'));
-        const county = userData[0].address.slice(0, 3);
-        const district = userData[0].address.slice(3);
-        // console.log(userData.address)
-        // console.log(userData.address.slice(0, 3))
-        // console.log(userData.address.slice(3))
-        // 使用 TWzipcode 的 .set() 方法設定地址
-        $("#twzipcode").twzipcode('set', {
-            'county': county,
-            'district': district
-        });
+        this.fetchProfileData();
+        this.fetchIDData();
+        this.fetchEmergencyContact();
+        this.fetchEmployeeData();
 
 
-        $("#twzipcode2").twzipcode();
-        const userData2 = JSON.parse(sessionStorage.getItem('personalResidentialAddress'));
-        const county2 = userData2.slice(0, 3);
-        const district2 = userData2.slice(3);
-        // console.log(county2)
-        $("#twzipcode2").twzipcode('set', {
-            'county': county2,
-            'district': district2
-        });
-
-
-        $("#twzipcode3").twzipcode();
-        const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
-        const county3 = userData3.slice(0, 3);
-        const district3 = userData3.slice(3)
-        $("#twzipcode3").twzipcode('set', {
-            'county': county3,
-            'district': district3
-        });
-
+        
     },
     methods: {
         fetchProfileData() {
@@ -387,12 +389,12 @@ const profile = Vue.createApp({
                 }
             });
         },
-        
+
     }
 });
 
 // 這個CsProfile物件，跟上面的profile物件是一樣的，因為內容包含在兩個id裡面，懶得去調整，不然_Tabpartial也要一起動，太麻煩
-const Csprofile = Vue.createApp({
+const CsProfile = Vue.createApp({
     data() {
         return {
 
@@ -427,7 +429,7 @@ const Csprofile = Vue.createApp({
             personalResidentialDistrict: "",
             personalMailingAddressCounty: "",
             personalMailingAddressDistrict: "",
-            Residential_Status:"",
+            Residential_Status: "",
 
             // 補上county、district
 
@@ -457,44 +459,47 @@ const Csprofile = Vue.createApp({
     },
     mounted() {
         this.$nextTick(() => {
-            this.fetchProfileData();
-            this.fetchIDData();
-            this.fetchEmergencyContact();
-            this.fetchEmployeeData();
-        });
-        $("#twzipcode").twzipcode();
-        const userData = JSON.parse(sessionStorage.getItem('id'));
-        const county = userData[0].address.slice(0, 3);
-        const district = userData[0].address.slice(3);
-        // console.log(userData.address)
-        // console.log(userData.address.slice(0, 3))
-        // console.log(userData.address.slice(3))
-        // 使用 TWzipcode 的 .set() 方法設定地址
-        $("#twzipcode").twzipcode('set', {
-            'county': county,
-            'district': district
-        });
+            // $("#twzipcode").twzipcode();
+            //const userData = JSON.parse(sessionStorage.getItem('id'));
+            //const county = userData[0].address.slice(0, 3);
+            //const district = userData[0].address.slice(3);
+            //// console.log(userData.address)
+            //// console.log(userData.address.slice(0, 3))
+            //// console.log(userData.address.slice(3))
+            //// 使用 TWzipcode 的 .set() 方法設定地址
+            //$("#twzipcode").twzipcode('set', {
+            //    'county': county,
+            //    'district': district
+            //});
+
+             $("#twzipcode2").twzipcode();
+            const userData2 = JSON.parse(sessionStorage.getItem('personalResidentialAddress'));
+            const county2 = userData2.slice(0, 3);
+            const district2 = userData2.slice(3);
+            // console.log(county2)
+            $("#twzipcode2").twzipcode('set', {
+                'county': county2,
+                'district': district2
+            });
 
 
-        $("#twzipcode2").twzipcode();
-        const userData2 = JSON.parse(sessionStorage.getItem('personalResidentialAddress'));
-        const county2 = userData2.slice(0, 3);
-        const district2 = userData2.slice(3);
-        // console.log(county2)
-        $("#twzipcode2").twzipcode('set', {
-            'county': county2,
-            'district': district2
+             $("#twzipcode3").twzipcode();
+            const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
+            const county3 = userData3.slice(0, 3);
+            const district3 = userData3.slice(3)
+            $("#twzipcode3").twzipcode('set', {
+                'county': county3,
+                'district': district3
+            });
+           
         });
+        
+        this.fetchProfileData();
+        this.fetchIDData();
+        this.fetchEmergencyContact();
+        this.fetchEmployeeData();
 
-
-        $("#twzipcode3").twzipcode();
-        const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
-        const county3 = userData3.slice(0, 3);
-        const district3 = userData3.slice(3)
-        $("#twzipcode3").twzipcode('set', {
-            'county': county3,
-            'district': district3
-        });
+       
 
     },
     methods: {
@@ -782,7 +787,7 @@ const Csprofile = Vue.createApp({
 
 
 profile.mount("#profile");
-Csprofile.mount("#CsProfile");
+CsProfile.mount("#CsProfile");
 
 
 
