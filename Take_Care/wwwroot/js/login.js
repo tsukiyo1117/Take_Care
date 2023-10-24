@@ -2,8 +2,8 @@
     el: "#loginApp",
     data: {
         member: {
-            Account: "employer001",
-            Password: "SecurePwd1",
+            Account: "",
+            Password: "",
         }
     },
     methods: {
