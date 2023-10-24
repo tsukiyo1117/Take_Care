@@ -22,8 +22,8 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col">
-                        <span class="row" id="userAccount" style="font-size: 18px; font-weight: 900;"></span>
+                    <div class="">
+                        <span class="row" id="userName" style="font-size: 18px; font-weight: 900;"></span>
                     </div>
                 </div>
                 @await Html.PartialAsync("_SideBarPartial")
@@ -409,10 +409,10 @@
         $(function () {
 
             // 从 sessionStorage 获取 userAccount 数据
-            var userAccount = JSON.parse(sessionStorage.getItem("id"))[0].account
-            console.log(userAccount)
+            var userName = JSON.parse(sessionStorage.getItem("id"))[0].fullName
+            console.log(userName)
             // 更新页面上的 UserAccount 文本
-            $("#userAccount").text('Hello!' + userAccount);
+            $("#userName").text('Hello!' + userName);
 
         });
 

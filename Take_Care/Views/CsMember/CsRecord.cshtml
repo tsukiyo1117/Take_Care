@@ -8,6 +8,11 @@
     .profile-head h3 {
         color: #333;
     }
+
+    .paid-row {
+        background-color: #ccc; /* 这里可以是你想要的灰色背景颜色 */
+        color: #555; /* 修改文字颜色为更暗的灰色 */
+    }
 </style>
 
 
@@ -29,8 +34,8 @@
                             </button>
                         </form>
                     </div>
-                    <div class="col">
-                        <span class="row" id="userAccount" style="font-size: 18px; font-weight: 900;"></span>
+                    <div class="">
+                        <span class="row" id="userName" style="font-size: 18px; font-weight: 900;"></span>
                     </div>
                 </div>
                 @await Html.PartialAsync("_SideBarPartial")
@@ -85,7 +90,7 @@
                                                 <th style="background-color: burlywood;">繳費狀態</th>
                                             </tr>
 
-                                            <tr style="font-size: 20px;text-align:center" v-for="Case in CaseList" :key="Case.caseId" v-show="!Case.hide">
+                                            <tr :class="{ 'paid-row': Case.paymentStatus }" style="font-size: 20px;text-align:center;font-weight:900" v-for="Case in CaseList" :key="Case.caseId" v-show="!Case.hide">
                                                 <td style="text-align: center;">
                                                     {{ Case.caseId }}
                                                 </td>
@@ -105,12 +110,14 @@
                                                     ${{ Case.amount }}
                                                 </td>
                                                 <td style="text-align: center;">
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn"
+                                                    <a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn{{ Case.caseId }}"
                                                        v-if="Case.paymentStatus === false" @@click.prevent="checkout(Case)">未結帳</a>
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn"
-                                                       v-else>已結帳</a>
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification" v-if="Case.caseStatus === false" @@click.prevent=" cancelService(Case)">取消</a>
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification" v-else>已完成</a>
+                                                    <a href="#" class="btn btn-outline-dark dismiss-notification"
+                                                       v-else>已繳費</a>
+                                                    <a href="#" class="btn btn-outline-dark dismiss-notification"
+                                                       v-if="Case.caseStatus === false && !Case.paymentStatus" @@click.prevent="cancelService(Case)">取消</a>
+                                                    <a href="#" class="btn btn-outline-dark dismiss-notification"
+                                                       v-else>已完成</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -155,6 +162,7 @@
                 this.$nextTick(() => {
                     this.GetCaseForEmployer();
                     this.created();
+                    
                 });
             },
             methods: {
@@ -310,18 +318,27 @@
 
                 cancelService(Case) {
                     if (Case.paymentStatus === false) {
-                        // 找到要隐藏的案件在CaseList中的索引
-                        const index = this.CaseList.findIndex(item => item === Case);
-                        if (index !== -1) {
-                            // 从CaseList中移除这个案件
-                            this.CaseList.splice(index, 1);
-                        }
+                        $.ajax({
+                            type: 'DELETE',
+                            url: `https://localhost:7036/api/Cases/${Case.caseId}`,
+                            success: (response) => {
+                                // 成功刪除後，更新前端數據
+                               
+                                // 使用 Vue.js 更新數據模型，將自動重新渲染頁面
+                                this.$forceUpdate();
+
+                                // 可選：顯示一條成功消息
+                                alert('案件已成功取消');
+                            },
+                            error: (err) => {
+                                console.log(err);
+                            }
+                        });
                     } else {
-                        // 如果案件已结账，你可以在此处添加一些提示或处理逻辑
-                        // 例如，弹出一个提示框或显示一条消息
-                        alert('无法取消已结账的案件');
+                        alert('無法取消已結帳的案件');
                     }
                 },
+
                 checkout(Case) {
                     // 创建 JSON 对象
                     const json = {
@@ -358,10 +375,18 @@
                             document.body.appendChild(form);
                             form.submit();
 
+                            // 修改按钮文本为 "已繳費"
+                            $(`#checkoutBtn${Case.caseId}`).text('已繳費');
+
+                            // 将整行 `<tr>` 添加一个类来改变其样式
+                            $(`#caseRow${Case.caseId}`).addClass('paid-row');
+
                             Case.paymentStatus = true;
 
                             // 重定向回历史纪录页面
-                            // window.location.href = 'CsRecord'; // 请替换为你的历史纪录页面的实际 URL
+                            console.log('准备执行重定向');
+
+                            window.location.href = 'https://localhost:7036/CsMember/CsRecord'; // 请替换为你的历史纪录页面的实际 URL
                         },
                         error: function (err) {
                             console.log(err);
@@ -376,10 +401,10 @@
         $(function () {
 
             // 从 sessionStorage 获取 userAccount 数据
-            var userAccount = JSON.parse(sessionStorage.getItem("id"))[0].account
-            console.log(userAccount)
+            var userName = JSON.parse(sessionStorage.getItem("id"))[0].fullName
+            console.log(userName)
             // 更新页面上的 UserAccount 文本
-            $("#userAccount").text('Hello!' + userAccount);
+            $("#userName").text('Hello!' + userName);
 
         });
 
