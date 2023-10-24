@@ -1,6 +1,7 @@
 ﻿<div>
-    <div class="Title" style="text-align:center">
-        <h1 style="margin-bottom : 0;background-color: #DCD0C3;">申請服務</h1>
+    <div class="" style="display: flex; align-items: center;">
+        <button class=" click-btn btn-style" onclick="window.location.href = '/CsMember/CsRecord'"><span style="z-index:2">我的服務紀錄</span></button>
+        <h1 style="margin-bottom: 0; background-color: #DCD0C3; text-align: center; flex-grow: 1;font-weight:500">申請服務</h1>
     </div>
     <div class="row">
         <div class="Title1 col-3" style="overflow-y:scroll; height: 717px; background-color: #C0C0C0;">
@@ -2163,6 +2164,7 @@
 
         // 傳出sessionStorage
         $("#allOK").click(function () {
+            
             var test = {
                 "employerId": 5,
                 "serviceName": "基本身體清潔(日)",
@@ -2197,6 +2199,7 @@
 
             });
 
+            window.location.href = '/CsMember/CsRecord';
 
 
 
