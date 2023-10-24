@@ -79,8 +79,8 @@
                     <div class="col TCsetDay" id="TCDAY07" style="height:55px">日期</div>
                 </div>
                 <div class="row" style="--bs-gutter-x: 0;">
-                    <div class="col TCdayOK" id="TCID02" style="height:55px"></div>
                     <div class="col TCdayOK" id="TCID01" style="height:55px"></div>
+                    <div class="col TCdayOK" id="TCID02" style="height:55px"></div>
                     <div class="col TCdayOK" id="TCID03" style="height:55px"></div>
                     <div class="col TCdayOK" id="TCID04" style="height:55px"></div>
                     <div class="col TCdayOK" id="TCID05" style="height:55px"></div>
@@ -1423,9 +1423,9 @@
 
                     // 總服務名
                     if (TABAllServeName == "") {
-                        TABAllServeName = TCinputCheckName
+                        TABAllServeName = TABinputCheckName
                     } else {
-                        TABAllServeName = TABAllServeName + ", " + TCinputCheckName
+                        TABAllServeName = TABAllServeName + ", " + TABinputCheckName
                     }
 
 
@@ -1528,9 +1528,9 @@
 
                     // 總服務名
                     if (TABAllServeName == "") {
-                        TABAllServeName = TCinputCheckName
+                        TABAllServeName = TABinputCheckName
                     } else {
-                        TABAllServeName = TABAllServeName + ", " + TCinputCheckName
+                        TABAllServeName = TABAllServeName + ", " + TABinputCheckName
                     }
 
 
@@ -1633,9 +1633,9 @@
 
                     // 總服務名
                     if (TABAllServeName == "") {
-                        TABAllServeName = TCinputCheckName
+                        TABAllServeName = TABinputCheckName
                     } else {
-                        TABAllServeName = TABAllServeName + ", " + TCinputCheckName
+                        TABAllServeName = TABAllServeName + ", " + TABinputCheckName
                     }
 
 
@@ -1777,6 +1777,7 @@
                     // 服務日期的文字
                     TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].data
                     // TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].childNodes[0].childNodes[0].data
+                    showDay = TCChoseDay
                     month = TCChoseDay.slice(0, 2)
                     day = TCChoseDay.slice(0, -1).slice(3)
                     if (day.length == 1) {
@@ -1824,6 +1825,7 @@
                     // 服務日期的文字
                     TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].data
                     // TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].childNodes[0].childNodes[0].data
+                    showDay = TCChoseDay
                     month = TCChoseDay.slice(0, 2)
                     day = TCChoseDay.slice(0, -1).slice(3)
                     if (day.length == 1) {
@@ -1890,6 +1892,7 @@
                     // 服務日期的文字
                     TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].data
                     // TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].childNodes[0].childNodes[0].data
+                    showDay = TCChoseDay
                     month = TCChoseDay.slice(0, 2)
                     day = TCChoseDay.slice(0, -1).slice(3)
                     if (day.length == 1) {
@@ -1937,6 +1940,7 @@
                     // 服務日期的文字
                     TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].data
                     // TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].childNodes[0].childNodes[0].data
+                    showDay = TCChoseDay
                     month = TCChoseDay.slice(0, 2)
                     day = TCChoseDay.slice(0, -1).slice(3)
                     if (day.length == 1) {
@@ -1985,6 +1989,7 @@
                     // 服務日期的文字
                     TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].data
                     // TCChoseDay = $(`#${ServerDay}`)[0].childNodes[0].childNodes[0].childNodes[0].data
+                    showDay = TCChoseDay
                     month = TCChoseDay.slice(0, 2)
                     day = TCChoseDay.slice(0, -1).slice(3)
                     if (day.length == 1) {
@@ -2037,8 +2042,8 @@
             buttons: {
                 確認: function () {
                     $('#askYN').dialog('close');
-                    $('[id^="TCID"]').text("TC");
-                    $('[id^="TABID"]').text("TC");
+                    $('[id^="TCID"]').text("");
+                    $('[id^="TABID"]').text("");
                     $(".TCinputCheck").prop('checked', false);
                     $(".TABinputCheck").prop('checked', false);
                     sessionStorage.clear()
