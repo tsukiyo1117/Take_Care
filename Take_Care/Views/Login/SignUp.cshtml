@@ -18,7 +18,7 @@
 					<p style="color:red;" id="resulttext"></p>
 					<h2 class="fs-title">創建帳號</h2>
 					<h3 class="fs-subtitle">請輸入電子信箱</h3>
-					<input type="text" name="email" placeholder="Email" v-model="Employer.email"/>
+					<input type="text" name="email" placeholder="Email" v-model="Employer.email" v-on:blur="mailBlur($event)"/>
 					<input type="button" name="next" class="action-button" value="發送驗證信" v-on:click="sendEmail($event)"/>
 				</fieldset>
 				<fieldset>
@@ -34,9 +34,12 @@
 					<h2 class="fs-title">基本資料</h2>
 					<h3 class="fs-subtitle">請輸入基本資料</h3>
 					<input type="password" name="pass" placeholder="密碼" v-on:blur="inputBlur($event)" v-model="Employer.password"/>
+					<span id="passresult"></span>
 					<input type="password" name="cpass" placeholder="確認密碼" v-on:blur="inputBlur($event)"/>
+					<span id="cpassresult"></span>
 					<input type="text" name="name" placeholder="姓名" v-on:blur="inputBlur($event)" v-model="Employer.fullName"/>
 					<input type="text" name="phone" placeholder="電話" v-on:blur="inputBlur($event)" v-model="Employer.phoneNumber"/>
+					<span id="phoneresult"></span>
 					<div class="row">
 						<div class="col-4">
 							<input type="radio" name="gender" value="男" id="male" v-model="Employer.gender"><label

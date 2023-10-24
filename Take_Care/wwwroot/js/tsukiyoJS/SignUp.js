@@ -1,4 +1,8 @@
 ﻿let MailCode = "";
+let emailregex = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+let passregex = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$/);
+let cpassregex = new RegExp();
+let phoneregex = new RegExp(/^09\d{2}-?\d{3}-?\d{3}$/);
 let app = new Vue({
     el: "#SignUpapp",
     data: {
@@ -21,7 +25,9 @@ let app = new Vue({
                 contentType: "application/json",
                 data: JSON.stringify(this.Employer),
                 success: function () {
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "alert('Alert Message');location.href='OtherPage.aspx';", true);
                     alert("OK");
+                    window.Location.href="https://localhost:7036/CsMember/Profile";
                 }
             })
         },
@@ -60,11 +66,53 @@ let app = new Vue({
             }
         },
         inputBlur: function (event) {
-            if (event.target.checkValidity()) {
-                event.target.style.border= "1px solid green";
-                //event.target.classList.add("valid");
+            console.log(event.target.name);
+            switch (event.target.name) {
+                case "pass":
+                    if (passregex.test(event.target.value)) {
+                        document.getElementById(event.target.name+"result").innerText =""
+                        event.target.style.border = "1px solid green";
+                    } else {
+                        document.getElementById(event.target.name+"result").innerText ="必須包含大小寫字母和數字的組合，不能使用特殊字符，長度在 8-10 之間"
+                        event.target.style.border = "1px solid red";
+                    }
+                    break;
+                case "cpass":
+                    if (event.target.value == this.Employer.password) {
+                        document.getElementById(event.target.name+"result").innerText =""
+                        event.target.style.border = "1px solid green";
+                    } else {
+                        document.getElementById(event.target.name+"result").innerText ="確認密碼與密碼不相符"
+                        event.target.style.border = "1px solid red";
+                    }
+                    break;
+                case "phone":
+                    if (phoneregex.test(event.target.value)) {
+                        document.getElementById(event.target.name+"result").innerText =""
+                        event.target.style.border = "1px solid green";
+                    } else {
+                        document.getElementById(event.target.name+"result").innerText ="請輸入正確的手機電話格式"
+                        event.target.style.border = "1px solid red";
+                    }
+                    break;
+                case "name":
+                    event.target.style.border = "1px solid green";
+                    break;
+            }
+            // if (event.target.checkValidity()) {
+            //     event.target.style.border= "1px solid green";
+            //     //event.target.classList.add("valid");
+            // } else {
+            //     event.target.style.border= "1px solid red";
+            // }
+        },
+        mailBlur: function (event) {
+            if (emailregex.test(this.Employer.email)) {
+                event.target.style.border = "1px solid green";
+                resulttext.innerText = "";
             } else {
-                event.target.classList.add("invalid");
+                event.target.style.border = "1px solid red";
+                resulttext.innerText = "請輸入正確的電子信箱格式!!";
             }
         }
     }

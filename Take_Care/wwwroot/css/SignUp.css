@@ -152,3 +152,8 @@ input.valid {
 input.invalid {
     border: 1px solid red;
 }
+
+#phoneresult,#cpassresult,#passresult {
+    color: red;
+    font-size: 20px;
+}
