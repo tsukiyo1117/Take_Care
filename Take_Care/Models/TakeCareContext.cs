@@ -19,6 +19,8 @@ public partial class TakeCareContext : DbContext
 
     public virtual DbSet<Citizenshipstatus> Citizenshipstatuses { get; set; }
 
+    public virtual DbSet<EcpayOrder> EcpayOrders { get; set; }
+
     public virtual DbSet<EmergencyContact> EmergencyContacts { get; set; }
 
     public virtual DbSet<Employee> Employees { get; set; }
@@ -51,26 +53,25 @@ public partial class TakeCareContext : DbContext
     {
         modelBuilder.Entity<Case>(entity =>
         {
-            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C5967D0BE");
+            entity.HasKey(e => e.CaseId).HasName("PK__Cases__6CAE526C0A607B6A");
 
             entity.Property(e => e.CaseId).HasColumnName("CaseID");
-            entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.Commission).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Amount).HasColumnType("money");
             entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
             entity.Property(e => e.EmployerId).HasColumnName("EmployerID");
-            entity.Property(e => e.EndDateTime).HasColumnType("datetime");
+            entity.Property(e => e.Remark).HasMaxLength(255);
+            entity.Property(e => e.ServiceName).HasMaxLength(50);
             entity.Property(e => e.StartDateTime).HasColumnType("datetime");
-            entity.Property(e => e.TaskName).HasMaxLength(50);
 
-            entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
-                .HasForeignKey(d => d.EmployeeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployeeI__37703C52");
+            //entity.HasOne(d => d.Employee).WithMany(p => p.Cases)
+            //    .HasForeignKey(d => d.EmployeeId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__Cases__EmployeeI__4F47C5E3");
 
-            entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
-                .HasForeignKey(d => d.EmployerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cases__EmployerI__3864608B");
+            //entity.HasOne(d => d.Employer).WithMany(p => p.Cases)
+            //    .HasForeignKey(d => d.EmployerId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__Cases__EmployerI__503BEA1C");
         });
 
         modelBuilder.Entity<Citizenshipstatus>(entity =>
@@ -85,6 +86,24 @@ public partial class TakeCareContext : DbContext
             entity.Property(e => e.Category).HasMaxLength(50);
             entity.Property(e => e.Respite).HasColumnType("money");
             entity.Property(e => e.Transport).HasColumnType("money");
+        });
+
+        modelBuilder.Entity<EcpayOrder>(entity =>
+        {
+            entity.HasKey(e => e.MerchantTradeNo);
+
+            entity.Property(e => e.MerchantTradeNo).HasMaxLength(50);
+            entity.Property(e => e.CaseId).HasColumnName("CaseID");
+            entity.Property(e => e.PaymentDate).HasColumnType("datetime");
+            entity.Property(e => e.PaymentType).HasMaxLength(50);
+            entity.Property(e => e.PaymentTypeChargeFee).HasMaxLength(50);
+            entity.Property(e => e.RtnMsg).HasMaxLength(50);
+            entity.Property(e => e.TradeDate).HasMaxLength(50);
+            entity.Property(e => e.TradeNo).HasMaxLength(50);
+
+            entity.HasOne(d => d.Case).WithMany(p => p.EcpayOrders)
+                .HasForeignKey(d => d.CaseId)
+                .HasConstraintName("FK__EcpayOrde__Membe__57DD0BE4");
         });
 
         modelBuilder.Entity<EmergencyContact>(entity =>

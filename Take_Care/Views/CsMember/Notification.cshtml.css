@@ -1,0 +1,247 @@
+﻿
+/*member.css*/
+#userPic {
+    width: 6rem;
+    height: 5rem;
+    position: relative;
+    margin: 3rem;
+    display: block;
+}
+
+    #userPic img {
+        object-fit: cover;
+        width: 100%;
+        height: 5rem;
+    }
+
+#mainPage {
+    margin-top: 2rem;
+    /*    height: 40rem;*/
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.col-2 div img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+/*myProfile.css*/
+
+.emp-profile {
+    /*    padding: 3%;*/
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.profile-img {
+    text-align: center;
+    display: block;
+    align-items: center;
+}
+
+
+    .profile-img img {
+        width: 130%;
+        height: 100%;
+    }
+
+    .profile-img .file {
+        position: relative;
+        overflow: hidden;
+        margin-top: -40%;
+        width: 130%;
+        /* height: 4rem; */
+        /* text-align: center; */
+        border: none;
+        border-radius: 0;
+        font-size: 20px;
+        background: #212529b8;
+    }
+
+        .profile-img .file input {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+
+
+/*.profile-work {
+    padding: 14%;
+    margin-top: -15%;
+}
+
+    .profile-work p {
+        font-size: 12px;
+        color: #818182;
+        font-weight: 600;
+        margin-top: 10%;
+    }
+
+    .profile-work a {
+        text-decoration: none;
+        color: #495057;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .profile-work ul {
+        list-style: none;
+    }
+*/
+
+
+.arrow {
+    position: relative;
+}
+
+    .arrow ::after {
+        content: '\25BC'; /* Unicode 符号表示下拉箭头 */
+        position: absolute;
+        top: 50%; /* 垂直居中对齐 */
+        transform: translateY(-50%); /* 通过偏移来垂直居中对齐 */
+        right: 1rem; /* 调整箭头位置，可以根据需要调整 */
+        font-size: 10px; /* 根据需要调整箭头大小 */
+        z-index: 1; /* 设置 z-index，确保箭头在 county 元素之后 */
+    }
+
+
+div > label {
+    font-size: 20px;
+}
+
+#myProfile {
+    position: relative;
+    left: 1rem;
+    /*    width: fit-content;*/
+}
+
+.databtn {
+    border: none;
+    /* border-radius: 1.5rem; */
+    width: 10%;
+    padding: 1%;
+    font-weight: 600;
+    color: #000000;
+    cursor: pointer;
+    position: relative;
+    /* left: 22rem; */
+    display: none;
+}
+
+/*notification.css*/
+.notification-container {
+    margin: auto;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+    .notification-container .card {
+        left: 0%;
+        width: 100%;
+        margin-bottom: 5px;
+        display: block;
+        transition: opacity 0.3s;
+    }
+
+
+tbody td {
+    padding-right: 0.5rem;
+}
+
+    tbody td a {
+        /* position: relative; */
+        float: right;
+        margin: 5px;
+    }
+
+.card-title:before {
+    display: inline-block;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid grey;
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    padding-bottom: 3px;
+    margin-right: 10px;
+}
+
+.notification-invitation .card-body .card-title:before {
+    color: #90CAF9;
+    border-color: #90CAF9;
+    content: "\f007";
+}
+
+
+.notification-warning .card-body .card-title:before {
+    color: #FFE082;
+    border-color: #FFE082;
+    content: "\f071";
+}
+
+.notification-danger .card-body .card-title:before {
+    color: #FFAB91;
+    border-color: #FFAB91;
+    content: "\f00d";
+}
+
+.notification-reminder .card-body .card-title:before {
+    color: #CE93D8;
+    border-color: #CE93D8;
+    content: "\f017";
+}
+
+
+.card.display-none {
+    display: none;
+    transition: opacity 2s;
+}
+
+#dismiss-all {
+    float: right;
+}
+
+.divider__line {
+    position: relative;
+    height: 0.5rem;
+}
+
+    .divider__line:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: calc(50% - 60px);
+        width: 120px;
+        height: 5px;
+        background-color: #ff854d;
+        opacity: 0.5;
+    }
+
+/* 切換案主檔案的分頁 */
+
+.round {
+    border-radius: 50%;
+    padding: 5px 18px;
+    background-color: #f1f1f1;
+    color: black;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.button-border-highlighted {
+    border: none;
+}

@@ -16,7 +16,7 @@
 }
 
 .leftBox {
-    padding: 50px;
+    padding: 50px 50px 40px 50px;
     background-color: rgba(146, 181, 216, 0.6);
     opacity: 1;
     flex-grow: 1;

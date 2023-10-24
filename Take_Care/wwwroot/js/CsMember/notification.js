@@ -19,7 +19,7 @@ dismissAll.addEventListener('click', function (e) {
     const row = document.querySelector('.notification-container');
     const message = document.createElement('h4');
     message.classList.add('text-center');
-    message.innerHTML = '通知已清空!';
+    message.innerHTML = '申請已全部取消!';
     row.appendChild(message);
-})
+});
 

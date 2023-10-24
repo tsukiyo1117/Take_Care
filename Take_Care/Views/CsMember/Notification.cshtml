@@ -1,0 +1,124 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<style>
+	.profile-head h3 {
+		color: #333;
+	}
+</style>
+
+
+@await Html.PartialAsync("_HeadPartial")
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-2 ">
+				<div class="row" id="userPic">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+						 alt="user">
+					<span class="row">
+						UserAccount
+					</span>
+				</div>
+				@await Html.PartialAsync("_SideBarPartial")
+			</div>
+			<div class="col-10" id="mainPage">
+				<div class="container emp-profile" style="background-color:transparent">
+					<form method="post">
+						<div class="row" >
+						</div>
+						<div class="row notification-container">
+							<div class="divider__line"></div>
+							<h2 class="text-center" style="font-weight: 900;">申請紀錄</h2>
+							<div class="divider__line"></div>
+							<p class="dismiss text-right"><a id="dismiss-all" href="#" class="btn btn-dark">取消全部</a></p>
+							<table>
+								<tr>
+									<th colspan="4" style="background-color: azure;border-block: solid;"></th>
+									<th colspan="3" style="background-color: azure;border-block: solid;">
+										<span style="font-size: 24px; float: right; margin-right: 60px;">
+											<b>金額合計: $<span>1000</span></b>
+										</span>
+									</th>
+								</tr>
+								<tr style="font-size: 20px;text-align:center;">
+									<th style="background-color: burlywood; vertical-align: middle;">編號</th>
+									<th style="background-color: burlywood; vertical-align: middle;">服務日期</th>
+									<th style="background-color: burlywood; vertical-align: middle;">服務時間</th>
+									<th style="background-color: burlywood; vertical-align: middle;">照服員名稱</th>
+									<th style="background-color: burlywood; vertical-align: middle;">服務項目</th>
+									<th style="background-color: burlywood; vertical-align: middle;">服務金額</th>
+									<th style="background-color: burlywood; vertical-align: middle;">申請狀態</th>
+								</tr>
+
+							</table>
+
+							<div class="card notification-card notification-warning">
+								<div class="card-body">
+									<table style="width: 100%;">
+										<tr>
+											<td style="text-align: center; vertical-align: middle;">1</td>
+											<td style="text-align: center; vertical-align: middle;">2023.10.12</td>
+											<td style="text-align: center; vertical-align: middle;">10~11點</td>
+											<td style="text-align: center; vertical-align: middle;">王曉明</td>
+											<td style="text-align: center; vertical-align: middle;">協助進食或管灌餵食</td>
+											<td style="text-align: center; vertical-align: middle;">$500</td>
+											<td style="text-align: center; vertical-align: middle;"><a href="#" class="btn btn-outline-dark dismiss-notification">取消</a></td>
+
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<div class="card notification-card notification-danger">
+								<div class="card-body">
+									<table style="width: 100%;">
+										<tr>
+											<td style="text-align: center; vertical-align: middle;">1</td>
+											<td style="text-align: center; vertical-align: middle;">2023.10.12</td>
+											<td style="text-align: center; vertical-align: middle;">10~11點</td>
+											<td style="text-align: center; vertical-align: middle;">王曉明</td>
+											<td style="text-align: center; vertical-align: middle;">協助進食或管灌餵食</td>
+											<td style="text-align: center; vertical-align: middle;">$500</td>
+											<td style="text-align: center; vertical-align: middle;"><a href="#" class="btn btn-outline-dark dismiss-notification">取消</a></td>
+
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<div class="card notification-card notification-reminder">
+								<div class="card-body">
+									<table style="width: 100%;text-align: center;">
+										<tr>
+											<td style="vertical-align: middle;">1</td>
+											<td style="vertical-align: middle;">2023.10.12</td>
+											<td style="vertical-align: middle;">10~11點</td>
+											<td style="vertical-align: middle;">王曉明</td>
+											<td style="vertical-align: middle;">協助進食或管灌餵食</td>
+											<td style="vertical-align: middle;">$500</td>
+											<td style="vertical-align: middle;"><a href="#" class="btn btn-outline-dark dismiss-notification">取消</a></td>
+
+										</tr>
+									</table>
+								</div>
+							</div>
+
+
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<script src="~/js/CsMember/notification.js"></script>
+	<script src="~/js/CsMember/profile.js"></script>
+
+
+</body>
