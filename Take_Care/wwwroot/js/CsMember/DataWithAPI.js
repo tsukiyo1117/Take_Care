@@ -21,6 +21,7 @@ const profile = Vue.createApp({
             originData: "",
 
             // 案主檔案
+            personalList: "",
             personalBirthday: "",
             personalGender: "",
             personalIdentityCard: "",
@@ -79,7 +80,7 @@ const profile = Vue.createApp({
                 'district': district
             });
 
-            // $("#twzipcode2").twzipcode();
+            //$("#twzipcode2").twzipcode();
             //const userData2 = JSON.parse(sessionStorage.getItem('personalResidentialAddress'));
             //const county2 = userData2.slice(0, 3);
             //const district2 = userData2.slice(3);
@@ -90,7 +91,7 @@ const profile = Vue.createApp({
             //});
 
 
-            //// $("#twzipcode3").twzipcode();
+            //$("#twzipcode3").twzipcode();
             //const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
             //const county3 = userData3.slice(0, 3);
             //const district3 = userData3.slice(3)
@@ -222,39 +223,42 @@ const profile = Vue.createApp({
                 success: (data) => {
                     const CsProfileData = JSON.parse(sessionStorage.getItem('id'));
                     const id = CsProfileData[0].employerId;
-
+                    /*                    console.log(id)*/
                     const employerData = data.filter(employerData => employerData.employerId === id);
+                    console.log(employerData)
                     if (employerData.length > 0) {
 
                         // 從 session storage 中取得 JSON 資料
 
                         // 案主檔案欄位
-                        this.personalBirthday = employerData.birthday.substring(0, 10),
+                        this.personalList = employerData;
+                        /*                        console.log(this.personalList)*/
+                        this.personalBirthday = this.personalList[0].birthday.substring(0, 10),
                             console.log(this.personalBirthday)
-                        this.personalIdentityCard = employerData.identityCard,
-                            this.personalName = employerData.name,
+                        this.personalIdentityCard = this.personalList[0].identityCard,
+                            this.personalName = this.personalList[0].name,
                             console.log(this.personalName)
-                        this.personalGender = employerData.gender,
+                        this.personalGender = this.personalList[0].gender,
                             console.log(this.personalGender)
-                        this.personalResidentialAddress = employerData.residentialAddress,
+                        this.personalResidentialAddress = this.personalList[0].residentialAddress,
                             sessionStorage.setItem('personalResidentialAddress', JSON.stringify(this.personalResidentialAddress));
-                        this.personalResidentialCounty = employerData.residentialAddress.slice(0, 3);
+                        this.personalResidentialCounty = this.personalList[0].residentialAddress.slice(0, 3);
                         console.log(this.personalResidentialCounty)
-                        this.personalResidentialDistrict = employerData.residentialAddress.slice(3);
+                        this.personalResidentialDistrict = this.personalList[0].residentialAddress.slice(3);
                         console.log(this.personalResidentialDistrict)
-                        this.personalResidentialAddressSection = employerData.residentialAddressSection,
-                            this.personalLanguage = employerData.language,
+                        this.personalResidentialAddressSection = this.personalList[0].residentialAddressSection,
+                            this.personalLanguage = this.personalList[0].language,
                             console.log(this.personalLanguage)
-                        this.personalMailingAddress = employerData.mailingAddress,
+                        this.personalMailingAddress = this.personalList[0].mailingAddress,
                             sessionStorage.setItem('personalMailingAddress', JSON.stringify(this.personalMailingAddress));
-                        this.personalMailingAddressCounty = employerData.mailingAddress.slice(0, 3);
-                        this.personalMailingAddressDistrict = employerData.mailingAddress.slice(3);
+                        this.personalMailingAddressCounty = this.personalList[0].mailingAddress.slice(0, 3);
+                        this.personalMailingAddressDistrict = this.personalList[0].mailingAddress.slice(3);
                         console.log(this.personalMailingAddressDistrict)
-                        this.personalMailingAddressSection = employerData.mailingAddressSection,
-                            this.personaWelfareStatusl = employerData.welfareStatus,
+                        this.personalMailingAddressSection = this.personalList[0].mailingAddressSection,
+                            this.personaWelfareStatusl = this.personalList[0].welfareStatus,
                             console.log(this.personaWelfareStatusl)
-                        this.personalLongTermCareStatus = employerData.longTermCareStatus
-                        this.Residential_Status = employerData.residentialStatus
+                        this.personalLongTermCareStatus = this.personalList[0].longTermCareStatus
+                        this.Residential_Status = this.personalList[0].residentialStatus
                     }
                 },
                 error: (error) => {
@@ -262,7 +266,6 @@ const profile = Vue.createApp({
                 }
             });
         },
-
 
         // 抓照服員的資料使用，資料會填充在data中的照服員檔案部分
         fetchEmployeeData() {
@@ -333,12 +336,12 @@ const profile = Vue.createApp({
         },
         cancelEditEmployerData() {
 
-            this.employerFullName = this.originData[0].employerFullName;
-            this.employerEmail = this.originData[0].employerEmail;
-            this.employerGender = this.originData[0].employerGender;
-            this.employerPhoneNumber = this.originData[0].employerPhoneNumber;
-            this.employerAddress = this.originData[0].employerAddress;
-            this.employerAddressSection = this.originData[0].employerAddressSection;
+            this.employerFullName = this.originData[0].fullName;
+            this.employerEmail = this.originData[0].email;
+            this.employerGender = this.originData[0].gender;
+            this.employerPhoneNumber = this.originData[0].phoneNumber;
+            this.employerAddress = this.originData[0].address;
+            this.employerAddressSection = this.originData[0].addressSection;
             this.contactName = this.emergencyorigindata[0].contactName;
             this.contactMobile = this.emergencyorigindata[0].contactMobile;
             this.contactRelationship = this.emergencyorigindata[0].contactRelationship;
@@ -371,6 +374,30 @@ const profile = Vue.createApp({
                 "contactName": this.contactName,
                 "contactMobile": this.contactMobile,
                 "contactRelationship": this.contactRelationship,
+            };
+
+            const NewPersonalData = {
+                "id": this.employerid,
+                "identityCard": this.personalIdentityCard,
+                "name": this.personalName,
+                "gender": this.personalGender,
+                "birthday": this.personalBirthday,
+                "language": this.personalLanguage,
+                "residentialAddress": this.personalResidentialCounty + this.personalResidentialDistrict,
+                "residentialAddressSection": this.personalResidentialAddressSection,
+                "employerId": this.employerid,
+                "mailingAddress": this.personalMailingAddressCounty + this.personalMailingAddressDistrict,
+                "mailingAddressSection": this.personalMailingAddressSection,
+                "welfareStatus": this.personaWelfareStatusl,
+                "longTermCareStatus": this.personalLongTermCareStatus,
+            };
+
+            const NewEmergencyData = {
+                "contactId": this.employerid,
+                "personalInfoId": this.employerid,
+                "contactName": this.contactName,
+                "contactMobile": this.contactMobile,
+                "contactRelationship": this.contactRelationship,
             }
 
             console.log('Save button2 clicked');
@@ -378,39 +405,80 @@ const profile = Vue.createApp({
             console.log(updateEmergencyData);
             const employerData = JSON.parse(sessionStorage.getItem('id'));
             const employerId = employerData[0].employerId;
-            $.ajax({
-                type: 'PUT',
-                url: `https://localhost:7036/api/PersonalInfoes/${employerId}`,
-                data: JSON.stringify(updatedData),
-                contentType: 'application/json',// 指定发送的数据是 JSON 格式
-                dataType: "json",
-                success: (response) => {
-                    console.log(updatedData)
-                    // 请求成功的处理逻辑
-                    console.log('Data updated successfully');
-                },
-                error: (error) => {
-                    // 请求失败的处理逻辑
-                    console.error('Error updating data:', error);
-                }
-            });
+            if (this.personalInfoId) {
+                $.ajax({
+                    type: 'PUT',
+                    url: `https://localhost:7036/api/PersonalInfoes/${employerId}`,
+                    data: JSON.stringify(updatedData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(updatedData)
+                        // 请求成功的处理逻辑
+                        console.log('Data updated successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error updating data:', error);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://localhost:7036/api/PersonalInfoes',
+                    data: JSON.stringify(NewPersonalData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(NewPersonalData)
+                        // 请求成功的处理逻辑
+                        console.log('CsData posted successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error posting CsData:', error);
+                    }
+                });
+            }
 
-            $.ajax({
-                type: 'PUT',
-                url: `https://localhost:7036/api/EmergencyContacts/${employerId}`,
-                data: JSON.stringify(updateEmergencyData),
-                contentType: 'application/json',// 指定发送的数据是 JSON 格式
-                dataType: "json",
-                success: (response) => {
-                    console.log(updateEmergencyData)
-                    // 请求成功的处理逻辑
-                    console.log('Data updated successfully');
-                },
-                error: (error) => {
-                    // 请求失败的处理逻辑
-                    console.error('Error updating data:', error);
-                }
-            });
+            if (this.contactId) {
+                $.ajax({
+                    type: 'PUT',
+                    url: `https://localhost:7036/api/EmergencyContacts/${employerId}`,
+                    data: JSON.stringify(updateEmergencyData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(updateEmergencyData)
+                        // 请求成功的处理逻辑
+                        console.log('Data updated successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error updating data:', error);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://localhost:7036/api/EmergencyContacts',
+                    data: JSON.stringify(NewEmergencyData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(NewEmergencyData)
+                        // 请求成功的处理逻辑
+                        console.log('EmergencyData posted successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error posting EmergencyData:', error);
+                    }
+                });
+            }
+
+
+
         },
 
     }
@@ -438,6 +506,8 @@ const CsProfile = Vue.createApp({
             originData: "",
 
             // 案主檔案
+           
+            personalList:"",
             personalBirthday: "",
             personalGender: "",
             personalIdentityCard: "",
@@ -507,7 +577,7 @@ const CsProfile = Vue.createApp({
             });
 
 
-            // $("#twzipcode3").twzipcode();
+             $("#twzipcode3").twzipcode();
             const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
             const county3 = userData3.slice(0, 3);
             const district3 = userData3.slice(3)
@@ -528,6 +598,7 @@ const CsProfile = Vue.createApp({
         fetchProfileData() {
             const profileData = JSON.parse(sessionStorage.getItem('member'));
             const account = profileData.account
+            console.log(account)
             // 在这里执行你的 AJAX 请求
             $.ajax({
                 type: 'get',
@@ -535,7 +606,8 @@ const CsProfile = Vue.createApp({
                 success: (data) => {
 
 
-                    const employerData = data.filter(employerData => employerData.employerAccount === account);
+                    const employerData = data.filter(employerData => employerData.account === account);
+                    console.log(employerData)
                     if (employerData.length > 0) {
 
                         console.log(employerData);
@@ -549,7 +621,7 @@ const CsProfile = Vue.createApp({
 
                         // 從 session storage 中取得 JSON 資料
                         // 使用者檔案欄位
-
+                        
                         this.employerAccount = this.profileList[0].account;
                         this.employerGender = this.profileList[0].gender;
                         this.employerFullName = this.profileList[0].fullName;
@@ -600,9 +672,8 @@ const CsProfile = Vue.createApp({
             });
         },
         fetchEmergencyContact() {
-            const EmergencyContactData = JSON.parse(sessionStorage.getItem('id'));
-            const id = EmergencyContactData[0].employerId;
-            console.log(id)
+            const id = JSON.parse(sessionStorage.getItem('personalInfoId'));
+            
             $.ajax({
                 type: 'get',
                 url: 'https://localhost:7036/api/EmergencyContacts',
@@ -637,39 +708,44 @@ const CsProfile = Vue.createApp({
                 success: (data) => {
                     const CsProfileData = JSON.parse(sessionStorage.getItem('id'));
                     const id = CsProfileData[0].employerId;
-
+/*                    console.log(id)*/
                     const employerData = data.filter(employerData => employerData.employerId === id);
+                    console.log(employerData)
                     if (employerData.length > 0) {
 
                         // 從 session storage 中取得 JSON 資料
-
+                        
                         // 案主檔案欄位
-                        this.personalBirthday = employerData.birthday.substring(0, 10),
+                        this.personalList = employerData;
+                        this.personalInfoId = this.personalList[0].id;
+                        sessionStorage.setItem('personalInfoId', this.personalInfoId)
+/*                        console.log(this.personalList)*/
+                        this.personalBirthday = this.personalList[0].birthday.substring(0, 10),
                             console.log(this.personalBirthday)
-                        this.personalIdentityCard = employerData.identityCard,
-                            this.personalName = employerData.name,
+                        this.personalIdentityCard = this.personalList[0].identityCard,
+                            this.personalName = this.personalList[0].name,
                             console.log(this.personalName)
-                        this.personalGender = employerData.gender,
+                        this.personalGender = this.personalList[0].gender,
                             console.log(this.personalGender)
-                        this.personalResidentialAddress = employerData.residentialAddress,
+                        this.personalResidentialAddress = this.personalList[0].residentialAddress,
                             sessionStorage.setItem('personalResidentialAddress', JSON.stringify(this.personalResidentialAddress));
-                        this.personalResidentialCounty = employerData.residentialAddress.slice(0, 3);
+                        this.personalResidentialCounty = this.personalList[0].residentialAddress.slice(0, 3);
                         console.log(this.personalResidentialCounty)
-                        this.personalResidentialDistrict = employerData.residentialAddress.slice(3);
+                        this.personalResidentialDistrict = this.personalList[0].residentialAddress.slice(3);
                         console.log(this.personalResidentialDistrict)
-                        this.personalResidentialAddressSection = employerData.residentialAddressSection,
-                            this.personalLanguage = employerData.language,
+                        this.personalResidentialAddressSection = this.personalList[0].residentialAddressSection,
+                            this.personalLanguage = this.personalList[0].language,
                             console.log(this.personalLanguage)
-                        this.personalMailingAddress = employerData.mailingAddress,
+                        this.personalMailingAddress = this.personalList[0].mailingAddress,
                             sessionStorage.setItem('personalMailingAddress', JSON.stringify(this.personalMailingAddress));
-                        this.personalMailingAddressCounty = employerData.mailingAddress.slice(0, 3);
-                        this.personalMailingAddressDistrict = employerData.mailingAddress.slice(3);
+                        this.personalMailingAddressCounty = this.personalList[0].mailingAddress.slice(0, 3);
+                        this.personalMailingAddressDistrict = this.personalList[0].mailingAddress.slice(3);
                         console.log(this.personalMailingAddressDistrict)
-                        this.personalMailingAddressSection = employerData.mailingAddressSection,
-                            this.personaWelfareStatusl = employerData.welfareStatus,
+                        this.personalMailingAddressSection = this.personalList[0].mailingAddressSection,
+                            this.personaWelfareStatusl = this.personalList[0].welfareStatus,
                             console.log(this.personaWelfareStatusl)
-                        this.personalLongTermCareStatus = employerData.longTermCareStatus
-                        this.Residential_Status = employerData.residentialStatus
+                        this.personalLongTermCareStatus = this.personalList[0].longTermCareStatus
+                        this.Residential_Status = this.personalList[0].residentialStatus
                     }
                 },
                 error: (error) => {
@@ -677,7 +753,6 @@ const CsProfile = Vue.createApp({
                 }
             });
         },
-
 
         // 抓照服員的資料使用，資料會填充在data中的照服員檔案部分
         fetchEmployeeData() {
@@ -748,12 +823,12 @@ const CsProfile = Vue.createApp({
         },
         cancelEditEmployerData() {
 
-            this.employerFullName = this.originData[0].employerFullName;
-            this.employerEmail = this.originData[0].employerEmail;
-            this.employerGender = this.originData[0].employerGender;
-            this.employerPhoneNumber = this.originData[0].employerPhoneNumber;
-            this.employerAddress = this.originData[0].employerAddress;
-            this.employerAddressSection = this.originData[0].employerAddressSection;
+            this.employerFullName = this.originData[0].fullName;
+            this.employerEmail = this.originData[0].email;
+            this.employerGender = this.originData[0].gender;
+            this.employerPhoneNumber = this.originData[0].phoneNumber;
+            this.employerAddress = this.originData[0].address;
+            this.employerAddressSection = this.originData[0].addressSection;
             this.contactName = this.emergencyorigindata[0].contactName;
             this.contactMobile = this.emergencyorigindata[0].contactMobile;
             this.contactRelationship = this.emergencyorigindata[0].contactRelationship;
@@ -764,7 +839,7 @@ const CsProfile = Vue.createApp({
 
         },
         SavePersonalDataToDatabase() {
-            const updatedData = {
+            const updatedCsData = {
                 "id": this.personalInfoId,
                 "identityCard": this.personalIdentityCard,
                 "name": this.personalName,
@@ -786,46 +861,112 @@ const CsProfile = Vue.createApp({
                 "contactName": this.contactName,
                 "contactMobile": this.contactMobile,
                 "contactRelationship": this.contactRelationship,
+            };
+
+            const NewPersonalData = {
+/*                "id": "",*/
+                "identityCard": this.personalIdentityCard,
+                "name": this.personalName,
+                "gender": this.personalGender,
+                "birthday": this.personalBirthday,
+                "language": this.personalLanguage,
+                "residentialAddress": this.personalResidentialCounty + this.personalResidentialDistrict,
+                "residentialAddressSection": this.personalResidentialAddressSection,
+                "employerId": this.employerid,
+                "mailingAddress": this.personalMailingAddressCounty + this.personalMailingAddressDistrict,
+                "mailingAddressSection": this.personalMailingAddressSection,
+                "welfareStatus": this.personaWelfareStatusl,
+                "longTermCareStatus": this.personalLongTermCareStatus,
+            };
+
+            const NewEmergencyData = {
+/*                "contactId": this.employerid,*/
+                "personalInfoId": this.personalInfoId,
+                "contactName": this.contactName,
+                "contactMobile": this.contactMobile,
+                "contactRelationship": this.contactRelationship,
             }
 
             console.log('Save button2 clicked');
-            console.log(updatedData);
+            console.log(updatedCsData);
             console.log(updateEmergencyData);
-            const employerData = JSON.parse(sessionStorage.getItem('id'));
-            const employerId = employerData[0].employerId;
-            $.ajax({
-                type: 'PUT',
-                url: `https://localhost:7036/api/PersonalInfoes/${employerId}`,
-                data: JSON.stringify(updatedData),
-                contentType: 'application/json',// 指定发送的数据是 JSON 格式
-                dataType: "json",
-                success: (response) => {
-                    console.log(updatedData)
-                    // 请求成功的处理逻辑
-                    console.log('Data updated successfully');
-                },
-                error: (error) => {
-                    // 请求失败的处理逻辑
-                    console.error('Error updating data:', error);
-                }
-            });
-
-            $.ajax({
-                type: 'PUT',
-                url: `https://localhost:7036/api/EmergencyContacts/${employerId}`,
-                data: JSON.stringify(updateEmergencyData),
-                contentType: 'application/json',// 指定发送的数据是 JSON 格式
-                dataType: "json",
-                success: (response) => {
-                    console.log(updateEmergencyData)
-                    // 请求成功的处理逻辑
-                    console.log('Data updated successfully');
-                },
-                error: (error) => {
-                    // 请求失败的处理逻辑
-                    console.error('Error updating data:', error);
-                }
-            });
+            console.log('NewPersonalData:',NewPersonalData)
+            console.log('NewEmergencyData',NewEmergencyData)
+            const personalInfoId = JSON.parse(sessionStorage.getItem('personalInfoId'));
+            if (this.personalInfoId) {
+                $.ajax({
+                    type: 'PUT',
+                    url: `https://localhost:7036/api/PersonalInfoes/${personalInfoId}`,
+                    data: JSON.stringify(updatedCsData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(updatedData)
+                        // 请求成功的处理逻辑
+                        console.log('Data updated successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error updating data:', error);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://localhost:7036/api/PersonalInfoes',
+                    data: JSON.stringify(NewPersonalData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(NewPersonalData)
+                        // 请求成功的处理逻辑
+                        console.log('CsData posted successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error posting CsData:', error);
+                    }
+                });
+            }
+            
+            if (this.contactId) {
+                $.ajax({
+                    type: 'PUT',
+                    url: `https://localhost:7036/api/EmergencyContacts/${this.contactId}`,
+                    data: JSON.stringify(updateEmergencyData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(updateEmergencyData)
+                        // 请求成功的处理逻辑
+                        console.log('Data updated successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error updating data:', error);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: 'https://localhost:7036/api/EmergencyContacts',
+                    data: JSON.stringify(NewEmergencyData),
+                    contentType: 'application/json',// 指定发送的数据是 JSON 格式
+                    dataType: "json",
+                    success: (response) => {
+                        console.log(NewEmergencyData)
+                        // 请求成功的处理逻辑
+                        console.log('EmergencyData posted successfully');
+                    },
+                    error: (error) => {
+                        // 请求失败的处理逻辑
+                        console.error('Error posting EmergencyData:', error);
+                    }
+                });
+            }
+            
+            
+           
         },
 
     }
