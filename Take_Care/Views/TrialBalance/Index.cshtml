@@ -52,7 +52,6 @@
                 <h2>選擇服務</h2>
             </div>
 
-            @*照顧及專業服務*@
             <div class="Title col-12 row">
                 <h3 class="col-12">照顧及專業服務:</h3>
 
@@ -80,7 +79,6 @@
                 </div>
             </div>
 
-            @*喘息服務*@
             <div class="Title1 col-12 row">
                 <h3 class="col-12">喘息服務:</h3>
 
@@ -106,7 +104,6 @@
                 </div>
             </div>
 
-            @*交通服務*@
             <div class="Title1 col-12 row">
                 <h3 class="col-12">交通接送:</h3>
                 <div class="col-12">
@@ -116,7 +113,6 @@
                 </div>
             </div>
 
-            @*輔具服務*@
             <div class="Title col-12 row">
                 <h3 class="col-12">輔具及居家無障礙環境改善服務:</h3>
                 <div class="col-12">
@@ -151,7 +147,7 @@
     </div>
 </div>
 
-</body>
+
 
 
 <!-- JavaScript Bundle with Popper -->
@@ -483,10 +479,11 @@
                         // TC選擇NOSun2
                         for (let i = 0; i < ServiceItemsData.length; i++) {
                             if (ServiceItemsData[i].serviceCode == Chose2) {
-                                somethingNOSun2 = ServiceItemsData[i].serviceItemId
-                                break
+                                somethingNOSun2 = ServiceItemsData[i].serviceItemId;
+                                break;
                             }
                         }
+                        
 
                         // TC選擇Sun2
                         for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
