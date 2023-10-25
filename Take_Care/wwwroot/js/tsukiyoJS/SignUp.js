@@ -12,17 +12,19 @@ let app = new Vue({
             // fullName: "",
             // gender: "",
             // password: "",
-            // phoneNumber: ""
+            // phoneNumber: "",
+            //address:""
         },
     },
     methods: {
         createMember: function () {
-            if (passresult.innerText!=""||cpassresult.innerText!=""||nameresult.innerText!=""||phoneresult.innerText!=""){
+            if (passresult.innerText!=""||cpassresult.innerText!=""||nameresult.innerText!=""||phoneresult.innerText!=""||addressresult.innerText!=""){
                 resulttext3.innerText = "請正確的填寫基本資料!!";
                 return;
             }
             resulttext3.innerText = "";
             this.Employer.account = this.Employer.email.split("@")[0];
+            this.Employer.address = document.querySelectorAll("select")[0].value + document.querySelectorAll("select")[1].value;
             console.log(this.Employer);
             $.ajax({
                 type: "POST",
@@ -106,6 +108,15 @@ let app = new Vue({
                 case "name":
                     if(event.target.value ==""){
                         document.getElementById(event.target.name + "result").innerText = "請輸入姓名";
+                        event.target.style.border = "1px solid red";
+                    } else {
+                        document.getElementById(event.target.name + "result").innerText = ""
+                        event.target.style.border = "1px solid green";
+                    }
+                    break;
+                case "address":
+                    if(event.target.value ==""){
+                        document.getElementById(event.target.name + "result").innerText = "請輸入地址";
                         event.target.style.border = "1px solid red";
                     } else {
                         document.getElementById(event.target.name + "result").innerText = ""

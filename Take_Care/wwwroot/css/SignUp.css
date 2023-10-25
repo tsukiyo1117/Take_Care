@@ -37,7 +37,7 @@ body {
 }
 
 /*inputs*/
-#msform input {
+#msform input:not(input[name='zipcode']) {
     padding: 15px;
     border: 1px solid black;
     border-radius: 3px;
@@ -55,7 +55,7 @@ body {
 }
 
 /*buttons*/
-#msform .action-button {
+#msform .action-button[type="button"] {
     width: 100px;
     background: #27AE60;
     font-weight: bold;
