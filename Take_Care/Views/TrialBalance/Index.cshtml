@@ -315,7 +315,7 @@
 
                     // TC選擇Sun
                     for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == parseInt(Chose1CMS)) {
                             somethingSun = ServiceItemsDetailsData[i].serviceItemId
                             break
                         }
@@ -331,7 +331,7 @@
 
                     // TC選擇Sun2
                     for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == parseInt(Chose2CMS)) {
                             somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                             break
                         }
@@ -341,7 +341,7 @@
                     if (somethingSun - 1 < 0) {
                         TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
                     } else {
-                        TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                        TCInt1 = (ServiceItemsDetailsData[somethingSun - 1].price) * parseInt(Chose1Time)
                     }
                     if (somethingNOSun2 == 0) {
                         TCInt2 = 0
@@ -352,20 +352,14 @@
 
 
                     // TC服務錢
-                    if (somethingSun - 1 < 0) {
+                    
                         $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
-                    }
-                    else if (somethingNOSun - 1 < 0) {
-                        $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
-                    }
+                    
 
                     // TC自負
-                    if (somethingSun - 1 < 0) {
+                    
                         $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                    }
-                    else if (somethingNOSun - 1 < 0) {
-                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                    }
+                    
 
 
                     $("#TCimgRemove2").click(function () {
@@ -384,8 +378,11 @@
 
                     // 改變TC服務項目
                     $('[id^="TCServeChose"]').change(function () {
-                        Chose1 = $('#TCServeChose1 option:selected').val()
-                        Chose1Time = $('#TCTime1 option:selected').val()
+                        Chose1 = $("#TCServeChose1 option:selected").val()
+                        Chose1Time = $("#TCTime1 option:selected").val()
+                        Chose2 = $("#TCServeChose2 option:selected").val()
+                        Chose2Time = $("#TCTime2 option:selected").val()
+                        Chose1CMS = $("#CMSlevelID option:selected").val()
 
                         // TC選擇NOSun
                         for (let i = 0; i < ServiceItemsData.length; i++) {
@@ -397,7 +394,9 @@
 
                         // TC選擇Sun
                         for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                            if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+
+
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == parseInt(Chose1CMS)) {
                                 somethingSun = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
@@ -413,16 +412,17 @@
 
                         // TC選擇Sun2
                         for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                            if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == parseInt(Chose2CMS)) {
                                 somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
                         }
 
+
                         if (somethingSun - 1 < 0) {
                             TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
                         } else {
-                            TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                            TCInt1 = (ServiceItemsDetailsData[somethingSun - 1].price) * parseInt(Chose1Time)
                         }
 
                         if (somethingNOSun2 == 0) {
@@ -432,6 +432,8 @@
                         }
                         TCIntTotal = TCInt1 + TCInt2
 
+
+
                         $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
                         $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
 
@@ -439,20 +441,14 @@
                         $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
 
                         // TC服務錢
-                        if (somethingSun - 1 < 0) {
+                        
                             $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
-                        }
+                        
 
                         // TC自負
-                        if (somethingSun - 1 < 0) {
+                        
                             $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                        }
+                        
                     })
 
 
@@ -474,7 +470,7 @@
 
                         // TC選擇Sun
                         for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                            if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == parseInt(Chose1CMS)) {
                                 somethingSun = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
@@ -490,7 +486,7 @@
 
                         // TC選擇Sun2
                         for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                            if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == parseInt(Chose2CMS)) {
                                 somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
@@ -500,7 +496,7 @@
                         if (somethingSun - 1 < 0) {
                             TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
                         } else {
-                            TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                            TCInt1 = (ServiceItemsDetailsData[somethingSun - 1].price) * parseInt(Chose1Time)
                         }
                         if (somethingNOSun2 == 0) {
                             TCInt2 = 0
@@ -511,20 +507,14 @@
 
 
                         // TC服務錢
-                        if (somethingSun - 1 < 0) {
+                        
                             $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
-                        }
+                        
 
                         // TC自負
-                        if (somethingSun - 1 < 0) {
+                        
                             $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                        }
+                        
 
                         $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
                         $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
@@ -737,7 +727,7 @@
 
                     // TC選擇Sun
                     for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == parseInt(Chose1CMS)) {
                             somethingSun = ServiceItemsDetailsData[i].serviceItemId
                             break
                         }
@@ -753,7 +743,7 @@
 
                     // TC選擇Sun2
                     for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == parseInt(Chose2CMS)) {
                             somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                             break
                         }
@@ -778,7 +768,7 @@
                     if (somethingSun - 1 < 0) {
                         TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
                     } else {
-                        TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                        TCInt1 = (ServiceItemsDetailsData[somethingSun - 1].price) * parseInt(Chose1Time)
                     }
                     if (somethingNOSun2 == 0) {
                         TCInt2 = 0
@@ -795,6 +785,12 @@
                     }
                     TABIntTotal = TABInt1 + TABInt2
 
+                    console.log(TCIntTotal)
+                    console.log(TABIntTotal)
+                    console.log(TABIntTotal)
+                    console.log(TABIntTotal)
+                    console.log(TABIntTotal)
+
                     $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
                     $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
 
@@ -802,28 +798,22 @@
                     $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
 
                     // TC服務錢
-                    if (somethingSun - 1 < 0) {
+                    
                         $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                    }
-                    else if (somethingNOSun - 1 < 0) {
-                        $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                    }
+                    
 
                     // TC自負
-                    if (somethingSun - 1 < 0) {
-                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                    }
-                    else if (somethingNOSun - 1 < 0) {
-                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                    }
+                    
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * parseInt(CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    
                     // TAB補助
-                    $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
+                    $("#TABTotal").text("政府補助上限:" + parseInt(SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
 
                     // TAB服務錢
                     $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
 
                     // TAB自負
-                    $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
+                    $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * parseInt(CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
 
                 })
 
@@ -850,7 +840,7 @@
 
                     // TC選擇Sun
                     for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == parseInt(Chose1CMS)) {
                             somethingSun = ServiceItemsDetailsData[i].serviceItemId
                             break
                         }
@@ -866,7 +856,7 @@
 
                     // TC選擇Sun2
                     for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
-                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == parseInt(Chose2CMS)) {
                             somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                             break
                         }
@@ -891,7 +881,7 @@
                     if (somethingSun - 1 < 0) {
                         TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
                     } else {
-                        TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                        TCInt1 = (ServiceItemsDetailsData[somethingSun - 1].price) * parseInt(Chose1Time)
                     }
                     if (somethingNOSun2 == 0) {
                         TCInt2 = 0
@@ -915,20 +905,14 @@
                     $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
 
                     // TC服務錢
-                    if (somethingSun - 1 < 0) {
+                    
                         $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                    }
-                    else if (somethingNOSun - 1 < 0) {
-                        $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                    }
+                    
 
                     // TC自負
-                    if (somethingSun - 1 < 0) {
+                    
                         $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                    }
-                    else if (somethingNOSun - 1 < 0) {
-                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
-                    }
+                    
                     // TAB補助
                     $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
 
