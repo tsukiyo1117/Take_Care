@@ -30,23 +30,6 @@ div h3 {
 }
 
 
-.Title {
-    background-color: aqua;
-}
-
-.Title1 {
-    background-color: burlywood;
-}
-
-.cashandlevl {
-    display: inline;
-}
-
-.Block {
-    display: block;
-}
-
-
 .click-btn {
     display: flex;
     /* width: 120px; */
