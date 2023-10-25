@@ -24,32 +24,25 @@
                 <div class="col-1"></div>
 
                 <!-- 身分 -->
-                <div class="cashandlevl col-4 center" style="text-align:center">
-                    <label for="">身分別:</label>
-                    <select name="select" id="CitizenshipstatusID" style="width: 120px;" class="custom-select">
-                        <option v-bind:value="CitizenshipstatusItem.citizenshipstatuId"
-                                v-for="CitizenshipstatusItem in CitizenshipstatusList">
-                            {{ CitizenshipstatusItem.category }}
-                        </option>
-                    </select>
+                <div class="cashandlevl col-4" style="text-align:center">
+                    <label for="">
+                        身分別:
+                        <select name="subject" id="CitizenshipstatusID">
+                            <!-- 放入身分資料 -->
+                        </select>
+                    </label>
                 </div>
+
                 <div class="col-2"></div>
 
-                <!-- 等級 -->
-                <div class="cashandlevl col-4 center" style="text-align:center">
-                    <label for="">CMS等級:</label>
-                    <select name="select" id="CMSlevelID" style="width: 120px;" class="custom-select">
-                        <option v-bind:value="SubsidyLevelsItem.level"
-                                v-for="SubsidyLevelsItem in SubsidyLevelsList">
-                            {{ SubsidyLevelsItem.level }}
-                        </option>
-                        <!-- <option value="">第3級</option>
-                        <option value="">第4級</option>
-                        <option value="">第5級</option>
-                        <option value="">第6級</option>
-                        <option value="">第7級</option>
-                        <option value="">第8級</option> -->
-                    </select>
+                <!-- CMS等級 -->
+                <div class="cashandlevl col-4" style="text-align:center">
+                    <label for="">
+                        CMS等級:
+                        <select name="subject" id="CMSlevelID">
+                            <!-- 放入CMS等級 -->
+                        </select>
+                    </label>
                 </div>
                 <div class="col-1"></div>
             </div>
@@ -58,6 +51,8 @@
             <div class="Title1 col-12" style="margin: 0-12px;">
                 <h2>選擇服務</h2>
             </div>
+
+            @*照顧及專業服務*@
             <div class="Title col-12 row">
                 <h3 class="col-12">照顧及專業服務:</h3>
 
@@ -84,22 +79,8 @@
                     <div id="TCServeSelf">所需自負金額:0元/月</div>
                 </div>
             </div>
-            <div class="Title1 col-12 row">
-                <h3 class="col-12">交通接送:</h3>
-                <div class="col-12">
-                    <div>政府補助上限:2000元/月</div>
-                    <br>
-                    <div id="transportSelf">所需自負金額:0元/月</div>
-                </div>
-            </div>
-            <div class="Title col-12 row">
-                <h3 class="col-12">輔具及居家無障礙環境改善服務:</h3>
-                <div class="col-12">
-                    <div>政府補助上限:40000元/3年</div>
-                    <br>
-                    <div id="aidSelf">所需自負金額:0元/3年</div>
-                </div>
-            </div>
+
+            @*喘息服務*@
             <div class="Title1 col-12 row">
                 <h3 class="col-12">喘息服務:</h3>
 
@@ -124,6 +105,27 @@
                     <div id="TABServeSelf">所需自負金額:0元/月</div>
                 </div>
             </div>
+
+            @*交通服務*@
+            <div class="Title1 col-12 row">
+                <h3 class="col-12">交通接送:</h3>
+                <div class="col-12">
+                    <div>政府補助上限:2000元/月</div>
+                    <br>
+                    <div id="transportSelf">所需自負金額:0元/月</div>
+                </div>
+            </div>
+
+            @*輔具服務*@
+            <div class="Title col-12 row">
+                <h3 class="col-12">輔具及居家無障礙環境改善服務:</h3>
+                <div class="col-12">
+                    <div>政府補助上限:40000元/3年</div>
+                    <br>
+                    <div id="aidSelf">所需自負金額:0元/3年</div>
+                </div>
+            </div>
+
             <div class="Title col-12 row">
 
                 <div class="col-12" style="background-color: orange; margin: 1%; display: block;">
@@ -149,34 +151,22 @@
     </div>
 </div>
 
+</body>
+
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
 
-<!-- Vue.js -->
 <script>
-    var innertext1 = `<div class='row TCdivRemove' id='TCimgToRemove`
-    var innertext2 = `'><div class='col-1'><i class='fa-solid fa-square-minus TCIMG TCRemove' style='color: #d85555;' id='TCimgRemove`
-    var innertext3 = `'></i></div><label for='' class='col-1'>服務:</label><select name='' class='col-7 TCServeChose' id='TCServeChose`
-    var innertext4 = `'>`
-    var innertext5 = `</select><label for='' class='col-1'>次數:</label><select name='' id='TCTime`
-    var innertext6 = `' class='col-2 TCTime'><option value='1'>1次</option><option value='2'>2次</option><option value='3'>3次</option><option value='4'>4次</option><option value='5'>5次</option><option value='6'>6次</option><option value='7'>7次</option><option value='8'>8次</option><option value='9'>9次</option><option value='10'>10次</option><option value='11'>11次</option><option value='12'>12次</option><option value='13'>13次</option><option value='14'>14次</option></select></div>`
+    var CitizenshipstatusData = []
+    var SubsidyLevelsData = []
+    var ServiceItemsData = []
+    var ServiceItemsDetailsData = []
+
     var optionServiceItemsTC = ""
     var optionServiceItemsTAB = ""
-    // var inputServer = `<option v-bind:value='ServiceItemsItem.serviceCode' v-for='ServiceItemsItem in ServiceItemsList'>{{ ServiceItemsItem.serviceName }}</option>`
-    var innertext7 = `<div class='row TABdivRemove' id='TABimgToRemove`
-    var innertext8 = `'><div class='col-1'><i class='fa-solid fa-square-minus TABIMG TABRemove' style='color: #d85555;' id='TABimgRemove`
-    var innertext9 = `'></i></div><label for='' class='col-1'>服務:</label><select name='' class='col-7 TABServeChose' id='TABServeChose`
-    var innertext10 = `'>`
-    var innertext11 = `</select><label for='' class='col-1'>次數:</label><select name='' id='TABTime`
-    var innertext12 = `' class='col-2 TABTime'><option value='1'>1次</option><option value='2'>2次</option><option value='3'>3次</option><option value='4'>4次</option><option value='5'>5次</option><option value='6'>6次</option><option value='7'>7次</option><option value='8'>8次</option><option value='9'>9次</option><option value='10'>10次</option><option value='11'>11次</option><option value='12'>12次</option><option value='13'>13次</option><option value='14'>14次</option></select></div>`
-
-    var selectElement = document.getElementById('CitizenshipstatusID');
-    var selectedOptionValue = selectElement.options[selectElement.selectedIndex].value;
-    console.log(typeof (selectedOptionValue))
-    console.log(selectedOptionValue)
 
     var TCInt1 = 0
     var TCInt2 = 0
@@ -189,979 +179,766 @@
     var careNumber = 0
     var TABNumber = 0
 
-
-    var app = new Vue({
-        el: "#refApp",
-        data: {
-
-            CitizenshipstatusList: [],
-
-            SubsidyLevelsList: [],
-
-            ServiceItemsList: [],
-
-            ServiceItemsDetailsList: [],
-        },
-        methods: {
+    var Chose1 = ""
+    var Chose1Time = ""
+    var Chose2 = ""
+    var Chose2Time = ""
+    var Chose1CMS = ""
+    var ChoseTAB1 = ""
+    var ChoseTAB1Time = ""
+    var ChoseTAB2 = ""
+    var ChoseTAB2Time = ""
+    var ChoseCIT = 1
 
 
 
-        }
-    });
+    // CMS選的等級
+    var selectedOption = 2
 
-    window.onload = function () {
-        $.ajax({
-            type: "get",
-            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-            success: function (e) {
-                app.CitizenshipstatusList = e;
+    // 身分選的val
+    var selectBody = 1
+
+    var somethingNOSun = 0
+    var somethingSun = 0
+    var somethingNOSun2 = 0
+    var somethingSun2 = 0
+    var somethingTAB = 0
+    var somethingTAB2 = 0
 
 
-
-            }
-        }),
+    // ajax
+    $(function () {
+        $.when(
             $.ajax({
-                type: "get",
-                url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                success: function (e) {
-                    app.SubsidyLevelsList = e;
-                }
+                //url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
+                url: "https://localhost:7036/api/Citizenshipstatus",
+                method: "GET",
+                dataType: "json"
             }),
             $.ajax({
-                type: "get",
-                url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                success: function (e) {
-                    app.ServiceItemsList = e;
-
-                    e.forEach(function (item, index) {
-                        var ItemsServiceCode = item.serviceCode
-                        var ItemsServiceName = item.serviceName
-                        if (item.serviceCode.startsWith("TC")) {
-                            optionServiceItemsTC += `<option value='${ItemsServiceCode}'>${item.serviceName}</option>`
-                        } else {
-                            optionServiceItemsTAB += `<option value='${ItemsServiceCode}'>${item.serviceName}</option>`
-                        }
-                    });
-                }
+                //url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
+                url: "https://localhost:7036/api/SubsidyLevels",
+                method: "GET",
+                dataType: "json"
             }),
             $.ajax({
-                type: "get",
-                url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                success: function (e) {
-                    app.ServiceItemsDetailsList = e;
-                    var selectElement = document.getElementById('CMSlevelID');
-                    var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-                    console.log(selectedOption)
+                //url: "https://take-care.azurewebsites.net/api/ServiceItems",
+                url: "https://localhost:7036/api/ServiceItems",
+                method: "GET",
+                dataType: "json"
+            }),
+            $.ajax({
+                //url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
+                url: "https://localhost:7036/api/ServiceItemsDetails",
+                method: "GET",
+                dataType: "json"
+            })
+        )
+            .done(function (data1, data2, data3, data4) {
+                // 身分
+                CitizenshipstatusData = data1[0]
+                // 等級
+                SubsidyLevelsData = data2[0]
+                // 沒日照和家托的所有服務
+                ServiceItemsData = data3[0]
+                // 日照和家托服務
+                ServiceItemsDetailsData = data4[0]
 
-                    e.forEach(function (item, index) {
-                        var ItemsServiceCode = item.serviceCode
-                        var ItemsServiceName = item.serviceName
-
-                        if (item.level == selectedOption) {
-                            optionServiceItemsTC += `<option value='${ItemsServiceCode}'>${item.serviceName}</option>`
-                        }
-                    });
 
 
+                console.log("身分 : ")
+                console.log(CitizenshipstatusData)
+                console.log("等級 : ")
+                console.log(SubsidyLevelsData)
+                console.log("沒日照和家托的所有服務 : ")
+                console.log(ServiceItemsData)
+                console.log("日照和家托服務 : ")
+                console.log(ServiceItemsDetailsData)
+
+
+                // 將資料中的身分放入
+                for (let i = 0; i < CitizenshipstatusData.length; i++) {
+                    var id = i + 1
+                    var CitizenshipstatusCategory = CitizenshipstatusData[i].category;
+                    $("#CitizenshipstatusID").append(`<option value="${id}" id="CITOption${id}">${CitizenshipstatusCategory}</option>`)
                 }
-            })
-    }
+
+                // 將資料中的CMS等級放入
+                for (let i = 0; i < SubsidyLevelsData.length; i++) {
+                    var id = i + 1
+                    var val = i + 2
+                    var SubsidyLevelsLevel = SubsidyLevelsData[i].level;
+                    $("#CMSlevelID").append(`<option value="${val}" id="CMSOption${id}">第${SubsidyLevelsLevel}級</option>`)
+                }
+
+
+                // 服務項目TC沒日照 和 TAB
+                for (let i = 0; i < ServiceItemsData.length; i++) {
+                    var ItemsServiceCode = ServiceItemsData[i].serviceCode
+                    var ItemsServiceName = ServiceItemsData[i].serviceName
+                    if (ServiceItemsData[i].serviceCode.slice(0, 2) == "TC") {
+                        optionServiceItemsTC += `<option value='${ItemsServiceCode}'>${ServiceItemsData[i].serviceName}</option>`
+                    } else {
+                        optionServiceItemsTAB += `<option value='${ItemsServiceCode}'>${ServiceItemsData[i].serviceName}</option>`
+                    }
+                }
+
+                // 服務項目TC日照
+                for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                    var ItemsServiceCode = ServiceItemsDetailsData[i].serviceCode
+                    var ItemsServiceName = ServiceItemsDetailsData[i].serviceName
+                    if (ServiceItemsDetailsData[i].level == selectedOption) {
+                        optionServiceItemsTC += `<option value='${ItemsServiceCode}'>${ServiceItemsDetailsData[i].serviceName}</option>`
+                    }
+                }
 
 
 
-    $(document).ready(function () {
-        $(function () {
+                // 點擊加入TC
+                $("#plusImg1").click(function () {
+                    careNumber += 1
+                    $("#careServe").append(`<div class='row TCdivRemove' id='TCimgToRemove${careNumber}'><div class='col-1'><i class='fa-solid fa-square-minus TCIMG TCRemove' style='color: #d85555;' id='TCimgRemove${careNumber}'></i></div><label for='' class='col-1'>服務:</label><select name='' class='col-7 TCServeChose' id='TCServeChose${careNumber}'>${optionServiceItemsTC}</select><label for='' class='col-1'>次數:</label><select name='' id='TCTime${careNumber}' class='col-2 TCTime'><option value='1'>1次</option><option value='2'>2次</option><option value='3'>3次</option><option value='4'>4次</option><option value='5'>5次</option><option value='6'>6次</option><option value='7'>7次</option><option value='8'>8次</option><option value='9'>9次</option><option value='10'>10次</option><option value='11'>11次</option><option value='12'>12次</option><option value='13'>13次</option><option value='14'>14次</option></select></div>`)
 
-            $("#plusImg1").click(function () {
-                careNumber += 1
-                // 加入服務項目
-                $("#careServe").append(innertext1 + careNumber + innertext2 + careNumber + innertext3 + careNumber + innertext4 + optionServiceItemsTC + innertext5 + careNumber + innertext6)
-                $.when(
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                        method: "GET",
-                        dataType: "json"
+                    Chose1 = $("#TCServeChose1 option:selected").val()
+                    Chose1Time = $("#TCTime1 option:selected").val()
+                    Chose2 = $("#TCServeChose2 option:selected").val()
+                    Chose2Time = $("#TCTime2 option:selected").val()
+                    Chose1CMS = $("#CMSlevelID option:selected").val()
+
+                    // TC選擇NOSun
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == Chose1) {
+                            somethingNOSun = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇Sun
+                    for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                            somethingSun = ServiceItemsDetailsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇NOSun2
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == Chose2) {
+                            somethingNOSun2 = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇Sun2
+                    for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                            somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+
+                    if (somethingSun - 1 < 0) {
+                        TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
+                    } else {
+                        TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                    }
+                    if (somethingNOSun2 == 0) {
+                        TCInt2 = 0
+                    } else {
+                        TCInt2 = (ServiceItemsData[somethingNOSun2 - 1].price) * parseInt(Chose2Time)
+                    }
+                    TCIntTotal = TCInt1 + TCInt2
+
+
+                    // TC服務錢
+                    if (somethingSun - 1 < 0) {
+                        $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
+                    }
+                    else if (somethingNOSun - 1 < 0) {
+                        $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
+                    }
+
+                    // TC自負
+                    if (somethingSun - 1 < 0) {
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    }
+                    else if (somethingNOSun - 1 < 0) {
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    }
+
+
+                    $("#TCimgRemove2").click(function () {
+                        var price = 0
+                        var priceSelf = 0
+                        price = parseInt(TCIntTotal) - parseInt(TCInt2)
+                        priceSelf = price * (CitizenshipstatusData[ChoseCIT - 1].care) / 100
+
+                        console.log(TCIntTotal)
+                        console.log(TCInt2)
+                        $("#TCSevrvePrice").text(`使用服務金額:${price}元/月`)
+                        $("#TCServeSelf").text(`使用服務金額:${priceSelf}元/月`)
+                        $(this).parent().parent().remove();
                     })
-                )
-                    .done(function (data1, data2, data3, data4) {
-                        var Chose1 = $('#TCServeChose1').val()
-                        var Chose1Time = $('#TCTime1').val()
-                        var Chose2 = $('#TCServeChose2').val()
-                        var Chose2Time = $('#TCTime2').val()
-                        var Chose1CMS = $(CMSlevelID).val()
-                        var ChoseTAB1 = $('#TABServeChose1').val()
-                        var ChoseTAB1Time = $('#TABTime1').val()
-                        var ChoseCIT = $(CitizenshipstatusID).val()
 
-                        var somethingNOSun = 0
-                        var somethingSun = 0
-                        var somethingNOSun2 = 0
-                        var somethingSun2 = 0
+
+                    // 改變TC服務項目
+                    $('[id^="TCServeChose"]').change(function () {
+                        Chose1 = $('#TCServeChose1 option:selected').val()
+                        Chose1Time = $('#TCTime1 option:selected').val()
 
                         // TC選擇NOSun
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == Chose1) {
-                                somethingNOSun = data3[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == Chose1) {
+                                somethingNOSun = ServiceItemsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TC選擇Sun
-                        for (let i = 0; i < data4[0].length; i++) {
-                            if (data4[0][i].serviceCode == Chose1 && data4[0][i].level == Chose1CMS) {
-                                somethingSun = data4[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                                somethingSun = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TC選擇NOSun2
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == Chose2) {
-                                somethingNOSun2 = data3[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == Chose2) {
+                                somethingNOSun2 = ServiceItemsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TC選擇Sun2
-                        for (let i = 0; i < data4[0].length; i++) {
-                            if (data4[0][i].serviceCode == Chose2 && data4[0][i].level == Chose2CMS) {
-                                somethingSun2 = data4[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                                somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
                         }
 
                         if (somethingSun - 1 < 0) {
-                            TCInt1 = (data3[0][somethingNOSun - 1].price) * parseInt(Chose1Time)
+                            TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
                         } else {
-                            TCInt1 = (data3[0][somethingSun - 1].price) * parseInt(Chose1Time)
+                            TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
                         }
+
                         if (somethingNOSun2 == 0) {
                             TCInt2 = 0
                         } else {
-                            TCInt2 = (data3[0][somethingNOSun2 - 1].price) * parseInt(Chose2Time)
+                            TCInt2 = (ServiceItemsData[somethingNOSun2 - 1].price) * parseInt(Chose2Time)
                         }
                         TCIntTotal = TCInt1 + TCInt2
 
-
-                        // TC服務錢
-                        if (somethingSun - 1 < 0) {
-                            $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                        }
-
-                        // TC自負
-                        if (somethingSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                        }
-
-                        $("#TCimgRemove2").click(function () {
-                            var price = 0
-                            var priceSelf = 0
-                            price = parseInt(TCIntTotal) - parseInt(TCInt2)
-                            priceSelf = price * (data1[0][parseInt(ChoseCIT) - 1].care) / 100
-
-                            console.log(TCIntTotal)
-                            console.log(TCInt2)
-                            $("#TCSevrvePrice").text(`使用服務金額:${price}元/月`)
-                            $("#TCServeSelf").text(`使用服務金額:${priceSelf}元/月`)
-
-
-                        })
-
-
-
-                    })
-
-                // 點擊圖片後刪除整個DIV
-                $(".TCRemove").click(function () {
-                    $(this).parent().parent().remove();
-                })
-
-                // 改變TC服務項目
-                $('[id^="TCServeChos"]').change(function () {
-                    $.when(
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                            method: "GET",
-                            dataType: "json"
-                        })
-                    )
-                        .done(function (data1, data2, data3, data4) {
-                            var Chose1 = $('#TCServeChose1').val()
-                            var Chose1Time = $('#TCTime1').val()
-                            var Chose2 = $('#TCServeChose2').val()
-                            var Chose2Time = $('#TCTime2').val()
-                            var Chose1CMS = $(CMSlevelID).val()
-                            var ChoseTAB1 = $('#TABServeChose1').val()
-                            var ChoseTAB1Time = $('#TABTime1').val()
-                            var ChoseCIT = $(CitizenshipstatusID).val()
-
-                            var somethingNOSun = 0
-                            var somethingSun = 0
-                            var somethingNOSun2 = 0
-                            var somethingSun2 = 0
-
-                            // TC選擇NOSun
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == Chose1) {
-                                    somethingNOSun = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TC選擇Sun
-                            for (let i = 0; i < data4[0].length; i++) {
-                                if (data4[0][i].serviceCode == Chose1 && data4[0][i].level == Chose1CMS) {
-                                    somethingSun = data4[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TC選擇NOSun2
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == Chose2) {
-                                    somethingNOSun2 = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TC選擇Sun2
-                            for (let i = 0; i < data4[0].length; i++) {
-                                if (data4[0][i].serviceCode == Chose2 && data4[0][i].level == Chose2CMS) {
-                                    somethingSun2 = data4[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            if (somethingSun - 1 < 0) {
-                                TCInt1 = (data3[0][somethingNOSun - 1].price) * parseInt(Chose1Time)
-                            } else {
-                                TCInt1 = (data3[0][somethingSun - 1].price) * parseInt(Chose1Time)
-                            }
-
-                            if (somethingNOSun2 == 0) {
-                                TCInt2 = 0
-                            } else {
-                                TCInt2 = (data3[0][somethingNOSun2 - 1].price) * parseInt(Chose2Time)
-                            }
-                            TCIntTotal = TCInt1 + TCInt2
-
-                            $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                            $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
-
-                            // TC補助
-                            $("#TCTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].care) + "元/月")
-
-                            // TC服務錢
-                            if (somethingSun - 1 < 0) {
-                                $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                            }
-                            else if (somethingNOSun - 1 < 0) {
-                                $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                            }
-
-                            // TC自負
-                            if (somethingSun - 1 < 0) {
-                                $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                            }
-                            else if (somethingNOSun - 1 < 0) {
-                                $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                            }
-                        })
-                })
-
-                // 改變服務次數
-                $('[id^="TCTime"]').change(function () {
-                    $.when(
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                            method: "GET",
-                            dataType: "json"
-                        })
-                    )
-                        .done(function (data1, data2, data3, data4) {
-                            var Chose1 = $('#TCServeChose1').val()
-                            var Chose1Time = $('#TCTime1').val()
-                            var Chose2 = $('#TCServeChose2').val()
-                            var Chose2Time = $('#TCTime2').val()
-                            var Chose1CMS = $(CMSlevelID).val()
-                            var ChoseTAB1 = $('#TABServeChose1').val()
-                            var ChoseTAB1Time = $('#TABTime1').val()
-                            var ChoseCIT = $(CitizenshipstatusID).val()
-
-                            var somethingNOSun = 0
-                            var somethingSun = 0
-                            var somethingNOSun2 = 0
-                            var somethingSun2 = 0
-
-                            // TC選擇NOSun
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == Chose1) {
-                                    somethingNOSun = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TC選擇Sun
-                            for (let i = 0; i < data4[0].length; i++) {
-                                if (data4[0][i].serviceCode == Chose1 && data4[0][i].level == Chose1CMS) {
-                                    somethingSun = data4[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TC選擇NOSun2
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == Chose2) {
-                                    somethingNOSun2 = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TC選擇Sun2
-                            for (let i = 0; i < data4[0].length; i++) {
-                                if (data4[0][i].serviceCode == Chose2 && data4[0][i].level == Chose2CMS) {
-                                    somethingSun2 = data4[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            if (somethingSun - 1 < 0) {
-                                TCInt1 = (data3[0][somethingNOSun - 1].price) * parseInt(Chose1Time)
-                            } else {
-                                TCInt1 = (data3[0][somethingSun - 1].price) * parseInt(Chose1Time)
-                            }
-                            if (somethingNOSun2 == 0) {
-                                TCInt2 = 0
-                            } else {
-                                TCInt2 = (data3[0][somethingNOSun2 - 1].price) * parseInt(Chose2Time)
-                            }
-                            TCIntTotal = TCInt1 + TCInt2
-
-                            $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                            $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
-
-                            // TC補助
-                            $("#TCTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].care) + "元/月")
-
-                            // TC服務錢
-                            if (somethingSun - 1 < 0) {
-                                $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                            }
-                            else if (somethingNOSun - 1 < 0) {
-                                $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                            }
-
-                            // TC自負
-                            if (somethingSun - 1 < 0) {
-                                $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                            }
-                            else if (somethingNOSun - 1 < 0) {
-                                $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                            }
-                        })
-                })
-            })
-
-
-
-
-            $("#plusImg2").click(function () {
-                TABNumber += 1
-                $("#TABServe").append(innertext7 + TABNumber + innertext8 + TABNumber + innertext9 + TABNumber + innertext10 + optionServiceItemsTAB + innertext11 + TABNumber + innertext12)
-
-                $.when(
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                        method: "GET",
-                        dataType: "json"
-                    })
-                )
-                    .done(function (data1, data2, data3) {
-                        var Chose1 = $('#TCServeChose1').val()
-                        var Chose1Time = $('#TCTime1').val()
-                        var Chose1CMS = $(CMSlevelID).val()
-                        var ChoseTAB1 = $('#TABServeChose1').val()
-                        var ChoseTAB1Time = $('#TABTime1').val()
-                        var ChoseTAB2 = $('#TABServeChose2').val()
-                        var ChoseTAB2Time = $('#TABTime2').val()
-                        var ChoseCIT = $(CitizenshipstatusID).val()
-
-
-
-                        var somethingTAB = 0
-                        var somethingTAB2 = 0
-
-                        // TAB選擇
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == ChoseTAB1) {
-                                somethingTAB = data3[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        // TAB選擇2
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == ChoseTAB2) {
-                                somethingTAB2 = data3[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        TABInt1 = (data3[0][somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
-                        if (somethingTAB2 == 0) {
-                            TABInt2 = 0
-                        } else {
-                            TABInt2 = (data3[0][somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
-                        }
-                        TABIntTotal = TABInt1 + TABInt2
-
-                        $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                        $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
-
-                        // TAB補助
-                        $("#TABTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].respite) + "元/月")
-
-                        // TAB服務錢
-                        $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
-
-                        // TAB自負
-                        $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (data1[0][parseInt(ChoseCIT) - 1].respite) / 100 + "元/月")
-
-                    })
-
-                // 點擊圖片後刪除整個DIV
-                $(".TABRemove").click(function () {
-                    console.log("OK")
-                    $(this).parent().parent().remove();
-                })
-
-                // 改變TAB服務項目
-                $('[id^="TABServeChos"]').change(function () {
-                    $.when(
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                            method: "GET",
-                            dataType: "json"
-                        })
-                    )
-                        .done(function (data1, data2, data3) {
-                            var Chose1 = $('#TCServeChose1').val()
-                            var Chose1Time = $('#TCTime1').val()
-                            var Chose1CMS = $(CMSlevelID).val()
-                            var ChoseTAB1 = $('#TABServeChose1').val()
-                            var ChoseTAB1Time = $('#TABTime1').val()
-                            var ChoseTAB2 = $('#TABServeChose2').val()
-                            var ChoseTAB2Time = $('#TABTime2').val()
-                            var ChoseCIT = $(CitizenshipstatusID).val()
-
-
-
-                            var somethingTAB = 0
-                            var somethingTAB2 = 0
-
-                            // TAB選擇
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == ChoseTAB1) {
-                                    somethingTAB = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TAB選擇2
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == ChoseTAB2) {
-                                    somethingTAB2 = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            TABInt1 = (data3[0][somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
-                            if (somethingTAB2 == 0) {
-                                TABInt2 = 0
-                            } else {
-                                TABInt2 = (data3[0][somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
-                            }
-                            TABIntTotal = TABInt1 + TABInt2
-
-                            $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                            $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
-
-                            // TAB補助
-                            $("#TABTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].respite) + "元/月")
-
-                            // TAB服務錢
-                            $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
-
-                            // TAB自負
-                            $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (data1[0][parseInt(ChoseCIT) - 1].respite) / 100 + "元/月")
-
-                        })
-                })
-
-                //改變TAB次數
-                $('[id^="TABTime"]').change(function () {
-                    $.when(
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                            method: "GET",
-                            dataType: "json"
-                        }),
-                        $.ajax({
-                            url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                            method: "GET",
-                            dataType: "json"
-                        })
-                    )
-                        .done(function (data1, data2, data3) {
-                            var Chose1 = $('#TCServeChose1').val()
-                            var Chose1Time = $('#TCTime1').val()
-                            var Chose1CMS = $(CMSlevelID).val()
-                            var ChoseTAB1 = $('#TABServeChose1').val()
-                            var ChoseTAB1Time = $('#TABTime1').val()
-                            var ChoseTAB2 = $('#TABServeChose2').val()
-                            var ChoseTAB2Time = $('#TABTime2').val()
-                            var ChoseCIT = $(CitizenshipstatusID).val()
-
-
-
-                            var somethingTAB = 0
-                            var somethingTAB2 = 0
-
-                            // TAB選擇
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == ChoseTAB1) {
-                                    somethingTAB = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            // TAB選擇2
-                            for (let i = 0; i < data3[0].length; i++) {
-                                if (data3[0][i].serviceCode == ChoseTAB2) {
-                                    somethingTAB2 = data3[0][i].serviceItemId
-                                    break
-                                }
-                            }
-
-                            TABInt1 = (data3[0][somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
-                            if (somethingTAB2 == 0) {
-                                TABInt2 = 0
-                            } else {
-                                TABInt2 = (data3[0][somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
-                            }
-                            TABIntTotal = TABInt1 + TABInt2
-
-                            $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                            $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
-
-                            // TAB補助
-                            $("#TABTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].respite) + "元/月")
-
-                            // TAB服務錢
-                            $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
-
-                            // TAB自負
-                            $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (data1[0][parseInt(ChoseCIT) - 1].respite) / 100 + "元/月")
-
-                        })
-                })
-
-            })
-
-            // 清除全部
-            $("#cleanAll").click(function () {
-                $(".TCdivRemove").remove();
-                $(".TABdivRemove").remove();
-
-                $("#TCTotal").text("政府補助上限:10020元/月")
-                $("#TCSevrvePrice").text("使用服務金額:0元/月")
-                $("#TCServeSelf").text("所需自負金額:0元/月")
-                $("#TABTotal").text("政府補助上限:32340元/月")
-                $("#TABSevrvePrice").text("使用服務金額:0元/月")
-                $("#TABServeSelf").text("所需自負金額:0元/月")
-                $("#transportSelf").text("所需自負金額:0元/月")
-                $("#aidSelf").text("所需自負金額:0元/3年")
-
-                $("#CitizenshipstatusID").val(1)
-                $("#CMSlevelID").val(2)
-
-            })
-
-
-
-
-            // 改變身分別
-            $("#CitizenshipstatusID").change(function () {
-                $.when(
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                        method: "GET",
-                        dataType: "json"
-                    })
-                )
-                    .done(function (data1, data2, data3, data4) {
-                        var Chose1 = $('#TCServeChose1').val()
-                        var Chose1Time = $('#TCTime1').val()
-                        var Chose2 = $('#TCServeChose2').val()
-                        var Chose2Time = $('#TCTime2').val()
-                        var Chose1CMS = $(CMSlevelID).val()
-                        var ChoseTAB1 = $('#TABServeChose1').val()
-                        var ChoseTAB1Time = $('#TABTime1').val()
-                        var ChoseTAB2 = $('#TABServeChose2').val()
-                        var ChoseTAB2Time = $('#TABTime2').val()
-                        var ChoseCIT = $(CitizenshipstatusID).val()
-
-                        var somethingNOSun = 0
-                        var somethingSun = 0
-                        var somethingNOSun2 = 0
-                        var somethingSun2 = 0
-                        var somethingTAB = 0
-                        var somethingTAB2 = 0
-
-                        // TC選擇NOSun
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == Chose1) {
-                                somethingNOSun = data3[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        // TC選擇Sun
-                        for (let i = 0; i < data4[0].length; i++) {
-                            if (data4[0][i].serviceCode == Chose1 && data4[0][i].level == Chose1CMS) {
-                                somethingSun = data4[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        // TC選擇NOSun2
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == Chose2) {
-                                somethingNOSun2 = data3[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        // TC選擇Sun2
-                        for (let i = 0; i < data4[0].length; i++) {
-                            if (data4[0][i].serviceCode == Chose2 && data4[0][i].level == Chose2CMS) {
-                                somethingSun2 = data4[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        // TAB選擇
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == ChoseTAB1) {
-                                somethingTAB = data3[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        // TAB選擇2
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == ChoseTAB2) {
-                                somethingTAB2 = data3[0][i].serviceItemId
-                                break
-                            }
-                        }
-
-                        if (somethingSun - 1 < 0) {
-                            TCInt1 = (data3[0][somethingNOSun - 1].price) * parseInt(Chose1Time)
-                        } else {
-                            TCInt1 = (data3[0][somethingSun - 1].price) * parseInt(Chose1Time)
-                        }
-                        if (somethingNOSun2 == 0) {
-                            TCInt2 = 0
-                        } else {
-                            TCInt2 = (data3[0][somethingNOSun2 - 1].price) * parseInt(Chose2Time)
-                        }
-                        TCIntTotal = TCInt1 + TCInt2
-
-                        TABInt1 = (data3[0][somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
-                        if (somethingTAB2 == 0) {
-                            TABInt2 = 0
-                        } else {
-                            TABInt2 = (data3[0][somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
-                        }
-                        TABIntTotal = TABInt1 + TABInt2
-
-                        $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                        $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
+                        $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                        $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
 
                         // TC補助
-                        $("#TCTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].care) + "元/月")
+                        $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
 
                         // TC服務錢
                         if (somethingSun - 1 < 0) {
-                            $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
+                            $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
                         }
                         else if (somethingNOSun - 1 < 0) {
-                            $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
+                            $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
                         }
 
                         // TC自負
                         if (somethingSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
+                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
                         }
                         else if (somethingNOSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
+                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
                         }
-                        // TAB補助
-                        $("#TABTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].respite) + "元/月")
-
-                        // TAB服務錢
-                        $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
-
-                        // TAB自負
-                        $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (data1[0][parseInt(ChoseCIT) - 1].respite) / 100 + "元/月")
-
                     })
-            })
 
 
-            // 當等級改變
-            $("#CMSlevelID").change(function () {
-                $.when(
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/Citizenshipstatus",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/SubsidyLevels",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItems",
-                        method: "GET",
-                        dataType: "json"
-                    }),
-                    $.ajax({
-                        url: "https://take-care.azurewebsites.net/api/ServiceItemsDetails",
-                        method: "GET",
-                        dataType: "json"
-                    })
-                )
-                    .done(function (data1, data2, data3, data4) {
-                        var Chose1 = $('#TCServeChose1').val()
-                        var Chose1Time = $('#TCTime1').val()
-                        var Chose2 = $('#TCServeChose2').val()
-                        var Chose2Time = $('#TCTime2').val()
-                        var Chose1CMS = $(CMSlevelID).val()
-                        var ChoseTAB1 = $('#TABServeChose1').val()
-                        var ChoseTAB1Time = $('#TABTime1').val()
-                        var ChoseTAB2 = $('#TABServeChose2').val()
-                        var ChoseTAB2Time = $('#TABTime2').val()
-                        var ChoseCIT = $(CitizenshipstatusID).val()
-
-                        var somethingNOSun = 0
-                        var somethingSun = 0
-                        var somethingNOSun2 = 0
-                        var somethingSun2 = 0
-                        var somethingTAB = 0
-                        var somethingTAB2 = 0
+                    // 改變服務次數
+                    $('[id^="TCTime"]').change(function () {
+                        Chose1 = $("#TCServeChose1 option:selected").val()
+                        Chose1Time = $("#TCTime1 option:selected").val()
+                        Chose2 = $("#TCServeChose2 option:selected").val()
+                        Chose2Time = $("#TCTime2 option:selected").val()
+                        Chose1CMS = $("#CMSlevelID option:selected").val()
 
                         // TC選擇NOSun
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == Chose1) {
-                                somethingNOSun = data3[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == Chose1) {
+                                somethingNOSun = ServiceItemsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TC選擇Sun
-                        for (let i = 0; i < data4[0].length; i++) {
-                            if (data4[0][i].serviceCode == Chose1 && data4[0][i].level == Chose1CMS) {
-                                somethingSun = data4[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                                somethingSun = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TC選擇NOSun2
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == Chose2) {
-                                somethingNOSun2 = data3[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == Chose2) {
+                                somethingNOSun2 = ServiceItemsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TC選擇Sun2
-                        for (let i = 0; i < data4[0].length; i++) {
-                            if (data4[0][i].serviceCode == Chose2 && data4[0][i].level == Chose2CMS) {
-                                somethingSun2 = data4[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                            if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                                somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
                                 break
                             }
                         }
 
+
+                        if (somethingSun - 1 < 0) {
+                            TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
+                        } else {
+                            TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                        }
+                        if (somethingNOSun2 == 0) {
+                            TCInt2 = 0
+                        } else {
+                            TCInt2 = (ServiceItemsData[somethingNOSun2 - 1].price) * parseInt(Chose2Time)
+                        }
+                        TCIntTotal = TCInt1 + TCInt2
+
+
+                        // TC服務錢
+                        if (somethingSun - 1 < 0) {
+                            $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
+                        }
+                        else if (somethingNOSun - 1 < 0) {
+                            $("#TCSevrvePrice").text(`使用服務金額:${TCIntTotal}元/月`)
+                        }
+
+                        // TC自負
+                        if (somethingSun - 1 < 0) {
+                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                        }
+                        else if (somethingNOSun - 1 < 0) {
+                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                        }
+
+                        $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                        $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
+
+                        // TC補助
+                        $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
+
+
+                    })
+                })
+
+                // 點擊增加TABDiv
+                $("#plusImg2").click(function () {
+                    TABNumber += 1
+                    $("#TABServe").append(`<div class='row TABdivRemove' id='TABimgToRemove${TABNumber}'><div class='col-1'><i class='fa-solid fa-square-minus TABIMG TABRemove' style='color: #d85555;' id='TABimgRemove${TABNumber}'></i></div><label for='' class='col-1'>服務:</label><select name='' class='col-7 TABServeChose' id='TABServeChose${TABNumber}'>${optionServiceItemsTAB}</select><label for='' class='col-1'>次數:</label><select name='' id='TABTime${TABNumber}' class='col-2 TABTime'><option value='1'>1次</option><option value='2'>2次</option><option value='3'>3次</option><option value='4'>4次</option><option value='5'>5次</option><option value='6'>6次</option><option value='7'>7次</option><option value='8'>8次</option><option value='9'>9次</option><option value='10'>10次</option><option value='11'>11次</option><option value='12'>12次</option><option value='13'>13次</option><option value='14'>14次</option></select></div>`)
+
+                    Chose1CMS = $("#CMSlevelID option:selected").val()
+                    ChoseTAB1 = $('#TABServeChose1').val()
+                    ChoseTAB1Time = $('#TABTime1').val()
+                    ChoseTAB2 = $('#TABServeChose2').val()
+                    ChoseTAB2Time = $('#TABTime2').val()
+
+
+                    // TAB選擇
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == ChoseTAB1) {
+                            somethingTAB = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TAB選擇2
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == ChoseTAB2) {
+                            somethingTAB2 = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    TABInt1 = (ServiceItemsData[somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
+                    if (somethingTAB2 == 0) {
+                        TABInt2 = 0
+                    } else {
+                        TABInt2 = (ServiceItemsData[somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
+                    }
+                    TABIntTotal = TABInt1 + TABInt2
+
+                    $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                    $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
+
+                    // TAB補助
+                    $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
+
+                    // TAB服務錢
+                    $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
+
+                    // TAB自負
+                    $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
+
+
+                    $("#TABimgRemove2").click(function () {
+                        var price = 0
+                        var priceSelf = 0
+                        price = parseInt(TABIntTotal) - parseInt(TABInt2)
+                        priceSelf = price * (CitizenshipstatusData[ChoseCIT - 1].care) / 100
+
+                        console.log(TABIntTotal)
+                        console.log(TABInt2)
+                        $("#TABSevrvePrice").text(`使用服務金額:${price}元/月`)
+                        $("#TABServeSelf").text(`使用服務金額:${priceSelf}元/月`)
+                        $(this).parent().parent().remove();
+                    })
+
+
+                    // 改變TAB服務項目
+                    $('[id^="TABServeChos"]').change(function () {
+                        Chose1CMS = $("#CMSlevelID option:selected").val()
+                        ChoseTAB1 = $('#TABServeChose1').val()
+                        ChoseTAB1Time = $('#TABTime1').val()
+                        ChoseTAB2 = $('#TABServeChose2').val()
+                        ChoseTAB2Time = $('#TABTime2').val()
+
+
                         // TAB選擇
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == ChoseTAB1) {
-                                somethingTAB = data3[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == ChoseTAB1) {
+                                somethingTAB = ServiceItemsData[i].serviceItemId
                                 break
                             }
                         }
 
                         // TAB選擇2
-                        for (let i = 0; i < data3[0].length; i++) {
-                            if (data3[0][i].serviceCode == ChoseTAB2) {
-                                somethingTAB2 = data3[0][i].serviceItemId
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == ChoseTAB2) {
+                                somethingTAB2 = ServiceItemsData[i].serviceItemId
                                 break
                             }
                         }
 
-                        if (somethingSun - 1 < 0) {
-                            TCInt1 = (data3[0][somethingNOSun - 1].price) * parseInt(Chose1Time)
-                        } else {
-                            TCInt1 = (data3[0][somethingSun - 1].price) * parseInt(Chose1Time)
-                        }
-                        if (somethingNOSun2 == 0) {
-                            TCInt2 = 0
-                        } else {
-                            TCInt2 = (data3[0][somethingNOSun2 - 1].price) * parseInt(Chose2Time)
-                        }
-                        TCIntTotal = TCInt1 + TCInt2
-
-                        TABInt1 = (data3[0][somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
+                        TABInt1 = (ServiceItemsData[somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
                         if (somethingTAB2 == 0) {
                             TABInt2 = 0
                         } else {
-                            TABInt2 = (data3[0][somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
+                            TABInt2 = (ServiceItemsData[somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
                         }
                         TABIntTotal = TABInt1 + TABInt2
 
-                        $("#aidSelf").text("所需自負金額:" + 40000 * (data1[0][parseInt(ChoseCIT) - 1].aid) / 100 + "元/3年")
-                        $("#transportSelf").text("所需自負金額:" + 2000 * (data1[0][parseInt(ChoseCIT) - 1].transport) / 100 + "元/月")
+                        $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                        $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
 
-                        // TC補助
-                        $("#TCTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].care) + "元/月")
-
-                        // TC服務錢
-                        if (somethingSun - 1 < 0) {
-                            $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
-                        }
-
-                        // TC自負
-                        if (somethingSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                        }
-                        else if (somethingNOSun - 1 < 0) {
-                            $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (data1[0][parseInt(ChoseCIT) - 1].care) / 100 + "元/月")
-                        }
                         // TAB補助
-                        $("#TABTotal").text("政府補助上限:" + (data2[0][parseInt(Chose1CMS) - 2].respite) + "元/月")
+                        $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
 
                         // TAB服務錢
                         $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
 
                         // TAB自負
-                        $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (data1[0][parseInt(ChoseCIT) - 1].respite) / 100 + "元/月")
+                        $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
 
                     })
+
+                    //改變TAB次數
+                    $('[id^="TABTime"]').change(function () {
+                        Chose1CMS = $("#CMSlevelID option:selected").val()
+                        ChoseTAB1 = $('#TABServeChose1').val()
+                        ChoseTAB1Time = $('#TABTime1').val()
+                        ChoseTAB2 = $('#TABServeChose2').val()
+                        ChoseTAB2Time = $('#TABTime2').val()
+                        // TAB選擇
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == ChoseTAB1) {
+                                somethingTAB = ServiceItemsData[i].serviceItemId
+                                break
+                            }
+                        }
+
+                        // TAB選擇2
+                        for (let i = 0; i < ServiceItemsData.length; i++) {
+                            if (ServiceItemsData[i].serviceCode == ChoseTAB2) {
+                                somethingTAB2 = ServiceItemsData[i].serviceItemId
+                                break
+                            }
+                        }
+
+                        TABInt1 = (ServiceItemsData[somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
+                        if (somethingTAB2 == 0) {
+                            TABInt2 = 0
+                        } else {
+                            TABInt2 = (ServiceItemsData[somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
+                        }
+                        TABIntTotal = TABInt1 + TABInt2
+
+                        $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                        $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
+
+                        // TAB補助
+                        $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
+
+                        // TAB服務錢
+                        $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
+
+                        // TAB自負
+                        $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
+
+                    })
+                })
+
+                // 清除全部
+                $("#cleanAll").click(function () {
+                    $(".TCdivRemove").remove();
+                    $(".TABdivRemove").remove();
+
+                    $("#TCTotal").text("政府補助上限:10020元/月")
+                    $("#TCSevrvePrice").text("使用服務金額:0元/月")
+                    $("#TCServeSelf").text("所需自負金額:0元/月")
+                    $("#TABTotal").text("政府補助上限:32340元/月")
+                    $("#TABSevrvePrice").text("使用服務金額:0元/月")
+                    $("#TABServeSelf").text("所需自負金額:0元/月")
+                    $("#transportSelf").text("所需自負金額:0元/月")
+                    $("#aidSelf").text("所需自負金額:0元/3年")
+
+                    $("#CitizenshipstatusID").val(1)
+                    $("#CMSlevelID").val(2)
+
+                })
+
+                // 改變身分別
+                $("#CitizenshipstatusID").change(function () {
+                    Chose1 = $("#TCServeChose1 option:selected").val()
+                    Chose1Time = $("#TCTime1 option:selected").val()
+                    Chose2 = $("#TCServeChose2 option:selected").val()
+                    Chose2Time = $("#TCTime2 option:selected").val()
+                    Chose1CMS = $("#CMSlevelID option:selected").val()
+                    ChoseTAB1 = $('#TABServeChose1').val()
+                    ChoseTAB1Time = $('#TABTime1').val()
+                    ChoseTAB2 = $('#TABServeChose2').val()
+                    ChoseTAB2Time = $('#TABTime2').val()
+                    selectedOption = $("#CMSlevelID option:selected").val()
+                    ChoseCIT = $("#CitizenshipstatusID option:selected").val()
+
+
+
+                    // TC選擇NOSun
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == Chose1) {
+                            somethingNOSun = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇Sun
+                    for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                            somethingSun = ServiceItemsDetailsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇NOSun2
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == Chose2) {
+                            somethingNOSun2 = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇Sun2
+                    for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                            somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TAB選擇
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == ChoseTAB1) {
+                            somethingTAB = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TAB選擇2
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == ChoseTAB2) {
+                            somethingTAB2 = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    if (somethingSun - 1 < 0) {
+                        TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
+                    } else {
+                        TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                    }
+                    if (somethingNOSun2 == 0) {
+                        TCInt2 = 0
+                    } else {
+                        TCInt2 = (ServiceItemsData[somethingNOSun2 - 1].price) * parseInt(Chose2Time)
+                    }
+                    TCIntTotal = TCInt1 + TCInt2
+
+                    TABInt1 = (ServiceItemsData[somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
+                    if (somethingTAB2 == 0) {
+                        TABInt2 = 0
+                    } else {
+                        TABInt2 = (ServiceItemsData[somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
+                    }
+                    TABIntTotal = TABInt1 + TABInt2
+
+                    $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                    $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
+
+                    // TC補助
+                    $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
+
+                    // TC服務錢
+                    if (somethingSun - 1 < 0) {
+                        $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
+                    }
+                    else if (somethingNOSun - 1 < 0) {
+                        $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
+                    }
+
+                    // TC自負
+                    if (somethingSun - 1 < 0) {
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    }
+                    else if (somethingNOSun - 1 < 0) {
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    }
+                    // TAB補助
+                    $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
+
+                    // TAB服務錢
+                    $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
+
+                    // TAB自負
+                    $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
+
+                })
+
+                // 當等級改變
+                $("#CMSlevelID").change(function () {
+                    Chose1 = $("#TCServeChose1 option:selected").val()
+                    Chose1Time = $("#TCTime1 option:selected").val()
+                    Chose2 = $("#TCServeChose2 option:selected").val()
+                    Chose2Time = $("#TCTime2 option:selected").val()
+                    Chose1CMS = $("#CMSlevelID option:selected").val()
+                    ChoseTAB1 = $('#TABServeChose1').val()
+                    ChoseTAB1Time = $('#TABTime1').val()
+                    ChoseTAB2 = $('#TABServeChose2').val()
+                    ChoseTAB2Time = $('#TABTime2').val()
+                    selectedOption = $("#CMSlevelID option:selected").val()
+
+                    // TC選擇NOSun
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == Chose1) {
+                            somethingNOSun = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇Sun
+                    for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose1 && ServiceItemsDetailsData[i].level == Chose1CMS) {
+                            somethingSun = ServiceItemsDetailsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇NOSun2
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == Chose2) {
+                            somethingNOSun2 = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TC選擇Sun2
+                    for (let i = 0; i < ServiceItemsDetailsData.length; i++) {
+                        if (ServiceItemsDetailsData[i].serviceCode == Chose2 && ServiceItemsDetailsData[i].level == Chose2CMS) {
+                            somethingSun2 = ServiceItemsDetailsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TAB選擇
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == ChoseTAB1) {
+                            somethingTAB = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    // TAB選擇2
+                    for (let i = 0; i < ServiceItemsData.length; i++) {
+                        if (ServiceItemsData[i].serviceCode == ChoseTAB2) {
+                            somethingTAB2 = ServiceItemsData[i].serviceItemId
+                            break
+                        }
+                    }
+
+                    if (somethingSun - 1 < 0) {
+                        TCInt1 = (ServiceItemsData[somethingNOSun - 1].price) * parseInt(Chose1Time)
+                    } else {
+                        TCInt1 = (ServiceItemsData[somethingSun - 1].price) * parseInt(Chose1Time)
+                    }
+                    if (somethingNOSun2 == 0) {
+                        TCInt2 = 0
+                    } else {
+                        TCInt2 = (ServiceItemsData[somethingNOSun2 - 1].price) * parseInt(Chose2Time)
+                    }
+                    TCIntTotal = TCInt1 + TCInt2
+
+                    TABInt1 = (ServiceItemsData[somethingTAB - 1].price) * parseInt(ChoseTAB1Time)
+                    if (somethingTAB2 == 0) {
+                        TABInt2 = 0
+                    } else {
+                        TABInt2 = (ServiceItemsData[somethingTAB2 - 1].price) * parseInt(ChoseTAB2Time)
+                    }
+                    TABIntTotal = TABInt1 + TABInt2
+
+                    $("#aidSelf").text("所需自負金額:" + 40000 * (CitizenshipstatusData[ChoseCIT - 1].aid) / 100 + "元/3年")
+                    $("#transportSelf").text("所需自負金額:" + 2000 * (CitizenshipstatusData[ChoseCIT - 1].transport) / 100 + "元/月")
+
+                    // TC補助
+                    $("#TCTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].care) + "元/月")
+
+                    // TC服務錢
+                    if (somethingSun - 1 < 0) {
+                        $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
+                    }
+                    else if (somethingNOSun - 1 < 0) {
+                        $("#TCSevrvePrice").text("使用服務金額:" + TCIntTotal + "元/月")
+                    }
+
+                    // TC自負
+                    if (somethingSun - 1 < 0) {
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    }
+                    else if (somethingNOSun - 1 < 0) {
+                        $("#TCServeSelf").text("所需自負金額:" + TCIntTotal * (CitizenshipstatusData[ChoseCIT - 1].care) / 100 + "元/月")
+                    }
+                    // TAB補助
+                    $("#TABTotal").text("政府補助上限:" + (SubsidyLevelsData[Chose1CMS - 2].respite) + "元/月")
+
+                    // TAB服務錢
+                    $("#TABSevrvePrice").text("使用服務金額:" + TABIntTotal + "元/月")
+
+                    // TAB自負
+                    $("#TABServeSelf").text("所需自負金額:" + TABIntTotal * (CitizenshipstatusData[ChoseCIT - 1].respite) / 100 + "元/月")
+                })
             })
-
-
-
-
-        })
     })
-
-
-
 
 </script>
