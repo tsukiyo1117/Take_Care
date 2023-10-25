@@ -66,7 +66,7 @@ const profile = Vue.createApp({
     },
     mounted() {
         this.$nextTick(() => {
-             $("#twzipcode").twzipcode();
+            $("#twzipcode").twzipcode();
             const userData = JSON.parse(sessionStorage.getItem('id'));
             const county = userData[0].address.slice(0, 3);
             const district = userData[0].address.slice(3);
@@ -103,23 +103,24 @@ const profile = Vue.createApp({
         this.fetchProfileData();
         this.fetchIDData();
         this.fetchEmergencyContact();
+        this.fetchCsProfileData();
         this.fetchEmployeeData();
 
-
-        
     },
     methods: {
         fetchProfileData() {
             const profileData = JSON.parse(sessionStorage.getItem('member'));
             const account = profileData.account
+            console.log(account)
             // 在这里执行你的 AJAX 请求
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/PersonalInfoview',
+                url: 'https://localhost:7036/api/employers',
                 success: (data) => {
 
 
-                    const employerData = data.filter(employerData => employerData.employerAccount === account);
+                    const employerData = data.filter(employerData => employerData.account === account);
+                    console.log(employerData)
                     if (employerData.length > 0) {
 
                         console.log(employerData);
@@ -134,46 +135,20 @@ const profile = Vue.createApp({
                         // 從 session storage 中取得 JSON 資料
                         // 使用者檔案欄位
 
-                        this.employerAccount = this.profileList[0].employerAccount;
-                        this.employerGender = this.profileList[0].employerGender;
-                        this.employerFullName = this.profileList[0].employerFullName;
-                        this.employerEmail = this.profileList[0].employerEmail;
-                        this.employerPhoneNumber = this.profileList[0].employerPhoneNumber;
-                        this.employerPhotoUrl = this.profileList[0].employerPhotoUrl;
+                        this.employerAccount = this.profileList[0].account;
+                        this.employerGender = this.profileList[0].gender;
+                        this.employerFullName = this.profileList[0].fullName;
+                        this.employerEmail = this.profileList[0].email;
+                        this.employerPhoneNumber = this.profileList[0].phoneNumber;
+                        this.employerPhotoUrl = this.profileList[0].photoUrl;
                         console.log(this.employerPhotoUrl)
-                        this.employerAddress = this.profileList[0].employerAddress;
-                        this.employerAddressSection = this.profileList[0].employerAddressSection;
-                        this.employerCounty = this.profileList[0].employerAddress.slice(0, 3);
+                        this.employerAddress = this.profileList[0].address;
+                        this.employerAddressSection = this.profileList[0].addressSection;
+                        this.employerCounty = this.profileList[0].address.slice(0, 3);
                         console.log(this.employerCounty)
-                        this.employerDistrict = this.profileList[0].employerAddress.slice(3);
+                        this.employerDistrict = this.profileList[0].address.slice(3);
 
-                        // 案主檔案欄位
-                        this.personalBirthday = this.profileList[0].personalBirthday.substring(0, 10),
-                            console.log(this.personalBirthday)
-                        this.personalIdentityCard = this.profileList[0].personalIdentityCard,
-                            this.personalName = this.profileList[0].personalName,
-                            console.log(this.personalName)
-                        this.personalGender = this.profileList[0].personalGender,
-                            console.log(this.personalGender)
-                        this.personalResidentialAddress = this.profileList[0].personalResidentialAddress,
-                            sessionStorage.setItem('personalResidentialAddress', JSON.stringify(this.personalResidentialAddress));
-                        this.personalResidentialCounty = this.profileList[0].personalResidentialAddress.slice(0, 3);
-                        console.log(this.personalResidentialCounty)
-                        this.personalResidentialDistrict = this.profileList[0].personalResidentialAddress.slice(3);
-                        console.log(this.personalResidentialDistrict)
-                        this.personalResidentialAddressSection = this.profileList[0].personalResidentialAddressSection,
-                            this.personalLanguage = this.profileList[0].personalLanguage,
-                            console.log(this.personalLanguage)
-                        this.personalMailingAddress = this.profileList[0].personalMailingAddress,
-                            sessionStorage.setItem('personalMailingAddress', JSON.stringify(this.personalMailingAddress));
-                        this.personalMailingAddressCounty = this.profileList[0].personalMailingAddress.slice(0, 3);
-                        this.personalMailingAddressDistrict = this.profileList[0].personalMailingAddress.slice(3);
-                        console.log(this.personalMailingAddressDistrict)
-                        this.personalMailingAddressSection = this.profileList[0].personalMailingAddressSection,
-                            this.personaWelfareStatusl = this.profileList[0].personaWelfareStatusl,
-                            console.log(this.personaWelfareStatusl)
-                        this.personalLongTermCareStatus = this.profileList[0].personalLongTermCareStatus
-                        this.Residential_Status = this.profileList[0].Residential_Status
+
                     } else {
                         // 使用filter方法检查是否是照护员
                         this.fetchEmployeeData();
@@ -240,6 +215,54 @@ const profile = Vue.createApp({
                 }
             });
         },
+        fetchCsProfileData() {
+            $.ajax({
+                type: 'get',
+                url: 'https://localhost:7036/api/PersonalInfoes',
+                success: (data) => {
+                    const CsProfileData = JSON.parse(sessionStorage.getItem('id'));
+                    const id = CsProfileData[0].employerId;
+
+                    const employerData = data.filter(employerData => employerData.employerId === id);
+                    if (employerData.length > 0) {
+
+                        // 從 session storage 中取得 JSON 資料
+
+                        // 案主檔案欄位
+                        this.personalBirthday = employerData.birthday.substring(0, 10),
+                            console.log(this.personalBirthday)
+                        this.personalIdentityCard = employerData.identityCard,
+                            this.personalName = employerData.name,
+                            console.log(this.personalName)
+                        this.personalGender = employerData.gender,
+                            console.log(this.personalGender)
+                        this.personalResidentialAddress = employerData.residentialAddress,
+                            sessionStorage.setItem('personalResidentialAddress', JSON.stringify(this.personalResidentialAddress));
+                        this.personalResidentialCounty = employerData.residentialAddress.slice(0, 3);
+                        console.log(this.personalResidentialCounty)
+                        this.personalResidentialDistrict = employerData.residentialAddress.slice(3);
+                        console.log(this.personalResidentialDistrict)
+                        this.personalResidentialAddressSection = employerData.residentialAddressSection,
+                            this.personalLanguage = employerData.language,
+                            console.log(this.personalLanguage)
+                        this.personalMailingAddress = employerData.mailingAddress,
+                            sessionStorage.setItem('personalMailingAddress', JSON.stringify(this.personalMailingAddress));
+                        this.personalMailingAddressCounty = employerData.mailingAddress.slice(0, 3);
+                        this.personalMailingAddressDistrict = employerData.mailingAddress.slice(3);
+                        console.log(this.personalMailingAddressDistrict)
+                        this.personalMailingAddressSection = employerData.mailingAddressSection,
+                            this.personaWelfareStatusl = employerData.welfareStatus,
+                            console.log(this.personaWelfareStatusl)
+                        this.personalLongTermCareStatus = employerData.longTermCareStatus
+                        this.Residential_Status = employerData.residentialStatus
+                    }
+                },
+                error: (error) => {
+                    console.error('Error:', error);
+                }
+            });
+        },
+
 
         // 抓照服員的資料使用，資料會填充在data中的照服員檔案部分
         fetchEmployeeData() {
@@ -411,6 +434,7 @@ const CsProfile = Vue.createApp({
             employerDistrict: "",
             employerid: "",
             employerPassword: "",
+            employerPhotoURL: "",
             originData: "",
 
             // 案主檔案
@@ -459,7 +483,7 @@ const CsProfile = Vue.createApp({
     },
     mounted() {
         this.$nextTick(() => {
-            // $("#twzipcode").twzipcode();
+            //$("#twzipcode").twzipcode();
             //const userData = JSON.parse(sessionStorage.getItem('id'));
             //const county = userData[0].address.slice(0, 3);
             //const district = userData[0].address.slice(3);
@@ -483,7 +507,7 @@ const CsProfile = Vue.createApp({
             });
 
 
-             $("#twzipcode3").twzipcode();
+            // $("#twzipcode3").twzipcode();
             const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
             const county3 = userData3.slice(0, 3);
             const district3 = userData3.slice(3)
@@ -491,15 +515,13 @@ const CsProfile = Vue.createApp({
                 'county': county3,
                 'district': district3
             });
-           
+
         });
-        
         this.fetchProfileData();
         this.fetchIDData();
         this.fetchEmergencyContact();
+        this.fetchCsProfileData();
         this.fetchEmployeeData();
-
-       
 
     },
     methods: {
@@ -509,7 +531,7 @@ const CsProfile = Vue.createApp({
             // 在这里执行你的 AJAX 请求
             $.ajax({
                 type: 'get',
-                url: 'https://localhost:7036/api/PersonalInfoview',
+                url: 'https://localhost:7036/api/employers',
                 success: (data) => {
 
 
@@ -528,44 +550,20 @@ const CsProfile = Vue.createApp({
                         // 從 session storage 中取得 JSON 資料
                         // 使用者檔案欄位
 
-                        this.employerAccount = this.profileList[0].employerAccount;
-                        this.employerGender = this.profileList[0].employerGender;
-                        this.employerFullName = this.profileList[0].employerFullName;
-                        this.employerEmail = this.profileList[0].employerEmail;
-                        this.employerPhoneNumber = this.profileList[0].employerPhoneNumber;
-                        this.employerAddress = this.profileList[0].employerAddress;
-                        this.employerAddressSection = this.profileList[0].employerAddressSection;
-                        this.employerCounty = this.profileList[0].employerAddress.slice(0, 3);
+                        this.employerAccount = this.profileList[0].account;
+                        this.employerGender = this.profileList[0].gender;
+                        this.employerFullName = this.profileList[0].fullName;
+                        this.employerEmail = this.profileList[0].email;
+                        this.employerPhoneNumber = this.profileList[0].phoneNumber;
+                        this.employerPhotoUrl = this.profileList[0].photoUrl;
+                        console.log(this.employerPhotoUrl)
+                        this.employerAddress = this.profileList[0].address;
+                        this.employerAddressSection = this.profileList[0].addressSection;
+                        this.employerCounty = this.profileList[0].address.slice(0, 3);
                         console.log(this.employerCounty)
-                        this.employerDistrict = this.profileList[0].employerAddress.slice(3);
+                        this.employerDistrict = this.profileList[0].address.slice(3);
 
-                        // 案主檔案欄位
-                        this.personalBirthday = this.profileList[0].personalBirthday.substring(0, 10),
-                            console.log(this.personalBirthday)
-                        this.personalIdentityCard = this.profileList[0].personalIdentityCard,
-                            this.personalName = this.profileList[0].personalName,
-                            console.log(this.personalName)
-                        this.personalGender = this.profileList[0].personalGender,
-                            console.log(this.personalGender)
-                        this.personalResidentialAddress = this.profileList[0].personalResidentialAddress,
-                            sessionStorage.setItem('personalResidentialAddress', JSON.stringify(this.personalResidentialAddress));
-                        this.personalResidentialCounty = this.profileList[0].personalResidentialAddress.slice(0, 3);
-                        console.log(this.personalResidentialCounty)
-                        this.personalResidentialDistrict = this.profileList[0].personalResidentialAddress.slice(3);
-                        console.log(this.personalResidentialDistrict)
-                        this.personalResidentialAddressSection = this.profileList[0].personalResidentialAddressSection,
-                            this.personalLanguage = this.profileList[0].personalLanguage,
-                            console.log(this.personalLanguage)
-                        this.personalMailingAddress = this.profileList[0].personalMailingAddress,
-                            sessionStorage.setItem('personalMailingAddress', JSON.stringify(this.personalMailingAddress));
-                        this.personalMailingAddressCounty = this.profileList[0].personalMailingAddress.slice(0, 3);
-                        this.personalMailingAddressDistrict = this.profileList[0].personalMailingAddress.slice(3);
-                        console.log(this.personalMailingAddressDistrict)
-                        this.personalMailingAddressSection = this.profileList[0].personalMailingAddressSection,
-                            this.personaWelfareStatusl = this.profileList[0].personaWelfareStatusl,
-                            console.log(this.personaWelfareStatusl)
-                        this.personalLongTermCareStatus = this.profileList[0].personalLongTermCareStatus
-                        this.Residential_Status = this.profileList[0].Residential_Status
+
                     } else {
                         // 使用filter方法检查是否是照护员
                         this.fetchEmployeeData();
@@ -632,6 +630,54 @@ const CsProfile = Vue.createApp({
                 }
             });
         },
+        fetchCsProfileData() {
+            $.ajax({
+                type: 'get',
+                url: 'https://localhost:7036/api/PersonalInfoes',
+                success: (data) => {
+                    const CsProfileData = JSON.parse(sessionStorage.getItem('id'));
+                    const id = CsProfileData[0].employerId;
+
+                    const employerData = data.filter(employerData => employerData.employerId === id);
+                    if (employerData.length > 0) {
+
+                        // 從 session storage 中取得 JSON 資料
+
+                        // 案主檔案欄位
+                        this.personalBirthday = employerData.birthday.substring(0, 10),
+                            console.log(this.personalBirthday)
+                        this.personalIdentityCard = employerData.identityCard,
+                            this.personalName = employerData.name,
+                            console.log(this.personalName)
+                        this.personalGender = employerData.gender,
+                            console.log(this.personalGender)
+                        this.personalResidentialAddress = employerData.residentialAddress,
+                            sessionStorage.setItem('personalResidentialAddress', JSON.stringify(this.personalResidentialAddress));
+                        this.personalResidentialCounty = employerData.residentialAddress.slice(0, 3);
+                        console.log(this.personalResidentialCounty)
+                        this.personalResidentialDistrict = employerData.residentialAddress.slice(3);
+                        console.log(this.personalResidentialDistrict)
+                        this.personalResidentialAddressSection = employerData.residentialAddressSection,
+                            this.personalLanguage = employerData.language,
+                            console.log(this.personalLanguage)
+                        this.personalMailingAddress = employerData.mailingAddress,
+                            sessionStorage.setItem('personalMailingAddress', JSON.stringify(this.personalMailingAddress));
+                        this.personalMailingAddressCounty = employerData.mailingAddress.slice(0, 3);
+                        this.personalMailingAddressDistrict = employerData.mailingAddress.slice(3);
+                        console.log(this.personalMailingAddressDistrict)
+                        this.personalMailingAddressSection = employerData.mailingAddressSection,
+                            this.personaWelfareStatusl = employerData.welfareStatus,
+                            console.log(this.personaWelfareStatusl)
+                        this.personalLongTermCareStatus = employerData.longTermCareStatus
+                        this.Residential_Status = employerData.residentialStatus
+                    }
+                },
+                error: (error) => {
+                    console.error('Error:', error);
+                }
+            });
+        },
+
 
         // 抓照服員的資料使用，資料會填充在data中的照服員檔案部分
         fetchEmployeeData() {
