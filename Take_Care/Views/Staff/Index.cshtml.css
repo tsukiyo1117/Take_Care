@@ -134,6 +134,7 @@ div > label {
     position: relative;
     /* left: 22rem; */
     display: none;
+    margin-right: 1rem;
 }
 
 /*notification.css*/

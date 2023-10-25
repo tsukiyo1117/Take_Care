@@ -43,12 +43,12 @@
                                         <input type="text" placeholder="YYYY-MM-DD" name="enddate" id="datepickerEnd" style="width: 180px">
                                         &nbsp;&nbsp;
 
-                                        <button>查詢</button>                                        
+                                        <button class="querybtn">查詢</button>
                                     </div>
-                                    <!-- 表格 -->
-                                    <div>
+                                    <!-- 表格X -->
+                                    <div id="tableX" style="display: block">
                                         <table class="table table-bordered align-middle" style="margin-top: 40px;">
-                                            <tr style="font-size: 20px;">
+                                            <tr style="font-size: 19px;">
                                                 <th style="background-color: burlywood;">服務日期</th>
                                                 <th style="background-color: burlywood;">服務時間</th>
                                                 <th style="background-color: burlywood;">服務項目</th>
@@ -57,16 +57,86 @@
                                                 <th style="background-color: burlywood;">備註</th>
                                                 <th style="background-color: burlywood;">功能</th>
                                             </tr>
-                                            <tr style="font-size: 20px;">
-                                                <td>2023.10.18</td>
-                                                <td>10~11點</td>
-                                                <td>協助進食或管灌餵食</td>
-                                                <td>王曉明</td>
-                                                <td>台中市南屯區公益路51號</td>
-                                                <td>需要bla lba bla</td>
+                                            <tr style="font-size: 19px;">
+                                                <td>2023-11-05</td>
+                                                <td>11:00</td>
+                                                <td>餐食照顧-備餐(一餐)</td>
+                                                <td>吳七</td>
+                                                <td>臺中市西屯區龍富路3927號</td>
+                                                <td></td>
+                                                <td><button>取消</button></td>
+                                            </tr>
+                                            <tr style="font-size: 19px;">
+                                                <td>2023-11-05</td>
+                                                <td>14:00</td>
+                                                <td>基本身體清潔(日)</td>
+                                                <td>李四</td>
+                                                <td>臺中市南屯區南屯路3266號</td>
+                                                <td></td>
+                                                <td><button>取消</button></td>
+                                            </tr>
+                                            <tr style="font-size: 19px;">
+                                                <td>2023-11-06</td>
+                                                <td>10:00</td>
+                                                <td>基本日常照顧(30分鐘)</td>
+                                                <td>李四</td>
+                                                <td>臺中市南屯區南屯路3266號</td>
+                                                <td></td>
+                                                <td><button>取消</button></td>
+                                            </tr>
+                                            <tr style="font-size: 19px;">
+                                                <td>2023-11-12</td>
+                                                <td>13:00</td>
+                                                <td>居家喘息(2小時，單日10小時上限)</td>
+                                                <td>李四</td>
+                                                <td>臺中市南屯區南屯路3266號</td>
+                                                <td></td>
+                                                <td><button class="cancel-button" data-row-id="1">取消</button></td>
+                                            </tr>
+                                            <tr style="font-size: 19px;">
+                                                <td>2023-11-15</td>
+                                                <td>08:00</td>
+                                                <td>機構喘息(1日)</td>
+                                                <td>李四</td>
+                                                <td>臺中市南屯區南屯路3266號</td>
+                                                <td></td>
                                                 <td><button>取消</button></td>
                                             </tr>
                                         </table>
+                                        </div>
+
+                                        <!-- 表格Y -->
+                                        <div id="tableY" style="display:none">
+                                            <table class="table table-bordered align-middle" style="margin-top: 40px;">
+                                                <tr style="font-size: 19px;">
+                                                    <th style="background-color: burlywood;">服務日期</th>
+                                                    <th style="background-color: burlywood;">服務時間</th>
+                                                    <th style="background-color: burlywood;">服務項目</th>
+                                                    <th style="background-color: burlywood;">案主名稱</th>
+                                                    <th style="background-color: burlywood;">案主地址</th>
+                                                    <th style="background-color: burlywood;">備註</th>
+                                                    <th style="background-color: burlywood;">功能</th>
+                                                </tr>
+                                                <tr style="font-size: 19px;">
+                                                    <td>2023-11-05</td>
+                                                    <td>11:00</td>
+                                                    <td>餐食照顧-備餐(一餐)</td>
+                                                    <td>吳七</td>
+                                                    <td>臺中市西屯區龍富路3927號</td>
+                                                    <td></td>
+                                                    <td><button>取消</button></td>
+                                                </tr>
+                                                <tr style="font-size: 19px;">
+                                                    <td>2023-11-05</td>
+                                                    <td>14:00</td>
+                                                    <td>基本身體清潔(日)</td>
+                                                    <td>李四</td>
+                                                    <td>臺中市南屯區南屯路3266號</td>
+                                                    <td></td>
+                                                    <td><button>取消</button></td>
+                                                </tr>
+                                                
+                                            </table>
                                     </div>
                                 </div>
                             </div>
@@ -95,20 +165,56 @@
 
         $("#twzipcode").twzipcode();
         $("#twzipcode2").twzipcode();
-        $("#twzipcode3").twzipcode();
-
-
-        //$('.datepicker').datepicker({
-        //    dateFormat: "yy-mm-dd"
-        //});
-
-        
-
-        //$("#datepicker2").datepicker({
-        //    dateFormat: "yy-mm-dd"
-        //});
+        $("#twzipcode3").twzipcode();     
 
     </script>
+
+    <script>
+        // 获取查询按钮
+        var queryButton = document.querySelector('.querybtn');
+
+        // 添加点击事件处理程序到查询按钮
+        queryButton.addEventListener('click', function () {
+
+            event.preventDefault();
+            // 获取表格A和表格B的元素
+
+            var tableX = document.getElementById('tableX');
+            var tableY = document.getElementById('tableY');
+
+            // 使用 getComputedStyle 检查 tableA 的显示状态
+            var computedStyle = window.getComputedStyle(tableX);
+
+            if (computedStyle.display === 'block') {
+                tableX.style.display = 'none';
+                tableY.style.display = 'block';
+            } else {
+                tableX.style.display = 'block';
+                tableY.style.display = 'none';
+            }
+            
+        });
+
+    </script>
+
+    <script>
+        // 获取所有"取消"按钮
+        var cancelButtons = document.querySelectorAll('.cancel-button');
+
+        // 为每个"取消"按钮添加点击事件处理程序
+        cancelButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                // 找到"取消"按钮所在的行
+                var row = button.parentElement.parentElement; 
+
+                // 从DOM中删除行
+                if (row) {
+                    row.remove();
+                }
+            });
+        });
+    </script>
+
 
 
 </body>
