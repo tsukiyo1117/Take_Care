@@ -5,7 +5,6 @@
     width: 70%;
     margin: 0 auto;
     margin-top: 20px;
-    
 }
 
 .col-3 {
@@ -17,14 +16,27 @@
 }
 
 .button-container {
-    text-align: center;    
-    position: relative;    
-    cursor: pointer;
+    text-align: center;
+    position: relative;
 }
 
-.button-container button {
-            position: relative;
-            top: 30px;
-            width: 100px;
+    .button-container button {
+        position: relative;
+        top: 30px;
+        width: 100px;
+        /*background-color: burlywood;*/
+        background-color: transparent;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 10px;
+    }
+
+        .button-container button:hover {
             background-color: burlywood;
-} 
+            cursor: pointer;
+        }
+
+        .button-container button:focus {
+            background-color: burlywood;
+            
+        }
