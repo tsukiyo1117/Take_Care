@@ -26,6 +26,24 @@ namespace Take_Care.Controllers
             return  Json("done");
         }
 
+        // [HttpGet( "{id:int}")]
+        [HttpGet]
+
+        public IActionResult GetPersonalInfoDetail()
+        {
+            var query = from o in _context.Employers
+                join p in _context.PersonalInfos on o.EmployerId equals p.EmployerId
+                join e in _context.EmergencyContacts on p.Id equals e.ContactId
+                // where o.EmployerId == id
+                select new
+                {
+                   EmployerID = o.EmployerId,
+                   
+                };
+                                        
+            return Json(query);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

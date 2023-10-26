@@ -12,7 +12,6 @@
     .paid-row {
         background-color: #ccc; /* 这里可以是你想要的灰色背景颜色 */
         color: #555; /* 修改文字颜色为更暗的灰色 */
-        
     }
 
     .yellow-row {
@@ -29,7 +28,7 @@
 @await Html.PartialAsync("_HeadPartial")
 
 <body>
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <div class="col-2 ">
                 <div class="row" id="userPic" style="display:flex;width:100%">
@@ -62,7 +61,7 @@
                                         <div class="divider__line"></div>
                                         <h2 class="text-center" style="font-weight: 900;">我的服務記錄</h2>
                                         <div class="divider__line"></div>
-                                       @*  <p class="dismiss text-right"><a id="dismiss-all" href="#" class="btn btn-dark">取消全部</a></p> *@
+                                        @*  <p class="dismiss text-right"><a id="dismiss-all" href="#" class="btn btn-dark">取消全部</a></p> *@
                                     </div>
                                     <br>
                                     <!-- 用日期查詢紀錄 -->
@@ -120,13 +119,13 @@
                                                 <td style="text-align: center;">
                                                     ${{ Case.amount }}
                                                 </td>
-                                               
-                                                <td >
+
+                                                <td>
                                                     <a href="#" class="btn btn-outline-dark dismiss-notification"
                                                        v-if="Case.caseStatus === false && !Case.paymentStatus">未完成</a>
                                                     <a href="#" class="btn btn-outline-dark dismiss-notification"
                                                        v-if="Case.caseStatus === false && !Case.paymentStatus" @@click.prevent="cancelService(Case)">取消</a>
-                                                    
+
 
                                                     <a href="#" class="btn btn-secondary dismiss-notification"
                                                        v-else>完成</a>
@@ -136,7 +135,7 @@
                                                        v-if="Case.paymentStatus === false" @@click.prevent="checkout(Case)">去結帳</a>
                                                     <a href="#" class="btn btn-secondary dismiss-notification"
                                                        v-else>已繳費</a>
-                                                    
+
                                                 </td>
                                             </tr>
                                         </table>
@@ -175,13 +174,14 @@
                     employeeNames: "",
                     totalAmount: 0,
                     endDate: "",
+                    matchingRecords:[],
                 };
             },
             mounted() {
                 this.$nextTick(() => {
                     this.GetCaseForEmployer();
                     this.created();
-                    
+
                 });
             },
             methods: {
@@ -245,7 +245,7 @@
 
                                     let year = objectDate.getFullYear();
                                     //console.log(year); // 2023
-                                    let dateformat = `${year}-${month+1}-${day}`;
+                                    let dateformat = `${year}-${month + 1}-${day}`;
                                     //console.log(dateformat); // 7-23-2022
                                     this.startDate = dateformat
                                     //console.log(this.startDate)
@@ -258,6 +258,7 @@
                                     //console.log(this.totalAmount)
 
                                     // console.log(this.caseStatus)
+                                    this.$forceUpdate();
                                 }
                             });
                         },
@@ -331,25 +332,33 @@
 
                 },
                 filterRecords() {
-                    console.log(this.caseList)
-                    // 获取用户输入的开始日期和结束日期
-                    const startDateObject = new Date(this.startDate);
-                    const endDateObject = new Date(this.endDate);
-                    console.log('startDateObject:', startDateObject);
-                    console.log('endDateObject:', endDateObject);
+                    const Records = JSON.parse(sessionStorage.getItem('Forcase'));
+                    console.log('Records:', Records);
 
-                    // 使用日期范围过滤服务记录
-                    const filteredRecords = this.CaseList.filter((record) => {
-                        const recordDate = new Date(record.startDateTime.slice(0, 10));
-                        return recordDate >= startDateObject && recordDate <= endDateObject;
-                    });
+                    if (Records && Records.length > 0) {
+                        // 获取用户输入的开始日期和结束日期
+                        const startDateObject = new Date(document.querySelectorAll('input')[1].value);
+                        const endDateObject = new Date(document.querySelectorAll('input')[2].value);
+                        console.log('startDateObject:', startDateObject);
+                        console.log('endDateObject:', endDateObject);
 
-                    // 更新 CaseList 以仅包含过滤后的记录
-                    this.CaseList = filteredRecords;
+                        const matchingRecords = Records.filter((Record) => {
+                            const recordDate = new Date(Record.startDateTime.slice(0, 10));
+                            return recordDate >= startDateObject && recordDate <= endDateObject;
+                        });
+                        this.$nextTick(() => {
+                            console.log(matchingRecords);
+                            console.log(this.CaseList);
+                            console.log('過濾紀錄成功!');
+                        });
 
-                    // 重新计算总金额
-                    this.totalAmount = this.CaseList.reduce((total, item) => total + item.amount, 0);
+                        // 更新 CaseList 以仅包含过滤后的记录
+                        this.CaseList = matchingRecords;
+                        // 重新计算总金额
+                        this.totalAmount = this.CaseList.reduce((total, item) => total + item.amount, 0);
+                    }
                 },
+
 
                 cancelService(Case) {
                     if (Case.paymentStatus === false) {
@@ -358,7 +367,7 @@
                             url: `https://localhost:7036/api/Cases/${Case.caseId}`,
                             success: (response) => {
                                 // 成功刪除後，更新前端數據
-                               
+
                                 // 使用 Vue.js 更新數據模型，將自動重新渲染頁面
                                 this.$forceUpdate();
 
@@ -381,7 +390,7 @@
                         Amount: Case.amount,
                         ServiceName: Case.serviceName
                     };
-                
+
 
                     // 发送 POST 请求到服务器
                     $.ajax({
