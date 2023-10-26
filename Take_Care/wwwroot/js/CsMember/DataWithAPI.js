@@ -187,7 +187,8 @@ const profile = Vue.createApp({
         },
         fetchEmergencyContact() {
             const EmergencyContactData = JSON.parse(sessionStorage.getItem('id'));
-            const id = EmergencyContactData[0].employerId;
+            //const id = EmergencyContactData[0].employerId;
+            const id = JSON.parse(sessionStorage.getItem("personalInfoId"));
             console.log(id)
             $.ajax({
                 type: 'get',
@@ -706,9 +707,9 @@ const CsProfile = Vue.createApp({
                     this.contactId = this.emergencyContactsList[0].contactId
                     this.personalInfoId = this.emergencyContactsList[0].personalInfoId
                     console.log(this.personalInfoId)
-                    this.contactName = this.emergencyContactsList.contactName
-                    this.contactMobile = this.emergencyContactsList.contactMobile
-                    this.contactRelationship = this.emergencyContactsList.contactRelationship
+                    this.contactName = this.emergencyContactsList[0].contactName
+                    this.contactMobile = this.emergencyContactsList[0].contactMobile
+                    this.contactRelationship = this.emergencyContactsList[0].contactRelationship
                 },
                 error: (error) => {
                     console.error('Error:', error);
