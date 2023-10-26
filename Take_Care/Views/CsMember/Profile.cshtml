@@ -83,11 +83,11 @@
                                                 <label>性別 : </label>
                                             </div>
                                             <div class="col-md-6" style="display: flex;">
-                                                <div class="custom-control custom-radio custom-control-inline"
-                                                     v-for="genderOption in ['男 &nbsp;', '女']">
-                                                    <input type="radio" :id="'customRadioInline' + genderOption.trim()"
+                                                <div class="custom-control custom-radio custom-control-inline" v-for="genderOption in ['男 &nbsp;', '女']">
+                                                    <input type="radio" :id="'customRadioInline1' + genderOption.trim()"
                                                            name="customRadioInline1" class="custom-control-input"
-                                                           :checked="genderOption.trim() === employerGender">
+                                                           :value="genderOption.trim()" v-model="employerGender">
+                                                    <!-- 使用 v-model 绑定 employerGender -->
 
                                                     <label class="custom-control-label"
                                                            :for="'customRadioInline1' + genderOption.trim()"
@@ -95,6 +95,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row" style="margin-top: 1rem;">
                                             <div class="col-md-4">
                                                 <label>地址</label>
@@ -148,11 +149,11 @@
                                                         <label>性別</label>
                                                     </div>
                                                     <div class="col-md-6" style="display: flex;">
-                                                        <div class="custom-control custom-radio custom-control-inline"
-                                                             v-for="genderOption in ['男 &nbsp;', '女']">
+                                                        <div class="custom-control custom-radio custom-control-inline" v-for="genderOption in ['男 &nbsp;', '女']">
                                                             <input type="radio" :id="'customRadioInline2' + genderOption.trim()"
                                                                    name="customRadioInline2" class="custom-control-input"
-                                                                   :checked="genderOption.trim() === personalGender">
+                                                                   :value="genderOption.trim()" v-model="personalGender">
+                                                            <!-- 使用 v-model 绑定 personalGender -->
 
                                                             <label class="custom-control-label"
                                                                    :for="'customRadioInline2' + genderOption.trim()"
@@ -160,6 +161,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <label>生日</label>
