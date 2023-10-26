@@ -187,7 +187,8 @@ const profile = Vue.createApp({
         },
         fetchEmergencyContact() {
             const EmergencyContactData = JSON.parse(sessionStorage.getItem('id'));
-            const id = EmergencyContactData[0].employerId;
+            //const id = EmergencyContactData[0].employerId;
+            const id = JSON.parse(sessionStorage.getItem("personalInfoId"));
             console.log(id)
             $.ajax({
                 type: 'get',
@@ -302,6 +303,11 @@ const profile = Vue.createApp({
             });
         },
         SaveEmployerDataToDatabase() {
+            const County = document.querySelectorAll('select')[0].value;
+            const District = document.querySelectorAll('select')[1].value
+            this.employerCounty = County
+            this.employerDistrict = District
+
             const updatedData = {
                 "employerId": this.employerid,
                 "account": this.employerAccount,
@@ -313,6 +319,7 @@ const profile = Vue.createApp({
                 "address": this.employerCounty + this.employerDistrict,
                 "addressSection": this.employerAddressSection,
             };
+
             console.log('Save button clicked');
             console.log(updatedData);
             const employerData = JSON.parse(sessionStorage.getItem('id'));
@@ -352,6 +359,8 @@ const profile = Vue.createApp({
 
         },
         SavePersonalDataToDatabase() {
+            
+
             const updatedData = {
                 "id": this.personalInfoId,
                 "identityCard": this.personalIdentityCard,
@@ -506,8 +515,8 @@ const CsProfile = Vue.createApp({
             originData: "",
 
             // 案主檔案
-           
-            personalList:"",
+
+            personalList: "",
             personalBirthday: "",
             personalGender: "",
             personalIdentityCard: "",
@@ -566,25 +575,31 @@ const CsProfile = Vue.createApp({
             //    'district': district
             //});
 
-             $("#twzipcode2").twzipcode();
+            $("#twzipcode2").twzipcode();
             const userData2 = JSON.parse(sessionStorage.getItem('personalResidentialAddress'));
-            const county2 = userData2.slice(0, 3);
-            const district2 = userData2.slice(3);
-            // console.log(county2)
-            $("#twzipcode2").twzipcode('set', {
-                'county': county2,
-                'district': district2
-            });
+          
+            if (userData2 !== null) {
+                const county2 = userData2.slice(0, 3);
+                const district2 = userData2.slice(3);
+                // console.log(county2)
+                $("#twzipcode2").twzipcode('set', {
+                    'county': county2,
+                    'district': district2
+                });
+            }
 
 
-             $("#twzipcode3").twzipcode();
+            $("#twzipcode3").twzipcode();
             const userData3 = JSON.parse(sessionStorage.getItem('personalMailingAddress'));
-            const county3 = userData3.slice(0, 3);
-            const district3 = userData3.slice(3)
-            $("#twzipcode3").twzipcode('set', {
-                'county': county3,
-                'district': district3
-            });
+            
+            if (userData3 !== null) {
+                const county3 = userData3.slice(0, 3);
+                const district3 = userData3.slice(3)
+                $("#twzipcode3").twzipcode('set', {
+                    'county': county3,
+                    'district': district3
+                });
+            }
 
         });
         this.fetchProfileData();
@@ -621,7 +636,7 @@ const CsProfile = Vue.createApp({
 
                         // 從 session storage 中取得 JSON 資料
                         // 使用者檔案欄位
-                        
+
                         this.employerAccount = this.profileList[0].account;
                         this.employerGender = this.profileList[0].gender;
                         this.employerFullName = this.profileList[0].fullName;
@@ -673,7 +688,7 @@ const CsProfile = Vue.createApp({
         },
         fetchEmergencyContact() {
             const id = JSON.parse(sessionStorage.getItem('personalInfoId'));
-            
+
             $.ajax({
                 type: 'get',
                 url: 'https://localhost:7036/api/EmergencyContacts',
@@ -708,18 +723,18 @@ const CsProfile = Vue.createApp({
                 success: (data) => {
                     const CsProfileData = JSON.parse(sessionStorage.getItem('id'));
                     const id = CsProfileData[0].employerId;
-/*                    console.log(id)*/
+                    /*                    console.log(id)*/
                     const employerData = data.filter(employerData => employerData.employerId === id);
                     console.log(employerData)
                     if (employerData.length > 0) {
 
                         // 從 session storage 中取得 JSON 資料
-                        
+
                         // 案主檔案欄位
                         this.personalList = employerData;
                         this.personalInfoId = this.personalList[0].id;
                         sessionStorage.setItem('personalInfoId', this.personalInfoId)
-/*                        console.log(this.personalList)*/
+                        /*                        console.log(this.personalList)*/
                         this.personalBirthday = this.personalList[0].birthday.substring(0, 10),
                             console.log(this.personalBirthday)
                         this.personalIdentityCard = this.personalList[0].identityCard,
@@ -839,6 +854,16 @@ const CsProfile = Vue.createApp({
 
         },
         SavePersonalDataToDatabase() {
+
+            const ResidentCounty = document.querySelectorAll('select')[3].value;
+            const ResidentDistrict = document.querySelectorAll('select')[4].value;
+            const MailingCounty = document.querySelectorAll('select')[5].value;
+            const MailingDistrict = document.querySelectorAll('select')[6].value;
+            this.personalResidentialCounty = ResidentCounty
+            this.personalResidentialDistrict = ResidentDistrict
+            this.personalMailingAddressCounty = MailingCounty
+            this.personalMailingAddressDistrict = MailingDistrict
+
             const updatedCsData = {
                 "id": this.personalInfoId,
                 "identityCard": this.personalIdentityCard,
@@ -864,7 +889,7 @@ const CsProfile = Vue.createApp({
             };
 
             const NewPersonalData = {
-/*                "id": "",*/
+                /*                "id": "",*/
                 "identityCard": this.personalIdentityCard,
                 "name": this.personalName,
                 "gender": this.personalGender,
@@ -880,7 +905,7 @@ const CsProfile = Vue.createApp({
             };
 
             const NewEmergencyData = {
-/*                "contactId": this.employerid,*/
+                /*                "contactId": this.employerid,*/
                 "personalInfoId": this.personalInfoId,
                 "contactName": this.contactName,
                 "contactMobile": this.contactMobile,
@@ -890,8 +915,8 @@ const CsProfile = Vue.createApp({
             console.log('Save button2 clicked');
             console.log(updatedCsData);
             console.log(updateEmergencyData);
-            console.log('NewPersonalData:',NewPersonalData)
-            console.log('NewEmergencyData',NewEmergencyData)
+            console.log('NewPersonalData:', NewPersonalData)
+            console.log('NewEmergencyData', NewEmergencyData)
             const personalInfoId = JSON.parse(sessionStorage.getItem('personalInfoId'));
             if (this.personalInfoId) {
                 $.ajax({
@@ -928,7 +953,7 @@ const CsProfile = Vue.createApp({
                     }
                 });
             }
-            
+
             if (this.contactId) {
                 $.ajax({
                     type: 'PUT',
@@ -964,9 +989,9 @@ const CsProfile = Vue.createApp({
                     }
                 });
             }
-            
-            
-           
+
+
+
         },
 
     }
