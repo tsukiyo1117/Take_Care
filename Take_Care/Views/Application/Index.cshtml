@@ -2214,7 +2214,7 @@
 
         // 計算兩周後的日期
         var twoWeeksLater = new Date(currentDate);
-        twoWeeksLater.setDate(currentDate.getDate() + 7);
+        twoWeeksLater.setDate(currentDate.getDate());
 
         // 找到兩周後的第一個星期日
         while (twoWeeksLater.getDay() !== 0) {
