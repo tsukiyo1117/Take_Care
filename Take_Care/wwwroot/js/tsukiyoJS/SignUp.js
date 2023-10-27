@@ -32,12 +32,18 @@ let app = new Vue({
                 contentType: "application/json",
                 data: JSON.stringify(this.Employer),
                 success: function () {
-                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", "alert('Alert Message');location.href='OtherPage.aspx';", true);
-                    if (window.confirm("是否要回到登入?")) {
-                        window.location = "https://localhost:7036/Login";
-                    } else {
-                        window.location = "https://localhost:7036";
-                    }
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '正在回到登入頁!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    // if (window.confirm("是否要回到登入?")) {
+                    window.location = "https://localhost:7036/Login";
+                    // } else {
+                    //     window.location = "https://localhost:7036";
+                    // }
                 }
             })
         },

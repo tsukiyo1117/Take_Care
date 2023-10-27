@@ -28,10 +28,46 @@
                     if (response != "error!") {
                         //alert(response);
                         //console.log(response);
+                        //let timerInterval;
+                        // Swal.fire({
+                        //     title: '登入成功',
+                        //     text: '正在轉跳頁面',
+                        //     timer: 1500,
+                        //     timerProgressBar: true,
+                        //     // didOpen: () => {
+                        //     //     Swal.showLoading()
+                        //     // }
+                        // })
+                        Swal.fire({
+                            title: '登入成功',
+                            html: '正在轉跳頁面',
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        }).then((result) => {
                         sessionStorage.setItem("member", JSON.stringify(response));
                         window.location = "https://localhost:7036/MainPage/Index";
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log('I was closed by the timer')
+                            }
+                        });
+                        
                     } else {
-                        alert("帳號或密碼錯誤!!");
+                        Swal.fire({
+                            icon: 'error',
+                            title: '',
+                            text: '帳號或密碼錯誤!!'
+                        })
                     }
                 },
                 error: function () {
