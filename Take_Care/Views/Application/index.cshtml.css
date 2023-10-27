@@ -16,7 +16,10 @@
 
 #TABDiv > div > div,
 #TCDiv > div > div {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;*/
     border-radius: 0px 0px 0px 0px;
     margin-left: 1px;
     margin-right: 1px;
