@@ -5,458 +5,482 @@
 }
 
 <style>
-    .profile-head h3 {
-        color: #333;
-    }
+	.profile-head h3 {
+		color: #333;
+	}
 
-    .paid-row {
-        background-color: #ccc; /* 这里可以是你想要的灰色背景颜色 */
-        color: #555; /* 修改文字颜色为更暗的灰色 */
-    }
+	.paid-row {
+		background-color: #ccc; /* 这里可以是你想要的灰色背景颜色 */
+		color: #555; /* 修改文字颜色为更暗的灰色 */
+	}
 
-    .yellow-row {
-        background-color: lightpink; /* 这里可以是你想要的灰色背景颜色 */
-        color: black; /* 修改文字颜色为更暗的灰色 */
-    }
+	.yellow-row {
+		background-color: lightpink; /* 这里可以是你想要的灰色背景颜色 */
+		color: black; /* 修改文字颜色为更暗的灰色 */
+	}
 
-    .none-row {
-        color: black;
-    }
+	.none-row {
+		color: black;
+	}
 </style>
 
 
 @await Html.PartialAsync("_HeadPartial")
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-2 ">
-                <div class="row" id="userPic" style="display:flex;width:100%">
-                    <div class="col">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="user">
-                    </div>
-                    <div class="col d-flex align-items-center" id="logout">
-                        <form asp-controller="CsMember" asp-action="Logout" method="post">
-                            <button class="btn btn-light" style="border:1px solid burlywood;font-weight:900;background-color:	#ffdab9"
-                                    @@click="logout">
-                                登出
-                            </button>
-                        </form>
-                    </div>
-                    <div class="">
-                        <span class="row" id="userName" style="font-size: 18px; font-weight: 900;"></span>
-                    </div>
-                </div>
-                @await Html.PartialAsync("_SideBarPartial")
-            </div>
-            <div class="col-10" id="mainPage">
-                <div class="container emp-profile" style="background-color:transparent">
-                    <form method="post">
+	<div class="container">
+		<div class="row">
+			<div class="col-2 ">
+				<div class="row" id="userPic" style="display:flex;width:100%">
+					<div class="col">
+						<img src="~/img/employer/大壯.jpg" alt="user" style="width:80px">
+					</div>
+					<div class="col d-flex align-items-center" id="logout">
+						<form asp-controller="CsMember" asp-action="Logout" method="post">
+							<button class="btn btn-light" style="border:1px solid burlywood;font-weight:900;background-color:	#ffdab9;position:absolute;top:90%"
+									@@click="logout">
+								登出
+							</button>
+						</form>
+					</div>
+					<div class="">
+						<span class="row" id="userName" style="font-size: 18px; font-weight: 900;"></span>
+					</div>
+				</div>
+				@await Html.PartialAsync("_SideBarPartial")
+			</div>
+			<div class="col-10" id="mainPage">
+				<div class="container emp-profile" style="background-color:transparent">
+					<form method="post">
 
-                        <div class="row">
-                            <!-- 服務歷史紀錄 -->
-                            <div class="col" id="CaseHistoryRecord">
-                                <div class="">
-                                    <div>
-                                        <div class="divider__line"></div>
-                                        <h2 class="text-center" style="font-weight: 900;">我的服務記錄</h2>
-                                        <div class="divider__line"></div>
-                                        @*  <p class="dismiss text-right"><a id="dismiss-all" href="#" class="btn btn-dark">取消全部</a></p> *@
-                                    </div>
-                                    <br>
-                                    <!-- 用日期查詢紀錄 -->
-                                    <div>
-                                        <label style="font-size: 23px"><b>開始日期:</b></label>
-                                        <input type="text" placeholder="YYYY-MM-DD" name="startdate" class="datepicker" style="width: 180px" v-model="startDate">
-                                        &nbsp;&nbsp;
+						<div class="row">
+							<!-- 服務歷史紀錄 -->
+							<div class="col" id="CaseHistoryRecord">
+								<div class="">
+									<div>
+										<div class="divider__line"></div>
+										<h2 class="text-center" style="font-weight: 900;">我的服務記錄</h2>
+										<div class="divider__line"></div>
+										@*  <p class="dismiss text-right"><a id="dismiss-all" href="#" class="btn btn-dark">取消全部</a></p> *@
+									</div>
+									<br>
+									<!-- 用日期查詢紀錄 -->
+									<div>
+										<label style="font-size: 23px"><b>開始日期:</b></label>
+										<input type="text" placeholder="YYYY-MM-DD" name="startdate" class="datepicker" style="width: 180px" v-model="startDate">
+										&nbsp;&nbsp;
 
-                                        <label style="font-size: 23px"><b>結束日期:</b></label>
-                                        <input type="text" placeholder="YYYY-MM-DD" name="enddate" class="datepicker" style="width: 180px" v-model="endDate">
-                                        &nbsp;&nbsp;
+										<label style="font-size: 23px"><b>結束日期:</b></label>
+										<input type="text" placeholder="YYYY-MM-DD" name="enddate" class="datepicker" style="width: 180px" v-model="endDate">
+										&nbsp;&nbsp;
 
-                                        <button @@click="filterRecords">查詢</button>
-
-
-                                    </div>
-                                    <!-- 表格 -->
-                                    <div>
-                                        <table class="table align-middle" style="margin-top: 40px;">
-                                            <tr>
-                                                <th colspan="4" style="background-color: azure;border-block: solid;"></th>
-                                                <th colspan="4" style="background-color: azure;border-block: solid;">
-                                                    <span style="font-size: 24px; float: right; margin-right: 60px;">
-                                                        <b>金額合計: $<span>{{ totalAmount }}</span></b>
-                                                    </span>
-                                                </th>
-                                            </tr>
-                                            <tr style="font-size: 20px;text-align:center; ">
-                                                <th style="background-color: burlywood;">編號</th>
-                                                <th style="background-color: burlywood;">服務日期</th>
-                                                <th style="background-color: burlywood;">服務時間</th>
-                                                <th style="background-color: burlywood;">照服員名稱</th>
-                                                <th style="background-color: burlywood;">服務項目</th>
-                                                <th style="background-color: burlywood;">服務金額</th>
-                                                <th style="background-color: burlywood;">取消申請/案件狀態</th>
-                                                <th style="background-color: burlywood;">繳費狀態</th>
-                                            </tr>
-
-                                            <tr :class="{ 'paid-row': Case.paymentStatus,'yellow-row': Case.caseStatus && !Case.paymentStatus,'none-row':!Case.caseStatus && !Case.paymentStatus }" style="font-size: 20px;text-align:center;font-weight:900" v-for="Case in CaseList" :key="Case.caseId" v-show="!Case.hide">
-                                                <td style="text-align: center;">
-                                                    {{ Case.caseId }}
-                                                </td>
-                                                <td style="text-align: center;">
-                                                    {{ Case.startDateTime.slice(0,10) }}
-                                                </td>
-                                                <td style="text-align: center;">
-                                                    {{ Case.startDateTime.slice(11,16) }}
-                                                </td>
-                                                <td style="text-align: center;">
-                                                    {{ Case.employeeName }}
-                                                </td>
-                                                <td style="text-align: center;">
-                                                    {{ Case.serviceName }}
-                                                </td>
-                                                <td style="text-align: center;">
-                                                    ${{ Case.amount }}
-                                                </td>
-
-                                                <td>
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification"
-                                                       v-if="Case.caseStatus === false && !Case.paymentStatus">未完成</a>
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification"
-                                                       v-if="Case.caseStatus === false && !Case.paymentStatus" @@click.prevent="cancelService(Case)">取消</a>
+										<button type="button" @@click="filterRecords">查詢</button>
 
 
-                                                    <a href="#" class="btn btn-secondary dismiss-notification"
-                                                       v-else>完成</a>
-                                                </td>
-                                                <td style="text-align: center;">
-                                                    <a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn{{ Case.caseId }}"
-                                                       v-if="Case.paymentStatus === false" @@click.prevent="checkout(Case)">去結帳</a>
-                                                    <a href="#" class="btn btn-secondary dismiss-notification"
-                                                       v-else>已繳費</a>
+									</div>
+									<!-- 表格 -->
+									<div>
+										<table class="table align-middle" style="margin-top: 40px;">
+											<tr>
+												<th colspan="4" style="background-color: azure;border-block: solid;"></th>
+												<th colspan="4" style="background-color: azure;border-block: solid;">
+													<span style="font-size: 24px; float: right; margin-right: 60px;">
+														<b>金額合計: $<span>{{ totalAmount }}</span></b>
+													</span>
+												</th>
+											</tr>
+											<tr style="font-size: 20px;text-align:center; ">
+												<th style="background-color: burlywood;">編號</th>
+												<th style="background-color: burlywood;">服務日期</th>
+												<th style="background-color: burlywood;">服務時間</th>
+												<th style="background-color: burlywood;">照服員名稱</th>
+												<th style="background-color: burlywood;">服務項目</th>
+												<th style="background-color: burlywood;">服務金額</th>
+												<th style="background-color: burlywood;">取消申請/案件狀態</th>
+												<th style="background-color: burlywood;">繳費狀態</th>
+											</tr>
 
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <br>
+											<tr :class="{ 'paid-row': Case.paymentStatus,'yellow-row': Case.caseStatus && !Case.paymentStatus,'none-row':!Case.caseStatus && !Case.paymentStatus }" style="font-size: 20px;text-align:center;font-weight:900" v-for="Case in casesToIterate" :key="Case.caseId" v-show="!Case.hide">
+												<td style="text-align: center;">
+													{{ Case.caseId }}
+												</td>
+												<td style="text-align: center;" class="Date">
+													{{ Case.startDateTime.slice(0,10) }}
+												</td>
+												<td style="text-align: center;">
+													{{ Case.startDateTime.slice(11,16) }}
+												</td>
+												<td style="text-align: center;">
+													{{ Case.employeeName }}
+												</td>
+												<td style="text-align: center;">
+													{{ Case.serviceName }}
+												</td>
+												<td style="text-align: center;">
+													${{ Case.amount }}
+												</td>
 
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    @* <script src="~/js/CsMember/ECPay.js"></script> *@
-    <script src="~/js/CsMember/profile.js"></script>
-    <script src="~/js/CsMember/notification.js"></script>
-    <script src="~/js/CsMember/logout.js"></script>
-    <script>
-        const CaseHistoryRecord = Vue.createApp({
-            data() {
-                return {
-                    CaseList: [],
-                    caseId: "",
-                    serviceName: "",
-                    startDateTime: "",
-                    startDate: "",
-                    startTime: "",
-                    amount: "",
-                    paymentStatus: "",
-                    caseStatus: "",
-                    matchingCases2: "",
-                    employeeNames: "",
-                    totalAmount: 0,
-                    endDate: "",
-                    matchingRecords:[],
-                };
-            },
-            mounted() {
-                this.$nextTick(() => {
-                    this.GetCaseForEmployer();
-                    this.created();
-
-                });
-            },
-            methods: {
-
-                GetCaseForEmployer() {
-                    $.ajax({
-                        method: "GET",
-                        url: "https://localhost:7036/api/Employers",
-                        success: function (response) {
-                            const account = JSON.parse(sessionStorage.getItem('member')).account;
-
-                            // console.log(response);
-                            response.forEach((data) => {
-                                if (data.account == account) {
-                                    sessionStorage.setItem('idForCase', JSON.stringify(data))
-                                    // console.log('有成功抓到資料');
-
-                                }
-                            });
+												<td>
+													<a href="#" class="btn btn-outline-dark dismiss-notification"
+													   v-if="Case.caseStatus === false && !Case.paymentStatus">未完成</a>
+													<a href="#" class="btn btn-outline-dark dismiss-notification"
+													   v-if="Case.caseStatus === false && !Case.paymentStatus" @@click.prevent="cancelService(Case)">取消</a>
 
 
-                        },
-                        error: function (err) {
-                            console.log(err);
-                        }
-                    })
+													<a href="#" class="btn btn-secondary dismiss-notification"
+													   v-else>完成</a>
+												</td>
+												<td style="text-align: center;">
+													<a href="#" class="btn btn-outline-dark dismiss-notification" id="checkoutBtn{{ Case.caseId }}"
+													   v-if="Case.paymentStatus === false" @@click.prevent="checkout(Case)">去結帳</a>
+													<a href="#" class="btn btn-secondary dismiss-notification"
+													   v-else>已繳費</a>
 
-                    $.ajax({
-                        type: 'get',
-                        url: 'https://localhost:7036/api/Cases',
-                        success: (data) => {
-                            // console.log(data);
-                            var matchingCases = [];
-                            var totalAmount = 0;
-                            // 使用forEach遍历data数组
-                            data.forEach((item) => {
-                                // console.log(item)
-                                if (item.employerId === JSON.parse(sessionStorage.getItem('idForCase')).employerId) {
-                                    matchingCases.push(item)
-                                    totalAmount += item.amount;
-                                    // console.log('有成功抓到資料');
-                                    // console.log(item)
-                                    sessionStorage.setItem('Forcase', JSON.stringify(matchingCases))
-                                    this.CaseList = item;
-                                    console.log(this.CaseList)
-                                    // sessionStorage.setItem('CaseList', JSON.stringify(item))
-
-                                    this.caseId = item.caseId;
-                                    // sessionStorage.setItem('caseId', item.caseId)
-                                    // console.log(this.caseId)
-                                    this.serviceName = item.serviceName;
-                                    // console.log(this.serviceName)
-                                    this.startDateTime = item.startDateTime;
-
-                                    let objectDate = new Date();
-                                    let day = objectDate.getDate();
-                                    //console.log(day); // 25
-
-                                    let month = objectDate.getMonth();
-                                    //console.log(month + 1); // 10
-
-                                    let year = objectDate.getFullYear();
-                                    //console.log(year); // 2023
-                                    let dateformat = `${year}-${month + 1}-${day}`;
-                                    //console.log(dateformat); // 7-23-2022
-                                    this.startDate = dateformat
-                                    //console.log(this.startDate)
-                                    this.startTime = item.startDateTime.slice(10);
-                                    this.endDate = item.startDateTime.slice(0, 10);
-                                    this.amount = item.amount;
-                                    this.paymentStatus = item.paymentStatus;
-                                    this.caseStatus = item.caseStatus;
-                                    this.totalAmount = totalAmount;
-                                    //console.log(this.totalAmount)
-
-                                    // console.log(this.caseStatus)
-                                    this.$forceUpdate();
-                                }
-                            });
-                        },
-                        error: (error) => {
-                            console.error('Error:', error);
-                        }
-                    });
-
-                    $.ajax({
-                        type: 'get',
-                        url: 'https://localhost:7036/api/Employees',
-                        success: (data) => {
-                            // console.log(data);
-
-                            const caseData = JSON.parse(sessionStorage.getItem('Forcase'));
-                            console.log('caseData:', caseData);
-                            // 获取匹配的项目
-
-                            if (caseData && caseData.length > 0) {
-                                // 遍历caseData数组以查找匹配的employeeId
-                                const matchingCases2 = [];
-                                caseData.forEach((caseItem) => {
-                                    const employeeIdToMatch = caseItem.employeeId;
-                                    const matchingCase = data.find(item => item.employeeId === employeeIdToMatch);
-                                    if (matchingCase) {
-                                        matchingCases2.push(matchingCase);
-                                    }
-                                });
+												</td>
+											</tr>
+										</table>
+										<br>
 
 
-                                if (matchingCases2.length > 0) {
-                                    console.log('匹配的项目:', matchingCases2);
-                                    this.matchingCases2 = matchingCases2;
-                                    console.log(this.matchingCases2);
-                                    this.employeeNames = matchingCases2.map(item => item.employeeName);
-                                    console.log(this.employeeNames)
-                                    sessionStorage.setItem('employeeNames', JSON.stringify(matchingCases2))
-                                } else {
-                                    console.log('没有匹配的项目。');
-                                }
-                            } else {
-                                console.log('caseData為undefined或null');
-                            }
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	@* <script src="~/js/CsMember/ECPay.js"></script> *@
+	<script src="~/js/CsMember/profile.js"></script>
+	<script src="~/js/CsMember/notification.js"></script>
+	<script src="~/js/CsMember/logout.js"></script>
+	<script>
+		const CaseHistoryRecord = Vue.createApp({
+			data() {
+				return {
+					CaseList: [],
+					caseId: "",
+					serviceName: "",
+					startDateTime: "",
+					startDate: "",
+					startTime: "",
+					amount: "",
+					paymentStatus: "",
+					caseStatus: "",
+					matchingCases2: "",
+					employeeNames: "",
+					totalAmount: 0,
+					endDate: "",
+					matchingRecords: [],
+				};
+			},
+			mounted() {
+				this.$nextTick(() => {
+					this.GetCaseForEmployer();
+					this.created();
+
+				});
+			},
+			methods: {
+
+				GetCaseForEmployer() {
+					$.ajax({
+						method: "GET",
+						url: "https://localhost:7036/api/Employers",
+						success: function (response) {
+							const account = JSON.parse(sessionStorage.getItem('member')).account;
+
+							// console.log(response);
+							response.forEach((data) => {
+								if (data.account == account) {
+									sessionStorage.setItem('idForCase', JSON.stringify(data))
+									// console.log('有成功抓到資料');
+
+								}
+							});
 
 
-                        },
-                        error: (error) => {
-                            console.error('Error:', error);
-                        }
-                    });
-                },
-                created() {
-                    // 从 sessionStorage 中获取数据
-                    const storedData = JSON.parse(sessionStorage.getItem('Forcase'));
-                    const storedData2 = JSON.parse(sessionStorage.getItem('employeeNames'));
-                    if (storedData) {
-                        // 将数据分配给 Vue 数据属性
-                        this.CaseList = storedData;
-                        // 分配其他数据属性
-                    }
-                    // 获取"照服員名稱"数据
-                    const employeeNames = JSON.parse(sessionStorage.getItem('employeeNames'));
-                    if (employeeNames) {
-                        // 遍历CaseList并将相应的"照服員名稱"应用到每个案例
-                        this.CaseList.forEach((Case, index) => {
-                            Case.employeeName = employeeNames[index].employeeName;
-                        });
-                    }
-                    // 计算总金额
-                    this.totalAmount = this.CaseList.reduce((total, item) => total + item.amount, 0);
+						},
+						error: function (err) {
+							console.log(err);
+						}
+					})
 
-                },
-                filterRecords() {
-                    const Records = JSON.parse(sessionStorage.getItem('Forcase'));
-                    console.log('Records:', Records);
+					$.ajax({
+						type: 'get',
+						url: 'https://localhost:7036/api/Cases',
+						success: (data) => {
+							// console.log(data);
+							var matchingCases = [];
+							var totalAmount = 0;
+							// 使用forEach遍历data数组
+							data.forEach((item) => {
+								// console.log(item)
+								if (item.employerId === JSON.parse(sessionStorage.getItem('idForCase')).employerId) {
+									matchingCases.push(item)
+									totalAmount += item.amount;
+									// console.log('有成功抓到資料');
+									// console.log(item)
+									sessionStorage.setItem('Forcase', JSON.stringify(matchingCases))
+									this.CaseList = item;
+									console.log(this.CaseList)
+									// sessionStorage.setItem('CaseList', JSON.stringify(item))
 
-                    if (Records && Records.length > 0) {
-                        // 获取用户输入的开始日期和结束日期
-                        const startDateObject = new Date(document.querySelectorAll('input')[1].value);
-                        const endDateObject = new Date(document.querySelectorAll('input')[2].value);
-                        console.log('startDateObject:', startDateObject);
-                        console.log('endDateObject:', endDateObject);
+									this.caseId = item.caseId;
+									// sessionStorage.setItem('caseId', item.caseId)
+									// console.log(this.caseId)
+									this.serviceName = item.serviceName;
+									// console.log(this.serviceName)
+									this.startDateTime = item.startDateTime;
 
-                        const matchingRecords = Records.filter((Record) => {
-                            const recordDate = new Date(Record.startDateTime.slice(0, 10));
-                            return recordDate >= startDateObject && recordDate <= endDateObject;
-                        });
-                        this.$nextTick(() => {
-                            console.log(matchingRecords);
-                            console.log(this.CaseList);
-                            console.log('過濾紀錄成功!');
-                        });
+									let objectDate = new Date();
+									let day = objectDate.getDate();
+									//console.log(day); // 25
 
-                        // 更新 CaseList 以仅包含过滤后的记录
-                        this.CaseList = matchingRecords;
-                        // 重新计算总金额
-                        this.totalAmount = this.CaseList.reduce((total, item) => total + item.amount, 0);
-                    }
-                },
+									let month = objectDate.getMonth();
+									//console.log(month + 1); // 10
 
+									let year = objectDate.getFullYear();
+									//console.log(year); // 2023
+									let dateformat = `${year}-${month + 1}-${day}`;
+									//console.log(dateformat); // 7-23-2022
+									//this.startDate = document.querySelectorAll('input')[2].value;
+									//console.log(this.startDate)
+									this.startTime = item.startDateTime.slice(10);
+									//this.endDate = document.querySelectorAll('input')[2].value;
+									this.amount = item.amount;
+									this.paymentStatus = item.paymentStatus;
+									this.caseStatus = item.caseStatus;
+									this.totalAmount = totalAmount;
+									//console.log(this.totalAmount)
 
-                cancelService(Case) {
-                    if (Case.paymentStatus === false) {
-                        $.ajax({
-                            type: 'DELETE',
-                            url: `https://localhost:7036/api/Cases/${Case.caseId}`,
-                            success: (response) => {
-                                // 成功刪除後，更新前端數據
+									// console.log(this.caseStatus)
+									this.$forceUpdate();
+								}
+							});
+						},
+						error: (error) => {
+							console.error('Error:', error);
+						}
+					});
 
-                                // 使用 Vue.js 更新數據模型，將自動重新渲染頁面
-                                this.$forceUpdate();
+					$.ajax({
+						type: 'get',
+						url: 'https://localhost:7036/api/Employees',
+						success: (data) => {
+							// console.log(data);
 
-                                // 可選：顯示一條成功消息
-                                alert('案件已成功取消');
-                            },
-                            error: (err) => {
-                                console.log(err);
-                            }
-                        });
-                    } else {
-                        alert('無法取消已結帳的案件');
-                    }
-                },
+							const caseData = JSON.parse(sessionStorage.getItem('Forcase'));
+							console.log('caseData:', caseData);
+							// 获取匹配的项目
 
-                checkout(Case) {
-                    // 创建 JSON 对象
-                    const json = {
-                        CaseId: Case.caseId,
-                        Amount: Case.amount,
-                        ServiceName: Case.serviceName
-                    };
+							if (caseData && caseData.length > 0) {
+								// 遍历caseData数组以查找匹配的employeeId
+								const matchingCases2 = [];
+								caseData.forEach((caseItem) => {
+									const employeeIdToMatch = caseItem.employeeId;
+									const matchingCase = data.find(item => item.employeeId === employeeIdToMatch);
+									if (matchingCase) {
+										matchingCases2.push(matchingCase);
+									}
+								});
 
 
-                    // 发送 POST 请求到服务器
-                    $.ajax({
-                        type: 'POST',
-                        url: 'https://localhost:7036/ECPay/DoTestPay',
-                        contentType: 'application/json; charset=utf-8',
-                        data: JSON.stringify(json),
-                        success: function (res) {
-                            // 构建表单
-                            const form = document.createElement('form');
-                            form.method = 'post';
-                            form.action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5'; // 綠界金流驗證網址(測試環境)
-                            //form.target = "_blank";
-
-                            // 将服务器响应中的数据用于构建表单
-                            for (const key in res) {
-                                if (res.hasOwnProperty(key)) {
-                                    const hiddenField = document.createElement('input');
-                                    hiddenField.type = 'hidden';
-                                    hiddenField.name = key;
-                                    hiddenField.value = res[key];
-                                    form.appendChild(hiddenField);
-                                }
-                            }
-
-                            // 添加表单到文档并提交
-                            document.body.appendChild(form);
-                            form.submit();
-
-                            // 修改按钮文本为 "已繳費"
-                            $(`#checkoutBtn${Case.caseId}`).text('已繳費');
-                            console.log('繳費完成!')
-                            // 将整行 `<tr>` 添加一个类来改变其样式
-                            // $(`#caseRow${Case.caseId}`).addClass('paid-row');
-
-                            Case.paymentStatus = true;
-
-                            // 重定向回历史纪录页面
-                            console.log('准备执行重定向');
-
-                            // //window.location.href = 'https://localhost:7036/CsMember/CsRecord'; // 请替换为你的历史纪录页面的实际 URL
-                        },
-                        error: function (err) {
-                            console.log(err);
-                        },
-                    });
-                }
-            }
-        });
-
-        CaseHistoryRecord.mount("#CaseHistoryRecord");
-
-        $(function () {
-
-            // 从 sessionStorage 获取 userAccount 数据
-            var userName = JSON.parse(sessionStorage.getItem("id"))[0].fullName
-            console.log(userName)
-            // 更新页面上的 UserAccount 文本
-            $("#userName").text('Hello!' + userName);
-
-        });
+								if (matchingCases2.length > 0) {
+									console.log('匹配的项目:', matchingCases2);
+									this.matchingCases2 = matchingCases2;
+									console.log(this.matchingCases2);
+									this.employeeNames = matchingCases2.map(item => item.employeeName);
+									console.log(this.employeeNames)
+									sessionStorage.setItem('employeeNames', JSON.stringify(matchingCases2))
+								} else {
+									console.log('没有匹配的项目。');
+								}
+							} else {
+								console.log('caseData為undefined或null');
+							}
 
 
-        $(".datepicker").datepicker({
-            dateFormat: "yy-mm-dd"
-        });
-    </script>
+						},
+						error: (error) => {
+							console.error('Error:', error);
+						}
+					});
+				},
+				created() {
+					// 从 sessionStorage 中获取数据
+					const storedData = JSON.parse(sessionStorage.getItem('Forcase'));
+					const storedData2 = JSON.parse(sessionStorage.getItem('employeeNames'));
+					if (storedData) {
+						// 将数据分配给 Vue 数据属性
+						this.CaseList = storedData;
+						// 分配其他数据属性
+					}
+					// 获取"照服員名稱"数据
+					const employeeNames = JSON.parse(sessionStorage.getItem('employeeNames'));
+					if (employeeNames) {
+						// 遍历CaseList并将相应的"照服員名稱"应用到每个案例
+						this.CaseList.forEach((Case, index) => {
+							Case.employeeName = employeeNames[index].employeeName;
+						});
+					}
+					// 计算总金额
+					this.totalAmount = this.CaseList.reduce((total, item) => total + item.amount, 0);
+
+				},
+				filterRecords() {
+					const Records = JSON.parse(sessionStorage.getItem('Forcase'));
+					console.log('Records:', Records);
+
+					if (Records && Records.length > 0) {
+						const startDateObject = new Date(document.querySelectorAll('input')[1].value);
+						const endDateObject = new Date(document.querySelectorAll('input')[2].value);
+						console.log('startDateObject:', startDateObject);
+						console.log('endDateObject:', endDateObject);
+
+						const matchingRecords = Records.filter((Record) => {
+							const recordDate = new Date(Record.startDateTime.slice(0, 10));
+							return recordDate >= startDateObject && recordDate <= endDateObject;
+						});
+
+						//console.log("test");
+						//console.log(matchingRecords);
+
+						this.matchingRecords = matchingRecords;
+						//this.CaseList = matchingRecords;
+						console.log(this.matchingRecords)
+						this.totalAmount = this.matchingRecords.reduce((total, item) => total + item.amount, 0);
+						//this.$forceUpdate();
+						//return matchingRecords;
+					}
+				},
+
+
+				cancelService(Case) {
+					if (Case.paymentStatus === false) {
+						$.ajax({
+							type: 'DELETE',
+							url: `https://localhost:7036/api/Cases/${Case.caseId}`,
+							success: (response) => {
+								// 成功刪除後，更新前端數據
+
+								// 使用 Vue.js 更新數據模型，將自動重新渲染頁面
+								this.$forceUpdate();
+
+								// 可選：顯示一條成功消息
+								alert('案件已成功取消');
+							},
+							error: (err) => {
+								console.log(err);
+							}
+						});
+					} else {
+						alert('無法取消已結帳的案件');
+					}
+				},
+
+				checkout(Case) {
+					// 创建 JSON 对象
+					const json = {
+						CaseId: Case.caseId,
+						Amount: Case.amount,
+						ServiceName: Case.serviceName
+					};
+
+
+					// 发送 POST 请求到服务器
+					$.ajax({
+						type: 'POST',
+						url: 'https://localhost:7036/ECPay/DoTestPay',
+						contentType: 'application/json; charset=utf-8',
+						data: JSON.stringify(json),
+						success: function (res) {
+							// 构建表单
+							const form = document.createElement('form');
+							form.method = 'post';
+							form.action = 'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5'; // 綠界金流驗證網址(測試環境)
+							//form.target = "_blank";
+
+							// 将服务器响应中的数据用于构建表单
+							for (const key in res) {
+								if (res.hasOwnProperty(key)) {
+									const hiddenField = document.createElement('input');
+									hiddenField.type = 'hidden';
+									hiddenField.name = key;
+									hiddenField.value = res[key];
+									form.appendChild(hiddenField);
+								}
+							}
+
+							// 添加表单到文档并提交
+							document.body.appendChild(form);
+							form.submit();
+
+							// 修改按钮文本为 "已繳費"
+							$(`#checkoutBtn${Case.caseId}`).text('已繳費');
+							console.log('繳費完成!')
+							// 将整行 `<tr>` 添加一个类来改变其样式
+							// $(`#caseRow${Case.caseId}`).addClass('paid-row');
+
+							Case.paymentStatus = true;
+
+							// 重定向回历史纪录页面
+							console.log('准备执行重定向');
+
+							// //window.location.href = 'https://localhost:7036/CsMember/CsRecord'; // 请替换为你的历史纪录页面的实际 URL
+						},
+						error: function (err) {
+							console.log(err);
+						},
+					});
+				},
+				HideTd() {
+					const startDateObject = new Date(document.querySelectorAll('input')[0].value);
+					const endDateObject = new Date(document.querySelectorAll('input')[1].value);
+
+					document.querySelectorAll(".Date").forEach(item => {
+						const parentTR = item.closest('tr');
+						if (new Date(item.innerText) >= startDateObject && new Date(item.innerText) <= endDateObject) {
+							parentTR.style.display = "table-row";
+						} else {
+							parentTR.style.display = "none";
+						}
+					});
+				},
+				
+			},
+			computed: {
+				// 计算属性决定了要迭代的数组
+				casesToIterate: function () {
+					// 根据条件返回相应的数组
+					//return this.filterRecords().length > 0 ? thisfilterRecords() : this.CaseList;
+					console.log("test");
+					console.log(this.matchingRecords)
+					return this.matchingRecords.length > 0 ? this.matchingRecords : this.CaseList;
+				},
+			}
+
+		});
+
+		CaseHistoryRecord.mount("#CaseHistoryRecord");
+
+		$(function () {
+
+			// 从 sessionStorage 获取 userAccount 数据
+			var userName = JSON.parse(sessionStorage.getItem("id"))[0].fullName
+			console.log(userName)
+			// 更新页面上的 UserAccount 文本
+			$("#userName").text('Hello!' + userName);
+
+		});
+
+
+		$(".datepicker").datepicker({
+			dateFormat: "yy-mm-dd"
+		});
+	</script>
 
 </body>

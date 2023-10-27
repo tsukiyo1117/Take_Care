@@ -12,11 +12,11 @@
             <div class="col-2 " >
                 <div class="row" id="userPic" style="display:flex;width:100%">
                     <div class="col">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="user">
+                        <img src="~/img/employer/大壯.jpg" alt="user" style="width:80px">
                     </div>
                     <div class="col d-flex align-items-center" id="logout">
                         <form asp-controller="CsMember" asp-action="Logout" method="post">
-                            <button class="btn btn-light" style="border:1px solid burlywood;font-weight:900;background-color:	#ffdab9"
+                            <button class="btn btn-light" style="border:1px solid burlywood;font-weight:900;background-color:	#ffdab9; position:absolute;top:90%"
                                     @@click="logout">
                                 登出
                             </button>
@@ -385,8 +385,7 @@
                             </div>
                             <div class="col-md-2" style="position:relative;right:4rem">
                                 <div class="profile-img" id="profileSection">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                                         alt="" />
+                                    <img src="~/img/employer/大壯.jpg" alt="user" style="width:12rem">
                                     <div class="file btn btn-lg btn-light" style="font-weight: 900;color: azure;">
                                         Change Photo
                                         <input type="file" name="file" style="cursor: pointer;" />
