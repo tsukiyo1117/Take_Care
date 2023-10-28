@@ -334,6 +334,19 @@ const profile = Vue.createApp({
                     console.log(updatedData)
                     // 请求成功的处理逻辑
                     console.log('Data updated successfully');
+
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: '資料保存成功',
+                        showConfirmButton: false,
+                        timer: 1000,
+                        onAfterClose: () => {
+                            // 当消息框关闭后执行刷新操作
+                            location.reload();
+                        }
+                    });
+                    
                 },
                 error: (error) => {
                     // 请求失败的处理逻辑
@@ -929,6 +942,17 @@ const CsProfile = Vue.createApp({
                         console.log(updatedData)
                         // 请求成功的处理逻辑
                         console.log('Data updated successfully');
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '資料保存成功',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            onAfterClose: () => {
+                                // 当消息框关闭后执行刷新操作
+                                location.reload();
+                            }
+                        });
                     },
                     error: (error) => {
                         // 请求失败的处理逻辑
@@ -946,6 +970,17 @@ const CsProfile = Vue.createApp({
                         console.log(NewPersonalData)
                         // 请求成功的处理逻辑
                         console.log('CsData posted successfully');
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '資料保存成功',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            onAfterClose: () => {
+                                // 当消息框关闭后执行刷新操作
+                                location.reload();
+                            }
+                        });
                     },
                     error: (error) => {
                         // 请求失败的处理逻辑
@@ -965,6 +1000,17 @@ const CsProfile = Vue.createApp({
                         console.log(updateEmergencyData)
                         // 请求成功的处理逻辑
                         console.log('Data updated successfully');
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '資料保存成功',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            onAfterClose: () => {
+                                // 当消息框关闭后执行刷新操作
+                                location.reload();
+                            }
+                        });
                     },
                     error: (error) => {
                         // 请求失败的处理逻辑
@@ -982,6 +1028,18 @@ const CsProfile = Vue.createApp({
                         console.log(NewEmergencyData)
                         // 请求成功的处理逻辑
                         console.log('EmergencyData posted successfully');
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: '資料保存成功',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            onAfterClose: () => {
+                                // 当消息框关闭后执行刷新操作
+                                location.reload();
+                            }
+                        });
+                       
                     },
                     error: (error) => {
                         // 请求失败的处理逻辑

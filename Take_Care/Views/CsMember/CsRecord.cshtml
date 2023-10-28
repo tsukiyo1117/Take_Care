@@ -65,17 +65,19 @@
 									</div>
 									<br>
 									<!-- 用日期查詢紀錄 -->
-									<div>
+									<div style="display:flex;align-items:center">
 										<label style="font-size: 23px"><b>開始日期:</b></label>
-										<input type="text" placeholder="YYYY-MM-DD" name="startdate" class="datepicker" style="width: 180px" v-model="startDate">
+										&nbsp;
+										<input type="text" placeholder="YYYY-MM-DD" name="startdate" class="datepicker form-control" style="width: 180px;border-radius:5px;font-size:20px" v-model="startDate">
 										&nbsp;&nbsp;
 
 										<label style="font-size: 23px"><b>結束日期:</b></label>
-										<input type="text" placeholder="YYYY-MM-DD" name="enddate" class="datepicker" style="width: 180px" v-model="endDate">
+										&nbsp;
+										<input type="text" placeholder="YYYY-MM-DD" name="enddate" class="datepicker form-control" style="width: 180px;border-radius:5px;font-size:20px" v-model="endDate">
 										&nbsp;&nbsp;
 
-										<button type="button" @@click="filterRecords">查詢</button>
-
+										<button type="button" @@click="filterRecords" style="margin-right:1rem;font-size:23px" class="btn btn-outline-secondary">查詢</button>
+										<button type="button" @@click="showAllEvents" style="margin-right:1rem;font-size:23px" class="btn btn-outline-secondary">顯示全部</button>
 
 									</div>
 									<!-- 表格 -->
@@ -178,11 +180,11 @@
 				};
 			},
 			mounted() {
-				this.$nextTick(() => {
+				
 					this.GetCaseForEmployer();
 					this.created();
 
-				});
+				
 			},
 			methods: {
 
@@ -352,10 +354,32 @@
 						this.matchingRecords = matchingRecords;
 						//this.CaseList = matchingRecords;
 						console.log(this.matchingRecords)
+
+						// 获取"照服員名稱"数据
+						const employeeNames = JSON.parse(sessionStorage.getItem('employeeNames'));
+						if (employeeNames) {
+							// 遍历CaseList并将相应的"照服員名稱"应用到每个案例
+							this.matchingRecords.forEach((Case, index) => {
+								Case.employeeName = employeeNames[index].employeeName;
+							});
+						}
 						this.totalAmount = this.matchingRecords.reduce((total, item) => total + item.amount, 0);
 						//this.$forceUpdate();
 						//return matchingRecords;
 					}
+				},
+				showAllEvents() {
+					// 清除筛选条件
+					this.matchingRecords = JSON.parse(sessionStorage.getItem('Forcase'));
+					const employeeNames = JSON.parse(sessionStorage.getItem('employeeNames'));
+					if (employeeNames) {
+						// 遍历CaseList并将相应的"照服員名稱"应用到每个案例
+						this.matchingRecords.forEach((Case, index) => {
+							Case.employeeName = employeeNames[index].employeeName;
+						});
+					}
+					// 重新计算总金额
+					this.totalAmount = this.matchingRecords.reduce((total, item) => total + item.amount, 0);
 				},
 
 
@@ -427,8 +451,18 @@
 
 							Case.paymentStatus = true;
 
-							// 重定向回历史纪录页面
-							console.log('准备执行重定向');
+							// Swal.fire({
+							// 	position: 'center',
+							// 	icon: 'success',
+							// 	title: '繳費成功!',
+							// 	showConfirmButton: false,
+							// 	timer: 1000,
+							// 	onAfterClose: () => {
+							// 		// 当消息框关闭后执行刷新操作
+							// 		location.reload();
+							// 	}
+							// });
+							
 
 							// //window.location.href = 'https://localhost:7036/CsMember/CsRecord'; // 请替换为你的历史纪录页面的实际 URL
 						},
