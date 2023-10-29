@@ -35,16 +35,18 @@ let app = new Vue({
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: '正在回到登入頁!',
+                        title: '註冊成功!',
+                        text:"正在回到登入頁...",
                         showConfirmButton: false,
-                        timer: 1500
-                    })
+                        timer: 2000,
+                    }).then((result)=>{
+                        window.location = "https://localhost:7036/Login";
+                    });
                     // if (window.confirm("是否要回到登入?")) {
-                    window.location = "https://localhost:7036/Login";
                     // } else {
                     //     window.location = "https://localhost:7036";
                     // }
-                }
+                },
             })
         },
         sendEmail: function (event) {
