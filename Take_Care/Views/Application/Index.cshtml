@@ -20,9 +20,9 @@
 
             </div>
 
-            <div class="Title1 " style="height: 727px; background-color: #C0C0C0;">
+            <div class="Title1 " style="height: 684px; background-color: #C0C0C0;">
 
-                <div id="TC" class="tabcontent" style="overflow-y:scroll;height: 727px; ">
+                <div id="TC" class="tabcontent" style="overflow-y:scroll;height: 684px; ">
                     <!-- 放入服務資料 -->
                 </div>
 
@@ -185,11 +185,11 @@
 
             <div class="Title row" style="height:40px; background-color: #DCD0C3;">
                 <div class="col-3"></div>
-                <button id="allClear" class="col-2 click-btn btn-style">
+                <button id="allClear" class="col-2 click-btn btn-style" style="display: flex; justify-content: center; align-items: center;">
                     <span style="z-index: 2;">清空</span>
                 </button>
                 <div class="col-2"></div>
-                <button id="allOK" class="col-2 click-btn btn-style">
+                <button id="allOK" class="col-2 click-btn btn-style" style="display: flex; justify-content: center; align-items: center;">
                     <span style="z-index: 2;">確認</span>
                 </button>
                 <div class="col-3"></div>
@@ -869,7 +869,7 @@
                 for (let i = 0; i < CitizenshipstatusData.length; i++) {
                     if (WhoBody.slice(0, 1) == CitizenshipstatusData[i].category.slice(0, 1)) {
                         BodyID = CitizenshipstatusData[i].citizenshipstatuId
-                        percentage = CitizenshipstatusData[i].respite
+                        percentage = CitizenshipstatusData[i].care
                     }
                 }
 
@@ -2219,7 +2219,7 @@
 
         // 計算兩周後的日期
         var twoWeeksLater = new Date(currentDate);
-        twoWeeksLater.setDate(currentDate.getDate());
+        twoWeeksLater.setDate(currentDate.getDate()-7);
 
         // 找到兩周後的第一個星期日
         while (twoWeeksLater.getDay() !== 0) {
